@@ -1,3 +1,5 @@
+import FaqButton from "./FaqButton";
+
 const faq = {
   "What Amazon FBA prep services do you offer?":
     "We provide a comprehensive suite of Amazon FBA prep services to meet your specific needs. Our services include product inspection, labeling and packaging, and quality control checks to ensure your products meet Amazon's standards. With our expertise, you can streamline your FBA operations and focus on growing your business.",
@@ -16,8 +18,14 @@ export default function Faq() {
       </h2>
       <ul className="mt-[48px]">
         {Object.keys(faq).map((item) => (
-          <li className="w-[1200px] h-[72px] bg-[#C0C0C0] flex items-center border-white border-solid border p-6 ">
-            {item}
+          <li
+            key={item}
+            className="w-[1200px] min-h-[72px] flex flex-col justify-center bg-[#C0C0C0] border-white border-solid border transition-colors duration-500 hover:bg-[#757575] "
+          >
+            <FaqButton item={item} />
+            {/* <p className="w-full bg-[#021827] px-6 decoration-white">
+              {faq[item]}
+            </p> */}
           </li>
         ))}
       </ul>
