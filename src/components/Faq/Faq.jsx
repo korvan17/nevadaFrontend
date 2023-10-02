@@ -1,8 +1,3 @@
-
-
-
-export const Faq = () => {
-    return (
-        <div>Faq</div>
-    )
+export default function Faq() {
+  return <div>Faq</div>;
 }

@@ -1,5 +1,3 @@
-export const Services = () => {
-    return (
-        <div>Services</div>
-    )
+export default function Services() {
+  return <div>Services</div>;
 }
