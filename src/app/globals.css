@@ -25,3 +25,8 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+.custom-transition {
+  transition-property: height;
+  transition-duration: 4s;
+}
