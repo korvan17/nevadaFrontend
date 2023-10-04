@@ -4,14 +4,15 @@ import { motion, AnimatePresence } from "framer-motion";
 import React, { useRef, useState } from "react";
 import useClickOutside from "../UseClickOutside/UseClickOutside";
 
-export default function Collapsible({ item, faq, children }) {
+export default function Collapsible({ item, faq }) {
   const [isVisible, setVisible] = useState(false);
   const menuRef = useRef(null);
+  const refButton = useRef(null);
   function handleVisibility() {
     setVisible(!isVisible);
   }
 
-  useClickOutside(menuRef, () => {
+  useClickOutside(menuRef, refButton, () => {
     if (isVisible) {
       setTimeout(() => setVisible(!isVisible), 100);
     }
@@ -20,6 +21,7 @@ export default function Collapsible({ item, faq, children }) {
     <div>
       <button
         type="button"
+        ref={refButton}
         onClick={handleVisibility}
         className="w-full min-h-[72px] flex items-center justify-between px-6"
       >

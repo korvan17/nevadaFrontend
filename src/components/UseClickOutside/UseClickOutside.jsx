@@ -2,9 +2,14 @@
 
 import { useEffect } from "react";
 
-export default function useClickOutside(ref, callback) {
+export default function useClickOutside(ref, refButton, callback) {
   function handleClick(e) {
-    if (ref.current && !ref.current.contains(e.target)) {
+    if (
+      ref.current &&
+      refButton.current &&
+      !ref.current?.contains(e.target) &&
+      !refButton?.current.contains(e.target)
+    ) {
       callback();
     }
   }
