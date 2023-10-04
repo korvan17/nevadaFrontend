@@ -1,6 +1,4 @@
-// import Image from "next/image";
 import FaqButton from "../FaqButton/FaqButton";
-// import cat from "../../images/cat.jpg";
 
 const faq = {
   "What Amazon FBA prep services do you offer?":
@@ -20,7 +18,6 @@ const faq = {
 export default function Faq() {
   return (
     <div className="w-[1200px] mx-auto h-[796px] pt-[120px]">
-      {/* <Image src={cat} alt="cat" width={500} height={500} placeholder="blur" /> */}
       <h2 className="text-5xl font-bold mr-auto">Frequently Asked Questions</h2>
       <ul className="mt-[48px]">
         {Object.keys(faq).map((item) => (
