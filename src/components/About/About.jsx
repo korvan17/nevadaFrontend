@@ -1,9 +1,10 @@
 import Image from "next/image";
+import Container from "@/components/Container/Container";
 import React from "react";
 
 export default function About() {
   return (
-    <div>
+    <Container>
       {/* <Image src="" alt="about img" /> */}
       <h2>About our story</h2>
       <ul>
@@ -26,6 +27,6 @@ export default function About() {
           </p>
         </li>
       </ul>
-    </div>
+    </Container>
   );
 }

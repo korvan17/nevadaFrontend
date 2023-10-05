@@ -1,8 +1,9 @@
 import Buttons from "../Buttons/Buttons";
+import Container from "@/components/Container/Container";
 
 export default function Footer() {
   return (
-    <div>
+    <Container>
       <div>
         <a href="/">logo</a>
         <form action="">
@@ -77,6 +78,6 @@ export default function Footer() {
         <p>Company name</p>
         <p>All rights reserved Copyright (2006 - 2023) - Name™</p>
       </div>
-    </div>
+    </Container>
   );
 }

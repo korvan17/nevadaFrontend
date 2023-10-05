@@ -1,8 +1,9 @@
 import Buttons from "../Buttons/Buttons";
+import Container from "@/components/Container/Container";
 
 export default function Pricing() {
   return (
-    <div>
+    <Container>
       <h2>Our Pricing</h2>
       {/* <ul>
         <li>
@@ -147,6 +148,6 @@ export default function Pricing() {
         </li>
       </ul> */}
       <Buttons>Get a Quote</Buttons>
-    </div>
+    </Container>
   );
 }

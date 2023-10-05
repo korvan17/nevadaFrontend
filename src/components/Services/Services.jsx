@@ -1,6 +1,8 @@
+import Container from "@/components/Container/Container";
+
 export default function Services() {
   return (
-    <div>
+    <Container>
       <h2>Explore Our Offerings</h2>
       <ul>
         <li>
@@ -36,6 +38,6 @@ export default function Services() {
           </p>
         </li>
       </ul>
-    </div>
+    </Container>
   );
 }
