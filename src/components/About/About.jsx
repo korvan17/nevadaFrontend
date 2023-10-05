@@ -6,7 +6,7 @@ export default function About() {
   return (
     <Container>
       {/* <Image src="" alt="about img" /> */}
-      <h2>About our story</h2>
+      <h2 id="about">About our story</h2>
       <ul>
         <li>
           <p>

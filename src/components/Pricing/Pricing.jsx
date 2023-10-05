@@ -4,7 +4,7 @@ import Container from "@/components/Container/Container";
 export default function Pricing() {
   return (
     <Container>
-      <h2>Our Pricing</h2>
+      <h2 id="pricing">Our Pricing</h2>
       {/* <ul>
         <li>
           <h3></h3>
