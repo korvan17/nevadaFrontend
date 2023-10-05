@@ -10,7 +10,7 @@ function UserControls() {
         {lang.map((e) => (
           <li key={e}>
             <button
-              className="flex items-center h-[16px] px-[4px] border-b  border-r border-r-mainWhite  border-b-captionalGrey transition-all ease-out cursor-pointer text-captionalGrey hover:text-mainWhite active:text-mainWhite"
+              className="flex items-center h-[16px] px-[4px] border-b  border-r border-r-mainWhite  border-b-captionalGrey transition-all ease-out cursor-pointer text-captionalGrey hover:text-mainWhite active:text-mainWhite hover:border-b-mainWhite"
               type="button"
             >
               {e}
