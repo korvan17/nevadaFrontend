@@ -4,7 +4,7 @@ import Navigation from "../Navigation/Navigation";
 
 export default function Header() {
   return (
-    <header className="bg-mainBlack text-mainWhite text-sm[16px] width=[100%] pt-[16px] pb-[16px] ">
+    <header className="fixed top-0 bg-mainBlack text-mainWhite text-sm[16px] w-[100%] pt-[16px] pb-[16px] ">
       <Container>
         <div className="flex">
           <Navigation />

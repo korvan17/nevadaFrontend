@@ -1,7 +1,7 @@
 import React from "react";
 
-function Section({ children }) {
-  return <div className="pt-[120px]">{children}</div>;
+function Section({ top = "[120px]", children }) {
+  return <div className={`pt-${top}`}>{children}</div>;
 }
 
 export default Section;
