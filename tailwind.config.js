@@ -13,7 +13,7 @@ module.exports = {
         captionalWhite: "#ECECEC",
         mainWhite: "#FAFCF8",
 
-        // captionalGrey: "#62686F",
+        captionalGrey: "#62686F",
         faqGrey: "#C0C0C0",
 
         darkBlue: "#021827",

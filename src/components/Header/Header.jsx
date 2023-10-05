@@ -1,6 +1,7 @@
 import Buttons from "../Buttons/Buttons";
 import Container from "@/components/Container/Container";
 import Navigation from "../Navigation/Navigation";
+import UserControls from "../UserControls/UserControls";
 
 export default function Header() {
   return (
@@ -8,7 +9,7 @@ export default function Header() {
       <Container>
         <div className="flex">
           <Navigation />
-          <Buttons login={true}>Login</Buttons>
+          <UserControls />
         </div>
       </Container>
     </header>
