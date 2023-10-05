@@ -3,9 +3,9 @@ import Section from "../Section/Section";
 
 export default function Services() {
   return (
-    <Section>
+    <Section sectionName={"services"}>
       <Container>
-        <h2 id="services">Explore Our Offerings</h2>
+        <h2>Explore Our Offerings</h2>
         <ul>
           <li>
             {/* <Image src="" alt="icon" /> */}

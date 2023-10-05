@@ -1,0 +1,10 @@
+<symbol id="icon-logo" viewBox="0 0 32 32">
+<path fill="#fafcf8" style="fill: var(--color1, #fafcf8)" d="M15.978 4.929l13.257 7.020-13.257 5.822-13.070-5.821 13.070-7.021z"></path>
+<path fill="#fafcf8" style="fill: var(--color1, #fafcf8)" d="M16 17.771l13.090-5.904v13.433l-13.090 6.2v-13.729zM2.908 11.719l13.092 5.905v13.876l-13.090-6.495v-13.286z"></path>
+<path fill="#1478ce" style="fill: var(--color2, #1478ce)" d="M9.89 8.767l2.182-1.329 11.637 6.938-2.328 1.476-11.49-7.085z"></path>
+<path fill="#1478ce" style="fill: var(--color2, #1478ce)" d="M20.072 7.29l2.182 1.477-11.491 7.085-2.327-1.476 11.636-7.085zM21.38 15.852l2.328-1.476 0.146 5.462-2.328 0.738-0.145-4.724z"></path>
+<path fill="#1478ce" style="fill: var(--color2, #1478ce)" d="M8.436 14.376l2.328 1.476-0.291 4.577-2.473-0.739 0.436-5.315z"></path>
+<path fill="#fafcf8" style="fill: var(--color1, #fafcf8)" d="M15.855 1.386l16 7.971v2.51l-16-8.267v-2.214z"></path>
+<path fill="#fafcf8" style="fill: var(--color1, #fafcf8)" d="M16 1.386l-16 7.971v2.51l16-8.267v-2.214z"></path>
+</symbol>
+
