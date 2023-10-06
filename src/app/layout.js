@@ -11,8 +11,10 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={redHatDisplay.className}>{children}</body>
+    <html className="scroll-smooth" lang="en">
+      <body id="#home" className={redHatDisplay.className}>
+        {children}
+      </body>
     </html>
   );
 }

@@ -1,5 +1,9 @@
 const links = [
   {
+    label: "Home",
+    id: "home",
+  },
+  {
     label: "About us",
     id: "about",
   },

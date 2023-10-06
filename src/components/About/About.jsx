@@ -5,7 +5,7 @@ import Section from "../Section/Section";
 
 export default function About() {
   return (
-    <Section sectionName={"about"}>
+    <Section sectionName={"about"} id="#about">
       <Container>
         {/* <Image src="" alt="about img" /> */}
         <h2 id="about">About our story</h2>

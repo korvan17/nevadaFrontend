@@ -17,18 +17,14 @@ function Navigation() {
         </svg> */}
       </a>
       <ul className="flex items-center gap-[24px]">
-        {links.map(({ label, id }) => (
+        {links.slice(1).map(({ label, id }) => (
           <li key={id}>
-            <ScrollLink
-              to={id}
-              spy={true}
-              smooth={true}
-              offset={-70}
-              duration={500}
+            <a
+              href={`#${id}`}
               className="hover:underline transition-all ease-out cursor-pointer"
             >
               {label}
-            </ScrollLink>
+            </a>
           </li>
         ))}
       </ul>

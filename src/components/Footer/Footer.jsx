@@ -1,10 +1,11 @@
+import { links } from "@/content";
 import Buttons from "../Buttons/Buttons";
 import Container from "@/components/Container/Container";
 
 export default function Footer() {
   return (
     <Container>
-      <footer id="contacts">
+      <footer id="#contacts">
         <div>
           <a href="/">logo</a>
           <form action="">
@@ -13,24 +14,11 @@ export default function Footer() {
           </form>
         </div>
         <ul>
-          <li>
-            <a href="">Home</a>
-          </li>
-          <li>
-            <a href="">About us</a>
-          </li>
-          <li>
-            <a href="">Services</a>
-          </li>
-          <li>
-            <a href="">Pricing</a>
-          </li>
-          <li>
-            <a href="">FAQ</a>
-          </li>
-          <li>
-            <a href="">Contacts</a>
-          </li>
+          {links.map(({ label, id }) => (
+            <li key={id}>
+              <a href={`#${id}`}>{label}</a>
+            </li>
+          ))}
         </ul>
         <p>Help</p>
         <ul>

@@ -3,7 +3,7 @@ import Section from "../Section/Section";
 
 export default function Services() {
   return (
-    <Section sectionName={"services"}>
+    <Section sectionName={"services"} id="#services">
       <Container>
         <h2>Explore Our Offerings</h2>
         <ul>

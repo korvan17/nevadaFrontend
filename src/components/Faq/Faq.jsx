@@ -7,7 +7,7 @@ import { faq } from "@/content";
 
 export default function Faq() {
   return (
-    <Section sectionName={"faq"}>
+    <Section sectionName={"faq"} id="#faq">
       <Container>
         {/* <Image src={cat} alt="cat" width={500} height={500} placeholder="blur" /> */}
         <h2 className="text-5xl font-bold mr-auto">

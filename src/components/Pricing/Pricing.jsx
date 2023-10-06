@@ -4,7 +4,7 @@ import Section from "../Section/Section";
 
 export default function Pricing() {
   return (
-    <Section sectionName={"pricing"}>
+    <Section sectionName={"pricing"} id="#pricing">
       <Container>
         <h2>Our Pricing</h2>
         {/* <ul>
