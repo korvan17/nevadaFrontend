@@ -8,6 +8,9 @@ import MobileHeader from "./MobileHeader";
 
 export default function Header() {
   return (
-    <>{window.innerWidth <= 1439 ? <MobileHeader /> : <DesktopHeader />}</>
+    <>
+      <MobileHeader />
+      <DesktopHeader />
+    </>
   );
 }

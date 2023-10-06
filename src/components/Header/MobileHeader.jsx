@@ -10,7 +10,7 @@ function MobileHeader() {
   };
 
   return (
-    <div>
+    <header className="lg:hidden">
       <button onClick={handleOpenMenu} type="button">
         Open menu
       </button>
@@ -22,7 +22,7 @@ function MobileHeader() {
           </button>
         </div>
       )}
-    </div>
+    </header>
   );
 }
 
