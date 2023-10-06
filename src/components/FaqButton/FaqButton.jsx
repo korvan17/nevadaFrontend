@@ -1,33 +1,34 @@
 "use client";
 
+import { motion, AnimatePresence } from "framer-motion";
 import React, { useRef, useState } from "react";
 import useClickOutside from "../UseClickOutside/UseClickOutside";
 
-export default function FaqButton({ item, faq }) {
-  const [isOpen, setIsOpen] = useState(false);
+export default function Collapsible({ item, faq }) {
+  const [isVisible, setVisible] = useState(false);
   const menuRef = useRef(null);
-
-  function onClick() {
-    setIsOpen(!isOpen);
+  const refButton = useRef(null);
+  function handleVisibility() {
+    setVisible(!isVisible);
   }
 
-  useClickOutside(menuRef, () => {
-    if (isOpen) {
-      setTimeout(() => setIsOpen(!isOpen), 100);
+  useClickOutside(menuRef, refButton, () => {
+    if (isVisible) {
+      setTimeout(() => setVisible(!isVisible), 100);
     }
   });
-
   return (
-    <div className="h-full">
+    <div>
       <button
         type="button"
-        onClick={onClick}
+        ref={refButton}
+        onClick={handleVisibility}
         className="w-full min-h-[72px] flex items-center justify-between px-6"
       >
         <span>{item}</span>
         <svg
           className={` transition-transform duration-500 ${
-            isOpen && "rotate-180"
+            isVisible && "rotate-180"
           }`}
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -41,16 +42,22 @@ export default function FaqButton({ item, faq }) {
           />
         </svg>
       </button>
-      <p
-        ref={menuRef}
-        className={`bg-[#021827] text-white origin-top transition-all duration-500 ease-in-out transform px-6  ${
-          isOpen
-            ? "opacity-100  h-auto pt-4 pb-12 border-b-[12px] border-inherit"
-            : "opacity-0  h-0 invisible p-0"
-        }`}
-      >
-        {faq[item]}
-      </p>
+      <AnimatePresence>
+        {isVisible && (
+          <motion.div
+            ref={menuRef}
+            initial={{ height: 0 }}
+            animate={{ height: "auto" }}
+            exit={{ height: 0 }}
+            style={{ overflow: "hidden" }}
+            transition={{ duration: 0.35 }}
+          >
+            <p className="bg-[#021827] text-white origin-top pt-4 pb-12 px-6 border-b-[12px] border-inherit">
+              {faq[item]}
+            </p>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

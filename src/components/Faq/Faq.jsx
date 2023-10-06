@@ -1,5 +1,5 @@
-// import Image from "next/image";
 import FaqButton from "../FaqButton/FaqButton";
+
 // import cat from "../../images/cat.jpg";
 import Container from "@/components/Container/Container";
 import Section from "../Section/Section";
@@ -25,5 +25,4 @@ export default function Faq() {
         </ul>
       </Container>
     </Section>
-  );
-}
+
