@@ -1,15 +1,19 @@
 import { links } from "@/content";
-import Image from "next/image";
+import { animateScroll as scroll } from "react-scroll";
 import Logo from "../Logo/Logo";
 
 function Navigation() {
-  // const scrollToTop = () => {
-  //   scroll.scrollToTop();
-  // };
+  const scrollToTop = () => {
+    scroll.scrollToTop();
+  };
 
   return (
     <nav className="flex w-[1200px] items-center mr-[24px]">
-      <a className="cursor-pointer flex gap-[8px] items-center" href="#home">
+      <a
+        className="cursor-pointer flex gap-[8px] items-center"
+        href="#"
+        onClick={scrollToTop}
+      >
         <Logo />
         <div>
           <p className="text-[18px] font-bold text-mainWhite leading-[20px]">

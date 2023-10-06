@@ -1,7 +1,7 @@
 import { useState } from "react";
-import Logo from "../Logo/Logo";
 import BurgerMenuBtn from "../BurgerMenuBtn/BurgerMenuBtn";
 import CloseMenuIcon from "../CloseMenuIcon/CloseMenuIcon";
+import Logo from "../Logo/Logo";
 import UserControls from "../UserControls/UserControls";
 
 function MobileHeader() {

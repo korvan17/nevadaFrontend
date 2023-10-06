@@ -1,5 +1,3 @@
-"use client";
-import React from "react";
 import Buttons from "../Buttons/Buttons";
 const lang = ["EN", "UA", "RU"];
 
