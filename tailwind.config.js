@@ -15,7 +15,7 @@ module.exports = {
         mainWhite: "#FAFCF8",
 
         captionalGrey: "#62686F",
-        faqGrey: "#C0C0C0",
+        captionalGreyLight: "#C0C0C0",
 
         darkBlue: "#021827",
         captionBlue: "#1478CE",
