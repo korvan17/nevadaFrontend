@@ -1,50 +1,26 @@
+//global imports
+import Link from "next/link";
+//local imports
 import Buttons from "../Buttons/Buttons";
+import { FooterCommonList } from "./FooterCommonList";
+import { footerLinksData } from "./footer-data";
 
 export default function Footer() {
   return (
     <div>
       <div>
-        <a href="/">logo</a>
+        {/* temp solution */}
+        <Link href="/">Prime Preparation Center</Link>
         <form action="">
           <input type="email" />
           <Buttons>Send</Buttons>
         </form>
       </div>
-      <ul>
-        <li>
-          <a href="">Home</a>
-        </li>
-        <li>
-          <a href="">About us</a>
-        </li>
-        <li>
-          <a href="">Services</a>
-        </li>
-        <li>
-          <a href="">Pricing</a>
-        </li>
-        <li>
-          <a href="">FAQ</a>
-        </li>
-        <li>
-          <a href="">Contacts</a>
-        </li>
-      </ul>
+      <FooterCommonList data={footerLinksData.sections} />
+
       <p>Help</p>
-      <ul>
-        <li>
-          <a href="">Support</a>
-        </li>
-        <li>
-          <a href="">Partner Help Center</a>
-        </li>
-        <li>
-          <a href="">Dispute Resolution</a>
-        </li>
-        <li>
-          <a href="">Terms and Conditions</a>
-        </li>
-      </ul>
+      <FooterCommonList data={footerLinksData.help} />
+
       <div>
         <b>Do you have a question?</b>
         <p>
