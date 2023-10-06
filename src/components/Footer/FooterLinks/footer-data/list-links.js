@@ -1,27 +1,27 @@
 export const sections = [
   {
     title: "Home",
-    href: "/",
+    href: "#header",
   },
   {
     title: "About us",
-    href: "/",
+    href: "#about",
   },
   {
     title: "Services",
-    href: "/",
+    href: "#services",
   },
   {
     title: "Pricing",
-    href: "/",
+    href: "#pricing",
   },
   {
     title: "FAQ",
-    href: "/",
+    href: "#faq",
   },
   {
     title: "Contacts",
-    href: "/",
+    href: "#contacts",
   },
 ];
 
