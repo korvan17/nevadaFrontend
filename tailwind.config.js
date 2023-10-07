@@ -5,8 +5,35 @@ module.exports = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+
   theme: {
     extend: {
+      colors: {
+        mainBlack: "#000A11",
+
+        captionalWhite: "#ECECEC",
+        mainWhite: "#FAFCF8",
+
+        captionalGrey: "#62686F",
+        captionalGreyLight: "#C0C0C0",
+
+        darkBlue: "#021827",
+        captionBlue: "#1478CE",
+
+        accentHoverYellow: "#C37E19",
+        accentYellow: "#F8C951",
+      },
+
+      container: {
+        center: true,
+      },
+
+      screens: {
+        sm: "480px", // mobile
+        md: "768px", // tablet
+        lg: "1440px", // desktop
+      },
+
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
