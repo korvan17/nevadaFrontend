@@ -17,7 +17,7 @@ export default function Faq() {
           {Object.keys(faq).map((item) => (
             <li
               key={item}
-              className="flex flex-col justify-center bg-faqGrey border-inherit border-solid border transition-colors duration-500 hover:bg-[#757575] "
+              className="flex flex-col justify-center bg-captionalGreyLight border-inherit border-solid border transition-colors duration-500 hover:bg-[#757575] "
             >
               <FaqButton item={item} faq={faq} />
             </li>
