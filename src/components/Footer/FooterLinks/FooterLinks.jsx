@@ -9,27 +9,29 @@ export default function FooterLinks() {
         <FooterCommonList data={footerLinksData.sections} />
       </div>
       <div className="w-[282px]">
-        <h3>Help</h3>
+        <h3 className="text-[18px] font-bold mb-[24px]">Help</h3>
         <FooterCommonList data={footerLinksData.help} />
       </div>
       <div className="w-[282px]">
-        <h3>Do you have a question?</h3>
+        <h3 className="text-[18px] font-bold mb-[24px]">
+          Do you have a question?
+        </h3>
         <ul>
-          <li>
+          <li className="mb-[8px]">
             <a target="_blank" href="companyname@gmail.com">
-              <b>Write to us at the email address:</b>
+              <b className="font-semibold	">Write to us at the email address:</b>
               companyname@gmail.com
             </a>
           </li>
           <li>
             <a href="tel:+48 000 000 000">
-              <b>Phone:</b> +48 000 000 000
+              <b className="font-semibold">Phone:</b> +48 000 000 000
             </a>
           </li>
         </ul>
       </div>
       <div className="w-[282px]">
-        <h3>Social networks</h3>
+        <h3 className="text-[18px] font-bold mb-[24px]">Social networks</h3>
         <ul className="flex justify-between">
           <li>
             <a href=""></a>icon
