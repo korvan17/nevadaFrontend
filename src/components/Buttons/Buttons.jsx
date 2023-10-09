@@ -1,5 +1,11 @@
-import React from "react";
+export default function Buttons({ login, quote, sendMail, children }) {
+  const commonClasses =
+    "transition-colors ease-out rounded-[8px] bg-accentYellow hover:bg-accentHoverYellow text-[#FAFCF8] pt-[16px] pb-[16px] text-sm[16px] font-bold text-center";
+  const additionalClasses = login ? "uppercase w-[179px]" : quote ? "" : "";
 
-export default function Buttons({ login, quote, sendMAil, children }) {
-  return <button>{children}</button>;
+  return (
+    <button className={`${commonClasses} ${additionalClasses}`}>
+      {children}
+    </button>
+  );
 }
