@@ -6,7 +6,7 @@ import { FooterLinks } from "./FooterLinks";
 
 export default function Footer() {
   return (
-    <div>
+    <div className="w-[1200px] mx-auto ">
       <div>
         {/* temp solution */}
         <Link href="/">Prime Preparation Center</Link>
@@ -16,9 +16,12 @@ export default function Footer() {
         </form>
       </div>
       <FooterLinks />
-      <div>
-        <h3>Prime Preparation Center</h3>
-        <p>All rights reserved Copyright (2006 - 2023) - Name™</p>
+      <div className="flex items-center justify-center py-[28px] flex-wrap flex-col text-center">
+        <h3 className="mb-[24px]">Prime Preparation Center</h3>
+        <p className="flex flex-col text-[15px]">
+          <span>All rights reserved</span>
+          <span>Copyright (2022 - 2023) - PPC™</span>
+        </p>
       </div>
     </div>
   );
