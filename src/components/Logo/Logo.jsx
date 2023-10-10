@@ -9,7 +9,7 @@ function Logo() {
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <g clip-path="url(#a)">
+        <g clipPath="url(#a)">
           <path
             d="m15.978 4.929 13.257 7.02-13.257 5.822-13.07-5.821 13.07-7.021Z"
             fill="#FAFCF8"
