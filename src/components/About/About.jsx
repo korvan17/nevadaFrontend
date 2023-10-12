@@ -1,7 +1,6 @@
 import Image from "next/image";
-import Container from "@/components/Container/Container";
 import React from "react";
-import Section from "../Section/Section";
+import { Container, Section } from "../LayoutComponents";
 
 export default function About() {
   return (

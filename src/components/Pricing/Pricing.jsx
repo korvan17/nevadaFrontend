@@ -1,6 +1,5 @@
 import Buttons from "../Buttons/Buttons";
-import Container from "@/components/Container/Container";
-import Section from "../Section/Section";
+import { Container, Section } from "../LayoutComponents";
 
 export default function Pricing() {
   return (

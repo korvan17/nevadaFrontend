@@ -1,9 +1,7 @@
 import FaqButton from "../FaqButton/FaqButton";
 
-// import cat from "../../images/cat.jpg";
-import Container from "@/components/Container/Container";
-import Section from "../Section/Section";
 import { faq } from "@/content";
+import { Container, Section } from "../LayoutComponents";
 
 export default function Faq() {
   return (

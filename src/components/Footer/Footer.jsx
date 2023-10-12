@@ -1,8 +1,8 @@
 //global imports
 //local imports
-import Container from "@/components/Container/Container";
 import { FooterLinks } from "./FooterLinks";
 import { FooterHeader } from "./FooterHeader";
+import { Container } from "../LayoutComponents";
 
 export default function Footer() {
   return (

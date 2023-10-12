@@ -1,4 +1,4 @@
-import Container from "@/components/Container/Container";
+import { Container } from "../LayoutComponents";
 import Navigation from "../Navigation/Navigation";
 import UserControls from "../UserControls/UserControls";
 

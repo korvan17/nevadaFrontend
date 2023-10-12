@@ -1,9 +1,9 @@
 import { useState } from "react";
 import BurgerMenuBtn from "../BurgerMenuBtn/BurgerMenuBtn";
 import Logo from "../Logo/Logo";
-import Container from "../Container/Container";
 import HeaderMenu from "../HeaderMenu/HeaderMenu";
 import Backdrop from "../Backdrop/Backdrop";
+import { Container } from "../LayoutComponents";
 
 function MobileHeader() {
   const [isMenuOpen, setisMenuOpen] = useState(false);
