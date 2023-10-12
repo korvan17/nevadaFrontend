@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Buttons from "../Buttons/Buttons";
 
 const lang = ["EN", "UA", "RU"];
@@ -31,7 +32,9 @@ function UserControls() {
         <button className="lg:text-captionalGrey text-[16px] text-captionalGreyLight font-semibold	 hover:text-mainWhite transition-all ease-out cursor-pointer">
           Registration
         </button>
-        <Buttons login={true}>Login</Buttons>
+        <Buttons login={true}>
+          <Link href="/dashboard">Login</Link>
+        </Buttons>
       </div>
     </div>
   );
