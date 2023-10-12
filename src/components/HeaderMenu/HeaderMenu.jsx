@@ -3,7 +3,26 @@ import CloseMenuIcon from "../CloseMenuIcon/CloseMenuIcon";
 import UserControls from "../UserControls/UserControls";
 import { motion } from "framer-motion";
 
-function HeaderMenu({ handleOpenMenu }) {
+function HeaderMenu({ handleOpenMenu, open }) {
+  const menuVars = {
+    initial: {
+      scaleX: 0,
+    },
+    animate: {
+      scaleX: 1,
+      transition: {
+        duration: 0.5,
+        ease: [0.12, 0, 0.39, 0],
+      },
+    },
+    exit: {
+      scaleX: 0,
+      transition: {
+        duration: 0.5,
+        ease: [0.22, 1, 0.36, 1],
+      },
+    },
+  };
   return (
     <motion.div
       className="flex justify-start items-center 
@@ -18,7 +37,7 @@ function HeaderMenu({ handleOpenMenu }) {
     text-mainWhite"
       initial={{ x: 1000 }}
       animate={{ x: 0 }}
-      exit={{ x: 500 }}
+      exit={{ x: 1000 }}
       transition={{ ease: "easeInOut", duration: 0.5 }}
       //   transition={{ duration: 1, type: "spring", stiffness: 150 }}
     >

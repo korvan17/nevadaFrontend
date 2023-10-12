@@ -16,6 +16,7 @@ module.exports = {
 
         captionalGrey: "#62686F",
         captionalGreyLight: "#C0C0C0",
+        background: "#0B0A0A40",
 
         darkBlue: "#021827",
         captionBlue: "#1478CE",

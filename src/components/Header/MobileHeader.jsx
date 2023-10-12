@@ -49,7 +49,7 @@ function MobileHeader() {
         {isMenuOpen && (
           <>
             <Backdrop></Backdrop>
-            <HeaderMenu handleOpenMenu={handleOpenMenu} />
+            <HeaderMenu handleOpenMenu={handleOpenMenu} open={isMenuOpen} />
           </>
         )}
       </Container>
