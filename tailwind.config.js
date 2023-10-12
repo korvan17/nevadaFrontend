@@ -16,6 +16,16 @@ module.exports = {
         150: "150ms", // Додаємо новий параметр transitionDuration
       },
     },
+    screens: {
+      mobile: "480px",
+      // => @media (min-width: 480px) { ... }
+
+      tablet: "768px",
+      // => @media (min-width: 768px) { ... }
+
+      desktop: "1440px",
+      // => @media (min-width: 1440px) { ... }
+    },
   },
   plugins: [],
 };
