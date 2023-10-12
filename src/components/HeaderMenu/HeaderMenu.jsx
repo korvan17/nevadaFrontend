@@ -12,7 +12,7 @@ function HeaderMenu({ handleOpenMenu }) {
     bg-captionBlue pt-[86px] px-[8px]
     md:pt-[110px] md:px-[12px]
 
-    w-[50%] h-[100%]
+    w-[70%] sm:w-[50%] h-[100%]
     fixed top-0 right-0
     
     text-mainWhite"
