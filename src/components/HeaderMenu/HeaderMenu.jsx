@@ -16,23 +16,28 @@ function HeaderMenu({ handleOpenMenu }) {
     text-mainWhite"
     >
       <button
-        className="absolute top-[38px] left-0 md:left-[24px] md:top-[62px] flex justify-center items-center w-[24px] h-[24px]"
+        className="absolute top-[38px] left-0 md:left-[24px] md:top-[62px] 
+        flex justify-center items-center w-[24px] h-[24px]"
         onClick={handleOpenMenu}
         type="button"
       >
         <CloseMenuIcon />
       </button>
       <UserControls />
-      <div className="text-mainWhite text-left ">
-        <h3 className="mb-[12px] text-[16px] md:text-[24px]">Contacts</h3>
+      <div className=" text-left ">
+        <h3 className="mb-[12px] text-[16px] md:text-[24px] text-mainWhite">
+          Contacts
+        </h3>
         <a
-          className="block mb-[8px] text-[14px] md:text-[16px]"
+          className="block mb-[8px] text-[14px] md:text-[16px] text-captionalGreyLight 
+          hover:text-mainWhite transition-all ease-out"
           href="tel:+48000000000"
         >
           +48 000 000 000
         </a>
         <a
-          className="text-[14px] md:text-[16px]"
+          className="text-[14px] md:text-[16px]  text-captionalGreyLight
+          hover:text-mainWhite transition-all ease-out"
           href="mailto:ppc.company@gmail.com"
         >
           ppc.company@gmail.com

@@ -22,7 +22,12 @@ function MobileHeader() {
     absolute top-0 bg-mainBlack text-mainWhite"
     >
       <Container>
-        <div className="hidden left-0 md:flex lg:hidden text-[16px] font-semibold	 w-[100%] absolute top-0 h-[30px] items-center justify-center bg-captionBlue text-captionalWhite">
+        <div
+          className="hidden left-0 md:flex 
+        lg:hidden text-[16px] font-semibold
+        w-[100%] absolute top-0 h-[30px] items-center justify-center
+        bg-captionBlue text-captionalWhite"
+        >
           <a href="tel:+48000000000">+48 000 000 000</a>
         </div>
         <div className="flex justify-space-beetween">
