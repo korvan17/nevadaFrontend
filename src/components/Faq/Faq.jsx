@@ -1,7 +1,6 @@
-import FaqButton from "../FaqButton/FaqButton";
-
 import { faq } from "@/content";
 import { Container, Section } from "../LayoutComponents";
+import { FaqButton } from "../UIElements";
 
 export default function Faq() {
   return (
