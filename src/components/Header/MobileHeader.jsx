@@ -1,9 +1,8 @@
 import { useState } from "react";
-import BurgerMenuBtn from "../BurgerMenuBtn/BurgerMenuBtn";
-import Logo from "../Logo/Logo";
-import HeaderMenu from "../HeaderMenu/HeaderMenu";
 import Backdrop from "../Backdrop/Backdrop";
 import { Container } from "../LayoutComponents";
+import { BurgerMenuIcon, Logo } from "../Icons";
+import HeaderMenu from "./HeaderMenu";
 
 function MobileHeader() {
   const [isMenuOpen, setisMenuOpen] = useState(false);
@@ -43,7 +42,7 @@ function MobileHeader() {
             </div>
           </a>
           <button className="ml-auto" onClick={handleOpenMenu} type="button">
-            <BurgerMenuBtn />
+            <BurgerMenuIcon />
           </button>
         </div>
         {isMenuOpen && (

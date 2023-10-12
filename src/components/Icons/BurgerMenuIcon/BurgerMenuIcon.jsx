@@ -1,6 +1,6 @@
 import React from "react";
 
-function BurgerMenuBtn() {
+function BurgerMenuIcon() {
   return (
     <>
       <svg
@@ -21,4 +21,4 @@ function BurgerMenuBtn() {
   );
 }
 
-export default BurgerMenuBtn;
+export default BurgerMenuIcon;

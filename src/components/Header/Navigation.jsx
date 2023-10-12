@@ -1,6 +1,6 @@
+import { Logo } from "@/components/Icons";
 import { links } from "@/content";
 import { animateScroll as scroll } from "react-scroll";
-import Logo from "../Logo/Logo";
 
 function Navigation() {
   const scrollToTop = () => {

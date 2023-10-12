@@ -1,6 +1,6 @@
 import { Container } from "../LayoutComponents";
-import Navigation from "../Navigation/Navigation";
 import UserControls from "../UserControls/UserControls";
+import Navigation from "./Navigation";
 
 function DesktopHeader() {
   return (

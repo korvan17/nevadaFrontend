@@ -1,7 +1,7 @@
 import React from "react";
-import CloseMenuIcon from "../CloseMenuIcon/CloseMenuIcon";
-import UserControls from "../UserControls/UserControls";
 import { motion } from "framer-motion";
+import { CloseMenuIcon } from "@/components/Icons";
+import UserControls from "@/components/UserControls/UserControls";
 
 function HeaderMenu({ handleOpenMenu, open }) {
   const menuVars = {
