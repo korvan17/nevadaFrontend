@@ -1,10 +1,11 @@
 import React from "react";
 import CloseMenuIcon from "../CloseMenuIcon/CloseMenuIcon";
 import UserControls from "../UserControls/UserControls";
+import { motion } from "framer-motion";
 
 function HeaderMenu({ handleOpenMenu }) {
   return (
-    <div
+    <motion.div
       className="flex justify-start items-center 
     md:items-start flex-col gap-[48px]
 
@@ -13,7 +14,13 @@ function HeaderMenu({ handleOpenMenu }) {
 
     w-[50%] h-[100%]
     fixed top-0 right-0
+    
     text-mainWhite"
+      initial={{ x: 1000 }}
+      animate={{ x: 0 }}
+      exit={{ x: 500 }}
+      transition={{ ease: "easeInOut", duration: 0.5 }}
+      //   transition={{ duration: 1, type: "spring", stiffness: 150 }}
     >
       <button
         className="absolute top-[38px] left-0 md:left-[24px] md:top-[62px] 
@@ -43,7 +50,7 @@ function HeaderMenu({ handleOpenMenu }) {
           ppc.company@gmail.com
         </a>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

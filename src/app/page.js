@@ -15,7 +15,7 @@ export default function Home() {
       {/* <Services /> */}
       <Pricing />
       <Faq />
-      <Footer />
+      {/* <Footer /> */}
       {/* <div id="myportal" /> */}
     </>
   );
