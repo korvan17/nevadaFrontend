@@ -1,5 +1,5 @@
 import { Container } from "../LayoutComponents";
-import UserControls from "../UserControls/UserControls";
+import { UserControls } from "../UIElements";
 import Navigation from "./Navigation";
 
 function DesktopHeader() {

@@ -1,5 +1,5 @@
-import Buttons from "../Buttons/Buttons";
 import { Container, Section } from "../LayoutComponents";
+import { Buttons } from "../UIElements";
 
 export default function Pricing() {
   return (
