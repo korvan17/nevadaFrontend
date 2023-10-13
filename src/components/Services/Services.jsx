@@ -39,7 +39,7 @@ export default function Services() {
               FBA, FBW, Private Label
             </h3>
             <p className="text-base">
-              FBA involving Amazon's fulfillment services, FBW being Walmart's
+              FBA involving Amazon &apos; s fulfillment services, FBW being Walmart &apos; s
               counterpart Private Label referring to retailers selling products
               under their own brand
             </p>
