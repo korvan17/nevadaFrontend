@@ -1,5 +1,6 @@
 import "./globals.css";
 import { Inter, Red_Hat_Display } from "next/font/google";
+import Head from "next/head";
 import Script from "next/script";
 
 const GTM_ID = "GTM-KB97P7BJ";
@@ -29,7 +30,7 @@ export default function RootLayout({ children }) {
         })(window,document,'script','dataLayer','${GTM_ID}');
         `}
       </Script>
-      {/* <head>
+      <Head>
         <link rel="icon" type="image/x-icon" href={metadata.icons.icon} />
         <link
           rel="apple-touch-icon"
@@ -41,7 +42,7 @@ export default function RootLayout({ children }) {
           sizes="192x192"
           href={metadata.icons.shortcut}
         />
-      </head> */}
+      </Head>
       <body className={redHatDisplay.className}>
         {children}
         <noscript
