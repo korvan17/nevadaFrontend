@@ -1,4 +1,3 @@
-import React from "react";
 import { motion } from "framer-motion";
 import { CloseMenuIcon } from "@/components/Icons";
 import { UserControls } from "../UIElements";

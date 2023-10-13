@@ -22,7 +22,7 @@ function MobileHeader() {
     >
       <Container>
         <div
-          className="hidden left-0 md:flex 
+          className="left-0 flex 
         lg:hidden text-[16px] font-semibold
         w-[100%] absolute top-0 h-[30px] items-center justify-center
         bg-captionBlue text-captionalWhite"
