@@ -5,18 +5,18 @@ import about2 from "../../../public/images/about2-mobile-1x.jpg";
 
 export default function About() {
   return (
-    <div className="w-full flex desktop:relative tablet:flex-row-reverse desktop:flex-row tablet:max-w-screen-tablet desktop:max-w-screen-desktop mx-auto desktop:items-center desktop:gap-x-6 bg-white text-black tablet:pt-20 desktop:pt-0 tablet:pb-[10px] desktop:pb-0 tablet:px-10">
+    <div className="tablet:justify-between w-full flex desktop:relative tablet:flex-row-reverse desktop:flex-row mobile:max-w-screen-mobile tablet:max-w-screen-tablet desktop:max-w-screen-desktop mx-auto desktop:items-center desktop:gap-x-6 bg-white text-black tablet:pt-20 tablet:pb-[10px] tablet:px-10 desktop:px-[120px] desktop:pb-0 desktop:pt-[120px]">
       <Image
         src={about}
         alt="about img"
-        className="flex tablet:ml-5 w-full max-w-[164px] h-[199px] tablet:max-w-[322px] tablet:h-[363px] desktop:max-w-[588px] desktop:h-[663px] bg-slate-600  desktop:ml-[120px] tablet:mt-0 desktop:mt-[120px]"
+        className="flex desktop:ml-0 w-full max-w-[164px] h-[199px] tablet:max-w-[322px] tablet:h-[363px] desktop:max-w-[588px] desktop:h-[663px] bg-slate-600  tablet:mt-[68px]"
       />
       <Image
         src={about2}
         alt="about2 img"
         className="w-full max-w-[164px] h-[199px] tablet:invisible tablet:absolute"
       />
-      <div className="w-full items-start  max-w-[164px] tablet:max-w-[322px] desktop:max-w-[588px]">
+      <div className="flex flex-col  w-full max-w-[164px] tablet:max-w-[322px] desktop:max-w-[588px]">
         <h2 className="flex text-4xl desktop:text-5xl font-bold not-italic justify-start mb-8">
           About our story
         </h2>
@@ -25,28 +25,24 @@ export default function About() {
             <p className="">
               Our story is a tale of passion for e-commerce and a desire to
               simplify the process of ordering products from Amazon for
-              everyone.{" "}
-              <span>
-                We embarked on our journey with a small group of enthusiasts who
-                were impressed by the potential hidden in the world of online
-                shopping.
-              </span>
+              everyone.We embarked on our journey with a small group of
+              enthusiasts who were impressed by the potential hidden in the
+              world of online shopping.
             </p>
           </li>
-          <li className="mb-6 absolute invisible tablet:visible desktop:visible">
+          <li className="collapse absolute tablet:static tablet:visible desktop:mb-6 desktop:max-w-[588px]">
             <p>
               From the very beginning, we defined our main goal as providing the
               best service and ensuring the availability of Amazon products,
-              regardless of your location or business.
-              <span className="tablet:invisible tablet:absolute">
-                {" "}
+              regardless of your location or business.{""}
+              <span className="tablet:invisible tablet:absolute desktop:visible desktop:static">
                 We see our role in facilitating access to a wide range of
                 products from the global Amazon network, helping our customers
                 achieve their goals.
               </span>
             </p>
           </li>
-          <li className="absolute invisible desktop:visible tablet:absolute desktop:max-w-[588px]">
+          <li className="collapse absolute tablet:collapse tablet:absolute desktop:visible desktop:max-w-[588px]">
             <p>
               Today, we take pride in being a trusted bridge between individuals
               and businesses worldwide and the vast world of Amazon. Our mission
