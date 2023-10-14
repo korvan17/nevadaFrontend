@@ -24,9 +24,18 @@ module.exports = {
         accentHoverYellow: "#C37E19",
         accentYellow: "#F8C951",
       },
+      padding: {
+        mobile: "80px",
+        desktop: "120px",
+      },
 
       container: {
         center: true,
+        padding: {
+          DEFAULT: "16px",
+          md: "40px",
+          lg: "120px",
+        },
       },
 
       screens: {

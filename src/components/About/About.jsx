@@ -1,11 +1,10 @@
 import Image from "next/image";
 import React from "react";
-import { Container, Section } from "../LayoutComponents";
 
 export default function About() {
   return (
-    <Section sectionName={"about"} id="#about">
-      <Container>
+    <div className="md:pt-mobile lg:pt-desktop" id="about">
+      <div className="container">
         {/* <Image src="" alt="about img" /> */}
         <h2 id="about">About our story</h2>
         <ul>
@@ -28,7 +27,7 @@ export default function About() {
             </p>
           </li>
         </ul>
-      </Container>
-    </Section>
+      </div>
+    </div>
   );
 }

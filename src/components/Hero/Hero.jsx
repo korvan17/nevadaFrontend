@@ -1,9 +1,11 @@
 import Image from "next/image";
-import { Container, Section } from "../LayoutComponents";
 
 export default function Hero() {
   return (
-    <Section sectionName={"hero"}>
+    <div
+      id="home"
+      className="pt-[78px] pb-[151px] md:pt-[47px] md:pb-[0px] lg:pt-[139px] lg:pb-[0px]"
+    >
       <Image
         src="/hero-mobile.png"
         alt="hero-mobile"
@@ -45,7 +47,7 @@ export default function Hero() {
         height={209}
         priority
       />
-      <Container>
+      <div className="container">
         <div className="lg:flex lg:gap-[43px] lg:basis-2/4">
           <div>
             <div
@@ -87,7 +89,7 @@ export default function Hero() {
             />
           </div>
         </div>
-      </Container>
-    </Section>
+      </div>
+    </div>
   );
 }

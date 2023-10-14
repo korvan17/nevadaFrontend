@@ -2,12 +2,11 @@
 //local imports
 import { FooterLinks } from "./FooterLinks";
 import { FooterHeader } from "./FooterHeader";
-import { Container } from "../LayoutComponents";
 
 export default function Footer() {
   return (
-    <div className="bg-mainBlack text-mainWhite">
-      <Container>
+    <footer className="bg-mainBlack text-mainWhite" id="contacts">
+      <div className="container">
         <FooterHeader />
         <FooterLinks />
         <div className="flex items-center justify-center py-[28px] flex-wrap flex-col text-center">
@@ -17,7 +16,7 @@ export default function Footer() {
             <span>Copyright (2022 - 2023) - PPC™</span>
           </p>
         </div>
-      </Container>
-    </div>
+      </div>
+    </footer>
   );
 }

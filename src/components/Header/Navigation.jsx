@@ -11,8 +11,8 @@ function Navigation() {
     <nav className="flex w-[1200px] items-center mr-[24px]">
       <a
         className="cursor-pointer flex gap-[8px] items-center"
-        href="#"
-        onClick={scrollToTop}
+        href="#home"
+        // onClick={scrollToTop}
       >
         <Logo />
         <div>

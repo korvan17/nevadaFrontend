@@ -1,6 +1,5 @@
 import { useState } from "react";
 import Backdrop from "../Backdrop/Backdrop";
-import { Container } from "../LayoutComponents";
 import { BurgerMenuIcon, Logo } from "../Icons";
 import HeaderMenu from "./HeaderMenu";
 
@@ -20,7 +19,7 @@ function MobileHeader() {
     flex w-[100%] z-100
     absolute top-0 bg-mainBlack text-mainWhite"
     >
-      <Container>
+      <div className="container">
         <div
           className="
             absolute
@@ -58,7 +57,7 @@ function MobileHeader() {
             <HeaderMenu handleOpenMenu={handleOpenMenu} open={isMenuOpen} />
           </>
         )}
-      </Container>
+      </div>
     </div>
   );
 }

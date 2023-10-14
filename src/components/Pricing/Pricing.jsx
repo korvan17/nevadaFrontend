@@ -1,10 +1,9 @@
-import { Container, Section } from "../LayoutComponents";
 import { Buttons } from "../UIElements";
 
 export default function Pricing() {
   return (
-    <Section sectionName={"pricing"} id="#pricing">
-      <Container>
+    <div className="pt:mobile lg:pt-desktop" id="pricing">
+      <div className="container">
         <h2>Our Pricing</h2>
         {/* <ul>
           <li>
@@ -149,7 +148,7 @@ export default function Pricing() {
           </li>
         </ul> */}
         <Buttons>Get a Quote</Buttons>
-      </Container>
-    </Section>
+      </div>
+    </div>
   );
 }

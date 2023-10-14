@@ -1,11 +1,10 @@
 import { faq } from "@/content";
-import { Container, Section } from "../LayoutComponents";
 import { FaqButton } from "../UIElements";
 
 export default function Faq() {
   return (
-    <Section sectionName={"faq"} id="#faq">
-      <Container>
+    <div className="py-mobile md:py-desktop" id="faq">
+      <div className="container">
         {/* <Image src={cat} alt="cat" width={500} height={500} placeholder="blur" /> */}
         <h2 className="text-5xl font-bold mr-auto">
           Frequently Asked Questions
@@ -20,7 +19,7 @@ export default function Faq() {
             </li>
           ))}
         </ul>
-      </Container>
-    </Section>
+      </div>
+    </div>
   );
 }

@@ -1,10 +1,9 @@
 import Image from "next/image";
-import { Container, Section } from "../LayoutComponents";
 
 export default function Services() {
   return (
-    <Section sectionName={"services"} id="#services">
-      <Container>
+    <div className="py-mobile md:pb-0 lg:pt-desktop" id="services">
+      <div className="container">
         <h2 className="mb-[48px] text-5xl font-bold">Our Services</h2>
         <ul className="flex">
           <li className="mr-[24px] pt-[20px] pb-[24px] px-[20px] rounded-[12px] bg-darkBlue text-captionalWhite text-center">
@@ -68,7 +67,7 @@ export default function Services() {
             </p>
           </li>
         </ul>
-      </Container>
-    </Section>
+      </div>
+    </div>
   );
 }
