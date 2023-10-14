@@ -1,11 +1,9 @@
-import Container from "@/components/Container/Container";
-import Section from "../Section/Section";
 import Image from "next/image";
 
 export default function Services() {
   return (
-    <Section sectionName={"services"} id="#services">
-      <Container>
+    <section className="py-mobile md:pb-0 lg:pt-desktop" id="services">
+      <div className="container">
         <h2 className="mb-[48px] text-5xl font-bold sm:text-center md:text-left">
           Our Services
         </h2>
@@ -39,9 +37,9 @@ export default function Services() {
               FBA, FBW, Private Label
             </h3>
             <p className="text-base">
-              FBA involving Amazon &apos; s fulfillment services, FBW being Walmart &apos; s
-              counterpart Private Label referring to retailers selling products
-              under their own brand
+              FBA involving Amazon &apos; s fulfillment services, FBW being
+              Walmart &apos; s counterpart Private Label referring to retailers
+              selling products under their own brand
             </p>
           </li>
           <li className="w-full h-[449px] sm:w-full md:w-[322px] lg:w-[282px] mb-4 sm:mb-4 md:mb-0 p-4 rounded-lg bg-darkBlue text-captionalWhite text-center overflow-x-auto md:mr-[20px] lg:mr-[24px]">
@@ -77,7 +75,7 @@ export default function Services() {
             </p>
           </li>
         </ul>
-      </Container>
-    </Section>
+      </div>
+    </section>
   );
 }

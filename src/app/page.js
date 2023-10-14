@@ -1,10 +1,12 @@
-import Header from "../components/Header/Header";
-import Hero from "@/components/Hero/Hero";
-import About from "@/components/About/About";
-import Services from "@/components/Services/Services";
-import Pricing from "@/components/Pricing/Pricing";
-import Faq from "@/components/Faq/Faq";
-import Footer from "@/components/Footer/Footer";
+import {
+  About,
+  Faq,
+  Footer,
+  Header,
+  Hero,
+  Pricing,
+  Services,
+} from "@/components";
 
 export default function Home() {
   return (
@@ -16,6 +18,7 @@ export default function Home() {
       <Pricing />
       <Faq />
       <Footer />
+      {/* <div id="myportal" /> */}
     </>
   );
 }

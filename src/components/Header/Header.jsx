@@ -4,9 +4,9 @@ import MobileHeader from "./MobileHeader";
 
 export default function Header() {
   return (
-    <>
+    <header>
       <MobileHeader />
       <DesktopHeader />
-    </>
+    </header>
   );
 }

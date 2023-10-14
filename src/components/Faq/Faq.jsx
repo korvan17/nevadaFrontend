@@ -1,14 +1,10 @@
-import FaqButton from "../FaqButton/FaqButton";
-
-// import cat from "../../images/cat.jpg";
-import Container from "@/components/Container/Container";
-import Section from "../Section/Section";
 import { faq } from "@/content";
+import { FaqButton } from "../UIElements";
 
 export default function Faq() {
   return (
-    <Section sectionName={"faq"} id="#faq">
-      <Container>
+    <section className="py-mobile md:py-desktop" id="faq">
+      <div className="container">
         {/* <Image src={cat} alt="cat" width={500} height={500} placeholder="blur" /> */}
         <h2 className="text-5xl font-bold mr-auto">
           Frequently Asked Questions
@@ -23,7 +19,7 @@ export default function Faq() {
             </li>
           ))}
         </ul>
-      </Container>
-    </Section>
+      </div>
+    </section>
   );
 }

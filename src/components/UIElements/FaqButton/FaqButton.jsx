@@ -1,8 +1,8 @@
 "use client";
 
+import useClickOutside from "@/components/UseClickOutside/UseClickOutside";
 import { motion, AnimatePresence } from "framer-motion";
 import React, { useRef, useState } from "react";
-import useClickOutside from "../UseClickOutside/UseClickOutside";
 
 export default function Collapsible({ item, faq }) {
   const [isVisible, setVisible] = useState(false);

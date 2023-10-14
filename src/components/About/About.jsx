@@ -1,12 +1,10 @@
 import Image from "next/image";
-import Container from "@/components/Container/Container";
 import React from "react";
-import Section from "../Section/Section";
 
 export default function About() {
   return (
-    <Section sectionName={"about"} id="#about">
-      <Container>
+    <section className="md:pt-mobile lg:pt-desktop" id="about">
+      <div className="container">
         {/* <Image src="" alt="about img" /> */}
         <h2 id="about">About our story</h2>
         <ul>
@@ -29,7 +27,7 @@ export default function About() {
             </p>
           </li>
         </ul>
-      </Container>
-    </Section>
+      </div>
+    </section>
   );
 }

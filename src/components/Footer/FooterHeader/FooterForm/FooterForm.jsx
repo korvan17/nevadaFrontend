@@ -1,6 +1,7 @@
 //global imports
 //local imports
-import Buttons from "@/components/Buttons/Buttons";
+
+import { Buttons } from "@/components/UIElements";
 
 export default function FooterForm() {
   return (

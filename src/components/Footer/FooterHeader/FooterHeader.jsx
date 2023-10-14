@@ -1,6 +1,6 @@
 //global imports
 //local imports
-import Logo from "@/components/Logo/Logo";
+import { Logo } from "@/components/Icons";
 import FooterForm from "./FooterForm/FooterForm";
 
 export default function Footer() {
