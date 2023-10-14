@@ -32,19 +32,7 @@ export default function RootLayout({ children }) {
         })(window,document,'script','dataLayer','${GTM_ID}');
         `}
       </Script>
-      <Head>
-        <link rel="icon" type="image/x-icon" href={metadata.icons.icon} />
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href={metadata.icons.apple}
-        />
-        <link
-          rel="shortcut icon"
-          sizes="192x192"
-          href={metadata.icons.shortcut}
-        />
-      </Head>
+
       <body className={redHatDisplay.className}>
         {children}
         <noscript
