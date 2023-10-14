@@ -1,3 +1,4 @@
+import ChatButton from "@/components/ChatButton/ChatButton";
 import "./globals.css";
 import { Inter, Red_Hat_Display } from "next/font/google";
 
@@ -12,6 +13,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html className="scroll-smooth" lang="en">
+      <ChatButton />
       <body className={redHatDisplay.className}>{children}</body>
     </html>
   );

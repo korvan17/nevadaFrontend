@@ -5,6 +5,7 @@ import Services from "@/components/Services/Services";
 import Pricing from "@/components/Pricing/Pricing";
 import Faq from "@/components/Faq/Faq";
 import Footer from "@/components/Footer/Footer";
+import ChatWindow from "@/components/ChatWindow/ChatWindow";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <Pricing />
       <Faq />
       <Footer />
+      <ChatWindow />
     </>
   );
 }
