@@ -27,7 +27,7 @@ export default function Hero() {
         src="/ellipse-tab-right.png"
         alt="Ellipse Right"
         width={84}
-        height={20}
+        height={21}
         priority
       />
       <Image
