@@ -12,6 +12,7 @@ export default function Hero() {
         height={101}
         width={375}
         className="lg:hidden md:hidden w-full"
+        
         priority
       />
       <Image
@@ -27,7 +28,7 @@ export default function Hero() {
         src="/ellipse-tab-right.png"
         alt="Ellipse Right"
         width={84}
-        height={20}
+        height={21}
         priority
       />
       <Image
