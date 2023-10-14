@@ -2,19 +2,22 @@ import Image from "next/image";
 
 export default function Services() {
   return (
-    <div className="py-mobile md:pb-0 lg:pt-desktop" id="services">
+    <section className="py-mobile md:pb-0 lg:pt-desktop" id="services">
       <div className="container">
-        <h2 className="mb-[48px] text-5xl font-bold">Our Services</h2>
-        <ul className="flex">
-          <li className="mr-[24px] pt-[20px] pb-[24px] px-[20px] rounded-[12px] bg-darkBlue text-captionalWhite text-center">
+        <h2 className="mb-[48px] text-5xl font-bold sm:text-center md:text-left">
+          Our Services
+        </h2>
+        <ul className="flex flex-wrap">
+          <li className="w-full h-[449px] sm:w-[full] md:w-[322px] lg:w-[282px] mb-4 sm:mb-4 md:mb-0 p-4 rounded-lg bg-darkBlue text-captionalWhite text-center overflow-x-auto md:mr-[20px] md:mb-[24px] lg:mb-0 lg:mr-[24px]">
             <Image
               src="/procurement-desktop-1x.png"
-              width={234}
-              height={234}
+              width={172}
+              height={172}
               alt="icon"
+              className="mx-auto"
             />
             <h3 className="mt-[24px] mb-[12px] text-2xl font-bold">
-              Product Procurement
+              Wholesale
             </h3>
             <p className="text-base">
               Refers to the practice of purchasing goods or products in large
@@ -73,6 +76,6 @@ export default function Services() {
           </li>
         </ul>
       </div>
-    </div>
+    </section>
   );
 }

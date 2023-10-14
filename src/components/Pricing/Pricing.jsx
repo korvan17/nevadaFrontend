@@ -2,7 +2,7 @@ import { Buttons } from "../UIElements";
 
 export default function Pricing() {
   return (
-    <div className="pt:mobile lg:pt-desktop" id="pricing">
+    <section className="pt:mobile lg:pt-desktop" id="pricing">
       <div className="container">
         <h2>Our Pricing</h2>
         {/* <ul>
@@ -149,6 +149,6 @@ export default function Pricing() {
         </ul> */}
         <Buttons>Get a Quote</Buttons>
       </div>
-    </div>
+    </section>
   );
 }

@@ -3,7 +3,7 @@ import React from "react";
 
 export default function About() {
   return (
-    <div className="md:pt-mobile lg:pt-desktop" id="about">
+    <section className="md:pt-mobile lg:pt-desktop" id="about">
       <div className="container">
         {/* <Image src="" alt="about img" /> */}
         <h2 id="about">About our story</h2>
@@ -28,6 +28,6 @@ export default function About() {
           </li>
         </ul>
       </div>
-    </div>
+    </section>
   );
 }

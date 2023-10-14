@@ -3,7 +3,7 @@ import { FaqButton } from "../UIElements";
 
 export default function Faq() {
   return (
-    <div className="py-mobile md:py-desktop" id="faq">
+    <section className="py-mobile md:py-desktop" id="faq">
       <div className="container">
         {/* <Image src={cat} alt="cat" width={500} height={500} placeholder="blur" /> */}
         <h2 className="text-5xl font-bold mr-auto">
@@ -20,6 +20,6 @@ export default function Faq() {
           ))}
         </ul>
       </div>
-    </div>
+    </section>
   );
 }
