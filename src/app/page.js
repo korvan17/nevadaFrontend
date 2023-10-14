@@ -6,6 +6,7 @@ import {
   Hero,
   Pricing,
   Services,
+  ChatWindow,
 } from "@/components";
 
 export default function Home() {
@@ -18,7 +19,7 @@ export default function Home() {
       <Pricing />
       <Faq />
       <Footer />
-      <ChatWindow />
+      {/* <ChatWindow /> */}
       {/* <div id="myportal" /> */}
     </>
   );

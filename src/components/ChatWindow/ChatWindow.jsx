@@ -1,5 +1,5 @@
 import React from "react";
-import Logo from "../Logo/Logo";
+import Logo from "@/components/Icons/Logo/Logo";
 
 export default function ChatWindow() {
   return (
