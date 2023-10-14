@@ -7,7 +7,7 @@ export default function Hero() {
   return (
     <Section sectionName={"hero"}>
       <Image
-        src="/hero-mobile.png"
+        src="/hero-mobile-nd.png"
         alt="hero-mobile"
         height={101}
         width={375}
