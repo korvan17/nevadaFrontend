@@ -72,19 +72,19 @@ export default function Hero() {
               priority
             />
             <Image
-              className="hidden lg:block lg:absolute top-[-21px] right-[0] -z-30 w-auto h-auto"
+              className="hidden lg:block lg:absolute top-[-21px] right-[20px] -z-30  h-auto"
               src="/ellipse6.png"
               alt="Ellipse6"
-              width={258}
+              width={328}
               height={258}
               priority
             />
             <Image
-              className="hidden lg:block lg:absolute top-[428px] right-[550px] -z-30 w-auto h-auto"
+              className="hidden lg:block lg:absolute top-[467px] right-[595px] -z-30 h-auto"
               src="/ellipse7.png"
               alt="Ellipse7"
-              width={127}
-              height={206}
+              width={134}
+              height={226}
               priority
             />
           </div>
