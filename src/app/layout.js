@@ -1,6 +1,6 @@
 import "./globals.css";
 import { Inter, Red_Hat_Display } from "next/font/google";
-import Head from "next/head";
+
 import Script from "next/script";
 
 const GTM_ID = "GTM-KB97P7BJ";
