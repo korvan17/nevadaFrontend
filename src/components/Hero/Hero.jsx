@@ -12,6 +12,7 @@ export default function Hero() {
         height={101}
         width={375}
         className="lg:hidden md:hidden w-full"
+        
         priority
       />
       <Image
