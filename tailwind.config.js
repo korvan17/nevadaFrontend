@@ -16,6 +16,7 @@ module.exports = {
 
         captionalGrey: "#62686F",
         captionalGreyLight: "#C0C0C0",
+        background: "#0B0A0A40",
 
         darkBlue: "#021827",
         captionBlue: "#1478CE",
@@ -24,9 +25,18 @@ module.exports = {
         accentHoverYellow: "#C37E19",
         accentYellow: "#F8C951",
       },
+      padding: {
+        mobile: "80px",
+        desktop: "120px",
+      },
 
       container: {
         center: true,
+        padding: {
+          DEFAULT: "16px",
+          md: "40px",
+          lg: "120px",
+        },
       },
 
       screens: {
