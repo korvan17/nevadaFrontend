@@ -17,53 +17,58 @@ export default function Services() {
               Product Procurement
             </h3>
             <p className="text-base">
-              We simplify Amazon product ordering with seamless transactions and
-              reliable delivery
+              Refers to the practice of purchasing goods or products in large
+              quantities from manufacturers or distributors at a lower price per
+              unit
             </p>
           </li>
-          <li className="mr-[24px] pt-[20px] pb-[24px] px-[24px] rounded-[12px] bg-darkBlue text-captionalWhite text-center">
+          <li className="w-full h-[449px] sm:w-full md:w-[322px] lg:w-[282px] mb-4 sm:mb-4 md:mb-0 p-4 rounded-lg bg-darkBlue text-captionalWhite text-center overflow-x-auto md:mb-[24px] lg:mb-0 lg:mr-[24px]">
             <Image
               src="/accessibility-desktop-1x.png"
-              width={234}
-              height={234}
+              width={172}
+              height={172}
               alt="icon"
+              className="mx-auto"
             />
             <h3 className="mt-[24px] mb-[12px] text-2xl font-bold">
-              Global <br></br> Accessibility
+              FBA, FBW, Private Label
             </h3>
             <p className="text-base">
-              Access Amazon`s extensive product range, regardless of your
-              location or business size
+              FBA involving Amazon &apos; s fulfillment services, FBW being
+              Walmart &apos; s counterpart Private Label referring to retailers
+              selling products under their own brand
             </p>
           </li>
-          <li className="mr-[24px] pt-[20px] pb-[24px] px-[24px] rounded-[12px] bg-darkBlue text-captionalWhite text-center">
+          <li className="w-full h-[449px] sm:w-full md:w-[322px] lg:w-[282px] mb-4 sm:mb-4 md:mb-0 p-4 rounded-lg bg-darkBlue text-captionalWhite text-center overflow-x-auto md:mr-[20px] lg:mr-[24px]">
             <Image
               src="/delivery-desktop-1x.png"
-              width={234}
-              height={234}
+              width={172}
+              height={172}
               alt="icon"
+              className="mx-auto"
             />
             <h3 className="mt-[24px] mb-[12px] text-2xl font-bold">
-              Efficient <br></br>Shipping
+              Online arbitration
             </h3>
             <p className="text-base">
-              We simplify Amazon product ordering with seamless transactions and
-              reliable delivery
+              resolving disputes through online arbitration procedures,
+              providing a convenient and efficient alternative to traditional
+              dispute resolution methods
             </p>
           </li>
-          <li className="mr-[24px] pt-[20px] pb-[24px] px-[24px] rounded-[12px] bg-darkBlue text-captionalWhite text-center">
+          <li className="w-full h-[449px] sm:w-full md:w-[322px] lg:w-[282px] mb-4 sm:mb-4 md:mb-0 p-4 rounded-lg bg-darkBlue text-captionalWhite text-center overflow-x-auto">
             <Image
               src="/support-desktop-1x.png"
-              width={234}
-              height={234}
+              width={172}
+              height={172}
               alt="icon"
+              className="mx-auto"
             />
-            <h3 className="mt-[24px] mb-[12px] text-2xl font-bold">
-              Customer <br></br>Support
-            </h3>
+            <h3 className="mt-[24px] mb-[12px] text-2xl font-bold">FBM</h3>
             <p className="text-base">
-              We simplify Amazon product ordering with seamless transactions and
-              reliable delivery
+              provides manuals, instructions, and information on specifications
+              and requirements for sellers interested in using FBM to process
+              and ship their products through the platform
             </p>
           </li>
         </ul>

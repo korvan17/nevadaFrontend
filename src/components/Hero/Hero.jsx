@@ -7,7 +7,7 @@ export default function Hero() {
       className="pt-[78px] pb-[151px] md:pt-[47px] md:pb-[0px] lg:pt-[139px] lg:pb-[0px]"
     >
       <Image
-        src="/hero-mobile.png"
+        src="/hero-mobile-nd.png"
         alt="hero-mobile"
         height={101}
         width={375}
