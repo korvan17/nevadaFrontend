@@ -5,29 +5,47 @@ import about2 from "../../../public/images/about2-mobile-1x.jpg";
 
 export default function About() {
   return (
-    <div className="tablet:justify-between w-full flex desktop:relative tablet:flex-row-reverse desktop:flex-row mobile:max-w-screen-mobile tablet:max-w-screen-tablet desktop:max-w-screen-desktop mx-auto desktop:items-center desktop:gap-x-6 bg-white text-black tablet:pt-20 tablet:pb-[10px] tablet:px-10 desktop:px-[120px] desktop:pb-0 desktop:pt-[120px]">
+    <div className="bg-white text-black w-full relative flex mx-auto max-w-screen-mobile tablet:hidden tablet:max-w-screen-tablet tablet:flex tablet:flex-row-reverse tablet:justify-between tablet:pt-20 tablet:pb-[10px] tablet:px-10 desktop:max-w-screen-desktop desktop:flex-row desktop:h-[783px] desktop:items-center desktop:gap-x-6 desktop:px-[120px] desktop:pb-0 desktop:pt-[120px] desktop:z-20">
       <Image
         src={about}
         alt="about img"
-        className="flex desktop:ml-0 w-full max-w-[164px] h-[199px] tablet:max-w-[322px] tablet:h-[363px] desktop:max-w-[588px] desktop:h-[663px] bg-slate-600  tablet:mt-[68px]"
+        className="flex absolute w-full bg-slate-600 max-w-[164px] h-[199px] tablet:static tablet:max-w-[322px] tablet:h-[363px] tablet:mt-[68px] desktop:mt-0 desktop:max-w-[588px] desktop:h-[663px] "
       />
+      <svg
+        className="absolute invisible tablet:visible tablet:rotate-[140deg] tablet:top-[98px] tablet:left-[-85px] desktop:rotate-0 desktop:top-[183px] desktop:left-[645px] desktop:-z-10"
+        xmlns="http://www.w3.org/2000/svg"
+        width="175"
+        height="93"
+        viewBox="0 0 175 93"
+        fill="none"
+      >
+        <path
+          d="M10.3343 26.8156L10.6518 26.022L10.8299 25.186C12.0169 19.6162 14.3217 16.4141 17.2165 14.3445C20.3462 12.1068 25.1994 10.4653 32.6024 10.0839C47.7007 9.3062 69.5066 13.9062 97.8324 22.6476L98.805 22.9478L99.8181 23.0458C106.046 23.6484 112.406 23.1823 118.149 22.613C119.833 22.446 121.449 22.2727 123.018 22.1044C127.097 21.6666 130.859 21.2629 134.683 21.0948C144.967 20.6427 152.201 22.142 157.829 28.0188C161.052 31.3833 163.66 37.4001 164.185 44.9303C164.701 52.3328 163.11 60.1646 159.234 66.605C155.461 72.8725 149.386 78.0929 140.134 80.5416C131.025 82.9522 118.159 82.8388 100.632 77.2433C92.7589 70.5275 82.2904 65.1066 71.9317 60.4586C65.3197 57.4918 57.9716 54.5192 50.962 51.6836C46.3809 49.8303 41.9444 48.0356 37.9526 46.3392C27.0868 41.7217 18.7634 37.5453 13.8119 33.3802C11.4126 31.3619 10.4892 29.8978 10.1724 29.0774C9.97885 28.576 9.8528 28.0195 10.3343 26.8156Z"
+          stroke="#1478CE"
+          stroke-width="20"
+        />
+      </svg>
+
       <Image
         src={about2}
         alt="about2 img"
-        className="w-full max-w-[164px] h-[199px] tablet:invisible tablet:absolute"
+        className="w-full absolute bottom-0 right-0 max-w-[164px] h-[199px] tablet:hidden tablet:absolute"
       />
-      <div className="flex flex-col  w-full max-w-[164px] tablet:max-w-[322px] desktop:max-w-[588px]">
-        <h2 className="flex text-4xl desktop:text-5xl font-bold not-italic justify-start mb-8">
+      <div className="flex flex-col w-full max-w-[164px] tablet:max-w-[322px] desktop:max-w-[588px]">
+        <h2 className="z-20 flex text-4xl mb-8 desktop:text-5xl font-bold not-italic tablet:justify-start ">
           About our story
         </h2>
-        <ul className="text-sm tablet:text-base">
-          <li className="mb-6">
-            <p className="">
+        <ul className="z-20 text-sm tablet:text-base">
+          <li className="mb-6 flex flex-col ">
+            <p className="contents tablet:contents desktop:contents">
               Our story is a tale of passion for e-commerce and a desire to
               simplify the process of ordering products from Amazon for
-              everyone.We embarked on our journey with a small group of
-              enthusiasts who were impressed by the potential hidden in the
-              world of online shopping.
+              everyone.
+              <span className="contents tablet:contents desktop:contents">
+                We embarked on our journey with a small group of enthusiasts who
+                were impressed by the potential hidden in the world of online
+                shopping.
+              </span>
             </p>
           </li>
           <li className="collapse absolute tablet:static tablet:visible desktop:mb-6 desktop:max-w-[588px]">
@@ -52,6 +70,20 @@ export default function About() {
             </p>
           </li>
         </ul>
+        <svg
+          className="absolute invisible desktop:visible desktop:bottom-[114px] desktop:right-0 desktop:-z-10"
+          xmlns="http://www.w3.org/2000/svg"
+          width="114"
+          height="93"
+          viewBox="0 0 114 93"
+          fill="none"
+        >
+          <path
+            d="M163.945 26.8156L163.628 26.022L163.449 25.186C162.262 19.6162 159.958 16.4141 157.063 14.3445C153.933 12.1068 149.08 10.4653 141.677 10.0839C126.579 9.3062 104.773 13.9062 76.4469 22.6476L75.4743 22.9478L74.4612 23.0458C68.2332 23.6484 61.8731 23.1823 56.13 22.613C54.4459 22.446 52.8304 22.2727 51.2618 22.1044C47.1821 21.6666 43.42 21.2629 39.5963 21.0948C29.3124 20.6427 22.0785 22.142 16.45 28.0188C13.2277 31.3833 10.6193 37.4001 10.0945 44.9303C9.57854 52.3328 11.1693 60.1646 15.0457 66.605C18.8181 72.8725 24.8929 78.0929 34.1458 80.5416C43.2542 82.9522 56.12 82.8388 73.6473 77.2433C81.5204 70.5275 91.9889 65.1066 102.348 60.4586C108.96 57.4918 116.308 54.5192 123.317 51.6836C127.898 49.8303 132.335 48.0356 136.327 46.3392C147.192 41.7217 155.516 37.5453 160.467 33.3802C162.867 31.3619 163.79 29.8978 164.107 29.0774C164.3 28.576 164.426 28.0195 163.945 26.8156Z"
+            stroke="#1478CE"
+            stroke-width="20"
+          />
+        </svg>
       </div>
     </div>
   );
