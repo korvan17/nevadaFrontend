@@ -4,8 +4,8 @@ export default function Buttons({ login, quote, sendMail, children }) {
   const additionalClasses = login
     ? "uppercase w-[179px] w-[179px] md:w-[227px] lg:w-[179px]"
     : quote
-    ? ""
-    : "";
+    ? sendMail
+    : "min-w-[129px] px-[12px]";
 
   return (
     <button className={`${commonClasses} ${additionalClasses}`}>

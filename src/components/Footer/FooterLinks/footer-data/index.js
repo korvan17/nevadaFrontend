@@ -1,1 +1,1 @@
-export * as footerLinksData from "./list-links";
+export { default as helpLinks } from "./help-links";
