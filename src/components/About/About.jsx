@@ -5,14 +5,14 @@ import about2 from "../../../public/images/about2-mobile-1x.jpg";
 
 export default function About() {
   return (
-    <div className="bg-white text-black w-full relative flex mx-auto max-w-screen-mobile tablet:hidden tablet:max-w-screen-tablet tablet:flex tablet:flex-row-reverse tablet:justify-between tablet:pt-20 tablet:pb-[10px] tablet:px-10 desktop:max-w-screen-desktop desktop:flex-row desktop:h-[783px] desktop:items-center desktop:gap-x-6 desktop:px-[120px] desktop:pb-0 desktop:pt-[120px] desktop:z-20">
+    <div className="bg-white text-black w-full relative flex px-4 pt-[19px] pb-8 mx-auto max-w-screen-mobile overflow-hidden tablet:max-w-screen-tablet tablet:flex tablet:flex-row-reverse tablet:justify-between tablet:pt-20 tablet:pb-[10px] tablet:px-10 desktop:max-w-screen-desktop desktop:flex-row desktop:h-[783px] desktop:items-center desktop:gap-x-6 desktop:px-[120px] desktop:pb-0 desktop:pt-[120px] desktop:z-20">
       <Image
         src={about}
         alt="about img"
-        className="flex absolute w-full bg-slate-600 max-w-[164px] h-[199px] tablet:static tablet:max-w-[322px] tablet:h-[363px] tablet:mt-[68px] desktop:mt-0 desktop:max-w-[588px] desktop:h-[663px] "
+        className="block absolute w-full rounded-xl top-[79px] bg-slate-600 max-w-[210px] tablet:static tablet:max-w-[322px] tablet:h-[363px] tablet:mt-[68px] desktop:mt-0 desktop:max-w-[588px] desktop:h-[663px] "
       />
       <svg
-        className="absolute invisible tablet:visible tablet:rotate-[140deg] tablet:top-[98px] tablet:left-[-85px] desktop:rotate-0 desktop:top-[183px] desktop:left-[645px] desktop:-z-10"
+        className="absolute visible bottom-[40px] right-[-52px] rotate-[273deg] tablet:visible tablet:rotate-[140deg] tablet:top-[98px] tablet:left-[-85px] desktop:rotate-0 desktop:top-[183px] desktop:left-[645px] desktop:-z-10"
         xmlns="http://www.w3.org/2000/svg"
         width="175"
         height="93"
@@ -29,26 +29,27 @@ export default function About() {
       <Image
         src={about2}
         alt="about2 img"
-        className="w-full absolute bottom-0 right-0 max-w-[164px] h-[199px] tablet:hidden tablet:absolute"
+        className="w-full absolute rounded-xl bottom-[85px] right-4 max-w-[210px] tablet:hidden tablet:absolute"
       />
-      <div className="flex flex-col w-full max-w-[164px] tablet:max-w-[322px] desktop:max-w-[588px]">
-        <h2 className="z-20 flex text-4xl mb-8 desktop:text-5xl font-bold not-italic tablet:justify-start ">
+      <div className="flex flex-col w-full max-w-[480px] h-[500px]  tablet:max-w-[322px] desktop:max-w-[588px]">
+        <h2 className="z-20 flex text-4xl leading-none mb-6 justify-center tablet:mb-8 desktop:text-5xl font-bold not-italic tablet:justify-start ">
           About our story
         </h2>
-        <ul className="z-20 text-sm tablet:text-base">
-          <li className="mb-6 flex flex-col ">
-            <p className="contents tablet:contents desktop:contents">
+        <ul className="z-20 text-sm leading-[150%] tablet:text-base">
+          <li className="flex gap-x-[24px]  flex-row-reverse tablet:contents desktop:contents">
+            {/* inline-grid grid-cols-2 gap-4 grid-flow-col */}
+            <p className="max-w-[210px] tablet:contents desktop:contents">
               Our story is a tale of passion for e-commerce and a desire to
               simplify the process of ordering products from Amazon for
-              everyone.
-              <span className="contents tablet:contents desktop:contents">
-                We embarked on our journey with a small group of enthusiasts who
-                were impressed by the potential hidden in the world of online
-                shopping.
-              </span>
+              everyone.{" "}
+            </p>
+            <p className="max-w-[210px] pt-[282px] tablet:contents desktop:contents">
+              We embarked on our journey with a small group of enthusiasts who
+              were impressed by the potential hidden in the world of online
+              shopping.
             </p>
           </li>
-          <li className="collapse absolute tablet:static tablet:visible desktop:mb-6 desktop:max-w-[588px]">
+          <li className="collapse absolute tablet:static tablet:visible tablet:block tablet:mt-6 desktop:mb-6 desktop:max-w-[588px]">
             <p>
               From the very beginning, we defined our main goal as providing the
               best service and ensuring the availability of Amazon products,
@@ -60,7 +61,7 @@ export default function About() {
               </span>
             </p>
           </li>
-          <li className="collapse absolute tablet:collapse tablet:absolute desktop:visible desktop:max-w-[588px]">
+          <li className="collapse absolute tablet:overflow-hidden tablet:absolute tablet:block desktop:visible desktop:max-w-[588px]">
             <p>
               Today, we take pride in being a trusted bridge between individuals
               and businesses worldwide and the vast world of Amazon. Our mission
@@ -71,11 +72,11 @@ export default function About() {
           </li>
         </ul>
         <svg
-          className="absolute invisible desktop:visible desktop:bottom-[114px] desktop:right-0 desktop:-z-10"
+          className="absolute invisible tablet:invisible desktop:visible desktop:bottom-[114px] desktop:right-0"
           xmlns="http://www.w3.org/2000/svg"
-          width="114"
+          width="175"
           height="93"
-          viewBox="0 0 114 93"
+          viewBox="0 0 175 93"
           fill="none"
         >
           <path
