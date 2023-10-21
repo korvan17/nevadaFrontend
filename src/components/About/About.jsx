@@ -39,7 +39,7 @@ export default function About() {
           <li className="flex gap-x-[24px]  flex-row-reverse md:contents lg:contents">
             {/* inline-grid grid-cols-2 gap-4 grid-flow-col */}
             <p className="max-w-[210px] md:contents lg:contents">
-              Our story is a tale of passion for e-commerce and a desire to
+              OOur story is a tale of passion for e-commerce and a desire to
               simplify the process of ordering products from Amazon for
               everyone.{" "}
             </p>
