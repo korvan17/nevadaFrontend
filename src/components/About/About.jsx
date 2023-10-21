@@ -1,18 +1,18 @@
 import Image from "next/image";
 import React from "react";
-import about from "../../../public/images/about-desktop-1x.jpg";
-import about2 from "../../../public/images/about2-mobile-1x.jpg";
+import about from "../../../public/images/about-lg-1x.jpg";
+import about2 from "../../../public/images/about2-sm-1x.jpg";
 
 export default function About() {
   return (
-    <div className="bg-white text-black w-full relative flex px-4 pt-[19px] pb-8 mx-auto max-w-screen-mobile overflow-hidden tablet:max-w-screen-tablet tablet:flex tablet:flex-row-reverse tablet:justify-between tablet:pt-20 tablet:pb-[10px] tablet:px-10 desktop:max-w-screen-desktop desktop:flex-row desktop:h-[783px] desktop:items-center desktop:gap-x-6 desktop:px-[120px] desktop:pb-0 desktop:pt-[120px] desktop:z-20">
+    <div className="bg-white text-black w-full relative flex px-4 pt-[19px] pb-8 mx-auto max-w-screen-sm overflow-hidden md:max-w-screen-md md:flex md:flex-row-reverse md:justify-between md:pt-20 md:pb-[10px] md:px-10 lg:max-w-screen-lg lg:flex-row lg:h-[783px] lg:items-center lg:gap-x-6 lg:px-[120px] lg:pb-0 lg:pt-[120px] lg:z-20">
       <Image
         src={about}
         alt="about img"
-        className="block absolute w-full rounded-xl top-[79px] bg-slate-600 max-w-[210px] tablet:static tablet:max-w-[322px] tablet:h-[363px] tablet:mt-[68px] desktop:mt-0 desktop:max-w-[588px] desktop:h-[663px] "
+        className="block absolute w-full rounded-xl top-[79px] bg-slate-600 max-w-[210px] md:static md:max-w-[322px] md:h-[363px] md:mt-[68px] lg:mt-0 lg:max-w-[588px] lg:h-[663px] "
       />
       <svg
-        className="absolute visible bottom-[40px] right-[-52px] rotate-[273deg] tablet:visible tablet:rotate-[140deg] tablet:top-[98px] tablet:left-[-85px] desktop:rotate-0 desktop:top-[183px] desktop:left-[645px] desktop:-z-10"
+        className="absolute visible bottom-[40px] right-[-52px] rotate-[273deg] md:visible md:rotate-[140deg] md:top-[98px] md:left-[-85px] lg:rotate-0 lg:top-[183px] lg:left-[645px] lg:-z-10"
         xmlns="http://www.w3.org/2000/svg"
         width="175"
         height="93"
@@ -29,39 +29,39 @@ export default function About() {
       <Image
         src={about2}
         alt="about2 img"
-        className="w-full absolute rounded-xl bottom-[85px] right-4 max-w-[210px] tablet:hidden tablet:absolute"
+        className="w-full absolute rounded-xl bottom-[85px] right-4 max-w-[210px] md:hidden md:absolute"
       />
-      <div className="flex flex-col w-full max-w-[480px] h-[500px]  tablet:max-w-[322px] desktop:max-w-[588px]">
-        <h2 className="z-20 flex text-4xl leading-none mb-6 justify-center tablet:mb-8 desktop:text-5xl font-bold not-italic tablet:justify-start ">
+      <div className="flex flex-col w-full max-w-[480px] h-[500px]  md:max-w-[322px] lg:max-w-[588px]">
+        <h2 className="z-20 flex text-4xl leading-none mb-6 justify-center md:mb-8 lg:text-5xl font-bold not-italic md:justify-start ">
           About our story
         </h2>
-        <ul className="z-20 text-sm leading-[150%] tablet:text-base">
-          <li className="flex gap-x-[24px]  flex-row-reverse tablet:contents desktop:contents">
+        <ul className="z-20 text-sm leading-normal md:text-base">
+          <li className="flex gap-x-[24px]  flex-row-reverse md:contents lg:contents">
             {/* inline-grid grid-cols-2 gap-4 grid-flow-col */}
-            <p className="max-w-[210px] tablet:contents desktop:contents">
+            <p className="max-w-[210px] md:contents lg:contents">
               Our story is a tale of passion for e-commerce and a desire to
               simplify the process of ordering products from Amazon for
               everyone.{" "}
             </p>
-            <p className="max-w-[210px] pt-[282px] tablet:contents desktop:contents">
+            <p className="max-w-[210px] pt-[282px] md:contents lg:contents">
               We embarked on our journey with a small group of enthusiasts who
               were impressed by the potential hidden in the world of online
               shopping.
             </p>
           </li>
-          <li className="collapse absolute tablet:static tablet:visible tablet:block tablet:mt-6 desktop:mb-6 desktop:max-w-[588px]">
+          <li className="collapse absolute md:static md:visible md:block md:mt-6 lg:mb-6 lg:max-w-[588px]">
             <p>
               From the very beginning, we defined our main goal as providing the
               best service and ensuring the availability of Amazon products,
               regardless of your location or business.{""}
-              <span className="tablet:invisible tablet:absolute desktop:visible desktop:static">
+              <span className="md:invisible md:absolute lg:visible lg:static">
                 We see our role in facilitating access to a wide range of
                 products from the global Amazon network, helping our customers
                 achieve their goals.
               </span>
             </p>
           </li>
-          <li className="collapse absolute tablet:overflow-hidden tablet:absolute tablet:block desktop:visible desktop:max-w-[588px]">
+          <li className="collapse absolute md:overflow-hidden md:absolute md:block lg:visible lg:max-w-[588px]">
             <p>
               Today, we take pride in being a trusted bridge between individuals
               and businesses worldwide and the vast world of Amazon. Our mission
@@ -72,7 +72,7 @@ export default function About() {
           </li>
         </ul>
         <svg
-          className="absolute invisible tablet:invisible desktop:visible desktop:bottom-[114px] desktop:right-0"
+          className="absolute invisible md:invisible lg:visible lg:bottom-[114px] lg:right-[-61px]"
           xmlns="http://www.w3.org/2000/svg"
           width="175"
           height="93"

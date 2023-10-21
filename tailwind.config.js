@@ -17,13 +17,13 @@ module.exports = {
       },
     },
     screens: {
-      mobile: "480px",
+      sm: "480px",
       // => @media (min-width: 480px) { ... }
 
-      tablet: "768px",
+      md: "768px",
       // => @media (min-width: 768px) { ... }
 
-      desktop: "1440px",
+      lg: "1440px",
       // => @media (min-width: 1440px) { ... }
     },
   },
