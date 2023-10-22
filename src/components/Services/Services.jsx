@@ -22,7 +22,7 @@ export default function Services() {
             pagination={{ clickable: true }}
           >
             <SwiperSlide>
-              <div className="w-full h-[449px] sm:w-full md:w-[282px] lg:w-[282px] mb-4 sm:mb-4 md:mb-0 p-4 rounded-lg bg-darkBlue text-captionalWhite text-center overflow-x-auto md:mr-[20px] md:mb-[24px] lg:mb-0 lg:mr-[24px]">
+              <div className="w-full h-[449px] sm:w-full md:w-[282px] lg:w-[282px] mb-4 sm:mb-4 md:mb-0 p-4 rounded-lg bg-darkBlue text-captionalWhite text-center overflow-x-auto md:mr-[20px] lg:mb-0 lg:mr-[24px]">
                 <Image
                   src="/procurement-desktop-1x.png"
                   width={172}
