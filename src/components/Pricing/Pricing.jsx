@@ -270,7 +270,7 @@ export default function Pricing() {
 					unit price becomes. This approach rewards you for your
 					commitment to our services."
 				</p>
-				<div className="w-full h-[516px] sm:w-full md:w-[282px] h-[770px] lg:w-[1200px] h-[520px] mb-4 sm:mb-4 md:mb-0 rounded-lg bg-darkBlue text-captionalWhite overflow-x-auto md:mr-[20px] lg:mb-0 lg:mr-[24px] lg:py-[32px] px-[52px]">
+				<div className="w-full h-[516px] sm:w-full md:w-[282px] h-[770px] lg:w-[1200px] lg:h-[520px] mb-4 sm:mb-4 md:mb-0 rounded-lg bg-darkBlue text-captionalWhite overflow-x-auto md:mr-[20px] lg:mb-0 lg:mr-[24px] lg:py-[32px] px-[52px]">
 					<h3 className="mb-[12px] text-lg font-bold">
 						Additional services
 					</h3>
