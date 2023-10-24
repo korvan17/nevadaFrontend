@@ -9,7 +9,7 @@ SwiperCore.use([Pagination, Navigation]);
 
 export default function Services() {
   return (
-    <section className="py-mobile md:pb-0 lg:pt-desktop" id="services">
+    <section className="py-mobile md:pb-0 lg:pt-desktop  " id="services">
       <div className="container">
         <h2 className="mb-[48px] text-4xl lg:text-5xl font-bold sm:text-center md:text-left">
           Our Services
@@ -99,7 +99,7 @@ export default function Services() {
           </Swiper>
         </div>
 
-        <ul className="hidden sm:hidden md:flex lg:flex flex-wrap">
+        <ul className="hidden sm:hidden md:flex lg:flex flex-wrap justify-center">
           <li className="w-full h-[449px] sm:w-full md:w-[282px] lg:w-[282px] mb-4 sm:mb-4 md:mb-0 p-4 rounded-lg bg-darkBlue text-captionalWhite text-center overflow-x-auto md:mr-[20px] md:mb-[24px] lg:mb-0 lg:mr-[24px]">
             <Image
               src="/procurement-desktop-1x.png"
