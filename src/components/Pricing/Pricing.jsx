@@ -1,6 +1,6 @@
 "use client";
+
 import React from "react";
-import Image from "next/image";
 import SwiperCore, { Pagination, Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -10,9 +10,9 @@ SwiperCore.use([Pagination, Navigation]);
 
 export default function Pricing() {
 	return (
-		<section lassName="py-mobile md:pb-0 lg:pt-desktop" id="pricing">
+		<section className="py-mobile md:pb-0 lg:pt-desktop" id="pricing">
 			<div className="container">
-				<h2 className="mt-[120px] mb-[48px] text-4xl lg:text-5xl font-bold sm:text-center md:text-left">
+				<h2 className="mb-[48px] text-4xl lg:text-5xl font-bold sm:text-center md:text-left">
 					Our Pricing
 				</h2>
 
@@ -275,21 +275,22 @@ export default function Pricing() {
 						Additional services
 					</h3>
 
-					<table class="table-auto md:w-[100%] sm:mb-[24px] md:mb-[170px] lg:w-[100%] lg:mb-[32px]">
+					{/* <table className="table-auto md:w-[100%] sm:mb-[24px] md:mb-[170px] lg:w-[100%] lg:mb-[32px]"> */}
+					{/* <table className="table-auto lg:w-[100%] lg:mb-[32px]">
 						<thead className="text-right">
 							<tr>
 								<td></td>
 								<td>Receiving</td>
-								<td className="sm:hidden md:inline-block">
+								<td className="">
 									Inspection
 								</td>
-								<td className="sm:hidden md:block">
+								<td className="">
 									Forwarding
 								</td>
-								<td className="sm:hidden md:block">Storage</td>
-								<td className="md:hidden">Utilization</td>
-								<td className="md:hidden">Removals</td>
-								<td className="md:hidden">Pictures 3pcs</td>
+								<td className="">Storage</td>
+								<td className="">Utilization</td>
+								<td className="">Removals</td>
+								<td className="">Pictures 3pcs</td>
 							</tr>
 						</thead>
 						<tbody className="text-right leading-[200%]">
@@ -298,49 +299,49 @@ export default function Pricing() {
 									Box (24x18x12) 49 lbs max
 								</td>
 								<td>$1</td>
-								<td className="sm:hidden">$1</td>
-								<td className="sm:hidden">$5</td>
-								<td className="sm:hidden">$5</td>
-								<td className="md:hidden">$2</td>
-								<td className="md:hidden">$2</td>
-								<td className="md:hidden">$1</td>
+								<td className="">$1</td>
+								<td className="">$5</td>
+								<td className="">$5</td>
+								<td className="">$2</td>
+								<td className="">$2</td>
+								<td className="">$1</td>
 							</tr>
 							<tr>
 								<td className="text-left">Pallet (48x40x72)</td>
 								<td>$25</td>
-								<td className="sm:hidden">$1</td>
-								<td className="sm:hidden">$25</td>
-								<td className="sm:hidden">$35</td>
-								<td className="md:hidden">$20</td>
-								<td className="md:hidden">$20</td>
-								<td className="md:hidden">$1</td>
+								<td className="">$1</td>
+								<td className="">$25</td>
+								<td className="">$35</td>
+								<td className="">$20</td>
+								<td className="">$20</td>
+								<td className="">$1</td>
 							</tr>
 							<tr>
 								<td className="text-left">
 									PL Container (20ft)
 								</td>
 								<td>$300</td>
-								<td className="sm:hidden">$100</td>
-								<td className="sm:hidden">-</td>
-								<td className="sm:hidden">-</td>
-								<td className="md:hidden">-</td>
-								<td className="md:hidden">-</td>
-								<td className="md:hidden">-</td>
+								<td className="">$100</td>
+								<td className="">-</td>
+								<td className="">-</td>
+								<td className="">-</td>
+								<td className="">-</td>
+								<td className="">-</td>
 							</tr>
 							<tr>
 								<td className="text-left">
 									FL Container (40ft)
 								</td>
 								<td>$600</td>
-								<td className="sm:hidden">$150</td>
-								<td className="sm:hidden">-</td>
-								<td className="sm:hidden">-</td>
-								<td className="md:hidden">-</td>
-								<td className="md:hidden">-</td>
-								<td className="md:hidden">-</td>
+								<td className="">$150</td>
+								<td className="">-</td>
+								<td className="">-</td>
+								<td className="">-</td>
+								<td className="">-</td>
+								<td className="">-</td>
 							</tr>
 						</tbody>
-					</table>
+					</table> */}
 
 					<div className="flex justify-between items-center sm:flex-wrap md:flex-wrap md:mb-[24px]">
 						<p className="md: mb-[8px]">
@@ -360,7 +361,7 @@ export default function Pricing() {
 					<h3 className="mt-[8px] mb-[12px] text-lg font-bold">
 						Packing services
 					</h3>
-					<ul className="flex justify-between md:flex-wrap md:gap-[24px]">
+					{/* <ul className="flex justify-between md:flex-wrap md:gap-[24px]">
 						<li className="md:w-[193px] lg:w-[202px]">
 							<table className="lg:w-[100%]">
 								<tr>
@@ -411,7 +412,7 @@ export default function Pricing() {
 								</tr>
 							</table>
 						</li>
-					</ul>
+					</ul> */}
 				</div>
 			</div>
 		</section>
