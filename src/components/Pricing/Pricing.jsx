@@ -10,7 +10,7 @@ SwiperCore.use([Pagination, Navigation]);
 
 export default function Pricing() {
 	return (
-		<section lassName="py-mobile md:pb-0 lg:pt-desktop" id="pricing">
+		<section className="py-mobile md:pb-0 lg:pt-desktop" id="pricing">
 			<div className="container">
 				<h2 className="mt-[120px] mb-[48px] text-4xl lg:text-5xl font-bold sm:text-center md:text-left">
 					Our Pricing
@@ -275,7 +275,7 @@ export default function Pricing() {
 						Additional services
 					</h3>
 
-					<table class="table-auto md:w-[100%] sm:mb-[24px] md:mb-[170px] lg:w-[100%] lg:mb-[32px]">
+					<table className="table-auto md:w-[100%] sm:mb-[24px] md:mb-[170px] lg:w-[100%] lg:mb-[32px]">
 						<thead className="text-right">
 							<tr>
 								<td></td>
