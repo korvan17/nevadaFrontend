@@ -5,7 +5,7 @@ import SwiperCore, { Pagination, Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 
-SwiperCore.use([Pagination, Navigation]);
+// SwiperCore.use([Pagination, Navigation]);
 
 export default function Services() {
   return (
