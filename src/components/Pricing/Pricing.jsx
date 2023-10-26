@@ -222,10 +222,10 @@ export default function Pricing() {
           </li>
         </ul>
         <p className="sm:mb-4 md:w-[640px] md:text-base lg:w-[741px] lg:text-base text-xs text-captionalGreyLight">
-          Base price* - Explanation: "At Prime Preparation Center, we offer
-          volume-based pricing, which means that the more you purchase or the
-          larger your order quantity, the lower the unit price becomes. This
-          approach rewards you for your commitment to our services."
+          Base price* - Explanation: &ldquo;At Prime Preparation Center, we
+          offer volume-based pricing, which means that the more you purchase or
+          the larger your order quantity, the lower the unit price becomes. This
+          approach rewards you for your commitment to our services.&ldquo;
         </p>
         <div className="w-full h-[516px] sm:w-full sm:h-[516px] md:w-[664px] md:h-[770px] sm:py-[12px] sm:px-[8px] md:py-[24px] md:px-[12px] lg:w-[1200px] lg:h-[520px] mb-4 sm:mb-4 md:mb-0 rounded-lg bg-darkBlue text-captionalWhite overflow-x-auto md:mr-[20px] lg:mb-0 lg:mr-[24px] lg:py-[32px] lg:px-[52px]">
           <h3 className="mb-[12px] text-lg font-bold">Additional services</h3>
