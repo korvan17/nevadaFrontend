@@ -10,7 +10,7 @@ import { Buttons } from "../UIElements";
 
 export default function Pricing() {
   return (
-    <section lassName="py-mobile md:pb-0 lg:pt-desktop" id="pricing">
+    <section className="py-mobile md:pb-0 lg:pt-desktop" id="pricing">
       <div className="container">
         <h2 className="mt-[120px] mb-[48px] text-4xl lg:text-5xl font-bold sm:text-center md:text-left">
           Our Pricing
@@ -230,7 +230,7 @@ export default function Pricing() {
         <div className="w-full h-[516px] sm:w-full sm:h-[516px] md:w-[664px] md:h-[770px] sm:py-[12px] sm:px-[8px] md:py-[24px] md:px-[12px] lg:w-[1200px] lg:h-[520px] mb-4 sm:mb-4 md:mb-0 rounded-lg bg-darkBlue text-captionalWhite overflow-x-auto md:mr-[20px] lg:mb-0 lg:mr-[24px] lg:py-[32px] lg:px-[52px]">
           <h3 className="mb-[12px] text-lg font-bold">Additional services</h3>
 
-          <table class="table-auto md:w-[100%] sm:mb-[24px] md:mb-[170px] lg:w-[100%] lg:mb-[32px]">
+          <table className="table-auto md:w-[100%] sm:mb-[24px] md:mb-[170px] lg:w-[100%] lg:mb-[32px]">
             <thead className="text-right">
               <tr>
                 <td></td>
@@ -288,7 +288,7 @@ export default function Pricing() {
           </table>
 
           <div className="flex justify-between items-center sm:flex-wrap md:flex-wrap md:mb-[24px]">
-            <p className="md: mb-[8px]">HazMat, Fragile, Oversize</p>
+            <p className="md:mb-[8px]">HazMat, Fragile, Oversize</p>
             <p className="lg: w-[866px] text-base">
               Hazmat items incur additional costs due to strict safety
               regulations and specialized handing requirements. Fragile items
@@ -304,14 +304,16 @@ export default function Pricing() {
           <ul className="flex justify-between md:flex-wrap md:gap-[24px]">
             <li className="md:w-[193px] lg:w-[202px]">
               <table className="lg:w-[100%]">
-                <tr>
-                  <td>Bubble bag/wrap</td>
-                  <td>$0,35</td>
-                </tr>
-                <tr>
-                  <td>Polybag</td>
-                  <td>$0,30</td>
-                </tr>
+                <tbody>
+                  <tr>
+                    <td>Bubble bag/wrap</td>
+                    <td>$0,35</td>
+                  </tr>
+                  <tr>
+                    <td>Polybag</td>
+                    <td>$0,30</td>
+                  </tr>
+                </tbody>
               </table>
             </li>
             <li className="w-[136px]">
