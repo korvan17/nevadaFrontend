@@ -1,5 +1,6 @@
 //global imports
 //local imports
+import React from "react";
 import { FooterLinks } from "./FooterLinks";
 import { FooterHeader } from "./FooterHeader";
 

@@ -1,6 +1,6 @@
 //global imports
 //local imports
-
+import React from "react";
 import { Buttons } from "@/components/UIElements";
 
 export default function FooterForm() {
