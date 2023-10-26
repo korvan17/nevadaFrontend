@@ -1,11 +1,9 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-import SwiperCore, { Pagination, Navigation } from "swiper";
+
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-
-// SwiperCore.use([Pagination, Navigation]);
 
 export default function Services() {
   return (
@@ -99,8 +97,8 @@ export default function Services() {
           </Swiper>
         </div>
 
-        <ul className="flex-wrap gap-[20px] lg:gap-[24px] hidden md:flex lg:flex  ">
-          <li className=" basis-1/2 lg:basis-1/4    p-4 rounded-lg bg-darkBlue text-captionalWhite text-center overflow-x-auto">
+        <ul className="flex-wrap gap-[20px] lg:gap-[24px] hidden md:flex  ">
+          <li className="  md:basis-[calc((100%-20px)/2)] lg:basis-[calc((100%-72px)/4)]   p-4 rounded-lg bg-darkBlue text-captionalWhite text-center overflow-x-auto">
             <Image
               src="/procurement-desktop-1x.png"
               width={172}
@@ -117,7 +115,7 @@ export default function Services() {
               unit
             </p>
           </li>
-          <li className=" basis-1/2 lg:basis-1/4  p-4 rounded-lg bg-darkBlue text-captionalWhite text-center overflow-x-auto">
+          <li className=" md:basis-[calc((100%-20px)/2)] lg:basis-[calc((100%-72px)/4)] p-4 rounded-lg bg-darkBlue text-captionalWhite text-center overflow-x-auto">
             <Image
               src="/accessibility-desktop-1x.png"
               width={172}
@@ -134,7 +132,7 @@ export default function Services() {
               selling products under their own brand
             </p>
           </li>
-          <li className=" basis-1/2 lg:basis-1/4  p-4 rounded-lg bg-darkBlue text-captionalWhite text-center overflow-x-auto">
+          <li className=" md:basis-[calc((100%-20px)/2)] lg:basis-[calc((100%-72px)/4)]  p-4 rounded-lg bg-darkBlue text-captionalWhite text-center overflow-x-auto">
             <Image
               src="/delivery-desktop-1x.png"
               width={172}
@@ -151,7 +149,7 @@ export default function Services() {
               dispute resolution methods
             </p>
           </li>
-          <li className=" basis-1/2 lg:basis-1/4  p-4 rounded-lg bg-darkBlue text-captionalWhite text-center overflow-x-auto">
+          <li className=" md:basis-[calc((100%-20px)/2)] lg:basis-[calc((100%-72px)/4)] rounded-lg bg-darkBlue text-captionalWhite text-center overflow-x-auto">
             <Image
               src="/support-desktop-1x.png"
               width={172}

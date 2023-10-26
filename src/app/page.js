@@ -1,3 +1,4 @@
+import React from "react";
 import {
   About,
   Faq,
@@ -9,6 +10,7 @@ import {
   ChatWindow,
 } from "@/components";
 
+
 export default function Home() {
   return (
     <>
@@ -16,7 +18,7 @@ export default function Home() {
       <Hero />
       <About />
       <Services />
-      {/* <Pricing /> */}
+      <Pricing />
       <Faq />
       {/* <Footer /> */}
       {/* <ChatWindow /> */}

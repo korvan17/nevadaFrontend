@@ -1,4 +1,5 @@
 import Image from "next/image";
+import React from "react";
 import GetQuoteButton from "../GetQueteButton/GetQuoteButton";
 
 export default function Hero() {
@@ -7,8 +8,6 @@ export default function Hero() {
       id="home"
       className="pt-[78px] pb-[151px] md:pt-[47px] md:pb-[0px] lg:pt-[139px] lg:pb-[0px]"
     >
-      <GetQuoteButton />
-      
       <Image
         src="/hero-mobile-nd.png"
         alt="hero-mobile"
@@ -51,6 +50,7 @@ export default function Hero() {
         priority
       />
       <div className="container">
+        <GetQuoteButton />
         <div className="lg:flex lg:gap-[43px] lg:basis-2/4 lg:justify-center">
           <div>
             <div
@@ -66,6 +66,7 @@ export default function Hero() {
               </h3>
             </div>
           </div>
+
           <div className="relative -z-20 lg:basis-2/4 lg:pt-[38px] w-[320px] sm:w-[400px] md-[688px]">
             <Image
               src="/hero-desktop.png"

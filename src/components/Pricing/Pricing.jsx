@@ -319,38 +319,44 @@ export default function Pricing() {
             </li>
             <li className="w-[136px]">
               <table className="lg:w-[100%] ">
-                <tr>
-                  <td className="text-left">Palletizing</td>
-                  <td className="text-right">$25</td>
-                </tr>
-                <tr>
-                  <td className="text-left">Box 10x8x6</td>
-                  <td className="text-right">$1</td>
-                </tr>
+                <tbody>
+                  <tr>
+                    <td className="text-left">Palletizing</td>
+                    <td className="text-right">$25</td>
+                  </tr>
+                  <tr>
+                    <td className="text-left">Box 10x8x6</td>
+                    <td className="text-right">$1</td>
+                  </tr>
+                </tbody>
               </table>
             </li>
             <li className="w-[138px]">
               <table className="lg:w-[100%]">
-                <tr>
-                  <td className="text-left">Box 10x10x10</td>
-                  <td className="text-right">$2</td>
-                </tr>
-                <tr>
-                  <td className="text-left">Box 24x14x6</td>
-                  <td className="text-right">$3</td>
-                </tr>
+                <tbody>
+                  <tr>
+                    <td className="text-left">Box 10x10x10</td>
+                    <td className="text-right">$2</td>
+                  </tr>
+                  <tr>
+                    <td className="text-left">Box 24x14x6</td>
+                    <td className="text-right">$3</td>
+                  </tr>
+                </tbody>
               </table>
             </li>
             <li className="w-[218px]">
               <table className="lg:w-[100%]">
-                <tr>
-                  <td className="text-left">Box 24x18x12</td>
-                  <td className="text-right">$4</td>
-                </tr>
-                <tr>
-                  <td className="text-left">Additional (min 1 hour)</td>
-                  <td className="text-right">$40</td>
-                </tr>
+                <tbody>
+                  <tr>
+                    <td className="text-left">Box 24x18x12</td>
+                    <td className="text-right">$4</td>
+                  </tr>
+                  <tr>
+                    <td className="text-left">Additional (min 1 hour)</td>
+                    <td className="text-right">$40</td>
+                  </tr>
+                </tbody>
               </table>
             </li>
           </ul>
