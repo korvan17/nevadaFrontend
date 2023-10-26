@@ -2,11 +2,11 @@
 import Modal from "react-modal";
 
 export default function BasicModal({
-  children,
   closeModal,
   modalIsOpen,
   contentStyle = {}, // Accept custom content styles
   overlayStyle = {}, // Accept custom overlay styles
+  children,
 }) {
   const defaultContentStyle = {
     width: "343px",
