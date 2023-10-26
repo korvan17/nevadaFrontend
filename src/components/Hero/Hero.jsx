@@ -51,7 +51,7 @@ export default function Hero() {
         priority
       />
       <div className="container">
-        <div className="lg:flex lg:gap-[43px] lg:basis-2/4">
+        <div className="lg:flex lg:gap-[43px] lg:basis-2/4 lg:justify-center">
           <div>
             <div
               className="text-center lg:mt-[234px] lg:mb-[278px] lg:w-[552px] w-[344px] md:max-w-[552px]
