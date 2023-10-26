@@ -1,11 +1,9 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-import SwiperCore, { Pagination, Navigation } from "swiper";
+
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-
-// SwiperCore.use([Pagination, Navigation]);
 
 export default function Services() {
   return (

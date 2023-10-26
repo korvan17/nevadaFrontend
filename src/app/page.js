@@ -9,7 +9,7 @@ import {
   Services,
   ChatWindow,
 } from "@/components";
-import GetQuoteButton from "@/components/GetQueteButton/GetQuoteButton";
+
 
 export default function Home() {
   return (

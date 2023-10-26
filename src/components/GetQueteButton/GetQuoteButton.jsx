@@ -1,6 +1,6 @@
 "use client";
 
-import Modal from "react-modal";
+
 import React, { useState } from "react";
 import BasicModal from "../Modals/BasicModal/BasicModal";
 import GetQuoteWidgetModal from "../Modals/GetQuoteWidgetModal/GetQuoteWidgetModal";
