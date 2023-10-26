@@ -1,4 +1,5 @@
 import Image from "next/image";
+import GetQuoteButton from "../GetQueteButton/GetQuoteButton";
 
 export default function Hero() {
   return (
@@ -6,6 +7,8 @@ export default function Hero() {
       id="home"
       className="pt-[78px] pb-[151px] md:pt-[47px] md:pb-[0px] lg:pt-[139px] lg:pb-[0px]"
     >
+      <GetQuoteButton />
+      
       <Image
         src="/hero-mobile-nd.png"
         alt="hero-mobile"
@@ -51,13 +54,14 @@ export default function Hero() {
         <div className="lg:flex lg:gap-[43px] lg:basis-2/4 lg:justify-center">
           <div>
             <div
-              className="text-center lg:mt-[234px] lg:mb-[278px] lg:w-[552px] max-w-[343px] md:max-w-[552px]
+              className="text-center lg:mt-[234px] lg:mb-[278px] lg:w-[552px] w-[344px] md:max-w-[552px]
              mr-auto ml-auto"
             >
-              <h1 className="leading-[56px] md:leading-[80px] lg:text-[56px] font-bold text-[48px]  text-center md:mt-[180px] mt-[126px]">
-                DO YOU ENGAGE <br /> IN AMAZON SALES?
+              <h1 className="uppercase leading-[50px] lg:leading-[80px] lg:text-[56px] font-bold text-[36px]  text-center md:mt-[180px] mt-[126px]">
+                <span>Are you actively engaged</span> <br />{" "}
+                <span>in e-commerce sales?</span>
               </h1>
-              <h3 className="leading-[16px] md:leading-[24px] lg:text-[24px] md:text-[24px] font-normal md:mb-[232px]">
+              <h3 className="leading-[16px] md:leading-[16px] lg:text-[24px] text-[16px] font-normal md:mb-[232px]">
                 Let us optimize your shipping process
               </h3>
             </div>

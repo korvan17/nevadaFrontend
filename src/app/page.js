@@ -16,9 +16,9 @@ export default function Home() {
       <Hero />
       <About />
       <Services />
-      <Pricing />
+      {/* <Pricing /> */}
       <Faq />
-      <Footer />
+      {/* <Footer /> */}
       {/* <ChatWindow /> */}
       {/* <div id="myportal" /> */}
     </>
