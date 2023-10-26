@@ -45,8 +45,8 @@ function UserControls() {
         >
           Registration
         </button>
-        <Buttons login={true}>
-          <Link href="/dashboard">Login</Link>
+        <Buttons login={true} toggleModal={toggleModal}>
+          Login
         </Buttons>
       </div>
       {isModalOpen && (
