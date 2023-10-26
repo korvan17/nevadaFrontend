@@ -5,7 +5,7 @@ import about2 from "../../../public/images/about2-sm-1x.jpg";
 
 export default function About() {
   return (
-    <div className="bg-white text-black w-full relative flex px-4 pt-[19px] pb-8 mx-auto max-w-screen-sm overflow-hidden md:max-w-screen-md md:flex md:flex-row-reverse md:justify-between md:pt-20 md:pb-[10px] md:px-10 lg:max-w-screen-lg lg:flex-row lg:h-[783px] lg:items-center lg:gap-x-6 lg:px-[120px] lg:pb-0 lg:pt-[120px] lg:-z-20">
+    <div className="-z-50 bg-white text-black w-full relative flex px-4 pt-[19px] pb-8 mx-auto max-w-screen-sm overflow-hidden md:max-w-screen-md md:flex md:flex-row-reverse md:justify-between md:pt-20 md:pb-[10px] md:px-10 lg:max-w-screen-lg lg:flex-row lg:h-[783px] lg:items-center lg:gap-x-6 lg:px-[120px] lg:pb-0 lg:pt-[120px] lg:-z-20">
       <Image
         src={about}
         alt="about img"
