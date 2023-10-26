@@ -1,3 +1,4 @@
+import React from "react";
 import { faq } from "@/content";
 import { FaqButton } from "../UIElements";
 
