@@ -2,14 +2,13 @@ import React from "react";
 import {
   About,
   Faq,
-  Footer,
+  // Footer,
   Header,
   Hero,
   Pricing,
   Services,
-  ChatWindow,
+  // ChatWindow,
 } from "@/components";
-
 
 export default function Home() {
   return (
