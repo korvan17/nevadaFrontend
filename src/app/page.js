@@ -16,7 +16,7 @@ export default function Home() {
       <Hero />
       <About />
       <Services />
-      {/* <Pricing /> */}
+      <Pricing />
       <Faq />
       <Footer />
       {/* <ChatWindow /> */}
