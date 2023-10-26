@@ -56,9 +56,9 @@ function HeaderMenu({ toggleMenu, open }) {
         <a
           className="block mb-[8px] text-[14px] md:text-[16px] text-captionalGreyLight 
           hover:text-mainWhite transition-all ease-out"
-          href="tel:+48000000000"
+          href="tel:+17027010078"
         >
-          +48 000 000 000
+          +1 (702) 701-0078
         </a>
         <a
           className="text-[14px] md:text-[16px]  text-captionalGreyLight

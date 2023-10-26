@@ -30,9 +30,9 @@ function MobileHeader() {
         >
           <a
             className="block w-[100%] text-center py-[3px]"
-            href="tel:+48000000000"
+            href="tel:+17027010078"
           >
-            +48 000 000 000
+            +1 (702) 701-0078
           </a>
         </div>
         <div className="flex justify-space-beetween">

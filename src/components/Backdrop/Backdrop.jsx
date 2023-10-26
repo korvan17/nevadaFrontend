@@ -11,8 +11,10 @@ function Backdrop({ toggleMenu, children }) {
     const handleKeyDown = (e) => {
       if (e.code === "Escape") toggleMenu();
     };
+    document.body.style.overflow = "hidden";
     window.addEventListener("keydown", handleKeyDown);
     return () => {
+      document.body.style.overflow = "auto";
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, [toggleMenu]);
