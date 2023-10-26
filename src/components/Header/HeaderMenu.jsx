@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { CloseMenuIcon } from "@/components/Icons";
 import { UserControls } from "../UIElements";
 
-function HeaderMenu({ handleOpenMenu, open }) {
+function HeaderMenu({ toggleMenu, open }) {
   const menuVars = {
     initial: {
       scaleX: 0,
@@ -43,7 +43,7 @@ function HeaderMenu({ handleOpenMenu, open }) {
       <button
         className="absolute top-[38px] left-0 md:left-[24px] md:top-[62px] 
         flex justify-center items-center w-[24px] h-[24px]"
-        onClick={handleOpenMenu}
+        onClick={toggleMenu}
         type="button"
       >
         <CloseMenuIcon />

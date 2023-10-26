@@ -6,7 +6,7 @@ import HeaderMenu from "./HeaderMenu";
 function MobileHeader() {
   const [isMenuOpen, setisMenuOpen] = useState(false);
 
-  const handleOpenMenu = () => {
+  const toggleMenu = () => {
     setisMenuOpen(!isMenuOpen);
   };
 
@@ -47,14 +47,14 @@ function MobileHeader() {
               </p>
             </div>
           </a>
-          <button className="ml-auto" onClick={handleOpenMenu} type="button">
+          <button className="ml-auto" onClick={toggleMenu} type="button">
             <BurgerMenuIcon />
           </button>
         </div>
         {isMenuOpen && (
           <>
-            <Backdrop handleOpenMenu={handleOpenMenu}></Backdrop>
-            <HeaderMenu handleOpenMenu={handleOpenMenu} open={isMenuOpen} />
+            <Backdrop toggleMenu={toggleMenu}></Backdrop>
+            <HeaderMenu toggleMenu={toggleMenu} open={isMenuOpen} />
           </>
         )}
       </div>

@@ -1,11 +1,22 @@
 import { motion } from "framer-motion";
+import { useEffect } from "react";
 
-function Backdrop({ handleOpenMenu, children }) {
+function Backdrop({ toggleMenu, children }) {
   const handleBackdropClose = (event) => {
     if (event.target === event.currentTarget) {
-      handleOpenMenu();
+      toggleMenu();
     }
   };
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.code === "Escape") toggleMenu();
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [toggleMenu]);
+
   return (
     <motion.div
       onClick={handleBackdropClose}
