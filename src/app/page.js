@@ -1,3 +1,4 @@
+import React from "react";
 import {
   About,
   Faq,
@@ -8,6 +9,7 @@ import {
   Services,
   ChatWindow,
 } from "@/components";
+import GetQuoteButton from "@/components/GetQueteButton/GetQuoteButton";
 
 export default function Home() {
   return (
@@ -16,7 +18,7 @@ export default function Home() {
       <Hero />
       <About />
       <Services />
-      {/* <Pricing /> */}
+      <Pricing />
       <Faq />
       {/* <Footer /> */}
       {/* <ChatWindow /> */}
