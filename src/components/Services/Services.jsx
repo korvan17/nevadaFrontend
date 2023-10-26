@@ -14,7 +14,7 @@ export default function Services() {
         <h2 className="mb-[48px] text-4xl lg:text-5xl font-bold sm:text-center md:text-left">
           Our Services
         </h2>
-        <div className="sm:block md:hidden lg:hidden">
+        <div className="block md:hidden lg:hidden">
           <Swiper
             slidesPerView={1}
             spaceBetween={10}
@@ -99,8 +99,8 @@ export default function Services() {
           </Swiper>
         </div>
 
-        <ul className="hidden sm:hidden md:flex lg:flex flex-wrap">
-          <li className="w-full h-[449px] sm:w-full md:w-[282px] lg:w-[282px] mb-4 sm:mb-4  p-4 rounded-lg bg-darkBlue text-captionalWhite text-center overflow-x-auto md:mr-[20px] md:mb-[24px] lg:mb-0 lg:mr-[24px]">
+        <ul className="flex-wrap gap-[20px] lg:gap-[24px] hidden md:flex lg:flex  ">
+          <li className=" basis-1/2 lg:basis-1/4    p-4 rounded-lg bg-darkBlue text-captionalWhite text-center overflow-x-auto">
             <Image
               src="/procurement-desktop-1x.png"
               width={172}
@@ -117,7 +117,7 @@ export default function Services() {
               unit
             </p>
           </li>
-          <li className="w-full h-[449px] sm:w-full md:w-[282px] lg:w-[282px] mb-4 sm:mb-4  p-4 rounded-lg bg-darkBlue text-captionalWhite text-center overflow-x-auto md:mr-[20px] md:mb-[24px] lg:mb-0 lg:mr-[24px]">
+          <li className=" basis-1/2 lg:basis-1/4  p-4 rounded-lg bg-darkBlue text-captionalWhite text-center overflow-x-auto">
             <Image
               src="/accessibility-desktop-1x.png"
               width={172}
@@ -134,7 +134,7 @@ export default function Services() {
               selling products under their own brand
             </p>
           </li>
-          <li className="w-full h-[449px] sm:w-full md:w-[282px] lg:w-[282px] mb-4 sm:mb-4 md:mb-0 p-4 rounded-lg bg-darkBlue text-captionalWhite text-center overflow-x-auto md:mr-[20px] lg:mr-[24px]">
+          <li className=" basis-1/2 lg:basis-1/4  p-4 rounded-lg bg-darkBlue text-captionalWhite text-center overflow-x-auto">
             <Image
               src="/delivery-desktop-1x.png"
               width={172}
@@ -151,7 +151,7 @@ export default function Services() {
               dispute resolution methods
             </p>
           </li>
-          <li className="w-full h-[449px] sm:w-full md:w-[282px] lg:w-[282px] mb-4 sm:mb-4 md:mb-0 p-4 rounded-lg bg-darkBlue text-captionalWhite text-center overflow-x-auto">
+          <li className=" basis-1/2 lg:basis-1/4  p-4 rounded-lg bg-darkBlue text-captionalWhite text-center overflow-x-auto">
             <Image
               src="/support-desktop-1x.png"
               width={172}
