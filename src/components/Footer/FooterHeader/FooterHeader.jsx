@@ -1,5 +1,6 @@
 //global imports
 //local imports
+import React from "react";
 import { Logo } from "@/components/Icons";
 import FooterForm from "./FooterForm/FooterForm";
 

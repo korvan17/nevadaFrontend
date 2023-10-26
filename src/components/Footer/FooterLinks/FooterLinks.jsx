@@ -1,7 +1,7 @@
 //local imports
 import { FooterCommonList } from "./FooterCommonList";
 import { footerLinksData } from "./footer-data";
-
+import React from "react";
 export default function FooterLinks() {
   return (
     <div className="flex justify-between flex-wrap border-y border-white py-[48px]">

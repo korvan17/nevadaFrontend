@@ -3,7 +3,7 @@ import Backdrop from "../Backdrop/Backdrop";
 import { BurgerMenuIcon, Logo } from "../Icons";
 import HeaderMenu from "./HeaderMenu";
 import { AnimatePresence } from "framer-motion";
-
+import React from "react";
 function MobileHeader() {
   const [isMenuOpen, setisMenuOpen] = useState(false);
 
