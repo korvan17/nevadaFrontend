@@ -1,9 +1,19 @@
+"use client";
+
 import Link from "next/link";
 import Buttons from "../Buttons/Buttons";
+import { useState } from "react";
+import { BasicModal } from "@/components";
 
 const lang = ["EN", "UA", "RU"];
 
 function UserControls() {
+  const [isModalOpen, setisModalOpen] = useState(false);
+
+  const toggleModal = () => {
+    setisModalOpen(!isModalOpen);
+  };
+
   return (
     <div
       className="flex flex-wrap flex-col lg:flex-row lg:flex-nowrap 
@@ -29,13 +39,19 @@ function UserControls() {
         ))}
       </ul>
       <div className="flex flex-wrap flex-col lg:flex-row lg:flex-nowrap lg:items-center gap-[8px] items-center md:items-start">
-        <button className="lg:text-captionalGrey text-[16px] text-captionalGreyLight font-semibold	 hover:text-mainWhite transition-all ease-out cursor-pointer">
+        <button
+          onClick={toggleModal}
+          className="lg:text-captionalGrey text-[16px] text-captionalGreyLight font-semibold	 hover:text-mainWhite transition-all ease-out cursor-pointer"
+        >
           Registration
         </button>
-        <Buttons login={true}>
-          <Link href="/dashboard">Login</Link>
+        <Buttons login={true} toggleModal={toggleModal}>
+          Login
         </Buttons>
       </div>
+      {isModalOpen && (
+        <BasicModal modalIsOpen={isModalOpen} closeModal={toggleModal} />
+      )}
     </div>
   );
 }
