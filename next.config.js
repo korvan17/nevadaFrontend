@@ -4,6 +4,6 @@ const nextConfig = {
     unoptimized: true,
   },
 };
-/* global module */
+
 
 module.exports = nextConfig;
