@@ -25,7 +25,7 @@ export default function About() {
             alt="about img"
             width={588}
             height={663}
-            className="block absolute w-auto h-auto rounded-xl top-[79px] left-[20px] bg-slate-600 max-w-[210px]  md:static md:max-w-[322px] md:h-[363px] md:mt-[68px] lg:flex lg:mt-0 lg:max-w-[588px] lg:h-auto "
+            className="block absolute w-auto h-auto rounded-xl top-[79px] left-[20px] bg-slate-600 max-w-[210px] md:static md:max-w-[322px] md:h-[363px] md:mt-[68px] lg:flex lg:mt-0 lg:max-w-[588px] lg:h-auto "
           />
           <Image
             src="/about-2.png"
@@ -52,7 +52,7 @@ export default function About() {
       </svg> */}
 
           {/* bottom-[85px] right-4 */}
-          <div className="relative flex flex-col w-full max-w-[480px] h-[500px]  md:max-w-[322px] lg:max-w-[588px]">
+          <div className="relative flex flex-col w-full max-w-[480px] h-[500px] md:max-w-[322px] lg:max-w-[588px]">
             <Image
               src="/circle-element-left.png"
               alt="circle-element-left"
@@ -109,7 +109,7 @@ export default function About() {
           <path
             d="M163.945 26.8156L163.628 26.022L163.449 25.186C162.262 19.6162 159.958 16.4141 157.063 14.3445C153.933 12.1068 149.08 10.4653 141.677 10.0839C126.579 9.3062 104.773 13.9062 76.4469 22.6476L75.4743 22.9478L74.4612 23.0458C68.2332 23.6484 61.8731 23.1823 56.13 22.613C54.4459 22.446 52.8304 22.2727 51.2618 22.1044C47.1821 21.6666 43.42 21.2629 39.5963 21.0948C29.3124 20.6427 22.0785 22.142 16.45 28.0188C13.2277 31.3833 10.6193 37.4001 10.0945 44.9303C9.57854 52.3328 11.1693 60.1646 15.0457 66.605C18.8181 72.8725 24.8929 78.0929 34.1458 80.5416C43.2542 82.9522 56.12 82.8388 73.6473 77.2433C81.5204 70.5275 91.9889 65.1066 102.348 60.4586C108.96 57.4918 116.308 54.5192 123.317 51.6836C127.898 49.8303 132.335 48.0356 136.327 46.3392C147.192 41.7217 155.516 37.5453 160.467 33.3802C162.867 31.3619 163.79 29.8978 164.107 29.0774C164.3 28.576 164.426 28.0195 163.945 26.8156Z"
             stroke="#1478CE"
-            stroke-width="20"
+            strokeWidth="20"
           />
         </svg> */}
           </div>
