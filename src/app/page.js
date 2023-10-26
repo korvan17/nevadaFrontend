@@ -13,12 +13,12 @@ export default function Home() {
   return (
     <>
       <Header />
-      {/* <Hero /> */}
-      {/* <About /> */}
-      {/* <Services /> */}
+      <Hero />
+      <About />
+      <Services />
       {/* <Pricing /> */}
       <Faq />
-      {/* <Footer /> */}
+      <Footer />
       {/* <ChatWindow /> */}
       {/* <div id="myportal" /> */}
     </>
