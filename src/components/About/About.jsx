@@ -1,4 +1,3 @@
-// ghdjjdk
 import React from "react";
 import Image from "next/image";
 
@@ -84,9 +83,9 @@ export default function About() {
                   regardless of your location, and always remain accessible.{""}
                   <span className="md:invisible md:absolute lg:visible lg:static">
                     We envision our role as facilitating access to online
-                    marketplaces such as Amazon, eBay, Etsy, Lowe's, Walmart,
-                    Wayfair, and more, assisting our customers in achieving
-                    their goals.
+                    marketplaces such as Amazon, eBay, Etsy, Lowe&apos;s,
+                    Walmart, Wayfair, and more, assisting our customers in
+                    achieving their goals.
                   </span>
                 </p>
               </li>
