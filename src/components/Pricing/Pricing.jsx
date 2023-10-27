@@ -236,54 +236,54 @@ export default function Pricing() {
               <tr>
                 <td></td>
                 <td>Receiving</td>
-                <td className="sm:hidden md:inline-block">Inspection</td>
-                <td className="sm:hidden md:block">Forwarding</td>
-                <td className="sm:hidden md:block">Storage</td>
-                <td className="md:hidden">Utilization</td>
-                <td className="md:hidden">Removals</td>
-                <td className="md:hidden">Pictures 3pcs</td>
+                <td className="">Inspection</td>
+                <td className="">Forwarding</td>
+                <td className="">Storage</td>
+                <td className="">Utilization</td>
+                <td className="">Removals</td>
+                <td className="">Pictures 3pcs</td>
               </tr>
             </thead>
             <tbody className="text-right leading-[200%]">
               <tr>
                 <td className="text-left">Box (24x18x12) 49 lbs max</td>
                 <td>$1</td>
-                <td className="sm:hidden">$1</td>
-                <td className="sm:hidden">$5</td>
-                <td className="sm:hidden">$5</td>
-                <td className="md:hidden">$2</td>
-                <td className="md:hidden">$2</td>
-                <td className="md:hidden">$1</td>
+                <td className="">$1</td>
+                <td className="">$5</td>
+                <td className="">$5</td>
+                <td className="">$2</td>
+                <td className="">$2</td>
+                <td className="">$1</td>
               </tr>
               <tr>
                 <td className="text-left">Pallet (48x40x72)</td>
                 <td>$25</td>
-                <td className="sm:hidden">$1</td>
-                <td className="sm:hidden">$25</td>
-                <td className="sm:hidden">$35</td>
-                <td className="md:hidden">$20</td>
-                <td className="md:hidden">$20</td>
-                <td className="md:hidden">$1</td>
+                <td className="">$1</td>
+                <td className="">$25</td>
+                <td className="">$35</td>
+                <td className="">$20</td>
+                <td className="">$20</td>
+                <td className="">$1</td>
               </tr>
               <tr>
                 <td className="text-left">PL Container (20ft)</td>
                 <td>$300</td>
-                <td className="sm:hidden">$100</td>
-                <td className="sm:hidden">-</td>
-                <td className="sm:hidden">-</td>
-                <td className="md:hidden">-</td>
-                <td className="md:hidden">-</td>
-                <td className="md:hidden">-</td>
+                <td className="">$100</td>
+                <td className="">-</td>
+                <td className="">-</td>
+                <td className="">-</td>
+                <td className="">-</td>
+                <td className="">-</td>
               </tr>
               <tr>
                 <td className="text-left">FL Container (40ft)</td>
                 <td>$600</td>
-                <td className="sm:hidden">$150</td>
-                <td className="sm:hidden">-</td>
-                <td className="sm:hidden">-</td>
-                <td className="md:hidden">-</td>
-                <td className="md:hidden">-</td>
-                <td className="md:hidden">-</td>
+                <td className="">$150</td>
+                <td className="">-</td>
+                <td className="">-</td>
+                <td className="">-</td>
+                <td className="">-</td>
+                <td className="">-</td>
               </tr>
             </tbody>
           </table>
