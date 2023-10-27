@@ -8,18 +8,23 @@ import { useEffect, useState } from "react";
 import { FooterLinksLeftSide } from "./FooterLinksLeftSide";
 
 export default function FooterLinks() {
-  const [viewportWidth, setViewportWidth] = useState(window.innerWidth);
-  console.log("viewportWidth :", viewportWidth);
+  const [viewportWidth, setViewportWidth] = useState(
+    typeof window !== "undefined" ? window.innerWidth : 0
+  );
 
   useEffect(() => {
     const handleResize = () => {
       setViewportWidth(window.innerWidth);
     };
 
-    window.addEventListener("resize", handleResize);
+    if (typeof window !== "undefined") {
+      window.addEventListener("resize", handleResize);
+    }
 
     return () => {
-      window.removeEventListener("resize", handleResize);
+      if (typeof window !== "undefined") {
+        window.removeEventListener("resize", handleResize);
+      }
     };
   }, []);
 
