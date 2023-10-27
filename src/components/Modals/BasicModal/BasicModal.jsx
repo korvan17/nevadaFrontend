@@ -11,14 +11,18 @@ export default function BasicModal({
   children,
 }) {
   const defaultContentStyle = {
+    //не менять!!!набрать меня!
     position: "fixed",
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    width: "343px",
-    height: "900px",
+    width: "90%",
+    maxWidth: "343px",
+    height: "90vh",
+    maxHeight: "900px",
     borderRadius: "12px",
-    overflow: "hidden",
+    overflowY: "auto",
+    padding: "8px",
   };
 
   const defaultOverlayStyle = {
