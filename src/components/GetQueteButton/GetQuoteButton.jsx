@@ -12,13 +12,14 @@ export default function GetQuoteButton() {
   // };
 
   const toggleGetQuoteModal = () => {
+    console.log("Toggling modal");
     setShowGetQuoteModal(!showGetQuoteModal);
   };
   return (
     <>
       <button
         onClick={toggleGetQuoteModal}
-        className="fixed shadowButton rounded-[50px] w-[72px] h-[72px] leading-[16px] font-bold text-[16px] text: bg-accentYellow text-[#FAFCF8] hover:bg-accentHoverYellow right-[48px] top-[702px]"
+        className="fixed z-20 shadowButton rounded-[50px] w-[72px] h-[72px] leading-[16px] font-bold text-[16px] text: bg-accentYellow text-[#FAFCF8] hover:bg-accentHoverYellow right-[48px] top-[702px]"
       >
         GET A QUOTE
       </button>
