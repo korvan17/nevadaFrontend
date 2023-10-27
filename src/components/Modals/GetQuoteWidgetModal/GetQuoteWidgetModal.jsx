@@ -26,7 +26,7 @@ export default function GetQuoteWidgetModal() {
         </select>
       </div>
 
-      <div className="mt-[118px]">
+      <div className="mt-[18px]">
         <label
           htmlFor="fullName"
           className="block mb-3 font-semibold ml-2 leading-[24px] text-[#000A11]"
