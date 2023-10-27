@@ -9,16 +9,18 @@ export default function GetQuoteWidgetModal() {
       <div className="mb-4">
         <label
           htmlFor="Business direction"
-          className="block mt-6 ml-[22px] font-medium"
+          className="block mt-6 font-medium ml-2"
         >
-          Business direction
+          Business direction <span className="text-red-500">*</span>
         </label>
 
         <select
           id="Select Your Business"
-          className=" p-2 border rounded w-full h-[60px] "
+          className="w-full p-4 border rounded "
+          required
+          defaultValue="Select Your Business"
         >
-          <option>Select Your Business</option>
+          <option disabled>Select Your Business</option>
           <option>FBA, FBW, Private Label</option>
           <option>Online arbitration</option>
           <option>FBM</option>
@@ -36,7 +38,7 @@ export default function GetQuoteWidgetModal() {
         <input
           type="text"
           id="fullName"
-          className="w-full p-4 border rounded ml-1"
+          className="w-full p-4 border rounded"
           required
         />
       </div>
@@ -51,7 +53,7 @@ export default function GetQuoteWidgetModal() {
         <input
           type="text"
           id="companyName"
-          className="w-full p-4 border rounded ml-1"
+          className="w-full p-4 border rounded"
         />
       </div>
 
@@ -65,7 +67,7 @@ export default function GetQuoteWidgetModal() {
         <input
           type="email"
           id="email"
-          className="w-full p-4 border rounded ml-1"
+          className="w-full p-4 border rounded"
           required
         />
       </div>
@@ -77,11 +79,7 @@ export default function GetQuoteWidgetModal() {
         >
           Company Website
         </label>
-        <input
-          type="url"
-          id="website"
-          className="w-full p-4 border rounded ml-1"
-        />
+        <input type="url" id="website" className="w-full p-4 border rounded" />
       </div>
 
       <div className="mt-4">
@@ -94,7 +92,7 @@ export default function GetQuoteWidgetModal() {
         <textarea
           id="comments"
           rows="5"
-          className="w-full p-4 border rounded ml-1 resize-none"
+          className="w-full p-4 border rounded  resize-none"
         ></textarea>
       </div>
       <div className="flex justify-center">
