@@ -8,8 +8,9 @@ import {
   Pricing,
   Services,
   ChatWindow,
+  Partners,
+  Certificates,
 } from "@/components";
-
 
 export default function Home() {
   return (
@@ -19,6 +20,8 @@ export default function Home() {
       <About />
       <Services />
       <Pricing />
+      <Partners />
+      <Certificates />
       <Faq />
       {/* <Footer /> */}
       {/* <ChatWindow /> */}

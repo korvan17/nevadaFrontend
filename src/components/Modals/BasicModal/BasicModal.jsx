@@ -11,7 +11,7 @@ export default function BasicModal({
 }) {
   const defaultContentStyle = {
     width: "343px",
-    height: "1002px",
+    height: "890px",
     border: "4px solid #F2F2",
     margin: "auto",
     padding: "0px",

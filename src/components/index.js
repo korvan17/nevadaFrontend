@@ -8,3 +8,5 @@ export { default as Hero } from "./Hero/Hero.jsx";
 export { default as ChatButton } from "./ChatButton/ChatButton.jsx";
 export { default as ChatWindow } from "./ChatWindow/ChatWindow.jsx";
 export { default as BasicModal } from "./Modals/BasicModal/BasicModal.jsx";
+export { default as Partners } from "./Partners/Partners.jsx";
+export { default as Certificates } from "./Certificates/Certificates.jsx";
