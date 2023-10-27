@@ -5,7 +5,7 @@ import FooterForm from "./FooterForm/FooterForm";
 
 export default function Footer() {
   return (
-    <div className="flex justify-between py-[48px]">
+    <div className="container flex justify-between py-[48px]">
       <div>
         <a className="cursor-pointer flex gap-[8px] items-center" href="#">
           <Logo />

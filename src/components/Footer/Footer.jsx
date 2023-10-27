@@ -5,11 +5,11 @@ import { FooterBottom } from "./FooterBottom";
 export default function Footer() {
   return (
     <footer className="bg-mainBlack text-mainWhite" id="contacts">
-      <div className="container">
+      {/* <div className="container"> */}
         <FooterHeader />
         <FooterLinks />
         <FooterBottom />
-      </div>
+      {/* </div> */}
     </footer>
   );
 }

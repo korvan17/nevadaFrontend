@@ -3,7 +3,7 @@ import React from "react";
 export default function FooterContacs() {
   return (
     <ul>
-      <li className="mb-[8px]">
+      <li className="mb-[8px] max-w-[231px]">
         <a target="_blank" href="info@ppcwarehouses.com" className="flex flex-wrap">
           <b className="font-semibold	">Write to us at the email address:</b>
           info@ppcwarehouses.com
