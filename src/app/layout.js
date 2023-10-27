@@ -34,6 +34,7 @@ export default function RootLayout({ children }) {
       </Script>
 
       <body className={redHatDisplay.className}>
+        <div id="root"></div>
         {children}
         <noscript
           dangerouslySetInnerHTML={{

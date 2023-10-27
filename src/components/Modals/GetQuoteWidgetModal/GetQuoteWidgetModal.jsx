@@ -16,7 +16,7 @@ export default function GetQuoteWidgetModal() {
 
         <select
           id="Select Your Business"
-          className=" p-2 border rounded w-[280px] h-[60px] ml-[22px]"
+          className=" p-2 border rounded w-full h-[60px] "
         >
           <option>Select Your Business</option>
           <option>FBA, FBW, Private Label</option>
@@ -36,7 +36,7 @@ export default function GetQuoteWidgetModal() {
         <input
           type="text"
           id="fullName"
-          className="w-[327px] p-4 border rounded ml-1"
+          className="w-full p-4 border rounded ml-1"
           required
         />
       </div>
@@ -51,7 +51,7 @@ export default function GetQuoteWidgetModal() {
         <input
           type="text"
           id="companyName"
-          className="w-[327px] p-4 border rounded ml-1"
+          className="w-full p-4 border rounded ml-1"
         />
       </div>
 
@@ -65,7 +65,7 @@ export default function GetQuoteWidgetModal() {
         <input
           type="email"
           id="email"
-          className="w-[327px] p-4 border rounded ml-1"
+          className="w-full p-4 border rounded ml-1"
           required
         />
       </div>
@@ -80,7 +80,7 @@ export default function GetQuoteWidgetModal() {
         <input
           type="url"
           id="website"
-          className="w-[327px] p-4 border rounded ml-1"
+          className="w-full p-4 border rounded ml-1"
         />
       </div>
 
@@ -94,7 +94,7 @@ export default function GetQuoteWidgetModal() {
         <textarea
           id="comments"
           rows="5"
-          className="w-[327px] p-4 border rounded ml-1 resize-none"
+          className="w-full p-4 border rounded ml-1 resize-none"
         ></textarea>
       </div>
       <div className="flex justify-center">
