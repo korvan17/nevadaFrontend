@@ -21,17 +21,24 @@ export default function BasicModal({
 
     window.addEventListener("keydown", handleKeyDown);
 
+    if (modalIsOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "unset";
     };
-  }, [closeModal]);
+  }, [closeModal, modalIsOpen]);
 
   const handleBackdropClick = (e) => {
     if (e.target === e.currentTarget) {
       closeModal();
     }
   };
-
+  //не менять, убью! лучше набрать!
   const modalStyle = {
     backgroundColor: "#ffffff",
     position: "fixed",
@@ -59,4 +66,3 @@ export default function BasicModal({
     modalRoot
   );
 }
-
