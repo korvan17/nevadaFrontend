@@ -1,20 +1,22 @@
 "use client";
+
+import React, { useEffect } from "react";
 import Modal from "react-modal";
-import React from "react";
 
 export default function BasicModal({
   closeModal,
-  modalIsOpen,
-  contentStyle = {}, // Accept custom content styles
-  overlayStyle = {}, // Accept custom overlay styles
+  modalIsOpen = false,
+  contentStyle = {},
+  overlayStyle = {},
   children,
 }) {
   const defaultContentStyle = {
+    position: "fixed",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
     width: "343px",
-    height: "890px",
-    border: "4px solid #F2F2",
-    margin: "auto",
-    padding: "0px",
+    height: "900px",
     borderRadius: "12px",
     overflow: "hidden",
   };
@@ -22,6 +24,19 @@ export default function BasicModal({
   const defaultOverlayStyle = {
     backgroundColor: "rgba(0, 0, 0, 0.75)",
   };
+  Modal.setAppElement("#root");
+  useEffect(() => {
+    if (modalIsOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [modalIsOpen]);
+
   return (
     <Modal
       isOpen={modalIsOpen}
