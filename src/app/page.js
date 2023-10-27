@@ -23,7 +23,7 @@ export default function Home() {
       <Partners />
       <Certificates />
       <Faq />
-      {/* <Footer /> */}
+      <Footer />
       {/* <ChatWindow /> */}
       {/* <div id="myportal" /> */}
     </>
