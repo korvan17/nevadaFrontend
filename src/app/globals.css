@@ -39,6 +39,8 @@ body {
   --foreground-rgb: #000;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: #fff;
+  --swiper-pagination-bottom: 15px;
+  --swiper-pagination-bullet-inactive-color: #aaa1a1;
 }
 
 /* @media (prefers-color-scheme: dark) {
@@ -58,3 +60,5 @@ body {
   transition-property: height;
   transition-duration: 4s;
 }
+
+

@@ -1,4 +1,5 @@
-export default function Buttons({ login, quote, sendMail, children }) {
+import React from "react";
+export default function Buttons({ login, quote, toggleModal, children }) {
   const commonClasses =
     "transition-colors ease-out rounded-[8px] bg-accentYellow hover:bg-accentHoverYellow text-[#FAFCF8] pt-[16px] pb-[16px] text-sm[16px] font-bold text-center";
   const additionalClasses = login
@@ -8,7 +9,10 @@ export default function Buttons({ login, quote, sendMail, children }) {
     : "min-w-[129px] px-[12px]";
 
   return (
-    <button className={`${commonClasses} ${additionalClasses}`}>
+    <button
+      onClick={toggleModal && toggleModal}
+      className={`${commonClasses} ${additionalClasses}`}
+    >
       {children}
     </button>
   );

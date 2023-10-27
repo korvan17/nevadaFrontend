@@ -1,3 +1,4 @@
+import React from "react";
 import {
   About,
   Faq,
@@ -7,6 +8,8 @@ import {
   Pricing,
   Services,
   ChatWindow,
+  Partners,
+  Certificates,
 } from "@/components";
 
 export default function Home() {
@@ -17,8 +20,10 @@ export default function Home() {
       <About />
       <Services />
       <Pricing />
+      <Partners />
+      <Certificates />
       <Faq />
-      <Footer />
+      {/* <Footer /> */}
       {/* <ChatWindow /> */}
       {/* <div id="myportal" /> */}
     </>

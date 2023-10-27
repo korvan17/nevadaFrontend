@@ -1,4 +1,4 @@
-//local imports
+import React from "react";
 import { FooterCommonList } from "./FooterCommonList";
 import { helpLinks } from "./footer-data";
 import { links } from "@/content";

@@ -1,10 +1,11 @@
+import React from "react";
 import ChatButton from "@/components/ChatButton/ChatButton";
 import "./globals.css";
 import { Inter, Red_Hat_Display } from "next/font/google";
 
 import Script from "next/script";
 
-const GTM_ID = "GTM-KB97P7BJ";
+const GTM_ID = "GTM-K8JG7N8N";
 const inter = Inter({ subsets: ["latin"] });
 const redHatDisplay = Red_Hat_Display({ subsets: ["latin"] });
 
@@ -33,6 +34,7 @@ export default function RootLayout({ children }) {
       </Script>
 
       <body className={redHatDisplay.className}>
+        <div id="root"></div>
         {children}
         <noscript
           dangerouslySetInnerHTML={{
