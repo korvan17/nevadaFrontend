@@ -12,7 +12,7 @@ export default function Footer() {
             Prime Preparation Center
           </p>
           <p className="text-[16px] text-captionalGrey leading-[24px] hidden md:block">
-            Warehouse
+            Warehouses
           </p>
         </div>
       </a>
