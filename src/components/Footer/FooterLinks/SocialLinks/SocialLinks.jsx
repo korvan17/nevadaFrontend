@@ -17,11 +17,6 @@ export default function SocialLinks() {
       </li>
       <li>
         <a href="">
-          <WhatsAppIcon />
-        </a>
-      </li>
-      <li>
-        <a href="">
           <TelegramIcon />
         </a>
       </li>
