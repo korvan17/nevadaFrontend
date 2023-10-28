@@ -4,6 +4,7 @@ import "./globals.css";
 import { Inter, Red_Hat_Display } from "next/font/google";
 
 import Script from "next/script";
+import { Footer } from "@/components";
 
 const GTM_ID = "GTM-K8JG7N8N";
 const inter = Inter({ subsets: ["latin"] });
@@ -36,6 +37,7 @@ export default function RootLayout({ children }) {
       <body className={redHatDisplay.className}>
         <div id="modal-root"></div>
         {children}
+        <Footer />
         <noscript
           dangerouslySetInnerHTML={{
             __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=${GTM_ID}" height="0" width="0" style="display: none; visibility: hidden;"></iframe>`,

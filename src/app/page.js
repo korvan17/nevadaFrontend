@@ -2,7 +2,6 @@ import React from "react";
 import {
   About,
   Faq,
-  Footer,
   Header,
   Hero,
   Pricing,
@@ -23,7 +22,7 @@ export default function Home() {
       <Partners />
       <Certificates />
       <Faq />
-      <Footer />
+
       {/* <ChatWindow /> */}
       {/* <div id="myportal" /> */}
     </>
