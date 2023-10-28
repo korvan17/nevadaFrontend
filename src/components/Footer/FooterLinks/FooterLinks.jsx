@@ -7,10 +7,9 @@ import { links } from "@/content";
 import { helpLinks } from "./footer-data";
 
 export default function FooterLinks() {
-  const t = true;
   return (
     <div className="border-y border-white container">
-      <div className="flex flex-row  flex-wrap justify-between md:w-[564px] lg:w-auto mx-auto py-[24px] text-[14px]">
+      <div className="flex flex-row  flex-wrap justify-between md:w-[564px] lg:w-auto mx-auto py-[24px] lg:py-[48px] text-[14px]">
         <div className="mb-[24px]">
           <FooterCommonList data={links} />
         </div>

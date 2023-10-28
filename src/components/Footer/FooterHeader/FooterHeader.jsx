@@ -4,7 +4,7 @@ import FooterForm from "./FooterForm/FooterForm";
 
 export default function Footer() {
   return (
-    <div className="container flex justify-center py-[48px] md:justify-between">
+    <div className="container flex justify-center py-[16px] md:py-[24px] lg:pt-[36px] lg:pb-[48px] md:justify-between items-center">
       <a className="cursor-pointer flex gap-[8px] items-center" href="#">
         <Logo />
         <div>
