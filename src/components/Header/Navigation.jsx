@@ -21,7 +21,7 @@ function Navigation() {
             Prime Preparation Center
           </p>
           <p className="text-[18px] text-captionalGrey leading-[24px]">
-            Warehouse
+            Warehouses
           </p>
         </div>
       </a>
