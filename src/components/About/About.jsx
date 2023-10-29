@@ -10,8 +10,9 @@ export default function About() {
       <div className="container ">
         <div
           className="
-        md:flex md:flex-row-reverse md:justify-between
-        lg:flex lg:flex-row lg:basis-[calc(100%-24px)/2] lg:gap-6 lg:justify-center "
+          flex 
+          md:flex md:flex-row-reverse md:basis-[calc(100%-20px)/2] md:gap-5 md:justify-center
+          lg:flex lg:flex-row lg:basis-[calc(100%-24px)/2] lg:gap-6 lg:justify-center "
         >
           <Image
             src="/about-main.png"
@@ -20,6 +21,7 @@ export default function About() {
             height={663}
             // block
             className="absolute w-auto h-auto rounded-xl 
+            flex
             top-[79px] left-[20px] bg-slate-600 max-w-[210px] 
             md:static md:max-w-[322px] md:h-[363px] md:mt-[68px] 
             lg:flex lg:mt-0 lg:max-w-[588px] lg:h-auto "
@@ -31,12 +33,12 @@ export default function About() {
             width={210}
             height={236}
             // block
-            className=" absolute rounded-xl top-[254px] left-[254px] md:hidden"
+            className="absolute rounded-xl top-[254px] left-[254px] md:hidden"
           />
           <div
             className="
           relative flex flex-col w-full max-w-[480px] h-[500px] 
-          md:max-w-[322px] lg:max-w-[588px]"
+          md lg:max-w-full"
           >
             <Image
               src="/circle-element-left.png"
@@ -44,8 +46,8 @@ export default function About() {
               width={175}
               height={92}
               className="absolute w-auto h-auto 
-              md:-z-10 md:origin-top-left md:transform scale-x-[-1]
-              md:top-[17px] md:left-[51px]
+              md:-z-10  md:transform scale-x-[-1]
+              md:top-[17px] md:left-[-125px]
               lg:top-[63px] lg:left-[-88px] lg:-z-20"
             />
             <h2
