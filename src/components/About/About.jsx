@@ -9,8 +9,8 @@ export default function About() {
     >
       <div className="container ">
         <div
-          className="
-          flex 
+          className="relative
+          flex
           md:flex md:flex-row-reverse md:basis-[calc(100%-20px)/2] md:gap-5 md:justify-center
           lg:flex lg:flex-row lg:basis-[calc(100%-24px)/2] lg:gap-6 lg:justify-center "
         >
@@ -20,9 +20,9 @@ export default function About() {
             width={588}
             height={663}
             // block
-            className="absolute w-auto h-auto rounded-xl 
-            flex
-            top-[79px] left-[20px] bg-slate-600 max-w-[210px] 
+            className="absolute rounded-xl 
+            flex max-w-[210px] h-[236px]
+            top-[60px] left-0 bg-slate-600 
             md:static md:max-w-[322px] md:h-[363px] md:mt-[68px] 
             lg:flex lg:mt-0 lg:max-w-[588px] lg:h-auto "
           />
@@ -33,31 +33,35 @@ export default function About() {
             width={210}
             height={236}
             // block
-            className="absolute rounded-xl top-[254px] left-[254px] md:hidden"
+            className="absolute rounded-xl flex
+            max-w-[210px] h-[236px]
+            bottom-[20px] right-0 md:hidden"
           />
           <div
             className="
-          relative flex flex-col w-full max-w-[480px] h-[500px] 
-          md lg:max-w-full"
+            relative flex flex-col w-full max-w-[480px] h-[500px] 
+            md lg:max-w-full"
           >
             <Image
               src="/circle-element-left.png"
               alt="circle-element-left"
               width={175}
               height={92}
-              className="absolute w-auto h-auto 
-              md:-z-10  md:transform scale-x-[-1]
-              md:top-[17px] md:left-[-125px]
-              lg:top-[63px] lg:left-[-88px] lg:-z-20"
+              className="absolute w-auto h-auto
+              opacity-0 
+              md:-z-10 md:top-origin-left md:block
+              md:top-[17px] md:left-[-125px] md:transform scale-x-[-1]
+              
+              lg:transform-none lg:top-[63px] lg:left-[-88px] lg:-z-20"
             />
             <h2
               className="flex text-4xl leading-none mb-6 justify-center 
-            md:mb-8 lg:text-5xl font-bold not-italic md:justify-start lg:pt-[135px]"
+              md:mb-8 lg:text-5xl font-bold not-italic md:justify-start lg:pt-[135px]"
             >
               About our story
             </h2>
             <ul className="md:text-base">
-              <li className="flex flex-row-reverse md:contents lg:contents">
+              <li className="flex flex-row-reverse items-start gap-x-[28px] md:contents lg:contents">
                 <p className="max-w-[210px] md:contents lg:contents">
                   Our story is a journey fueled by a passion for e-commerce and
                   a commitment to simplifying the process of order preparation
@@ -70,15 +74,15 @@ export default function About() {
                 </p>
               </li>
               <li
-                className="collapse absolute 
-              md:static md:visible md:block md:mt-6
-              lg:mb-6 lg:max-w-[588px]"
+                className="absolute 
+                md:static md:visible md:block md:mt-6
+                lg:mb-6 lg:max-w-[588px]"
               >
-                <p>
+                <p className="visible max-w-[210px] line-clamp-2 md:max-w-full md:line-clamp-none">
                   Right from the outset, our primary goal was to provide the
                   best service, ensure streamlined logistics in e-commerce,
                   regardless of your location, and always remain accessible.{""}
-                  <span className="md:invisible md:absolute lg:visible lg:static">
+                  <span className="collapse md:invisible md:absolute lg:visible lg:static">
                     We envision our role as facilitating access to online
                     marketplaces such as Amazon, eBay, Etsy, Lowe&apos;s,
                     Walmart, Wayfair, and more, assisting our customers in
@@ -104,8 +108,10 @@ export default function About() {
               alt="circle-element-right"
               width={175}
               height={92}
-              className="absolute w-auto h-auto invisible 
-            lg:right-[-175px] lg:bottom-[-61px] lg:visible"
+              className="absolute w-auto h-auto 
+              origin-top-left rotate-90 transform scale-y-[-1]
+              md:invisible bottom-[56px] right-[-110px] -z-10
+              lg:right-[-175px] lg:bottom-[-61px] lg:visible lg:transform-none"
             />
           </div>
         </div>
