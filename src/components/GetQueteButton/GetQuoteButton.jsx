@@ -21,9 +21,9 @@ export default function GetQuoteButton() {
 
       {showGetQuoteModal && (
         <BasicModal
-          // contentStyle={{ width: "120px", height: "120px" }}
           modalIsOpen={showGetQuoteModal}
           closeModal={toggleGetQuoteModal}
+          overflowY="auto"
         >
           <GetQuoteWidgetModal
             modalIsOpen={showGetQuoteModal}

@@ -6,6 +6,13 @@ export default function BasicModal({
   closeModal,
   modalIsOpen = false,
   children,
+  backgroundColor = "#ffffff",
+  closeButtonColor = "rgba(236, 236, 236, 1)",
+  closeButtonBackgroundColor = "black",
+  width = "90vw",
+  height = "90vh",
+  maxWidth = "343px",
+  maxHeight = "900px",
 }) {
   const [modalRoot, setModalRoot] = useState(null);
 
@@ -38,22 +45,21 @@ export default function BasicModal({
       closeModal();
     }
   };
-  //не менять, убью! лучше набрать!
+
   const modalStyle = {
-    backgroundColor: "#ffffff",
+    backgroundColor,
     position: "fixed",
     top: "50%",
     left: "50%",
+    width,
+    height,
+    maxHeight,
+    maxWidth,
     transform: "translate(-50%, -50%)",
-    width: "90%",
-    maxWidth: "343px",
-    height: "90vh",
-    maxHeight: "900px",
     borderRadius: "12px",
     overflowY: "auto",
     padding: "8px",
   };
-
   if (!modalIsOpen || !modalRoot) return null;
 
   return createPortal(
@@ -61,7 +67,40 @@ export default function BasicModal({
       className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-75 z-40"
       onClick={handleBackdropClick}
     >
-      <div style={modalStyle}>{children}</div>
+      <div style={modalStyle}>
+        <button
+          onClick={closeModal}
+          style={{
+            position: "absolute",
+            top: "10px",
+            right: "10px",
+            background: "none",
+            border: "none",
+            cursor: "pointer",
+            backgroundColor: closeButtonBackgroundColor,
+            borderRadius: "50%",
+            width: "24px",
+            height: "24px",
+          }}
+        >
+          <svg
+            className="absolute top-[5px] right-[5px]"
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+          >
+            <path
+              d="M18 6L6 18M6 6l12 12"
+              stroke={closeButtonColor}
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </button>
+        {children}
+      </div>
     </div>,
     modalRoot
   );

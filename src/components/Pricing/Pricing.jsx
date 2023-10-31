@@ -426,6 +426,7 @@ export default function Pricing() {
 						</li>
 					</ul>
 				</div>
+				
 			</div>
 		</section>
 	);
