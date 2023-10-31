@@ -4,16 +4,21 @@ import Link from "next/link";
 import Buttons from "../Buttons/Buttons";
 import { useState } from "react";
 import { BasicModal } from "@/components";
+import LoginModal from "@/components/Modals/LoginModal/LoginModal";
+import RegistrationModal from "@/components/Modals/RegistrationModal/RegistrationModal";
 
 const lang = ["EN", "UA", "RU"];
 
 function UserControls() {
-  const [isModalOpen, setisModalOpen] = useState(false);
+  const [showModalLogin, setShowModalLogin] = useState(false);
+  const [showModalRegistration, setShowModalRegistration] = useState(false);
 
-  const toggleModal = () => {
-    setisModalOpen(!isModalOpen);
+  const toggleModalLogin = () => {
+    setShowModalLogin(!showModalLogin);
   };
-
+  const toggleModalRegistration = () => {
+    setShowModalRegistration(!showModalRegistration);
+  };
   return (
     <div
       className="flex flex-wrap flex-col lg:flex-row lg:flex-nowrap 
@@ -40,17 +45,43 @@ function UserControls() {
       </ul>
       <div className="flex flex-wrap flex-col lg:flex-row lg:flex-nowrap lg:items-center gap-[8px] items-center md:items-start">
         <button
-          onClick={toggleModal}
+          onClick={toggleModalRegistration}
           className="lg:text-captionalGrey text-[16px] text-captionalGreyLight font-semibold	 hover:text-mainWhite transition-all ease-out cursor-pointer"
         >
           Registration
         </button>
-        <Buttons login={true} toggleModal={toggleModal}>
+        <Buttons login={true} toggleModal={toggleModalLogin}>
           Login
         </Buttons>
       </div>
-      {isModalOpen && (
-        <BasicModal modalIsOpen={isModalOpen} closeModal={toggleModal} />
+      {showModalLogin && (
+        <BasicModal
+          modalIsOpen={showModalLogin}
+          closeModal={toggleModalLogin}
+          backgroundColor="#021827"
+          closeButtonColor="rgba(2, 24, 39, 1)"
+          closeButtonBackgroundColor="rgba(250, 252, 248, 1)"
+        >
+          <LoginModal
+            modalIsOpen={showModalLogin}
+            closeModal={toggleModalLogin}
+          />
+        </BasicModal>
+      )}
+      {showModalRegistration && (
+        <BasicModal
+          modalIsOpen={showModalRegistration}
+          closeModal={toggleModalRegistration}
+          // width=""
+          // height=""
+          // maxWidth=""
+          // maxHeight=""
+        >
+          <RegistrationModal
+            modalIsOpen={showModalRegistration}
+            closeModal={toggleModalRegistration}
+          />
+        </BasicModal>
       )}
     </div>
   );
