@@ -22,8 +22,7 @@ export default function Pricing() {
             className="absolute lg:hidden right-[66px] top-[14px] -z-20"
           />
           <Image
-            src="/ellips-pricing.png 
-			"
+            src="/ellips-pricing.png"
             alt="Ellipse Pricing"
             height={129}
             width={65}

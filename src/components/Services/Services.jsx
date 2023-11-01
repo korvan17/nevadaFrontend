@@ -11,16 +11,17 @@ export default function Services() {
         <h2 className="mb-[48px] text-[36px] lg:text-[48px] font-bold text-center md:text-left">
           Our Services
         </h2>
-
+        <div className="relative">
+          <Image
+            src="/ellipse-services.png"
+            width={206}
+            height={104}
+            className="absolute hidden md:block md:right-[60px] md:bottom-[-30px]  lg:right-[188px] lg:top-[-20] -z-20"
+          />
+        </div>
         <div className="block md:hidden lg:hidden">
           <SwiperServices />
         </div>
-        <Image 
-        src="/ellipse-services.png"
-        width={206}
-        height={104}
-        className="hidden md:block md:right-[300px] md:top-[110px] absolute lg:right-[537px] lg:top-[160px] -z-20"
-        />
 
         <ul className="flex-wrap gap-[20px] lg:gap-[24px] hidden md:flex ">
           <li className="  md:basis-[calc((100%-20px)/2)] lg:basis-[calc((100%-72px)/4)] p-6 rounded-lg bg-darkBlue text-captionalWhite text-center overflow-x-auto">
@@ -69,8 +70,9 @@ export default function Services() {
               Retail Arbitrage
             </h3>
             <p className="text-base">
-            Is a business strategy where individuals or businesses purchase products, typically from physical retail stores, at a lower price than they can sell them for on online marketplaces like Amazon.
-
+              Is a business strategy where individuals or businesses purchase
+              products, typically from physical retail stores, at a lower price
+              than they can sell them for on online marketplaces like Amazon.
             </p>
           </li>
           <li className=" md:basis-[calc((100%-20px)/2)] lg:basis-[calc((100%-72px)/4)] p-6 rounded-lg bg-darkBlue text-captionalWhite text-center overflow-x-auto">
@@ -93,10 +95,6 @@ export default function Services() {
     </section>
   );
 }
-
-
-
-
 
 // <Swiper
 // slidesPerView={1}
