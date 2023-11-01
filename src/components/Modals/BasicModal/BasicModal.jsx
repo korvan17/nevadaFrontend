@@ -10,11 +10,34 @@ export default function BasicModal({
   closeButtonColor = "rgba(236, 236, 236, 1)",
   closeButtonBackgroundColor = "black",
   width = "90vw",
+  widthSm,
+  widthMd,
+  widthLg,
   height = "90vh",
-  maxWidth = "343px",
+  heightSm,
+  heightMd,
+  heightLg,
+  maxWidth,
   maxHeight = "900px",
 }) {
+  //не трогать, уб`т!
+  const defaultModalStyle = {
+    backgroundColor,
+    position: "fixed",
+    top: "50%",
+    left: "50%",
+    width,
+    height,
+    maxHeight,
+    maxWidth,
+    transform: "translate(-50%, -50%)",
+    borderRadius: "12px",
+    overflowY: "auto",
+    padding: "8px",
+  };
+
   const [modalRoot, setModalRoot] = useState(null);
+  const [modalStyle, setModalStyle] = useState(defaultModalStyle);
 
   useEffect(() => {
     const currentModalRoot = document.querySelector("#modal-root");
@@ -40,26 +63,42 @@ export default function BasicModal({
     };
   }, [closeModal, modalIsOpen]);
 
+  useEffect(() => {
+    const updateModalSize = () => {
+      const windowWidth = window.innerWidth;
+      let newWidth, newHeight;
+      if (windowWidth < 768) {
+        newWidth = widthSm;
+        newHeight = heightSm;
+      } else if (windowWidth >= 768 && windowWidth < 1440) {
+        newWidth = widthMd;
+        newHeight = heightMd;
+      } else {
+        newWidth = widthLg;
+        newHeight = heightLg;
+      }
+
+      setModalStyle((prevStyle) => ({
+        ...prevStyle,
+        width: newWidth || prevStyle.width,
+        height: newHeight || prevStyle.height,
+      }));
+    };
+
+    window.addEventListener("resize", updateModalSize);
+    updateModalSize();
+
+    return () => {
+      window.removeEventListener("resize", updateModalSize);
+    };
+  }, [widthSm, heightSm, widthMd, heightMd, widthLg, heightLg]);
+
   const handleBackdropClick = (e) => {
     if (e.target === e.currentTarget) {
       closeModal();
     }
   };
 
-  const modalStyle = {
-    backgroundColor,
-    position: "fixed",
-    top: "50%",
-    left: "50%",
-    width,
-    height,
-    maxHeight,
-    maxWidth,
-    transform: "translate(-50%, -50%)",
-    borderRadius: "12px",
-    overflowY: "auto",
-    padding: "8px",
-  };
   if (!modalIsOpen || !modalRoot) return null;
 
   return createPortal(
@@ -67,7 +106,7 @@ export default function BasicModal({
       className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-75 z-40"
       onClick={handleBackdropClick}
     >
-      <div style={modalStyle}>
+      <div className="" style={modalStyle}>
         <button
           onClick={closeModal}
           style={{

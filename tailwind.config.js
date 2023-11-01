@@ -7,6 +7,11 @@ module.exports = {
   ],
 
   theme: {
+    screens: {
+      sm: "480px", // mobile
+      md: "768px", // tablet
+      lg: "1440px", // desktop
+    },
     extend: {
       colors: {
         mainBlack: "#000A11",
@@ -40,11 +45,6 @@ module.exports = {
       },
       boxShadowColor: {
         shadowButton: "from 0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
-      },
-      screens: {
-        sm: "480px", // mobile
-        md: "768px", // tablet
-        lg: "1440px", // desktop
       },
 
       backgroundImage: {

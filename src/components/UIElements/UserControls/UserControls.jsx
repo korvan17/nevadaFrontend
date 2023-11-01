@@ -56,6 +56,12 @@ function UserControls() {
       </div>
       {showModalLogin && (
         <BasicModal
+          widthLg="497px"
+          heightLg="627px"
+          widthMd="497px"
+          heightMd="627px"
+          widthSm="360px"
+          heightSm="498px"
           modalIsOpen={showModalLogin}
           closeModal={toggleModalLogin}
           backgroundColor="#021827"
@@ -72,10 +78,12 @@ function UserControls() {
         <BasicModal
           modalIsOpen={showModalRegistration}
           closeModal={toggleModalRegistration}
-          // width=""
-          // height=""
-          // maxWidth=""
-          // maxHeight=""
+          widthLg="771px"
+          heightLg="740px"
+          widthMd="723px"
+          heightMd="887px"
+          widthSm="343px"
+          heightSm="892px"
         >
           <RegistrationModal
             modalIsOpen={showModalRegistration}
