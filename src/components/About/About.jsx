@@ -3,10 +3,7 @@ import Image from "next/image";
 
 export default function About() {
   return (
-    <section
-      id="about"
-      className="relative -z-10 py-mobile md:pb-0 lg:pt-desktop"
-    >
+    <section id="about" className="relative -z-10 pt-20 md:pb-0 lg:pt-desktop">
       <div className="container ">
         <div
           className="relative flex
@@ -37,7 +34,10 @@ export default function About() {
           />
           <div
             className="
-            relative flex flex-col w-full max-w-[480px] h-[500px] 
+            relative flex flex-col w-full max-w-[480px] 
+            h-[500px]
+            md:h-0
+            lg:h-[500px] 
             lg:max-w-full"
           >
             <Image
@@ -109,7 +109,7 @@ export default function About() {
               height={92}
               className="absolute w-auto h-auto 
               origin-top-left rotate-90 transform scale-y-[-1]
-              md:invisible bottom-[56px] right-[-110px] -z-10
+              md:invisible bottom-[56px] right-[-100px] -z-10
               lg:right-[-175px] lg:bottom-[-61px] lg:visible lg:transform-none"
             />
           </div>
