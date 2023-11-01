@@ -27,7 +27,7 @@ export default function Hero() {
       <Image
         className="hidden md:block lg:hidden absolute md:top-[557px] md:right-[0px] md:-z-30 w-auto h-auto"
         src="/ellipse-tab-right.png"
-        alt="Ellipse Right"
+        alt="Ellipse-Right"
         width={84}
         height={20}
         priority
@@ -35,7 +35,7 @@ export default function Hero() {
       <Image
         className="hidden md:block lg:hidden  absolute top-[177px] left-[0px] md:-z-30 w-auto h-auto"
         src="/ellipse-tab-left.png"
-        alt="Ellipsetab Left"
+        alt="Ellipsetab-Left"
         width={154}
         height={224}
         priority

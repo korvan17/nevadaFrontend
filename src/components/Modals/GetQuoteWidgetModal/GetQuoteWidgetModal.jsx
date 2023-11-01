@@ -1,38 +1,100 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
+export default function GetQuoteWidgetModal({ closeModal }) {
+  const [businessDirection, setBusinessDirection] = useState(
+    sessionStorage.getItem("businessDirection") || ""
+  );
+  const [fullName, setFullName] = useState(
+    sessionStorage.getItem("fullName") || ""
+  );
+  const [email, setEmail] = useState(sessionStorage.getItem("email") || "");
 
-  const formData = {
-    businessDirection: document.getElementById("Select Your Business").value,
-    fullName: document.getElementById("fullName").value,
-    companyName: document.getElementById("companyName").value,
-    email: document.getElementById("email").value,
-    website: document.getElementById("website").value,
-    comments: document.getElementById("comments").value,
+  const [phone, setPhone] = useState(sessionStorage.getItem("phone") || "");
+  const [companyName, setCompanyName] = useState(
+    sessionStorage.getItem("companyName") || ""
+  );
+  const [companyWebsite, setCompanyWebsite] = useState(
+    sessionStorage.getItem("companyWebsite") || "https://"
+  );
+  const [message, setMessage] = useState(
+    sessionStorage.getItem("message") || ""
+  );
+
+  const [isButtonActive, setIsButtonActive] = useState(false);
+
+  useEffect(() => {
+    if (businessDirection && fullName && email && phone) {
+      setIsButtonActive(true);
+    } else {
+      setIsButtonActive(false);
+    }
+  }, [businessDirection, fullName, email, phone]);
+
+  useEffect(() => {
+    sessionStorage.setItem("businessDirection", businessDirection);
+    sessionStorage.setItem("fullName", fullName);
+    sessionStorage.setItem("email", email);
+    sessionStorage.setItem("phone", phone);
+    sessionStorage.setItem("companyName", companyName);
+    sessionStorage.setItem("companyWebsite", companyWebsite);
+    sessionStorage.setItem("message", message);
+  }, [
+    businessDirection,
+    fullName,
+    email,
+    phone,
+    companyName,
+    companyWebsite,
+    message,
+  ]);
+  const clearFields = () => {
+    setBusinessDirection("");
+    setFullName("");
+    setEmail("");
+    setPhone("");
+    setCompanyName("");
+    setCompanyWebsite("");
+    setMessage("");
+    sessionStorage.removeItem("businessDirection");
+    sessionStorage.removeItem("fullName");
+    sessionStorage.removeItem("email");
+    sessionStorage.removeItem("phone");
+    sessionStorage.removeItem("companyName");
+    sessionStorage.removeItem("companyWebsite");
+    sessionStorage.removeItem("message");
   };
 
-  try {
-    const response = await fetch("/api/submitForm", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    });
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
+    const data = {
+      businessDirection,
+      fullName,
+      email,
+      phone,
+      companyName,
+      companyWebsite,
+      message,
+    };
+
+    try {
+      const response = await fetch("/api/contacts", {
+        method: "POST",
+        body: JSON.stringify(data),
+      });
+      if (response.ok) {
+        clearFields();
+        closeModal();
+      } else {
+        const text = await response.text();
+        throw new Error(`Failed to fetch: ${text}`);
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error.message);
     }
+  };
 
-    const data = await response.json();
-  } catch (error) {
-    console.error("There was a problem with the fetch operation:", error);
-  }
-};
-
-export default function GetQuoteWidgetModal() {
   return (
     <div>
       <h2 className="text-center text-[24px] font-semibold mt-6 text-[#000A11]">
@@ -41,22 +103,27 @@ export default function GetQuoteWidgetModal() {
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <label
-            htmlFor="Business direction"
+            htmlFor="businessDirection"
             className="block mt-6 font-medium ml-2"
           >
             Business direction <span className="text-red-500">*</span>
           </label>
           <select
-            id="Select Your Business"
+            id="businessDirection"
             className="w-full p-4 border rounded"
+            value={businessDirection}
+            onChange={(e) => setBusinessDirection(e.target.value)}
             required
-            defaultValue="Select Your Business"
           >
-            <option disabled>Select Your Business</option>
-            <option>FBA, FBW, Private Label</option>
-            <option>Online arbitration</option>
-            <option>FBM</option>
-            <option>Wholesale</option>
+            <option value="" disabled>
+              Select Your Business
+            </option>
+            <option value="FBA, FBW, Private Label">
+              FBA, FBW, Private Label
+            </option>
+            <option value="Online arbitration">Online arbitration</option>
+            <option value="FBM">FBM</option>
+            <option value="Wholesale">Wholesale</option>
           </select>
         </div>
         <div className="mt-[18px]">
@@ -70,10 +137,11 @@ export default function GetQuoteWidgetModal() {
             type="text"
             id="fullName"
             className="w-full p-4 border rounded"
+            value={fullName}
+            onChange={(e) => setFullName(e.target.value)}
             required
           />
         </div>
-
         <div className="mt-4">
           <label
             htmlFor="email"
@@ -85,6 +153,8 @@ export default function GetQuoteWidgetModal() {
             type="email"
             id="email"
             className="w-full p-4 border rounded"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             required
           />
         </div>
@@ -99,6 +169,8 @@ export default function GetQuoteWidgetModal() {
             type="tel"
             id="phone"
             className="w-full p-4 border rounded"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
             required
           />
         </div>
@@ -109,7 +181,13 @@ export default function GetQuoteWidgetModal() {
           >
             Company Name
           </label>
-          <input type="text" id="companyName" className=" p-4 border rounded" />
+          <input
+            type="text"
+            id="companyName"
+            className="w-full p-4 border rounded"
+            value={companyName}
+            onChange={(e) => setCompanyName(e.target.value)}
+          />
         </div>
         <div className="mt-4">
           <label
@@ -119,9 +197,11 @@ export default function GetQuoteWidgetModal() {
             Company Website
           </label>
           <input
-            type="url"
+            type="text"
             id="website"
             className="w-full p-4 border rounded"
+            value={companyWebsite}
+            onChange={(e) => setCompanyWebsite(e.target.value)}
           />
         </div>
         <div className="mt-4">
@@ -132,15 +212,22 @@ export default function GetQuoteWidgetModal() {
             Comments
           </label>
           <textarea
-            id="comments"
+            id="message"
             rows="5"
-            className="w-full p-4 border rounded  resize-none"
+            className="w-full p-4 border rounded resize-none"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
           ></textarea>
         </div>
         <div className="flex justify-center">
           <button
             type="submit"
-            className="bg-accentYellow text-white px-4 py-2 rounded hover:bg-accentHoverYellow ml-[auto] mr-[auto] font-bold text-[16px] w-[179px] h-[48px]"
+            className={`${
+              isButtonActive
+                ? "bg-accentYellow hover:bg-accentHoverYellow"
+                : "bg-gray-400 cursor-not-allowed"
+            } text-white px-4 py-2 rounded ml-[auto] mr-[auto] font-bold text-[16px] w-[179px] h-[48px]`}
+            disabled={!isButtonActive}
           >
             Submit
           </button>

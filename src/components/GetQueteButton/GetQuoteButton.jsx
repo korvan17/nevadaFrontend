@@ -33,7 +33,7 @@ export default function GetQuoteButton() {
           closeModal={toggleGetQuoteModal}
           overflowY="auto"
           widthLg="771px"
-          heightLg="740px"
+          heightLg="780px"
           widthMd="723px"
           heightMd="887px"
           widthSm="343px"
