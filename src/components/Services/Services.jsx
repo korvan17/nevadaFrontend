@@ -6,7 +6,7 @@ import "swiper/css";
 
 export default function Services() {
   return (
-    <section className="py-mobile md:pb-0 lg:pt-desktop relative" id="services">
+    <section className="py-mobile md:pb-0 lg:pt-desktop" id="services">
       <div className="container">
         <h2 className="mb-[48px] text-[36px] lg:text-[48px] font-bold text-center md:text-left">
           Our Services
