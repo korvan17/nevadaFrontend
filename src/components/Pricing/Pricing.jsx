@@ -1,15 +1,21 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
-import SwiperCore, { Pagination, Navigation } from "swiper";
-import { Swiper, SwiperSlide } from "swiper/react";
+
 import "swiper/css";
 import { Buttons } from "../UIElements";
 import SwiperPrice from "./SwiperPrice";
-
-// SwiperCore.use([Pagination, Navigation]);
+import { BasicModal } from "../index.js";
+import PricingGetQuoteModal from "../Modals/PricingGetQuoteModal/PricingGetQuoteModal";
 
 export default function Pricing() {
+  const [showModalPricing, setShowModalPricing] = useState(false);
+  const [selectedTitle, setSelectedTitle] = useState(null);
+
+  const toggleModalPricing = () => {
+    setShowModalPricing(!showModalPricing);
+  };
+
   return (
     <section className="py-mobile md:pb-0 lg:pt-desktop" id="pricing">
       <div className="container">
@@ -63,7 +69,14 @@ export default function Pricing() {
               </li>
             </ul>
 
-            <Buttons>Get a Quote</Buttons>
+            <Buttons
+              toggleModal={() => {
+                setSelectedTitle("FBA, FBW, Private Label");
+                toggleModalPricing();
+              }}
+            >
+              Get a Quote
+            </Buttons>
           </li>
           <li className="md:basis-[calc((100%-20px)/2)] lg:basis-[calc((100%-72px)/4)] mb-4 sm:mb-4 md:mb-0 py-4 pl-4 pr-9 rounded-lg bg-captionalWhite text-captionalWhite overflow-x-auto">
             <h3 className="mt-[8px] mb-[12px] text-lg font-bold text-mainBlack">
@@ -87,7 +100,14 @@ export default function Pricing() {
               </li>
             </ul>
 
-            <Buttons>Get a Quote</Buttons>
+            <Buttons
+              toggleModal={() => {
+                setSelectedTitle("Online arbitration");
+                toggleModalPricing();
+              }}
+            >
+              Get a Quote
+            </Buttons>
           </li>
           <li className="md:basis-[calc((100%-20px)/2)] lg:basis-[calc((100%-72px)/4)] mb-4 sm:mb-4 md:mb-0 py-4 pl-4 pr-9 rounded-lg bg-darkBlue text-captionalWhite overflow-x-auto">
             <h3 className="mt-[8px] mb-[12px] text-lg font-bold">Wholesale</h3>
@@ -107,7 +127,14 @@ export default function Pricing() {
               </li>
             </ul>
 
-            <Buttons>Get a Quote</Buttons>
+            <Buttons
+              toggleModal={() => {
+                setSelectedTitle("Wholesale");
+                toggleModalPricing();
+              }}
+            >
+              Get a Quote
+            </Buttons>
           </li>
           <li className="md:basis-[calc((100%-20px)/2)] lg:basis-[calc((100%-72px)/4)] mb-4 sm:mb-4 md:mb-0 py-4 pl-4 pr-9 rounded-lg bg-captionalWhite text-captionalWhite overflow-x-auto">
             <h3 className="mt-[8px] mb-[12px] text-lg font-bold text-mainBlack">
@@ -131,7 +158,14 @@ export default function Pricing() {
               </li>
             </ul>
 
-            <Buttons>Get a Quote</Buttons>
+            <Buttons
+              toggleModal={() => {
+                setSelectedTitle("FBM");
+                toggleModalPricing();
+              }}
+            >
+              Get a Quote
+            </Buttons>
           </li>
         </ul>
         <p className="sm:mb-4 md:w-[640px] md:text-base lg:w-[741px] lg:text-base text-xs text-captionalGreyLight">
@@ -275,6 +309,24 @@ export default function Pricing() {
           </ul>
         </div>
       </div>
+      {showModalPricing && (
+        <BasicModal
+          modalIsOpen={showModalPricing}
+          closeModal={toggleModalPricing}
+          widthLg="771px"
+          heightLg="740px"
+          widthMd="723px"
+          heightMd="887px"
+          widthSm="343px"
+          heightSm="892px"
+        >
+          <PricingGetQuoteModal
+            modalIsOpen={showModalPricing}
+            closeModal={toggleModalPricing}
+            selectedTitle={selectedTitle}
+          />
+        </BasicModal>
+      )}
     </section>
   );
 }
