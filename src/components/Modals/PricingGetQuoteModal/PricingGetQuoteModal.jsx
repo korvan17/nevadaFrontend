@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-export default function RegistrationModal() {
+export default function PricingGetQuoteModal({ selectedTitle }) {
   return (
     <div>
       <h2 className="text-center text-[24px] font-semibold mt-6 text-[#000A11]">
@@ -13,19 +13,10 @@ export default function RegistrationModal() {
         >
           Business direction <span className="text-red-500">*</span>
         </label>
-
-        <select
-          id="Select Your Business"
-          className="w-full p-4 border rounded "
-          required
-          defaultValue="Select Your Business"
-        >
-          <option disabled>Select Your Business</option>
-          <option>FBA, FBW, Private Label</option>
-          <option>Online arbitration</option>
-          <option>FBM</option>
-          <option>Wholesale</option>
-        </select>
+        <div>
+          <h3 className="text-red-600 font-extrabold">{selectedTitle}</h3>
+        </div>
+        {/*   чтоб єтот див тоже уходил при отправки формі набекенд selectedTitle пропсом что надо сделать? */}
       </div>
 
       <div className="mt-[18px]">
