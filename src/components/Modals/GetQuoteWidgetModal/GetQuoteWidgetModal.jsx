@@ -73,19 +73,7 @@ export default function GetQuoteWidgetModal() {
             required
           />
         </div>
-        <div className="mt-4">
-          <label
-            htmlFor="companyName"
-            className="block mb-3 font-semibold ml-2 leading-[24px] text-[#000A11]"
-          >
-            Company Name
-          </label>
-          <input
-            type="text"
-            id="companyName"
-            className="w-full p-4 border rounded"
-          />
-        </div>
+
         <div className="mt-4">
           <label
             htmlFor="email"
@@ -99,6 +87,29 @@ export default function GetQuoteWidgetModal() {
             className="w-full p-4 border rounded"
             required
           />
+        </div>
+        <div className="mt-4">
+          <label
+            htmlFor="phone"
+            className="block mb-3 font-semibold ml-2 leading-[24px] text-[#000A11]"
+          >
+            Phone Number <span className="text-red-500">*</span>
+          </label>
+          <input
+            type="tel"
+            id="phone"
+            className="w-full p-4 border rounded"
+            required
+          />
+        </div>
+        <div className="mt-4">
+          <label
+            htmlFor="companyName"
+            className="block mb-3 font-semibold ml-2 leading-[24px] text-[#000A11]"
+          >
+            Company Name
+          </label>
+          <input type="text" id="companyName" className=" p-4 border rounded" />
         </div>
         <div className="mt-4">
           <label

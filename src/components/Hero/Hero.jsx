@@ -89,11 +89,11 @@ export default function Hero() {
               priority
             />
             <Image
-              className="hidden lg:block lg:absolute top-[467px] right-[595px] -z-30 h-auto"
+              className="hidden lg:block lg:absolute top-[478px] right-[572px] -z-30 h-auto"
               src="/ellipse7.png"
               alt="Ellipse7"
-              width={134}
-              height={226}
+              width={104}
+              height={206}
               priority
             />
           </div>

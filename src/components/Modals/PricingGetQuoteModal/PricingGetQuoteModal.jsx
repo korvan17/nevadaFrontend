@@ -42,21 +42,6 @@ export default function RegistrationModal() {
           required
         />
       </div>
-
-      <div className="mt-4">
-        <label
-          htmlFor="companyName"
-          className="block mb-3 font-semibold ml-2 leading-[24px] text-[#000A11]"
-        >
-          Company Name
-        </label>
-        <input
-          type="text"
-          id="companyName"
-          className="w-full p-4 border rounded"
-        />
-      </div>
-
       <div className="mt-4">
         <label
           htmlFor="email"
@@ -74,8 +59,40 @@ export default function RegistrationModal() {
 
       <div className="mt-4">
         <label
-          htmlFor="website"
+          htmlFor="phone"
           className="block mb-3 font-semibold ml-2 leading-[24px] text-[#000A11]"
+        >
+          Phone Number <span className="text-red-500">*</span>
+        </label>
+        <input
+          type="tel"
+          id="phone"
+          className="w-full p-4 border rounded"
+          required
+        />
+      </div>
+      <div className="mt-4">
+        <label
+          htmlFor="companyName"
+          className="block mb-3 font-semibold ml-2 leading-[24px]
+          
+           text-[#000A11]"
+        >
+          Company Name
+        </label>
+        <input
+          type="text"
+          id="companyName"
+          className="w-full p-4 border rounded"
+        />
+      </div>
+
+      <div className="mt-4">
+        <label
+          htmlFor="website"
+          className="block mb-3 font-semibold ml-2 
+          
+          leading-[24px] text-[#000A11]"
         >
           Company Website
         </label>

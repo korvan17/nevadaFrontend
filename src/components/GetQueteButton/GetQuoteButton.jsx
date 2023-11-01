@@ -14,7 +14,15 @@ export default function GetQuoteButton() {
     <>
       <button
         onClick={toggleGetQuoteModal}
-        className="fixed z-20 shadowButton rounded-[50px] w-[72px] h-[72px] leading-[16px] font-bold text-[16px] text: bg-accentYellow text-[#FAFCF8] hover:bg-accentHoverYellow right-[5px] lg:right-[48px] top-[702px]"
+        className="fixed z-20 shadowButton rounded-[50px] 
+        
+        w-[72px] h-[72px] leading-[16px] font-bold text-[16px] 
+        
+        text: bg-accentYellow text-[#FAFCF8]
+        
+         hover:bg-accentHoverYellow right-[5px] lg:right-[48px] 
+         
+         top-[702px]"
       >
         GET A QUOTE
       </button>
@@ -24,6 +32,12 @@ export default function GetQuoteButton() {
           modalIsOpen={showGetQuoteModal}
           closeModal={toggleGetQuoteModal}
           overflowY="auto"
+          widthLg="771px"
+          heightLg="740px"
+          widthMd="723px"
+          heightMd="887px"
+          widthSm="343px"
+          heightSm="892px"
         >
           <GetQuoteWidgetModal
             modalIsOpen={showGetQuoteModal}

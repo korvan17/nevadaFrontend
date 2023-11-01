@@ -23,7 +23,9 @@ export default function Collapsible({ item, faq }) {
         type="button"
         ref={refButton}
         onClick={handleVisibility}
-        className="w-full min-h-[72px] flex items-center justify-between px-6"
+        className="w-full min-h-[72px] flex items-center 
+        
+        justify-between px-6"
       >
         <span>{item}</span>
         <svg

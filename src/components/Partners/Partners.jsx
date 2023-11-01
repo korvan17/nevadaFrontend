@@ -3,69 +3,68 @@ import React from "react";
 
 export default function Partners() {
   return (
-    <section className="py-mobile md:py-desktop" id="Partners">
+    <section className=" hidden md:block pt-[120px] pb-[120px]" id="Partners">
       <div className="container">
-        <h2 className="text-4xl lg:text-5xl font-bold mr-auto mb-[34px]">
+        <h2 className="text-[36px] leading-[36px] lg:text-5xl font-bold mr-auto mb-[8px]">
           E-commerce platforms we are working with
         </h2>
+        <p className="md:w-[664px] lg:w-[937px] text-rgba(0, 0, 0, 0.20)  text-[18px] lg:text-[24px] font-normal leading-[110%] lg:leading-[24px]   mb-[32px] lg:mb-[48px]">
+          We collaborate with leading e-commerce platforms that offer the best
+          opportunities for your business.{" "}
+        </p>
         <div className="">
-          <ul className="flex gap-6">
-            <li>
+          <ul className="flex gap-[20px] ">
+            <li className="">
               <Image
-                src="/hero-mobile-nd.png"
+                src="/ebay-logo-tab.png"
                 alt="logo"
                 height={91}
-                width={282}
-                className=""
+                width={237}
               />
             </li>
-            <li>
+            <li className="">
               <Image
-                src="/hero-mobile-nd.png"
+                src="/walmart-logo-tab.png"
                 alt="logo"
-                height={91}
-                width={282}
-                className=""
+                height={77}
+                width={322}
               />
             </li>
-            <li>
+            <li className="">
               <Image
-                src="/hero-mobile-nd.png"
+                src="/amazon-logo-tab.png"
                 alt="logo"
-                height={91}
-                width={282}
-                className=""
+                height={69}
+                width={237}
               />
             </li>
-            <li>
+            <li className="">
               <Image
-                src="/hero-mobile-nd.png"
+                src="/wayfair-logo-tab.png"
                 alt="logo"
-                height={91}
-                width={282}
-                className=""
+                height={83}
+                width={322}
               />
             </li>
-            <li>
+            <li className="">
               <Image
-                src="/hero-mobile-nd.png"
+                src="/etsy-logo-tab.png"
                 alt="logo"
                 height={91}
-                width={282}
-                className=""
+                width={182}
               />
             </li>
-            <li>
+            <li className="">
               <Image
-                src="/hero-mobile-nd.png"
+                src="/lowes-logo-tab.png"
                 alt="logo"
                 height={91}
-                width={282}
-                className=""
+                width={189}
               />
             </li>
           </ul>
         </div>
+        <div className="border-b-2 border-captionBlue pt-[48px]"></div>
       </div>
     </section>
   );
