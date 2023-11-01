@@ -4,7 +4,6 @@ import "swiper/css";
 import "swiper/css/pagination";
 import Image from "next/image";
 
-// import required modules
 import { Pagination } from "swiper/modules";
 
 export default function SwiperServices() {

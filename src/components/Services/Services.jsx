@@ -6,7 +6,7 @@ import "swiper/css";
 
 export default function Services() {
   return (
-    <section className="py-mobile md:pb-0 lg:pt-desktop  " id="services">
+    <section className="py-mobile md:pb-0 lg:pt-desktop relative" id="services">
       <div className="container">
         <h2 className="mb-[48px] text-[36px] lg:text-[48px] font-bold text-center md:text-left">
           Our Services
@@ -15,9 +15,15 @@ export default function Services() {
         <div className="block md:hidden lg:hidden">
           <SwiperServices />
         </div>
+        <Image 
+        src="/ellipse-services.png"
+        width={206}
+        height={104}
+        className="hidden md:block md:right-[300px] md:top-[110px] absolute lg:right-[537px] lg:top-[160px] -z-20"
+        />
 
-        <ul className="flex-wrap gap-[20px] lg:gap-[24px] hidden md:flex  ">
-          <li className="  md:basis-[calc((100%-20px)/2)] lg:basis-[calc((100%-72px)/4)]   p-4 rounded-lg bg-darkBlue text-captionalWhite text-center overflow-x-auto">
+        <ul className="flex-wrap gap-[20px] lg:gap-[24px] hidden md:flex ">
+          <li className="  md:basis-[calc((100%-20px)/2)] lg:basis-[calc((100%-72px)/4)] p-6 rounded-lg bg-darkBlue text-captionalWhite text-center overflow-x-auto">
             <Image
               src="/procurement-desktop-1x.png"
               width={172}
@@ -34,7 +40,7 @@ export default function Services() {
               unit
             </p>
           </li>
-          <li className=" md:basis-[calc((100%-20px)/2)] lg:basis-[calc((100%-72px)/4)] p-4 rounded-lg bg-darkBlue text-captionalWhite text-center overflow-x-auto">
+          <li className=" md:basis-[calc((100%-20px)/2)] lg:basis-[calc((100%-72px)/4)] p-6 rounded-lg bg-darkBlue text-captionalWhite text-center overflow-x-auto">
             <Image
               src="/accessibility-desktop-1x.png"
               width={172}
@@ -51,7 +57,7 @@ export default function Services() {
               selling products under their own brand
             </p>
           </li>
-          <li className=" md:basis-[calc((100%-20px)/2)] lg:basis-[calc((100%-72px)/4)]  p-4 rounded-lg bg-darkBlue text-captionalWhite text-center overflow-x-auto">
+          <li className=" md:basis-[calc((100%-20px)/2)] lg:basis-[calc((100%-72px)/4)]  p-6 rounded-lg bg-darkBlue text-captionalWhite text-center overflow-x-auto">
             <Image
               src="/delivery-desktop-1x.png"
               width={172}
@@ -67,7 +73,7 @@ export default function Services() {
 
             </p>
           </li>
-          <li className=" md:basis-[calc((100%-20px)/2)] lg:basis-[calc((100%-72px)/4)] rounded-lg bg-darkBlue text-captionalWhite text-center overflow-x-auto">
+          <li className=" md:basis-[calc((100%-20px)/2)] lg:basis-[calc((100%-72px)/4)] p-6 rounded-lg bg-darkBlue text-captionalWhite text-center overflow-x-auto">
             <Image
               src="/support-desktop-1x.png"
               width={172}
