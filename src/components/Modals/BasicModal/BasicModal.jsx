@@ -9,16 +9,14 @@ export default function BasicModal({
   backgroundColor = "#ffffff",
   closeButtonColor = "rgba(236, 236, 236, 1)",
   closeButtonBackgroundColor = "black",
-  width = "90vw",
   widthSm,
+  heightSm,
   widthMd,
   widthLg,
-  height = "90vh",
-  heightSm,
   heightMd,
   heightLg,
   maxWidth,
-  maxHeight = "900px",
+  maxHeightSm,
 }) {
   //не трогать, уб`т!
   const defaultModalStyle = {
@@ -26,9 +24,9 @@ export default function BasicModal({
     position: "fixed",
     top: "50%",
     left: "50%",
-    width,
-    height,
-    maxHeight,
+    heightSm: "90vh",
+    widthSm: "90vw",
+    maxHeightSm: "900px",
     maxWidth,
     transform: "translate(-50%, -50%)",
     borderRadius: "12px",
@@ -66,10 +64,11 @@ export default function BasicModal({
   useEffect(() => {
     const updateModalSize = () => {
       const windowWidth = window.innerWidth;
-      let newWidth, newHeight;
+      let newWidth, newHeight, newMaxHeight;
       if (windowWidth < 768) {
         newWidth = widthSm;
         newHeight = heightSm;
+        newMaxHeight = maxHeightSm;
       } else if (windowWidth >= 768 && windowWidth < 1440) {
         newWidth = widthMd;
         newHeight = heightMd;
@@ -82,6 +81,7 @@ export default function BasicModal({
         ...prevStyle,
         width: newWidth || prevStyle.width,
         height: newHeight || prevStyle.height,
+        maxHeight: newMaxHeight || prevStyle.maxHeight,
       }));
     };
 

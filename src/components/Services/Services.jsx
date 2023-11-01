@@ -14,6 +14,7 @@ export default function Services() {
         <div className="relative">
           <Image
             src="/ellipse-services.png"
+            alt="ellipse-services"
             width={206}
             height={104}
             className="absolute hidden md:block md:right-[60px] md:bottom-[-30px]  lg:right-[188px] lg:top-[-20] -z-20"
