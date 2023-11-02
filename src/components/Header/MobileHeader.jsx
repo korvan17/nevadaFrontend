@@ -17,7 +17,7 @@ function MobileHeader() {
         opacity-100
        pt-[39px] pb-[8px] 
       md:pt-[38px] md:pb-[8px]
-      flex w-[100%] z-40
+      flex w-[100%] z-20
       fixed top-0 bg-mainBlack text-mainWhite"
     >
       <div className="container">
