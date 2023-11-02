@@ -37,7 +37,7 @@ export default function GetQuoteButton() {
           widthMd="723px"
           heightMd="887px"
           widthSm="343px"
-          heightSm="80vh"
+          heightSm="90vh"
           // maxHeightSm="600px"
         >
           <GetQuoteWidgetModal
