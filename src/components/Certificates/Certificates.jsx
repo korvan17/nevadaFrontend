@@ -13,7 +13,8 @@ export default function Certificates() {
         leading-[110%] lg:leading-[24px]   mb-[32px] lg:mb-[48px]"
         >
           We are proud to be affiliated with Amazon and Ysell, two industry
-          giants in the world of e-commerce
+          giants in the world
+          <br /> of e-commerce.
         </p>
         <div className="">
           <ul className="flex">
