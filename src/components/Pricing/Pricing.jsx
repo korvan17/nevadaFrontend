@@ -35,7 +35,7 @@ export default function Pricing() {
 						className="absolute hidden lg:block left-[481px] top-[55px] -z-20 w-auto h-auto"
 					/>
 					<Image
-						className="absolute hidden lg:block top-[1000px] left-[254px] w-auto h-auto -z-20"
+						className="absolute hidden lg:block top-[1020px] left-[254px] w-auto h-auto -z-20"
 						src="/ellips-pricing-bottom.png"
 						alt="Ellipse Bottom"
 						width={70}
@@ -194,7 +194,7 @@ export default function Pricing() {
 					your commitment to our services.&ldquo;
 				</p>
 
-				<div className="h-[100%] py-[12px] px-[8px] w-[100%] mb-4 rounded-lg bg-darkBlue text-captionalWhite overflow-x-auto md:py-[24px] md:px-[12px] lg:h-[516px] lg:py-[32px] lg:px-[52px]">
+				<div className="h-[100%] py-[12px] px-[8px] w-[100%] rounded-lg bg-darkBlue text-captionalWhite  md:py-[24px] md:px-[12px] lg:w-[100%] lg:h-[100%] lg:py-[32px] lg:px-[52px]">
 					<h3 className="mb-[12px] text-lg font-bold md:mb-[20px]">
 						Additional services
 					</h3>
@@ -265,11 +265,11 @@ export default function Pricing() {
 						</table>
 					</div>
 
-					<div className="mb-[28px] md:mb-[24px]">
-						<p className="text-lg font-bold mb-[8px]">
+					<div className="mb-[28px] md:mb-[24px] lg:flex lg:items-center lg:justify-between lg:mb-[32px]">
+						<p className="text-lg font-bold mb-[8px] lg:text-base lg:font-semibold">
 							HazMat, Fragile, Oversize
 						</p>
-						<p className="w-[320px] text-xs font-normal md:w-[640px] md:text-sm md:font-semibold lg:w-[866px]">
+						<p className="w-[320px] text-xs font-normal md:w-[640px] md:text-sm md:font-semibold lg:w-[860px] lg:text-base">
 							Hazmat items incur additional costs due to strict
 							safety regulations and specialized handing
 							requirements. Fragile items come with extra fees to
@@ -284,8 +284,8 @@ export default function Pricing() {
 						Packing services
 					</h3>
 					<div className="overflow-x-auto">
-						<ul className="flex gap-[16px] w-[800px] text-base font-semibold md:w-[640px] md:justify-between md:flex-wrap md:gap-y-[24px]">
-							<li className="w-[270px]">
+						<ul className="flex gap-[16px] w-[800px] text-base font-semibold md:w-[655px] md:justify-between md:flex-wrap md:gap-y-[24px] lg:w-[100%] lg:flex-nowrap">
+							<li className="w-[270px] md:w-[193px]">
 								<table className="table-auto w-[100%]">
 									<tbody>
 										<tr className="">
@@ -340,7 +340,10 @@ export default function Pricing() {
 										</tr>
 										<tr>
 											<td className="">
-												Additional (min 1 hour)
+												Additional
+												<span className="text-xs font-normal">
+													/min 1 hour
+												</span>
 											</td>
 											<td className="text-right">$40</td>
 										</tr>
