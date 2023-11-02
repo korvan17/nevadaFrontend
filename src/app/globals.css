@@ -62,3 +62,6 @@ body {
 }
 
 
+.sample-slider .swiper-wrapper{
+  transition-timing-function: linear;
+ }

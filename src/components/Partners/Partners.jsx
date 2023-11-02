@@ -1,5 +1,6 @@
 import Image from "next/image";
 import React from "react";
+import SliderPartners from "./SLiderPartners";
 
 export default function Partners() {
   return (
@@ -12,59 +13,9 @@ export default function Partners() {
           We collaborate with leading e-commerce platforms that offer the best
           opportunities for your business.{" "}
         </p>
-        <div className="">
-          <ul className="flex gap-[20px] ">
-            <li className="">
-              <Image
-                src="/ebay-logo-tab.png"
-                alt="logo"
-                height={91}
-                width={237}
-              />
-            </li>
-            <li className="">
-              <Image
-                src="/walmart-logo-tab.png"
-                alt="logo"
-                height={77}
-                width={322}
-              />
-            </li>
-            <li className="">
-              <Image
-                src="/amazon-logo-tab.png"
-                alt="logo"
-                height={69}
-                width={237}
-              />
-            </li>
-            <li className="">
-              <Image
-                src="/wayfair-logo-tab.png"
-                alt="logo"
-                height={83}
-                width={322}
-              />
-            </li>
-            <li className="">
-              <Image
-                src="/etsy-logo-tab.png"
-                alt="logo"
-                height={91}
-                width={182}
-              />
-            </li>
-            <li className="">
-              <Image
-                src="/lowes-logo-tab.png"
-                alt="logo"
-                height={91}
-                width={189}
-              />
-            </li>
-          </ul>
+        <SliderPartners />
+        <div className="border-b-2 border-captionBlue pt-[48px]">
         </div>
-        <div className="border-b-2 border-captionBlue pt-[48px]"></div>
       </div>
     </section>
   );
