@@ -3,10 +3,7 @@ import Image from "next/image";
 
 function TabletAbout() {
   return (
-    <section
-      id="about"
-      className="hidden md:flex md:relative md:pt-20 lg:hidden"
-    >
+    <section className="hidden md:flex md:relative md:pt-20 lg:hidden">
       <div className="container">
         <h2
           className="flex leading-9 text-4xl text-opacity-20
