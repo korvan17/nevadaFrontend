@@ -15,19 +15,18 @@ export default function BasicModal({
   widthLg,
   heightMd,
   heightLg,
-  maxWidth,
+  // maxWidth,
   maxHeightSm,
 }) {
   //не трогать, уб`т!
   const defaultModalStyle = {
+    width: widthSm,
+    height: heightSm,
+    maxHeight: maxHeightSm,
     backgroundColor,
     position: "fixed",
     top: "50%",
     left: "50%",
-    heightSm: "90vh",
-    widthSm: "90vw",
-    maxHeightSm: "900px",
-    maxWidth,
     transform: "translate(-50%, -50%)",
     borderRadius: "12px",
     overflowY: "auto",
