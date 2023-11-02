@@ -4,17 +4,17 @@ export default function PricingGetQuoteModal({ selectedTitle }) {
   return (
     <div>
       <h2 className="text-center text-[24px] font-semibold mt-6 text-[#000A11]">
-        Registration Form
+        {selectedTitle}
       </h2>
       <div className="mb-4">
         <label
           htmlFor="Business direction"
           className="block mt-6 font-medium ml-2"
         >
-          Business direction <span className="text-red-500">*</span>
+          Business direction
         </label>
         <div>
-          <h3 className="text-red-600 font-extrabold">{selectedTitle}</h3>
+          <h3 className="text-red-600 font-extrabold ml-2">{selectedTitle}</h3>
         </div>
         {/*   чтоб єтот див тоже уходил при отправки формі набекенд selectedTitle пропсом что надо сделать? */}
       </div>
