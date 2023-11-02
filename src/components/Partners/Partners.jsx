@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import SliderPartners from "./SLiderPartners";
+import SliderPartners from "./SliderPartners";
 
 export default function Partners() {
   return (
@@ -14,8 +14,7 @@ export default function Partners() {
           opportunities for your business.{" "}
         </p>
         <SliderPartners />
-        <div className="border-b-2 border-captionBlue pt-[48px]">
-        </div>
+        <div className="border-b-2 border-captionBlue pt-[48px]"></div>
       </div>
     </section>
   );
