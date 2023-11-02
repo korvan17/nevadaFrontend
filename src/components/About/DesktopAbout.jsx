@@ -3,7 +3,7 @@ import Image from "next/image";
 
 function DesktopAbout() {
   return (
-    <section id="about" className="hidden pb-0  lg:block lg:pt-desktop">
+    <section className="hidden pb-0  lg:block lg:pt-desktop">
       <div className="container">
         <div className="relative flex gap-col-6 justify-center -z-10">
           <Image

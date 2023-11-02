@@ -3,7 +3,7 @@ import Image from "next/image";
 
 function MobileAbout() {
   return (
-    <section id="about" className="md:hidden">
+    <section className="md:hidden">
       <div className="container">
         <div className="relative">
           <h2
