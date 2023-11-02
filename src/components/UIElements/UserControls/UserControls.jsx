@@ -83,7 +83,7 @@ function UserControls() {
           widthMd="723px"
           heightMd="887px"
           widthSm="343px"
-          heightSm="892px"
+          heightSm="90vh"
         >
           <RegistrationModal
             modalIsOpen={showModalRegistration}
