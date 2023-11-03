@@ -6,7 +6,10 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="pt-[78px] pb-[151px] md:pt-[47px] md:pb-[0px] lg:pt-[139px] lg:pb-[0px]"
+      className="pt-[78px] pb-[151px] md:pt-[47px]
+      
+      
+      s md:pb-[0px] lg:pt-[139px] lg:pb-[0px]"
     >
       <Image
         src="/hero-mobile-nd.png"
@@ -33,7 +36,9 @@ export default function Hero() {
         priority
       />
       <Image
-        className="hidden md:block lg:hidden  absolute top-[177px] left-[0px] md:-z-30 w-auto h-auto"
+        className="hidden md:block lg:hidden  absolute 
+        
+        top-[177px] left-[0px] md:-z-30 w-auto h-auto"
         src="/ellipse-tab-left.png"
         alt="Ellipsetab-Left"
         width={154}
