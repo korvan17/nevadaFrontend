@@ -36,7 +36,9 @@ export default function Hero() {
         priority
       />
       <Image
-        className="hidden md:block lg:hidden  absolute top-[177px] left-[0px] md:-z-30 w-auto h-auto"
+        className="hidden md:block lg:hidden  absolute 
+        
+        top-[177px] left-[0px] md:-z-30 w-auto h-auto"
         src="/ellipse-tab-left.png"
         alt="Ellipsetab-Left"
         width={154}
