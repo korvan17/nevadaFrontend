@@ -4,7 +4,9 @@ export default function ChatButton() {
   return (
     <button
       type="button"
-      className="w-[72px] h-[72px] bg-captionBlue hover:bg-captionBlueHover fixed bottom-5 right-5 flex justify-center items-center rounded-full"
+      className="w-[72px] h-[72px] bg-captionBlue hover:bg-captionBlueHover 
+      
+      fixed bottom-5 right-5 flex justify-center items-center rounded-full"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

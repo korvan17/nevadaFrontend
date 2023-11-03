@@ -25,6 +25,7 @@ export default async (req, res) => {
       to: "info@ppcwarehouses.com",
       from: "info@ppcwarehouses.com",
       subject: `New message from ${body.fullName}`,
+
       text: message,
       html: message.replace(/\r\n/g, "<br />"),
     };
