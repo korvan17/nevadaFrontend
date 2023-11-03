@@ -27,7 +27,9 @@ export default function Hero() {
       <Image
         className="hidden md:block lg:hidden absolute md:top-[557px] 
         
-        md:right-[0px] md:-z-30 w-auto h-auto"
+        md:right-[0px] md:-z-30 
+        
+        w-auto h-auto"
         src="/ellipse-tab-right.png"
         alt="Ellipse-Right"
         width={84}
