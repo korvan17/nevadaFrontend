@@ -11,15 +11,16 @@ export default async (req, res) => {
     const body = JSON.parse(req.body);
 
     const message = `
-      Business Direction: ${body.businessDirection}\r\n
-      Name: ${body.fullName}\r\n
-      Email: ${body.email}\r\n
-      Phone: ${body.phone}\r\n
-      Company Name: ${body.companyName}\r\n
-      Company Website: ${body.companyWebsite}\r\n
-      Message: ${body.message}
-    `;
-
+    ${body.selectedTitle ? `Type Form(Title): ${body.selectedTitle}\r\n` : ""}
+    ${body.titleModal ? `Type Form(Title): ${body.titleModal}\r\n` : ""}
+    Business Direction: ${body.businessDirection}\r\n
+    Name: ${body.fullName}\r\n
+    Email: ${body.email}\r\n
+    Phone: ${body.phone}\r\n
+    Company Name: ${body.companyName}\r\n
+    Company Website: ${body.companyWebsite}\r\n
+    Message: ${body.message}
+`;
     const data = {
       to: "info@ppcwarehouses.com",
       from: "info@ppcwarehouses.com",

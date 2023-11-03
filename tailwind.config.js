@@ -43,9 +43,6 @@ module.exports = {
           lg: "120px",
         },
       },
-      boxShadowColor: {
-        shadowButton: "from 0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
-      },
 
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
