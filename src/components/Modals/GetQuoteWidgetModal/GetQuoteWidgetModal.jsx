@@ -2,8 +2,10 @@
 import React, { useEffect, useState } from "react";
 
 export default function GetQuoteWidgetModal({ closeModal }) {
+  const [titleModal, setTitleModal] = useState("Contacts Form");
+
   const [businessDirection, setBusinessDirection] = useState(
-    sessionStorage.getItem("businessDirection") || ""
+    sessionStorage.getItem("businessDirection") || "Select Your Business"
   );
   const [fullName, setFullName] = useState(
     sessionStorage.getItem("fullName") || ""
@@ -15,7 +17,7 @@ export default function GetQuoteWidgetModal({ closeModal }) {
     sessionStorage.getItem("companyName") || ""
   );
   const [companyWebsite, setCompanyWebsite] = useState(
-    sessionStorage.getItem("companyWebsite") || "https://"
+    sessionStorage.getItem("companyWebsite") || ""
   );
   const [message, setMessage] = useState(
     sessionStorage.getItem("message") || ""
@@ -69,6 +71,7 @@ export default function GetQuoteWidgetModal({ closeModal }) {
     e.preventDefault();
 
     const data = {
+      titleModal,
       businessDirection,
       fullName,
       email,
@@ -98,126 +101,138 @@ export default function GetQuoteWidgetModal({ closeModal }) {
   return (
     <div>
       <h2 className="text-center text-[24px] font-semibold mt-6 text-[#000A11]">
-        Contacts Form
+        {titleModal}
       </h2>
       <form onSubmit={handleSubmit}>
-        <div className="mb-4">
-          <label
-            htmlFor="businessDirection"
-            className="block mt-6 font-medium ml-2"
-          >
-            Business direction <span className="text-red-500">*</span>
-          </label>
-          <select
-            id="businessDirection"
-            className="w-full p-4 border rounded"
-            value={businessDirection}
-            onChange={(e) => setBusinessDirection(e.target.value)}
-            required
-          >
-            <option value="" disabled>
-              Select Your Business
-            </option>
-            <option value="FBA, FBW, Private Label">
-              FBA, FBW, Private Label
-            </option>
-            <option value="Online arbitration">Online arbitration</option>
-            <option value="FBM">FBM</option>
-            <option value="Wholesale">Wholesale</option>
-          </select>
-        </div>
-        <div className="mt-[18px]">
-          <label
-            htmlFor="fullName"
-            className="block mb-3 font-semibold ml-2 leading-[24px] text-[#000A11]"
-          >
-            Full Name <span className="text-red-500">*</span>
-          </label>
-          <input
-            type="text"
-            id="fullName"
-            className="w-full p-4 border rounded"
-            value={fullName}
-            onChange={(e) => setFullName(e.target.value)}
-            required
-          />
-        </div>
-        <div className="mt-4">
-          <label
-            htmlFor="email"
-            className="block mb-3 font-semibold ml-2 leading-[24px] text-[#000A11]"
-          >
-            Email Address <span className="text-red-500">*</span>
-          </label>
-          <input
-            type="email"
-            id="email"
-            className="w-full p-4 border rounded"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
-        <div className="mt-4">
-          <label
-            htmlFor="phone"
-            className="block mb-3 font-semibold ml-2 leading-[24px] text-[#000A11]"
-          >
-            Phone Number <span className="text-red-500">*</span>
-          </label>
-          <input
-            type="tel"
-            id="phone"
-            className="w-full p-4 border rounded"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-            required
-          />
-        </div>
-        <div className="mt-4">
-          <label
-            htmlFor="companyName"
-            className="block mb-3 font-semibold ml-2 leading-[24px] text-[#000A11]"
-          >
-            Company Name
-          </label>
-          <input
-            type="text"
-            id="companyName"
-            className="w-full p-4 border rounded"
-            value={companyName}
-            onChange={(e) => setCompanyName(e.target.value)}
-          />
-        </div>
-        <div className="mt-4">
-          <label
-            htmlFor="website"
-            className="block mb-3 font-semibold ml-2 leading-[24px] text-[#000A11]"
-          >
-            Company Website
-          </label>
-          <input
-            type="text"
-            id="website"
-            className="w-full p-4 border rounded"
-            value={companyWebsite}
-            onChange={(e) => setCompanyWebsite(e.target.value)}
-          />
-        </div>
-        <div className="mt-4">
-          <label
-            htmlFor="message"
-            className="block mb-3 font-semibold ml-2 leading-[24px] text-[#000A11]"
-          >
-            Comments
-          </label>
-          <textarea
-            id="message"
-            rows="5"
-            className="w-full p-4 border rounded resize-none"
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-          ></textarea>
+        <div className="flex flex-col  lg:flex-row   justify-center items-center gap-[50px] px-[19px] mb-[48px]">
+          <div>
+            <div className="mb-4">
+              <label
+                htmlFor="businessDirection"
+                className="block mt-6 font-medium ml-2"
+              >
+                Business direction <span className="text-red-500">*</span>
+              </label>
+
+              <select
+                id="businessDirection"
+                className="w-[342px] p-4 border rounded "
+                value={businessDirection}
+                onChange={(e) => setBusinessDirection(e.target.value)}
+                required
+              >
+                <option value="Select Your Business" disabled>
+                  Select Your Business
+                </option>
+                <option value="FBA, FBW, Private Label">
+                  FBA, FBW, Private Label
+                </option>
+                <option value="Online arbitration">Online arbitration</option>
+                <option value="FBM">FBM</option>
+                <option value="Wholesale">Wholesale</option>
+              </select>
+            </div>
+
+            <div className="mt-[18px]">
+              <label
+                htmlFor="fullName"
+                className="block mb-3 font-semibold ml-2 leading-[24px] text-[#000A11]"
+              >
+                Full Name <span className="text-red-500">*</span>
+              </label>
+              <input
+                type="text"
+                id="fullName"
+                value={fullName}
+                onChange={(e) => setFullName(e.target.value)}
+                className="w-[342px] p-4 border rounded"
+                required
+              />
+            </div>
+
+            <div className="mt-4">
+              <label
+                htmlFor="email"
+                className="block mb-3 font-semibold ml-2 leading-[24px] text-[#000A11]"
+              >
+                Email Address <span className="text-red-500">*</span>
+              </label>
+              <input
+                type="email"
+                id="email"
+                className="w-[342px] p-4 border rounded"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </div>
+            <div className="mt-4">
+              <label
+                htmlFor="phone"
+                className="block mb-3 font-semibold ml-2 leading-[24px] text-[#000A11]"
+              >
+                Phone Number <span className="text-red-500">*</span>
+              </label>
+              <input
+                type="tel"
+                id="phone"
+                className="w-[342px] p-4 border rounded"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                required
+              />
+            </div>
+          </div>
+          <div>
+            <div className="mt-4">
+              <label
+                htmlFor="companyName"
+                className="block mb-3 font-semibold ml-2 leading-[24px] text-[#000A11]"
+              >
+                Company Name
+              </label>
+              <input
+                type="text"
+                id="companyName"
+                className="w-[342px] p-4 border rounded"
+                value={companyName}
+                onChange={(e) => setCompanyName(e.target.value)}
+              />
+            </div>
+
+            <div className="mt-4">
+              <label
+                htmlFor="website"
+                className="block mb-3 font-semibold ml-2 leading-[24px] text-[#000A11]"
+              >
+                Company Website
+              </label>
+              <input
+                type="text"
+                id="website"
+                className="w-[342px] p-4 border rounded"
+                value={companyWebsite}
+                onChange={(e) => setCompanyWebsite(e.target.value)}
+              />
+            </div>
+            <div className="mt-4">
+              <label
+                htmlFor="message"
+                className="block mb-3 font-semibold ml-2 leading-[24px] text-[#000A11]"
+              >
+                Comments
+              </label>
+              <textarea
+                id="comments"
+                rows="5"
+                className="h-[121px] w-[342px] p-4 border rounded  
+                
+                resize-none"
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+              ></textarea>
+            </div>
+          </div>
         </div>
         <div className="flex justify-center">
           <button

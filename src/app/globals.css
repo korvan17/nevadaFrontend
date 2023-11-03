@@ -61,7 +61,24 @@ body {
   transition-duration: 4s;
 }
 
-
-.sample-slider .swiper-wrapper{
+.sample-slider .swiper-wrapper {
   transition-timing-function: linear;
- }
+  align-items: center;
+}
+/* .swiper-wrapper .swiper-slide {
+  display: flex;
+  height: 91px;
+  align-items: flex-start;
+  justify-content: center;
+} */
+.shadow-color {
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
+    1px 4px 6px rgba(0, 0, 0, 0.16);
+}
+/* .examples-item:hover {
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
+    1px 4px 6px rgba(0, 0, 0, 0.16);
+} */
+.swiper-slide .swiper-slide-active {
+  z-index: -20;
+}

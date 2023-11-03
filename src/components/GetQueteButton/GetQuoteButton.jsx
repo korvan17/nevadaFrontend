@@ -14,7 +14,7 @@ export default function GetQuoteButton() {
     <>
       <button
         onClick={toggleGetQuoteModal}
-        className="fixed z-20 shadowButton rounded-[50px] 
+        className="shadow-color fixed z-10  rounded-[50px] 
         
         w-[72px] h-[72px] leading-[16px] font-bold text-[16px] 
         

@@ -10,6 +10,7 @@ import {
   Partners,
   Certificates,
 } from "@/components";
+import GetQuoteButton from "@/components/GetQueteButton/GetQuoteButton";
 
 export default function Home() {
   return (
@@ -22,7 +23,7 @@ export default function Home() {
       <Partners />
       <Certificates />
       <Faq />
-
+      <GetQuoteButton />
       {/* <ChatWindow /> */}
       {/* <div id="myportal" /> */}
     </>
