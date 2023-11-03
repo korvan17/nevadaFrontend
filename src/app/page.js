@@ -24,6 +24,7 @@ export default function Home() {
       <Certificates />
       <Faq />
       <GetQuoteButton />
+
       {/* <ChatWindow /> */}
       {/* <div id="myportal" /> */}
     </>
