@@ -4,11 +4,7 @@ export default function FooterContacs() {
   return (
     <ul>
       <li className="mb-[8px] max-w-[231px]">
-        <a
-          target="_blank"
-          href="info@ppcwarehouses.com"
-          className="flex flex-wrap"
-        >
+        <a href="mailto:info@ppcwarehouses.com" className="flex flex-wrap">
           <b className="font-semibold	text-16px">
             Write to us at the email address:
           </b>
