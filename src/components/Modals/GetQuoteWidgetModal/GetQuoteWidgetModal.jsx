@@ -104,7 +104,11 @@ export default function GetQuoteWidgetModal({ closeModal }) {
         {titleModal}
       </h2>
       <form onSubmit={handleSubmit}>
-        <div className="flex flex-col  lg:flex-row   justify-center items-center lg:gap-[50px] px-[19px] mb-[48px]">
+        <div
+          className="flex flex-col  lg:flex-row   justify-center items-center 
+        
+        lg:gap-[50px] px-[19px] mb-[48px]"
+        >
           <div>
             <div className="mb-4">
               <label
@@ -136,7 +140,9 @@ export default function GetQuoteWidgetModal({ closeModal }) {
             <div className="mt-[18px]">
               <label
                 htmlFor="fullName"
-                className="block mb-3 font-semibold ml-2 leading-[24px] text-[#000A11]"
+                className="block mb-3 font-semibold ml-2 
+                
+                leading-[24px] text-[#000A11]"
               >
                 Full Name <span className="text-red-500">*</span>
               </label>
