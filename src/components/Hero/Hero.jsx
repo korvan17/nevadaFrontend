@@ -69,7 +69,7 @@ export default function Hero() {
                 <span>in e-commerce sales?</span>
               </h1>
               <h3 className="leading-[16px] md:leading-[16px] lg:text-[24px] text-[16px] font-normal md:mb-[232px]">
-                Let us optimize your shipping process 2023 next
+                Let us optimize your shipping process
               </h3>
             </div>
           </div>
