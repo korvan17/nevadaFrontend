@@ -108,7 +108,11 @@ export default function RegistrationModal({ closeModal }) {
         "Get a Quote" form.
       </p>
       <form onSubmit={handleSubmit}>
-        <div className="flex flex-col  lg:flex-row   justify-center items-center gap-[50px] px-[19px] mb-[48px]">
+        <div
+          className="flex flex-col  lg:flex-row   justify-center items-center 
+        
+        lg:gap-[50px] px-[19px] mb-[48px]"
+        >
           <div>
             <div className="mb-4">
               <label
