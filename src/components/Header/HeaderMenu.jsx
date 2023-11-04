@@ -54,7 +54,7 @@ function HeaderMenu({ toggleMenu }) {
         >
           <CloseMenuIcon />
         </button>
-        <UserControls />
+        {/* <UserControls /> */}
         <div className=" text-left ">
           <h3 className="mb-[12px] text-[16px] md:text-[24px] text-mainWhite">
             Contacts
