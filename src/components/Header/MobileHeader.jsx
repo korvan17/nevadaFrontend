@@ -27,7 +27,7 @@ function MobileHeader() {
               left-0 top-0
               w-[100%] h-[30px]
               lg:hidden text-[16px] font-semibold
-              bg-captionBlue text-captionalWhite"
+              bg-captionBlue text-captionalWhite flex "
         >
           <a
             className="block w-[100%] text-center py-[3px]"
@@ -35,8 +35,14 @@ function MobileHeader() {
           >
             +1 (702) 701-0078
           </a>
+          <a
+            href="mailto:info@ppcwarehouses.com"
+            className="block w-[100%] text-center py-[3px]"
+          >
+            info@ppcwarehouses.com
+          </a>
         </div>
-        <div className="flex justify-space-beetween">
+        <div className="flex justify-space-between">
           <a
             className="cursor-pointer flex gap-[8px] items-center"
             href="#home"

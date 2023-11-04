@@ -82,3 +82,10 @@ body {
 .swiper-slide .swiper-slide-active {
   z-index: -20;
 }
+.closeButton {
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+.closeButton:hover {
+  transform: scale(1.2);
+}
