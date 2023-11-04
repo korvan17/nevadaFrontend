@@ -21,7 +21,7 @@ export default function Home() {
       <Services />
       <Pricing />
       <Partners />
-      <Certificates />
+      {/* <Certificates /> */}
       <Faq />
       <GetQuoteButton />
       {/* <ChatWindow /> */}
