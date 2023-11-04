@@ -69,9 +69,9 @@ function HeaderMenu({ toggleMenu }) {
           <a
             className="text-[14px] md:text-[16px]  text-captionalGreyLight
               hover:text-mainWhite transition-all ease-out"
-            href="mailto:ppc.company@gmail.com"
+            href="mailto:info@ppcwarehouses.com"
           >
-            ppc.company@gmail.com
+            info@ppcwarehouses.com
           </a>
         </div>
       </motion.div>

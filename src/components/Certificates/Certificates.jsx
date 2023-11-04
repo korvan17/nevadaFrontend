@@ -17,7 +17,7 @@ export default function Certificates() {
           <br /> of e-commerce.
         </p>
         <div className="">
-          <ul className="flex">
+          <ul className="flex items-center">
             <li>
               <Image
                 src="/ysell-logo.png"

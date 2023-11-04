@@ -13,7 +13,8 @@ const redHatDisplay = Red_Hat_Display({ subsets: ["latin"] });
 
 export const metadata = {
   title: "PPC",
-  description: "Prime Preparation Center",
+  description:
+    "Prime Preparation Center: Elevate your e-commerce with streamlined shipping and seamless marketplace integration.",
   icons: {
     icon: ["/favicon.ico"],
     apple: ["/apple-touch-icon.png"],

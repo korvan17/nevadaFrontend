@@ -108,6 +108,7 @@ export default function BasicModal({
       <div className="" style={modalStyle}>
         <button
           onClick={closeModal}
+          className="closeButton"
           style={{
             position: "absolute",
             top: "10px",
