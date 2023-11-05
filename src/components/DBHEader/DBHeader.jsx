@@ -12,12 +12,12 @@ function DBHeader() {
     "
     >
       <div className="container">
-        <a href="#" className="flex gap-[5px]">
+        <a href="#" className="flex gap-[5px] mb-[12px]">
           <DarkLogo />
           Prime Preparation Center
         </a>
+        <NavBar />
       </div>
-      <NavBar />
     </header>
   );
 }

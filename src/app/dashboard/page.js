@@ -6,10 +6,11 @@ export const metadata = {
   description: "Dashboard client page",
 };
 
-function Dashboard() {
+function Dashboard({ children }) {
   return (
     <>
       <DBHeader />
+      {children}
     </>
   );
 }
