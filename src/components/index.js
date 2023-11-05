@@ -1,5 +1,7 @@
 export { default as About } from "./About/About.jsx";
 export { default as Header } from "./Header/Header.jsx";
+export { default as NavBar } from "./DBHEader/NavBar.jsx";
+export { default as DBHeader } from "./DBHEader/DBHeader.jsx";
 export { default as Faq } from "./Faq/Faq.jsx";
 export { default as Services } from "./Services/Services.jsx";
 export { default as Pricing } from "./Pricing/Pricing.jsx";
