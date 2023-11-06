@@ -9,7 +9,7 @@ const navLinks = [
   {
     icon: <UserIcon />,
     title: "User page",
-    href: "/dashboard/userPage",
+    href: "/dashboard/account",
   },
   {
     icon: <HomeIcon />,
@@ -30,10 +30,12 @@ function NavBar() {
               <Link
                 href={href}
                 className={`${
-                  isActive && "bg-captionBlueHover text-captionalWhite"
+                  isActive
+                    ? "bg-captionBlue text-captionalWhite"
+                    : "text-captionBlue"
                 } flex items-center justify-center
                w-[48px] h-[48px] 
-               rounded-full`}
+               rounded-full `}
                 title={title}
               >
                 {icon}

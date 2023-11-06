@@ -1,13 +1,13 @@
 import { DBHeader } from "@/components";
 import React from "react";
 
-function UserPage() {
+function Account() {
   return (
     <div>
       <DBHeader />
-      UserPage
+      Account
     </div>
   );
 }
 
-export default UserPage;
+export default Account;
