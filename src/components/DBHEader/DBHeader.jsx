@@ -7,12 +7,17 @@ function DBHeader() {
     <header
       className="
     fixed top-0 left-0
-    bg-mainWhite w-full text-mainBlack text-[18px]
-    pt-[16px] pb-[12px]
+    bg-mainWhite w-full 
+    pt-[16px] pb-[12px] 
+    leading-[19px] text-[18px]  font-bold text-mainBlack
     "
     >
       <div className="container">
-        <a href="#" className="flex gap-[5px] mb-[12px]">
+        <a
+          href="#"
+          className="flex gap-[5px] items-center 
+        mb-[12px] "
+        >
           <DarkLogo />
           Prime Preparation Center
         </a>
