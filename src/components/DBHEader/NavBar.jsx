@@ -30,7 +30,7 @@ function NavBar() {
               <Link
                 href={href}
                 className={`${
-                  isActive && "bg-captionBlueHover"
+                  isActive && "bg-captionBlueHover text-captionalWhite"
                 } flex items-center justify-center
                w-[48px] h-[48px] 
                rounded-full`}
