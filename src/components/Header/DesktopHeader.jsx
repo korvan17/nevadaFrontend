@@ -35,7 +35,7 @@ function DesktopHeader() {
       <div className="container">
         <div className="flex">
           <Navigation />
-          <UserControls />
+          {/* <UserControls /> */}
         </div>
       </div>
     </div>
