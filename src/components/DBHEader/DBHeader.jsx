@@ -31,8 +31,9 @@ function DBHeader() {
             <LanguageSwitcher page="db" />
           </div>
           <button
-            className="hidden lg:block
-         bg-captionBlue text-mainWhite text-[16px] font-bold  leading-[16px]
+            className="hidden lg:block transition-all ease-out
+         bg-captionBlue hover:bg-captionBlueHover
+          text-mainWhite text-[16px] font-bold  leading-[16px]
          w-[179px] h-[48px] rounded-[8px]"
             type="button"
           >

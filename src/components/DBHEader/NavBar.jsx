@@ -35,11 +35,11 @@ function NavBar() {
                 href={href}
                 className={`${
                   isActive
-                    ? "bg-captionBlue text-captionalWhite"
-                    : "text-captionBlue"
+                    ? "bg-captionBlue text-captionalWhite  hover:bg-captionBlueHover"
+                    : "text-captionBlue hover:bg-captionBlueHover hover:text-captionalWhite"
                 } flex items-center justify-center
                w-[48px] h-[48px] 
-               rounded-full `}
+               rounded-full transition-all ease-out`}
                 title={title}
               >
                 {icon}
@@ -52,7 +52,9 @@ function NavBar() {
         <Link href={userPage ? "/dashboard" : "/dashboard/account"}>
           <button
             type="button"
-            className="bg-captionBlue text-captionalWhite
+            className="bg-captionBlue hover:bg-captionBlueHover 
+            transition-all ease-out
+             text-captionalWhite
              flex items-center justify-center w-[48px] h-[48px] rounded-full"
           >
             {homePage ? <UserIcon /> : <HomeIcon />}
