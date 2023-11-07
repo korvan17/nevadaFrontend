@@ -22,7 +22,7 @@ function UserControls() {
       className="flex flex-wrap flex-col lg:flex-row lg:flex-nowrap 
     justify-center gap-[8px] lg:gap-[18px] md:items-start lg:items-center"
     >
-      <LanguageSwitcher />
+      <LanguageSwitcher page="home" />
       <div className="flex flex-wrap flex-col lg:flex-row lg:flex-nowrap lg:items-center gap-[8px] items-center md:items-start">
         <button
           onClick={toggleModalRegistration}

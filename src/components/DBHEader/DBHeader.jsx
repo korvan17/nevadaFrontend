@@ -10,19 +10,25 @@ function DBHeader() {
     fixed top-0 left-0
     bg-mainWhite w-full 
     pt-[16px] pb-[12px] 
-    leading-[19px] text-[18px]  font-bold text-mainBlack
+     text-mainBlack
     "
     >
       <div className="container">
         <a
           href="#"
           className="flex gap-[5px] items-center 
+          leading-[19px] text-[18px]  font-bold
         mb-[12px] "
         >
           <DarkLogo />
           Prime Preparation Center
         </a>
-        <LanguageSwitcher />
+        <p className="hidden md:block md:leading-[16px] font-medium	text-[16px]">
+          Main
+        </p>
+        <div className="hidden md:block">
+          <LanguageSwitcher page="db" />
+        </div>
         <NavBar />
       </div>
     </header>
