@@ -1,6 +1,7 @@
 import React from "react";
 import { DarkLogo } from "../Icons";
 import NavBar from "./NavBar";
+import { LanguageSwitcher } from "../UIElements";
 
 function DBHeader() {
   return (
@@ -21,6 +22,7 @@ function DBHeader() {
           <DarkLogo />
           Prime Preparation Center
         </a>
+        <LanguageSwitcher />
         <NavBar />
       </div>
     </header>
