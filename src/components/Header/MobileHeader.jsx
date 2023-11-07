@@ -15,8 +15,8 @@ function MobileHeader() {
     <div
       className="lg:hidden 
         opacity-100
-       pt-[39px] pb-[8px] 
-      md:pt-[38px] md:pb-[8px]
+      pt-[64px] pb-[8px] 
+     md:pb-[8px]
       flex w-[100%] z-20
       fixed top-0 bg-mainBlack text-mainWhite"
     >
@@ -24,20 +24,17 @@ function MobileHeader() {
         <div
           className="
               absolute
-              left-0 top-0
-              w-[100%] h-[30px]
-              lg:hidden text-[16px] font-semibold
-              bg-captionBlue text-captionalWhite flex "
+              left-0 top-0 w-[100%] h-[56px]
+              flex flex-col 
+              text-[16px] font-semibold bg-captionBlue text-captionalWhite 
+              lg:hidden "
         >
-          <a
-            className="block w-[100%] text-center py-[3px]"
-            href="tel:+17027010078"
-          >
+          <a className="w-[100%] text-center py-[3px]" href="tel:+17027010078">
             +1 (702) 701-0078
           </a>
           <a
             href="mailto:info@ppcwarehouses.com"
-            className="block w-[100%] text-center py-[3px]"
+            className="w-[100%] text-center py-[3px]"
           >
             info@ppcwarehouses.com
           </a>
