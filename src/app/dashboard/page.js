@@ -1,4 +1,6 @@
 import { DBHeader } from "@/components";
+import { CreateOrderForm } from "@/components/Dashboard/Boards/CreateOrderForm/CreateOrderForm";
+import CreateOrderButton from "@/components/UIElements/Buttons/CreateOrderButton/CreateOrderButton";
 import React from "react";
 
 export const metadata = {
@@ -10,6 +12,8 @@ function Dashboard({ children }) {
   return (
     <>
       <DBHeader />
+      <CreateOrderButton />
+      {/* <CreateOrderForm /> */}
       {children}
     </>
   );
