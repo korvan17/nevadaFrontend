@@ -2,6 +2,8 @@
 import React, { useEffect, useState } from "react";
 import Tooltip from "@mui/material/Tooltip";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
+import "tailwindcss/tailwind.css";
+
 export const CreateOrderForm = () => {
   const [orderType, setOrderType] = useState("inbound");
   const [orderDate, setOrderDate] = useState(() =>
@@ -16,7 +18,7 @@ export const CreateOrderForm = () => {
   const [products, setProducts] = useState([]);
   const [expectedQty, setExpectedQty] = useState("");
   const [comments, setComments] = useState("");
-  const [totalMasterBoxes, setTotalMasterBoxes] = useState(0);
+  const [totalMasterBoxes, setTotalMasterBoxes] = useState("0");
 
   useEffect(() => {
     setTotalMasterBoxes(
@@ -121,7 +123,10 @@ export const CreateOrderForm = () => {
             >
               Company Name or Alias for Package Identification{" "}
               <span className="text-red-500">*</span>{" "}
-              <Tooltip title="This field is for the identification of packages received by the warehouse. Please enter your company's official business name or a pre-approved alias as coordinated with our warehouse personnel.">
+              <Tooltip
+                title="This field is for the identification of packages received by the warehouse. Please enter your company's official business name or a pre-approved alias as coordinated with our warehouse personnel."
+                placement="right-end"
+              >
                 <HelpOutlineIcon className="w-[12px] h-[12px] cursor-help" />
               </Tooltip>
             </label>
@@ -142,7 +147,10 @@ export const CreateOrderForm = () => {
             >
               Warehouse Address Selection{" "}
               <span className="text-red-500">*</span>{" "}
-              <Tooltip title="Specify the exact name of the product or provide a succinct description of the goods.">
+              <Tooltip
+                title="Specify the exact name of the product or provide a succinct description of the goods."
+                placement="right-end"
+              >
                 <HelpOutlineIcon className="w-[12px] h-[12px] cursor-help" />
               </Tooltip>
             </label>
@@ -169,7 +177,10 @@ export const CreateOrderForm = () => {
                     className="block text-sm font-medium text-gray-700"
                   >
                     Product Description <span className="text-red-500">*</span>{" "}
-                    <Tooltip title="This field is for the identification of packages received by the warehouse. Please enter your company's official business name or a pre-approved alias as coordinated with our warehouse personnel.">
+                    <Tooltip
+                      title="This field is for the identification of packages received by the warehouse. Please enter your company's official business name or a pre-approved alias as coordinated with our warehouse personnel."
+                      placement="right-end"
+                    >
                       <HelpOutlineIcon className="w-[12px] h-[12px] cursor-help" />
                     </Tooltip>
                   </label>
@@ -198,7 +209,10 @@ export const CreateOrderForm = () => {
                   className="block text-sm font-medium text-gray-700"
                 >
                   ASIN/UPC/ID{" "}
-                  <Tooltip title="If available, please include the item's unique identifier number.">
+                  <Tooltip
+                    title="If available, please include the item's unique identifier number."
+                    placement="right-end"
+                  >
                     <HelpOutlineIcon className="w-[12px] h-[12px] cursor-help" />
                   </Tooltip>
                 </label>
@@ -221,7 +235,10 @@ export const CreateOrderForm = () => {
                 >
                   Expected Quantity of Units{" "}
                   <span className="text-red-500">*</span>{" "}
-                  <Tooltip title="Expected Quantity of Units: Indicate the total number of individual units being sent in this field.">
+                  <Tooltip
+                    title="Expected Quantity of Units: Indicate the total number of individual units being sent in this field."
+                    placement="right-end"
+                  >
                     <HelpOutlineIcon className="w-[12px] h-[12px] cursor-help" />
                   </Tooltip>
                 </label>
@@ -242,7 +259,10 @@ export const CreateOrderForm = () => {
                   className="block text-sm font-medium text-gray-700"
                 >
                   Units per Master Box <span className="text-red-500">*</span>{" "}
-                  <Tooltip title="Units per Master Box: State the number of units contained within a single master box. If your shipment does not use master boxes or contains assorted items in mixed boxes, please indicate this with a zero (Master Box (24x18x12) 49 lbs max).">
+                  <Tooltip
+                    title="Units per Master Box: State the number of units contained within a single master box. If your shipment does not use master boxes or contains assorted items in mixed boxes, please indicate this with a zero (Master Box (24x18x12) 49 lbs max)."
+                    placement="right-end"
+                  >
                     <HelpOutlineIcon className="w-[12px] h-[12px] cursor-help" />
                   </Tooltip>
                 </label>
@@ -256,7 +276,27 @@ export const CreateOrderForm = () => {
                   className="mt-1 block w-full border border-gray-300 px-3 py-2 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 />
               </div>
-
+              {/* Total Master Box Count for each product */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700">
+                  Total Master Box Count{" "}
+                  <Tooltip
+                    title="Based on the quantity of units and the units per master box, this is the calculated total number of master boxes for this product."
+                    placement="right-end"
+                  >
+                    <HelpOutlineIcon className="w-[12px] h-[12px] cursor-help" />
+                  </Tooltip>
+                </label>
+                <input
+                  type="text"
+                  readOnly
+                  className="mt-1 block w-full bg-gray-100 border border-gray-300 px-3 py-2 rounded-md shadow-sm text-gray-500"
+                  value={Math.ceil(
+                    Number(product.expectedQty || 0) /
+                      Math.max(Number(product.qtyInMasterBox), 1)
+                  ).toString()}
+                />
+              </div>
               {/* Product Features */}
               <div className="flex flex-wrap gap-2 mt-2">
                 <div>
@@ -395,8 +435,14 @@ export const CreateOrderForm = () => {
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Order's Master Box Total{" "}
-              <Tooltip title="Total count of master boxes included in the entire order.">
-                <HelpOutlineIcon className="w-[12px] h-[12px] cursor-help" />
+              <Tooltip
+                title="Total count of master boxes included in the entire order."
+                placement="right-end"
+              >
+                <HelpOutlineIcon
+                  style={{ width: "12px", height: "12px" }}
+                  className="w-[12px] h-[12px] cursor-help"
+                />
               </Tooltip>
             </label>
             <input
