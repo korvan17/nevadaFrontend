@@ -1,7 +1,7 @@
 import React from "react";
-import { DarkLogo } from "../Icons";
+import { Logo } from "@/components/Icons";
+import { LanguageSwitcher } from "@/components/UIElements";
 import NavBar from "./NavBar";
-import { LanguageSwitcher } from "../UIElements";
 
 function DBHeader() {
   return (
@@ -20,7 +20,7 @@ function DBHeader() {
           leading-[19px] text-[18px]  font-bold
         mb-[12px] "
         >
-          <DarkLogo />
+          <Logo fill={"#000"} />
           Prime Preparation Center
         </a>
         <div className="flex items-center justify-center lg:gap-[24px]">

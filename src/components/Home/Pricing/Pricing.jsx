@@ -3,10 +3,11 @@ import React, { useState } from "react";
 import Image from "next/image";
 
 import "swiper/css";
-import { Buttons } from "../UIElements";
 import SwiperPrice from "./SwiperPrice";
-import { BasicModal } from "../index.js";
-import PricingGetQuoteModal from "../Modals/PricingGetQuoteModal/PricingGetQuoteModal";
+
+import { Buttons } from "@/components/UIElements";
+import { BasicModal } from "@/components";
+import PricingGetQuoteModal from "@/components/Modals/PricingGetQuoteModal/PricingGetQuoteModal";
 
 export default function Pricing() {
   const [showModalPricing, setShowModalPricing] = useState(false);

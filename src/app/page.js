@@ -10,7 +10,7 @@ import {
   Partners,
   Certificates,
 } from "@/components";
-import GetQuoteButton from "@/components/GetQueteButton/GetQuoteButton";
+import GetQuoteButton from "@/components/UIElements/GetQueteButton/GetQuoteButton";
 
 export default function Home() {
   return (

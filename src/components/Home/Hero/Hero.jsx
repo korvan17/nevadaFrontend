@@ -1,6 +1,5 @@
 import Image from "next/image";
 import React from "react";
-import GetQuoteButton from "../GetQueteButton/GetQuoteButton";
 
 export default function Hero() {
   return (

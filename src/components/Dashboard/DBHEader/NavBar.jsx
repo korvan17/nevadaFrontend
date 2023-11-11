@@ -1,22 +1,10 @@
 "use client";
 
 import React from "react";
-import { HomeIcon, UserIcon } from "../Icons";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
-const navLinks = [
-  {
-    icon: <UserIcon />,
-    title: "User page",
-    href: "/dashboard/account",
-  },
-  {
-    icon: <HomeIcon />,
-    title: "Home page",
-    href: "/dashboard",
-  },
-];
+import { navLinks } from "@/content";
+import { HomeIcon, UserIcon } from "@/components/Icons";
 
 function NavBar() {
   const pathName = usePathname();
