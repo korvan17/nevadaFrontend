@@ -1,7 +1,6 @@
-import Link from "next/link";
-import { UserControls } from "../UIElements";
 import Navigation from "./Navigation";
 import React from "react";
+import { UserControls } from "@/components/UIElements";
 function DesktopHeader() {
   return (
     <div
@@ -21,7 +20,7 @@ function DesktopHeader() {
       <div className="container">
         <div className="flex">
           <Navigation />
-          {/* <UserControls /> */}
+          <UserControls />
         </div>
       </div>
     </div>
