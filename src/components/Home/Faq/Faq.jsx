@@ -1,7 +1,7 @@
 import { faq } from "@/content";
-import { FaqButton } from "../UIElements";
 import React from "react";
 import Image from "next/image";
+import { FaqButton } from "@/components/UIElements";
 export default function Faq() {
   return (
     <section className="py-mobile md:py-desktop" id="faq">
