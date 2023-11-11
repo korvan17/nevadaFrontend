@@ -127,7 +127,10 @@ export const CreateOrderForm = () => {
                 title="This field is for the identification of packages received by the warehouse. Please enter your company's official business name or a pre-approved alias as coordinated with our warehouse personnel."
                 placement="right-end"
               >
-                <HelpOutlineIcon className="w-[12px] h-[12px] cursor-help" />
+                <HelpOutlineIcon
+                  style={{ width: "12px", height: "12px" }}
+                  className="cursor-help"
+                />
               </Tooltip>
             </label>
             <input
@@ -151,7 +154,10 @@ export const CreateOrderForm = () => {
                 title="Specify the exact name of the product or provide a succinct description of the goods."
                 placement="right-end"
               >
-                <HelpOutlineIcon className="w-[12px] h-[12px] cursor-help" />
+                <HelpOutlineIcon
+                  style={{ width: "12px", height: "12px" }}
+                  className="cursor-help"
+                />
               </Tooltip>
             </label>
             <select
@@ -181,7 +187,10 @@ export const CreateOrderForm = () => {
                       title="This field is for the identification of packages received by the warehouse. Please enter your company's official business name or a pre-approved alias as coordinated with our warehouse personnel."
                       placement="right-end"
                     >
-                      <HelpOutlineIcon className="w-[12px] h-[12px] cursor-help" />
+                      <HelpOutlineIcon
+                        style={{ width: "12px", height: "12px" }}
+                        className="cursor-help"
+                      />
                     </Tooltip>
                   </label>
                   <input
@@ -213,7 +222,10 @@ export const CreateOrderForm = () => {
                     title="If available, please include the item's unique identifier number."
                     placement="right-end"
                   >
-                    <HelpOutlineIcon className="w-[12px] h-[12px] cursor-help" />
+                    <HelpOutlineIcon
+                      style={{ width: "12px", height: "12px" }}
+                      className="cursor-help"
+                    />
                   </Tooltip>
                 </label>
 
@@ -239,7 +251,10 @@ export const CreateOrderForm = () => {
                     title="Expected Quantity of Units: Indicate the total number of individual units being sent in this field."
                     placement="right-end"
                   >
-                    <HelpOutlineIcon className="w-[12px] h-[12px] cursor-help" />
+                    <HelpOutlineIcon
+                      style={{ width: "12px", height: "12px" }}
+                      className="cursor-help"
+                    />
                   </Tooltip>
                 </label>
                 <input
@@ -263,7 +278,10 @@ export const CreateOrderForm = () => {
                     title="Units per Master Box: State the number of units contained within a single master box. If your shipment does not use master boxes or contains assorted items in mixed boxes, please indicate this with a zero (Master Box (24x18x12) 49 lbs max)."
                     placement="right-end"
                   >
-                    <HelpOutlineIcon className="w-[12px] h-[12px] cursor-help" />
+                    <HelpOutlineIcon
+                      style={{ width: "12px", height: "12px" }}
+                      className="cursor-help"
+                    />
                   </Tooltip>
                 </label>
                 <input
@@ -284,7 +302,10 @@ export const CreateOrderForm = () => {
                     title="Based on the quantity of units and the units per master box, this is the calculated total number of master boxes for this product."
                     placement="right-end"
                   >
-                    <HelpOutlineIcon className="w-[12px] h-[12px] cursor-help" />
+                    <HelpOutlineIcon
+                      style={{ width: "12px", height: "12px" }}
+                      className="cursor-help"
+                    />
                   </Tooltip>
                 </label>
                 <input
@@ -441,7 +462,7 @@ export const CreateOrderForm = () => {
               >
                 <HelpOutlineIcon
                   style={{ width: "12px", height: "12px" }}
-                  className="w-[12px] h-[12px] cursor-help"
+                  className="cursor-help"
                 />
               </Tooltip>
             </label>
