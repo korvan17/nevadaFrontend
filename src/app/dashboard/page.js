@@ -1,15 +1,20 @@
+import { DBHeader } from "@/components";
+import { CreateOrderForm } from "@/components/Dashboard/Boards/CreateOrderForm/CreateOrderForm";
+import CreateOrderButton from "@/components/UIElements/Buttons/CreateOrderButton/CreateOrderButton";
 import React from "react";
+
 export const metadata = {
   title: "PPC | Dashboard",
   description: "Dashboard client page",
 };
 
-function Dashboard() {
+function Dashboard({ children }) {
   return (
     <>
-      <h1 className="text-[50px] w-[450px] mt-[120px] mx-auto">
-        Dashboard Page
-      </h1>
+      <DBHeader />
+      <CreateOrderButton />
+      {/* <CreateOrderForm /> */}
+      {children}
     </>
   );
 }
