@@ -5,7 +5,7 @@ import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import "tailwindcss/tailwind.css";
 
 export const CreateOrderForm = () => {
-  const [orderType, setOrderType] = useState("inbound");
+  const [orderType, setOrderType] = useState("");
   const [orderDate, setOrderDate] = useState(() =>
     new Date().toLocaleDateString("en-US", {
       year: "numeric",
@@ -14,6 +14,7 @@ export const CreateOrderForm = () => {
     })
   );
   const [companyName, setCompanyName] = useState("");
+
   const [warehouseAddress, setWarehouseAddress] = useState("");
   const [products, setProducts] = useState([]);
   const [expectedQty, setExpectedQty] = useState("");
