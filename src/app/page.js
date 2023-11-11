@@ -1,3 +1,4 @@
+'use client'
 import React from "react";
 import {
   About,
@@ -11,8 +12,17 @@ import {
   Certificates,
 } from "@/components";
 import GetQuoteButton from "@/components/GetQueteButton/GetQuoteButton";
+import { useEffect } from "react";
+import AOS from 'aos';
 
 export default function Home() {
+
+  useEffect(() => {
+
+    if (typeof document !== "undefined") {
+      AOS.init();
+    }
+  }, []);
   return (
     <>
       <Header />
