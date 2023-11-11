@@ -48,6 +48,8 @@ export const CreateOrderForm = () => {
         qtyInMasterBox: "",
         expectedQty: "",
         features: [],
+        otherFeatureDetails: "",
+        renderedOtherDetails: "",
       },
     ]);
   };
@@ -66,7 +68,26 @@ export const CreateOrderForm = () => {
     }
     setProducts(newProducts);
   };
-
+  const handleOtherFeatureDetailsChange = (index, value) => {
+    const newProducts = [...products];
+    newProducts[index] = {
+      ...newProducts[index],
+      otherFeatureDetails: value,
+    };
+    setProducts(newProducts);
+  };
+  const handleOtherDetailsRender = (index) => {
+    setProducts((currentProducts) => {
+      const newProducts = [...currentProducts];
+      const product = { ...newProducts[index] };
+      product.renderedOtherDetails = product.otherFeatureDetails; // Copy the input text to the rendered text
+      newProducts[index] = product;
+      return newProducts;
+    });
+  };
+  const handleOtherFeatureDetailsSubmit = (index) => {
+    console.log(products[index].otherFeatureDetails);
+  };
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -409,21 +430,21 @@ export const CreateOrderForm = () => {
                       <input
                         type="text"
                         id={`otherDetail-${index}`}
-                        value={product.otherDetail || ""}
+                        value={product.otherFeatureDetails}
                         onChange={(e) =>
-                          handleProductChange(
-                            index,
-                            "otherDetail",
-                            e.target.value
-                          )
+                          handleOtherFeatureDetailsChange(index, e.target.value)
                         }
                         className="mt-1 block w-full border border-gray-300 px-3 py-2 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                       />
-                      <button className="bg-black">✅</button>
+
+                      <button onClick={() => handleOtherDetailsRender(index)}>
+                        ✅
+                      </button>
                     </div>
                   </div>
                 )}
               </div>
+              <div>{product.renderedOtherDetails}</div>
             </div>
           ))}
 
