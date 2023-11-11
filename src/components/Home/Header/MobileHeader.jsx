@@ -1,9 +1,9 @@
 import { useState } from "react";
-import Backdrop from "../Backdrop/Backdrop";
-import { BurgerMenuIcon, Logo } from "../Icons";
 import HeaderMenu from "./HeaderMenu";
 import { AnimatePresence } from "framer-motion";
 import React from "react";
+import Backdrop from "@/components/Backdrop/Backdrop";
+import { BurgerMenuIcon, Logo } from "@/components/Icons";
 function MobileHeader() {
   const [isMenuOpen, setisMenuOpen] = useState(false);
 

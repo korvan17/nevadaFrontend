@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import BasicModal from "../Modals/BasicModal/BasicModal";
-import GetQuoteWidgetModal from "../Modals/GetQuoteWidgetModal/GetQuoteWidgetModal";
+import { BasicModal } from "@/components";
+import GetQuoteWidgetModal from "@/components/Modals/GetQuoteWidgetModal/GetQuoteWidgetModal";
 
 export default function GetQuoteButton() {
   const [showGetQuoteModal, setShowGetQuoteModal] = useState(false);

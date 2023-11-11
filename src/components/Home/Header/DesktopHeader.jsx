@@ -1,7 +1,6 @@
-import Link from "next/link";
-import { UserControls } from "../UIElements";
 import Navigation from "./Navigation";
 import React from "react";
+import { UserControls } from "@/components/UIElements";
 function DesktopHeader() {
   return (
     <div

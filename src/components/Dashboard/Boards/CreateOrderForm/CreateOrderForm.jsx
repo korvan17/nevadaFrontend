@@ -1,16 +1,34 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import Tooltip from "@mui/material/Tooltip";
+import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
+import "tailwindcss/tailwind.css";
 
 export const CreateOrderForm = () => {
   const [orderType, setOrderType] = useState("inbound");
   const [orderDate, setOrderDate] = useState(() =>
-    new Date().toLocaleDateString("en-US")
+    new Date().toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+    })
   );
   const [receiverName, setReceiverName] = useState("");
   const [warehouseAddress, setWarehouseAddress] = useState("");
   const [products, setProducts] = useState([]);
-  const [expectedQty, setExpectedQty] = useState("0");
+  const [expectedQty, setExpectedQty] = useState("");
   const [comments, setComments] = useState("");
+  const [totalMasterBoxes, setTotalMasterBoxes] = useState("0");
+
+  useEffect(() => {
+    setTotalMasterBoxes(
+      products.reduce((acc, product) => {
+        const productQty = Number(product.expectedQty) || 0;
+        const qtyInMasterBox = Number(product.qtyInMasterBox) || 1;
+        return acc + Math.ceil(productQty / qtyInMasterBox);
+      }, 0)
+    );
+  }, [products]);
 
   const handleProductChange = (index, field, value) => {
     let newProducts = [...products];
@@ -24,10 +42,21 @@ export const CreateOrderForm = () => {
   const addProduct = () => {
     setProducts([
       ...products,
-      { productName: "", idAsin: "", qtyInMasterBox: 0, features: [] },
+      {
+        productName: "",
+        idAsin: "",
+        qtyInMasterBox: "",
+        expectedQty: "",
+        features: [],
+        otherFeatureDetails: "",
+        renderedOtherDetails: "",
+      },
     ]);
   };
-
+  const removeProduct = (index) => {
+    const newProducts = products.filter((_, idx) => idx !== index);
+    setProducts(newProducts);
+  };
   const handleFeatureChange = (index, feature, isChecked) => {
     let newProducts = [...products];
     if (isChecked) {
@@ -39,28 +68,36 @@ export const CreateOrderForm = () => {
     }
     setProducts(newProducts);
   };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const result = Math.ceil(
-      expectedQty /
-        products.reduce(
-          (acc, product) => acc + Number(product.qtyInMasterBox),
-          0
-        )
-    );
-
-    console.log("Form Data:", {
-      orderType,
-      orderDate,
-      receiverName,
-      warehouseAddress,
-      products,
-      expectedQty,
-      result,
-      comments,
+  const handleOtherFeatureDetailsChange = (index, value) => {
+    const newProducts = [...products];
+    newProducts[index] = {
+      ...newProducts[index],
+      otherFeatureDetails: value,
+    };
+    setProducts(newProducts);
+  };
+  const handleOtherDetailsRender = (index) => {
+    setProducts((currentProducts) => {
+      const newProducts = [...currentProducts];
+      const product = { ...newProducts[index] };
+      product.renderedOtherDetails = product.otherFeatureDetails; // Copy the input text to the rendered text
+      newProducts[index] = product;
+      return newProducts;
     });
   };
+  const handleOtherFeatureDetailsSubmit = (index) => {
+    console.log(products[index].otherFeatureDetails);
+  };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    const totalMasterBoxes = products.reduce((acc, product) => {
+      const productQty = Number(product.expectedQty) || 0;
+      const qtyInMasterBox = Number(product.qtyInMasterBox) || 1;
+      return acc + Math.ceil(productQty / qtyInMasterBox);
+    }, 0);
+  };
+
   return (
     <div className="flex flex-col items-center justify-center p-4">
       <div className="bg-bgBoard  rounded-[16px] border p-5 w-full max-w-4xl">
@@ -86,13 +123,18 @@ export const CreateOrderForm = () => {
           </div>
           <div>
             <label
-              htmlFor="Order placed"
+              htmlFor="orderDate"
               className="block text-sm font-medium text-gray-700"
             >
-              Order placed
+              Order placed{" "}
             </label>
-            При виборі "Order placed" автоматично встановлюється сьогоднішня
-            дата в американському форматі (наприклад, 10/08/2023).
+            <input
+              type="text"
+              id="orderDate"
+              value={orderDate}
+              readOnly
+              className="mt-1 block w-full border border-gray-300 px-3 py-2 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            />
           </div>
 
           <div>
@@ -100,7 +142,17 @@ export const CreateOrderForm = () => {
               htmlFor="receiverName"
               className="block text-sm font-medium text-gray-700"
             >
-              Receiver Name <span className="text-red-500">*</span>
+              Company Name or Alias for Package Identification{" "}
+              <span className="text-red-500">*</span>{" "}
+              <Tooltip
+                title="This field is for the identification of packages received by the warehouse. Please enter your company's official business name or a pre-approved alias as coordinated with our warehouse personnel."
+                placement="right-end"
+              >
+                <HelpOutlineIcon
+                  style={{ width: "12px", height: "12px" }}
+                  className="cursor-help"
+                />
+              </Tooltip>
             </label>
             <input
               type="text"
@@ -117,7 +169,17 @@ export const CreateOrderForm = () => {
               htmlFor="warehouseAddress"
               className="block text-sm font-medium text-gray-700"
             >
-              Warehouse Address <span className="text-red-500">*</span>
+              Warehouse Address Selection{" "}
+              <span className="text-red-500">*</span>{" "}
+              <Tooltip
+                title="Specify the exact name of the product or provide a succinct description of the goods."
+                placement="right-end"
+              >
+                <HelpOutlineIcon
+                  style={{ width: "12px", height: "12px" }}
+                  className="cursor-help"
+                />
+              </Tooltip>
             </label>
             <select
               id="warehouseAddress"
@@ -135,22 +197,40 @@ export const CreateOrderForm = () => {
           {/* Products List */}
           {products.map((product, index) => (
             <div key={index} className="space-y-2">
-              <div>
-                <label
-                  htmlFor={`productName-${index}`}
-                  className="block text-sm font-medium text-gray-700"
+              <div className="flex justify-between">
+                <div>
+                  <label
+                    htmlFor={`productName-${index}`}
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Product Description <span className="text-red-500">*</span>{" "}
+                    <Tooltip
+                      title="This field is for the identification of packages received by the warehouse. Please enter your company's official business name or a pre-approved alias as coordinated with our warehouse personnel."
+                      placement="right-end"
+                    >
+                      <HelpOutlineIcon
+                        style={{ width: "12px", height: "12px" }}
+                        className="cursor-help"
+                      />
+                    </Tooltip>
+                  </label>
+                  <input
+                    type="text"
+                    id={`productName-${index}`}
+                    value={product.productName}
+                    onChange={(e) =>
+                      handleProductChange(index, "productName", e.target.value)
+                    }
+                    className="mt-1 block w-full border   py-2 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  />
+                </div>
+                <button
+                  type="button"
+                  onClick={() => removeProduct(index)}
+                  className=" text-red-800 font-bold bg-transparent"
                 >
-                  Product Name <span className="text-red-500">*</span>
-                </label>
-                <input
-                  type="text"
-                  id={`productName-${index}`}
-                  value={product.productName}
-                  onChange={(e) =>
-                    handleProductChange(index, "productName", e.target.value)
-                  }
-                  className="mt-1 block w-full border border-gray-300 px-3 py-2 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                />
+                  - Remove Product
+                </button>
               </div>
               {/* ID/ASIN */}
               <div>
@@ -158,7 +238,16 @@ export const CreateOrderForm = () => {
                   htmlFor={`idAsin-${index}`}
                   className="block text-sm font-medium text-gray-700"
                 >
-                  ID/ASIN <span className="text-red-500">*</span>
+                  ASIN/UPC/ID{" "}
+                  <Tooltip
+                    title="If available, please include the item's unique identifier number."
+                    placement="right-end"
+                  >
+                    <HelpOutlineIcon
+                      style={{ width: "12px", height: "12px" }}
+                      className="cursor-help"
+                    />
+                  </Tooltip>
                 </label>
 
                 <input
@@ -171,14 +260,50 @@ export const CreateOrderForm = () => {
                   className="mt-1 block w-full border border-gray-300 px-3 py-2 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 />
               </div>
-
+              {/* Expected Quantity Input */}
+              <div>
+                <label
+                  htmlFor={`expectedQty-${index}`}
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Expected Quantity of Units{" "}
+                  <span className="text-red-500">*</span>{" "}
+                  <Tooltip
+                    title="Expected Quantity of Units: Indicate the total number of individual units being sent in this field."
+                    placement="right-end"
+                  >
+                    <HelpOutlineIcon
+                      style={{ width: "12px", height: "12px" }}
+                      className="cursor-help"
+                    />
+                  </Tooltip>
+                </label>
+                <input
+                  type="number"
+                  id={`expectedQty-${index}`}
+                  value={product.expectedQty}
+                  onChange={(e) =>
+                    handleProductChange(index, "expectedQty", e.target.value)
+                  }
+                  className="mt-1 block w-full border border-gray-300 px-3 py-2 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                />
+              </div>
               {/* Quantity in Master Box */}
               <div>
                 <label
                   htmlFor={`qtyInMasterBox-${index}`}
                   className="block text-sm font-medium text-gray-700"
                 >
-                  Qty in Master Box <span className="text-red-500">*</span>
+                  Units per Master Box <span className="text-red-500">*</span>{" "}
+                  <Tooltip
+                    title="Units per Master Box: State the number of units contained within a single master box. If your shipment does not use master boxes or contains assorted items in mixed boxes, please indicate this with a zero (Master Box (24x18x12) 49 lbs max)."
+                    placement="right-end"
+                  >
+                    <HelpOutlineIcon
+                      style={{ width: "12px", height: "12px" }}
+                      className="cursor-help"
+                    />
+                  </Tooltip>
                 </label>
                 <input
                   type="number"
@@ -190,7 +315,30 @@ export const CreateOrderForm = () => {
                   className="mt-1 block w-full border border-gray-300 px-3 py-2 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 />
               </div>
-
+              {/* Total Master Box Count for each product */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700">
+                  Total Master Box Count{" "}
+                  <Tooltip
+                    title="Based on the quantity of units and the units per master box, this is the calculated total number of master boxes for this product."
+                    placement="right-end"
+                  >
+                    <HelpOutlineIcon
+                      style={{ width: "12px", height: "12px" }}
+                      className="cursor-help"
+                    />
+                  </Tooltip>
+                </label>
+                <input
+                  type="text"
+                  readOnly
+                  className="mt-1 block w-full bg-gray-100 border border-gray-300 px-3 py-2 rounded-md shadow-sm text-gray-500"
+                  value={Math.ceil(
+                    Number(product.expectedQty || 0) /
+                      Math.max(Number(product.qtyInMasterBox), 1)
+                  ).toString()}
+                />
+              </div>
               {/* Product Features */}
               <div className="flex flex-wrap gap-2 mt-2">
                 <div>
@@ -282,48 +430,31 @@ export const CreateOrderForm = () => {
                       <input
                         type="text"
                         id={`otherDetail-${index}`}
-                        value={product.otherDetail || ""}
+                        value={product.otherFeatureDetails}
                         onChange={(e) =>
-                          handleProductChange(
-                            index,
-                            "otherDetail",
-                            e.target.value
-                          )
+                          handleOtherFeatureDetailsChange(index, e.target.value)
                         }
                         className="mt-1 block w-full border border-gray-300 px-3 py-2 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                       />
-                      <button className="bg-black">✅</button>
+
+                      <button onClick={() => handleOtherDetailsRender(index)}>
+                        ✅
+                      </button>
                     </div>
                   </div>
                 )}
               </div>
+              <div>{product.renderedOtherDetails}</div>
             </div>
           ))}
 
           <button
             type="button"
             onClick={addProduct}
-            className="px-4 py-2 bg-blue-500 text-red-800 font-bold rounded focus:outline-none bg-transparent"
+            className=" text-red-800 font-bold bg-transparent"
           >
             + Add Product
           </button>
-
-          {/* Expected Quantity Input */}
-          <div>
-            <label
-              htmlFor="expectedQty"
-              className="block text-sm font-medium text-gray-700"
-            >
-              Expected Quantity <span className="text-red-500">*</span>
-            </label>
-            <input
-              type="number"
-              id="expectedQty"
-              value={expectedQty}
-              onChange={(e) => setExpectedQty(e.target.value)}
-              className="mt-1 block w-full border border-gray-300 px-3 py-2 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-            />
-          </div>
 
           {/* Comments Textarea */}
           <div>
@@ -345,18 +476,21 @@ export const CreateOrderForm = () => {
           {/* Result - Calculated field */}
           <div>
             <label className="block text-sm font-medium text-gray-700">
-              Result (Auto Calculated)
+              Order's Master Box Total{" "}
+              <Tooltip
+                title="Total count of master boxes included in the entire order."
+                placement="right-end"
+              >
+                <HelpOutlineIcon
+                  style={{ width: "12px", height: "12px" }}
+                  className="cursor-help"
+                />
+              </Tooltip>
             </label>
             <input
               type="text"
               readOnly
-              value={Math.ceil(
-                expectedQty /
-                  products.reduce(
-                    (acc, product) => acc + Number(product.qtyInMasterBox),
-                    0
-                  )
-              )}
+              value={totalMasterBoxes}
               className="mt-1 block w-full border border-gray-300 px-3 py-2 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             />
           </div>

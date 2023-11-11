@@ -2,9 +2,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import React from "react";
 import "swiper/css";
 import "swiper/css/pagination";
-import { Buttons } from "../UIElements";
 
 import { Pagination } from "swiper/modules";
+import { Buttons } from "@/components/UIElements";
 
 export default function SwiperPrice({
   toggleModalPricing,
