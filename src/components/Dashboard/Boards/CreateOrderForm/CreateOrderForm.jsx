@@ -13,12 +13,26 @@ export const CreateOrderForm = () => {
       day: "2-digit",
     })
   );
-  const [receiverName, setReceiverName] = useState("");
+  const [companyName, setCompanyName] = useState("");
   const [warehouseAddress, setWarehouseAddress] = useState("");
   const [products, setProducts] = useState([]);
   const [expectedQty, setExpectedQty] = useState("");
   const [comments, setComments] = useState("");
   const [totalMasterBoxes, setTotalMasterBoxes] = useState("0");
+  const [isButtonActive, setIsButtonActive] = useState(false);
+  const [createOrder, setCreateOrder] = useState("Create a Order Form");
+  useEffect(() => {
+    const allProductsValid = products.every(
+      (product) =>
+        product.productDescription &&
+        product.expectedQty &&
+        product.qtyInMasterBox
+    );
+
+    setIsButtonActive(
+      orderType && companyName && warehouseAddress && allProductsValid
+    );
+  }, [orderType, companyName, warehouseAddress, products]);
 
   useEffect(() => {
     setTotalMasterBoxes(
@@ -43,7 +57,7 @@ export const CreateOrderForm = () => {
     setProducts([
       ...products,
       {
-        productName: "",
+        productDescription: "",
         idAsin: "",
         qtyInMasterBox: "",
         expectedQty: "",
@@ -101,6 +115,7 @@ export const CreateOrderForm = () => {
   return (
     <div className="flex flex-col items-center justify-center p-4">
       <div className="bg-bgBoard  rounded-[16px] border p-5 w-full max-w-4xl">
+        <h2 className="">{createOrder}</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <div>
@@ -116,7 +131,11 @@ export const CreateOrderForm = () => {
               value={orderType}
               onChange={(e) => setOrderType(e.target.value)}
               className="mt-1 w-full pl-3 pr-10 py-2  text-sm rounded-md"
+              required
             >
+              <option value="" disabled>
+                Select Order Type
+              </option>
               <option value="inbound">Inbound Order</option>
               <option value="removal">Removals</option>
             </select>
@@ -139,7 +158,7 @@ export const CreateOrderForm = () => {
 
           <div>
             <label
-              htmlFor="receiverName"
+              htmlFor="companyName"
               className="block text-sm font-medium text-gray-700"
             >
               Company Name or Alias for Package Identification{" "}
@@ -156,10 +175,11 @@ export const CreateOrderForm = () => {
             </label>
             <input
               type="text"
-              id="receiverName"
-              value={receiverName}
-              onChange={(e) => setReceiverName(e.target.value)}
+              id="companyName"
+              value={companyName}
+              onChange={(e) => setCompanyName(e.target.value)}
               className="mt-1 block w-full border border-gray-300 px-3 py-2 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              required
             />
           </div>
 
@@ -186,9 +206,12 @@ export const CreateOrderForm = () => {
               value={warehouseAddress}
               onChange={(e) => setWarehouseAddress(e.target.value)}
               className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
+              required
             >
               {/* Replace the options below with actual warehouse addresses */}
-              <option value="">Select a warehouse</option>
+              <option value="" disabled>
+                Select a warehouse
+              </option>
               <option value="address1">Warehouse 1</option>
               <option value="address2">Warehouse 2</option>
             </select>
@@ -200,7 +223,7 @@ export const CreateOrderForm = () => {
               <div className="flex justify-between">
                 <div>
                   <label
-                    htmlFor={`productName-${index}`}
+                    htmlFor={`productDescription-${index}`}
                     className="block text-sm font-medium text-gray-700"
                   >
                     Product Description <span className="text-red-500">*</span>{" "}
@@ -216,12 +239,17 @@ export const CreateOrderForm = () => {
                   </label>
                   <input
                     type="text"
-                    id={`productName-${index}`}
-                    value={product.productName}
+                    id={`productDescription-${index}`}
+                    value={product.productDescription}
                     onChange={(e) =>
-                      handleProductChange(index, "productName", e.target.value)
+                      handleProductChange(
+                        index,
+                        "productDescription",
+                        e.target.value
+                      )
                     }
                     className="mt-1 block w-full border   py-2 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    required
                   />
                 </div>
                 <button
@@ -286,6 +314,7 @@ export const CreateOrderForm = () => {
                     handleProductChange(index, "expectedQty", e.target.value)
                   }
                   className="mt-1 block w-full border border-gray-300 px-3 py-2 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  required
                 />
               </div>
               {/* Quantity in Master Box */}
@@ -313,6 +342,7 @@ export const CreateOrderForm = () => {
                     handleProductChange(index, "qtyInMasterBox", e.target.value)
                   }
                   className="mt-1 block w-full border border-gray-300 px-3 py-2 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  required
                 />
               </div>
               {/* Total Master Box Count for each product */}
@@ -499,7 +529,12 @@ export const CreateOrderForm = () => {
           <div className="flex justify-center">
             <button
               type="submit"
-              className="py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              className={`${
+                isButtonActive
+                  ? "bg-accentYellow hover:bg-accentHoverYellow"
+                  : "bg-gray-400 cursor-not-allowed"
+              } text-white px-4 py-2 rounded ml-[auto] mr-[auto] font-bold text-[16px] w-[179px] h-[48px]`}
+              disabled={!isButtonActive}
             >
               Confirm Order
             </button>
