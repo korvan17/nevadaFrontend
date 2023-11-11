@@ -1,5 +1,4 @@
 import React from "react";
-import ChatButton from "@/components/ChatButton/ChatButton";
 import "./globals.css";
 import { Inter, Red_Hat_Display } from "next/font/google";
 
