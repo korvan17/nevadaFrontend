@@ -6,7 +6,7 @@ export { default as Pricing } from "./Home/Pricing/Pricing.jsx";
 
 export { default as DBHeader } from "./Dashboard/DBHEader/DBHeader.jsx";
 export { default as DBContentContainer } from "./Dashboard/DBContentContainer/DBContentContainer.jsx";
-export { default as SideBar } from "./Dashboard/SideBar/SideBar.jsx";
+export { default as SideBar } from "./Dashboard/SIdeBar/SideBar.jsx";
 export { default as UserPanel } from "./Dashboard/UserPanel/UserPanel.jsx";
 
 export { default as Footer } from "./Footer/Footer.jsx";
