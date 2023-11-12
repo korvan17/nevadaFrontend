@@ -14,6 +14,8 @@ function Dashboard({ children }) {
       <DBHeader />
       <CreateOrderButton />
       {/* <CreateOrderForm /> */}
+      {/* <CommonBoard title={"Order history"} icon={<HistoryIcon />}></CommonBoard> */}
+      {/* <CommonBoard title={"Tracker"} icon={<TrackerIcon />}></CommonBoard> */}
       {children}
     </>
   );
