@@ -10,7 +10,11 @@ function SideBar({ toggleSideBar, children }) {
   "
     >
       SideBar
-      <button onClick={toggleSideBar} type="button">
+      <button
+        className="w-[24px] h-[24px] absolute top-[24px] left-[12px] flex items-center justify-center"
+        onClick={toggleSideBar}
+        type="button"
+      >
         <CloseMenuIcon />
       </button>
       {children}

@@ -12,7 +12,7 @@ function Account() {
     <div>
       <DBHeader />
       <UserPanel toggleSideBar={toggleSideBar} isSideBarOpen={isSideBarOpen} />
-      {isSideBarOpen && <SideBar />}
+      {isSideBarOpen && <SideBar toggleSideBar={toggleSideBar} />}
     </div>
   );
 }
