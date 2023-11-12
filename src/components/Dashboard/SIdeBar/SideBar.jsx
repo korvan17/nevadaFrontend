@@ -1,13 +1,24 @@
+"use client";
 import { CloseMenuIcon } from "@/components/Icons";
+import { motion } from "framer-motion";
 import React from "react";
 
 function SideBar({ toggleSideBar, children }) {
   return (
-    <div
+    <motion.div
       className="fixed top-0 left-0
       h-full w-full px-[9px] py-[16px]
       bg-mainBlack
   "
+      initial={{ x: 1000 }}
+      animate={{ x: 0 }}
+      exit={{ x: 1000 }}
+      transition={{
+        ease: "easeInOut",
+        duration: 0.5,
+        type: "tween",
+        stiffness: 100,
+      }}
     >
       SideBar
       <button
@@ -17,8 +28,8 @@ function SideBar({ toggleSideBar, children }) {
       >
         <CloseMenuIcon />
       </button>
-      {children}
-    </div>
+      <div> {children}</div>
+    </motion.div>
   );
 }
 

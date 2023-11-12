@@ -1,9 +1,18 @@
+"use client";
 import { CloseMenuIcon } from "@/components/Icons";
 import { userPanelItems } from "@/content";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
+import SideBar from "../SIdeBar/SideBar";
+import { AnimatePresence } from "framer-motion";
 
-function UserPanel({ toggleSideBar }) {
+function UserPanel() {
+  const [isSideBarOpen, setIsSideBarOpen] = useState(false);
+
+  const toggleSideBar = () => {
+    setIsSideBarOpen(!isSideBarOpen);
+  };
+
   return (
     <div className="container">
       <section
@@ -33,6 +42,13 @@ function UserPanel({ toggleSideBar }) {
             );
           })}
         </ul>
+        <AnimatePresence>
+          {isSideBarOpen && (
+            <SideBar toggleSideBar={toggleSideBar}>
+              <p className="text-mainWhite">Side Bar content</p>
+            </SideBar>
+          )}
+        </AnimatePresence>
       </section>
     </div>
   );
