@@ -5,15 +5,17 @@ import { passwordUpdateData } from "@/content";
 
 function PasswordSettings() {
   return (
-    <form className="text-mainWhite">
+    <form className="text-mainWhite text-[16px] leading-[24px] font-semibold">
       <div className="flex items-center justify-center gap-[8px] mb-[44px]">
         <Image width={24} height={24} src={securityIcon} alt="security icon" />
         <div>
           <h2 className="text-mainWhite">Password settings</h2>
-          <p className="text-captionalWhite">Change password</p>
+          <p className="text-captionalWhite text-[12px] leading-[16px] font-normal	">
+            Change password
+          </p>
         </div>
       </div>
-      <b className="block mb-[24px]">Change password</b>
+      <b className="block mb-[24px] font-bold">Change password</b>
       <ul className="mb-[48px]">
         {passwordUpdateData.map(({ label, id, name }) => {
           return (
