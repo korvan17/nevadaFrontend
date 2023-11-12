@@ -5,7 +5,7 @@ function Account() {
   return (
     <div>
       <DBHeader />
-      <UserPanel/>
+      <UserPanel />
     </div>
   );
 }

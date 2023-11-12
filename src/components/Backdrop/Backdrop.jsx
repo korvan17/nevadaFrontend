@@ -2,15 +2,15 @@ import React from "react";
 import { motion } from "framer-motion";
 import { useEffect } from "react";
 
-function Backdrop({ toggleMenu, children }) {
+function Backdrop({ toggleMenu, toggleSideBar, children }) {
   const handleBackdropClose = (event) => {
     if (event.target === event.currentTarget) {
-      toggleMenu();
+      toggleMenu ? toggleMenu() : toggleSideBar();
     }
   };
   useEffect(() => {
     const handleKeyDown = (e) => {
-      if (e.code === "Escape") toggleMenu();
+      if (e.code === "Escape") toggleMenu ? toggleMenu() : toggleSideBar();
     };
     document.body.style.overflow = "hidden";
     window.addEventListener("keydown", handleKeyDown);
@@ -18,7 +18,7 @@ function Backdrop({ toggleMenu, children }) {
       document.body.style.overflow = "auto";
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [toggleMenu]);
+  }, [toggleMenu, toggleSideBar]);
 
   return (
     <motion.div
