@@ -5,7 +5,7 @@ function PasswordSettings() {
   return (
     <form>
       <Image href="../../Icons/shield-lock.png" />
-      <h2>Password settings</h2>
+      <h2 className="text-mainWhite">Password settings</h2>
       <p>Change password</p>
     </form>
   );

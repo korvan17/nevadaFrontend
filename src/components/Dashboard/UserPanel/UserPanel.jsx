@@ -5,11 +5,14 @@ import Image from "next/image";
 import React, { useState } from "react";
 import SideBar from "../SIdeBar/SideBar";
 import { AnimatePresence } from "framer-motion";
+import PasswordSettings from "../PasswordSettings/PasswordSettings";
 
 function UserPanel() {
   const [isSideBarOpen, setIsSideBarOpen] = useState(false);
+  const [selectedItem, setSelectedItem] = useState(null);
 
-  const toggleSideBar = () => {
+  const toggleSideBar = (title) => {
+    setSelectedItem(userPanelItems.find((e) => e.title === title));
     setIsSideBarOpen(!isSideBarOpen);
   };
 
@@ -32,7 +35,7 @@ function UserPanel() {
                 <p>{title}</p>
                 <p>{hint}</p>
                 <button
-                  onClick={toggleSideBar}
+                  onClick={() => toggleSideBar(title)}
                   className="scale-x-[-1]"
                   type="button"
                 >
@@ -46,6 +49,16 @@ function UserPanel() {
           {isSideBarOpen && (
             <SideBar toggleSideBar={toggleSideBar}>
               <p className="text-mainWhite">Side Bar content</p>
+              {selectedItem &&
+                (selectedItem.title === "Password settings" ? (
+                  <PasswordSettings />
+                ) : selectedItem.title === "History of discounts" ? (
+                  <p>History of discounts</p>
+                ) : selectedItem.title === "Transaction history" ? (
+                  <p>Transaction history</p>
+                ) : selectedItem.title === "Change the language" ? (
+                  <p>Change the language</p>
+                ) : null)}
             </SideBar>
           )}
         </AnimatePresence>
