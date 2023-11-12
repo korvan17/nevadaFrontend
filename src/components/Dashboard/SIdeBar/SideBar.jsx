@@ -6,8 +6,8 @@ import React from "react";
 function SideBar({ toggleSideBar, children }) {
   return (
     <motion.div
-      className="fixed top-0 left-0
-      h-full w-full px-[9px] py-[16px]
+      className="fixed top-0 right-0
+      h-full w-full px-[9px] py-[16px] md:w-[50%] lg:w-[30%]
       bg-mainBlack
   "
       initial={{ x: 1000 }}

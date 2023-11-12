@@ -24,7 +24,11 @@ function UserPanel() {
           lg:pt-[40px] lg:pb-[42px] lg:px-[9px] lg:mt-[100px] lg:mb-[24px]
       md:bg-userPanel md:rounded-[16px] md:custom-shadow"
       >
-        <Image href="https://static.vecteezy.com/system/resources/previews/008/442/086/non_2x/illustration-of-human-icon-user-symbol-icon-modern-design-on-blank-background-free-vector.jpg" />
+        {/* <Image
+          width={20}
+          height={20}
+          src="https://static.vecteezy.com/system/resources/previews/008/442/086/non_2x/illustration-of-human-icon-user-symbol-icon-modern-design-on-blank-background-free-vector.jpg"
+        /> */}
         <p>Personal data</p>
         <p className="text-alertRed">Discount</p>
         <button type="button">Subcrabation</button>
@@ -48,7 +52,6 @@ function UserPanel() {
         <AnimatePresence>
           {isSideBarOpen && (
             <SideBar toggleSideBar={toggleSideBar}>
-              <p className="text-mainWhite">Side Bar content</p>
               {selectedItem &&
                 (selectedItem.title === "Password settings" ? (
                   <PasswordSettings />
