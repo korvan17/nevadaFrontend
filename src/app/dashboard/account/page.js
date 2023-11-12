@@ -1,11 +1,11 @@
-import { DBHeader } from "@/components";
+import { DBHeader, UserPanel } from "@/components";
 import React from "react";
 
 function Account() {
   return (
     <div>
       <DBHeader />
-      Account
+      <UserPanel/>
     </div>
   );
 }
