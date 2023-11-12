@@ -22,13 +22,16 @@ export const CreateOrderForm = () => {
   const [totalMasterBoxes, setTotalMasterBoxes] = useState("0");
   const [isButtonActive, setIsButtonActive] = useState(false);
   const [createOrder, setCreateOrder] = useState("Create a Order Form");
+
   useEffect(() => {
-    const allProductsValid = products.every(
-      (product) =>
-        product.productDescription &&
-        product.expectedQty &&
-        product.qtyInMasterBox
-    );
+    const allProductsValid =
+      products.length > 0 &&
+      products.every(
+        (product) =>
+          product.productDescription &&
+          product.expectedQty &&
+          product.qtyInMasterBox
+      );
 
     setIsButtonActive(
       orderType && companyName && warehouseAddress && allProductsValid
@@ -47,9 +50,13 @@ export const CreateOrderForm = () => {
 
   const handleProductChange = (index, field, value) => {
     let newProducts = [...products];
+    let newValue =
+      field === "expectedQty" || field === "qtyInMasterBox"
+        ? Number(value)
+        : value;
     newProducts[index] = {
       ...newProducts[index],
-      [field]: value,
+      [field]: newValue,
     };
     setProducts(newProducts);
   };
@@ -72,16 +79,20 @@ export const CreateOrderForm = () => {
     const newProducts = products.filter((_, idx) => idx !== index);
     setProducts(newProducts);
   };
+
   const handleFeatureChange = (index, feature, isChecked) => {
-    let newProducts = [...products];
-    if (isChecked) {
-      newProducts[index].features.push(feature);
-    } else {
-      newProducts[index].features = newProducts[index].features.filter(
-        (f) => f !== feature
-      );
-    }
-    setProducts(newProducts);
+    setProducts((currentProducts) =>
+      currentProducts.map((product, idx) =>
+        idx === index
+          ? {
+              ...product,
+              features: isChecked
+                ? [...product.features, feature]
+                : product.features.filter((f) => f !== feature),
+            }
+          : product
+      )
+    );
   };
   const handleOtherFeatureDetailsChange = (index, value) => {
     const newProducts = [...products];
@@ -95,22 +106,59 @@ export const CreateOrderForm = () => {
     setProducts((currentProducts) => {
       const newProducts = [...currentProducts];
       const product = { ...newProducts[index] };
-      product.renderedOtherDetails = product.otherFeatureDetails; // Copy the input text to the rendered text
+      product.renderedOtherDetails = product.otherFeatureDetails;
       newProducts[index] = product;
       return newProducts;
     });
   };
-  const handleOtherFeatureDetailsSubmit = (index) => {
-    console.log(products[index].otherFeatureDetails);
-  };
-  const handleSubmit = (event) => {
-    event.preventDefault();
 
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const productData = products.map((product) => ({
+      productDescription: product.productDescription,
+      idAsin: product.idAsin,
+      expectedQty: product.expectedQty,
+      qtyInMasterBox: product.qtyInMasterBox,
+      features: product.features.join(", "),
+      otherFeatureDetails: product.otherFeatureDetails,
+      renderedOtherDetails: product.renderedOtherDetails,
+    }));
+
+    const filteredProductData = productData.map((product) =>
+      Object.fromEntries(
+        Object.entries(product).filter(([_, v]) => v != null && v !== "")
+      )
+    );
     const totalMasterBoxes = products.reduce((acc, product) => {
       const productQty = Number(product.expectedQty) || 0;
       const qtyInMasterBox = Number(product.qtyInMasterBox) || 1;
       return acc + Math.ceil(productQty / qtyInMasterBox);
     }, 0);
+    const data = {
+      createOrder,
+      orderType,
+      orderDate,
+      companyName,
+      warehouseAddress,
+      products: filteredProductData,
+      comments,
+      totalMasterBoxes,
+    };
+
+    try {
+      const response = await fetch("/api/orders", {
+        method: "POST",
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+      } else {
+        const text = await response.text();
+        throw new Error(`Failed to fetch: ${text}`);
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error.message);
+    }
   };
 
   return (
@@ -466,9 +514,13 @@ export const CreateOrderForm = () => {
                           handleOtherFeatureDetailsChange(index, e.target.value)
                         }
                         className="mt-1 block w-full border border-gray-300 px-3 py-2 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                        required
                       />
 
-                      <button onClick={() => handleOtherDetailsRender(index)}>
+                      <button
+                        type="button"
+                        onClick={() => handleOtherDetailsRender(index)}
+                      >
                         ✅
                       </button>
                     </div>
