@@ -16,7 +16,7 @@ export default function Footer() {
           </p>
         </div>
       </a>
-      <FooterForm />
+      {/* <FooterForm /> */}
     </div>
   );
 }
