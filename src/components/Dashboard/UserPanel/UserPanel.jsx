@@ -1,16 +1,9 @@
-"use client";
 import { CloseMenuIcon } from "@/components/Icons";
 import { userPanelItems } from "@/content";
 import Image from "next/image";
-import React, { useState } from "react";
+import React from "react";
 
-function UserPanel() {
-  const [isSideBarOpen, setIsSideBarOpen] = useState(false);
-
-  const toggleSideBar = () => {
-    setIsSideBarOpen(!isSideBarOpen);
-  };
-
+function UserPanel({ toggleSideBar }) {
   return (
     <div className="container">
       <section
