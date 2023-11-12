@@ -4,18 +4,6 @@ import { motion } from "framer-motion";
 import React, { useEffect } from "react";
 
 function SideBar({ toggleSideBar, children }) {
-  // useEffect(() => {
-  //   const handleKeyDown = (e) => {
-  //     if (e.code === "Escape") toggleSideBar();
-  //   };
-  //   document.body.style.overflow = "hidden";
-  //   window.addEventListener("keydown", handleKeyDown);
-  //   return () => {
-  //     document.body.style.overflow = "auto";
-  //     window.removeEventListener("keydown", handleKeyDown);
-  //   };
-  // }, [toggleSideBar]);
-
   return (
     <motion.div
       className="fixed top-0 right-0
