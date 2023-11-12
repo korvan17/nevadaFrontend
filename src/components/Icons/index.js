@@ -5,4 +5,7 @@ export { default as EnvelopeIcon } from "./EnvelopeIcon/EnvelopeIcon.jsx";
 export { default as DarkLogo } from "./Logo/DarkLogo.jsx";
 export { default as HomeIcon } from "./DBNavBarIcons/HomeIcon.jsx";
 export { default as UserIcon } from "./DBNavBarIcons/UserIcon.jsx";
+export { default as DotsMoreIcon } from "./DotsMoreIcon/DotsMoreIcon.jsx";
+export { default as TrackerIcon } from "./TrackerIcon/TrackerIcon.jsx";
+export { default as HistoryIcon } from "./HistoryIcon/HistoryIcon.jsx";
 export * from "./SocialsLinksIcons";
