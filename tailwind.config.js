@@ -30,6 +30,8 @@ module.exports = {
 
         accentHoverYellow: "#C37E19",
         accentYellow: "#F8C951",
+
+        alertRed: "#F01010",
       },
       padding: {
         mobile: "80px",
