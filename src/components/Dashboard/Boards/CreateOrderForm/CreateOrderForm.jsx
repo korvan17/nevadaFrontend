@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Tooltip from "@mui/material/Tooltip";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import "tailwindcss/tailwind.css";
+import ConfirmOrder from "../ConfirmOrder/ConfirmOrder";
 
 export const CreateOrderForm = () => {
   const [orderType, setOrderType] = useState("");
@@ -22,7 +23,8 @@ export const CreateOrderForm = () => {
   const [totalMasterBoxes, setTotalMasterBoxes] = useState("0");
   const [isButtonActive, setIsButtonActive] = useState(false);
   const [createOrder, setCreateOrder] = useState("Create a Order Form");
-
+  const [showConfirmOrder, setShowConfirmOrder] = useState(false);
+  const [confirmOrderData, setConfirmOrderData] = useState({});
   useEffect(() => {
     const allProductsValid =
       products.length > 0 &&
@@ -144,23 +146,24 @@ export const CreateOrderForm = () => {
       comments,
       totalMasterBoxes,
     };
-
-    try {
-      const response = await fetch("/api/orders", {
-        method: "POST",
-        body: JSON.stringify(data),
-      });
-
-      if (response.ok) {
-      } else {
-        const text = await response.text();
-        throw new Error(`Failed to fetch: ${text}`);
-      }
-    } catch (error) {
-      console.error("Error submitting form:", error.message);
-    }
+    setConfirmOrderData(data);
+    setShowConfirmOrder(true);
   };
+  // try {
+  //       const response = await fetch("/api/orders", {
+  //         method: "POST",
+  //         body: JSON.stringify(data),
+  //       });
 
+  //       if (response.ok) {
+  //       } else {
+  //         const text = await response.text();
+  //         throw new Error(`Failed to fetch: ${text}`);
+  //       }
+  //     } catch (error) {
+  //       console.error("Error submitting form:", error.message);
+  //     }
+  //   };
   return (
     <div className="flex flex-col items-center justify-center p-4">
       <div className="bg-bgBoard  rounded-[16px] border p-5 w-full max-w-4xl">
@@ -297,7 +300,7 @@ export const CreateOrderForm = () => {
                         e.target.value
                       )
                     }
-                    className="mt-1 block w-full border   py-2 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    className="mt-1 block w-full border border-gray-300 px-3 py-2 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     required
                   />
                 </div>
@@ -594,6 +597,7 @@ export const CreateOrderForm = () => {
           </div>
         </form>
       </div>
+      {showConfirmOrder && <ConfirmOrder {...confirmOrderData} />}
     </div>
   );
 };
