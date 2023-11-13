@@ -5,6 +5,7 @@ function Account() {
   return (
     <div>
       <DBHeader />
+     
       <UserPanel />
     </div>
   );
