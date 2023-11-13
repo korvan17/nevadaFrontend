@@ -36,7 +36,7 @@ function UserPanel() {
         <ul>
           {userPanelItems.map(({ title, icon, hint }) => {
             return (
-              <li>
+              <li key={title}>
                 <p>{title}</p>
                 <p>{hint}</p>
                 <button
