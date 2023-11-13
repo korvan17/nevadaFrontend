@@ -179,7 +179,7 @@ export const CreateOrderForm = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center p-4">
+    <div className="flex flex-col items-center justify-center pl-2">
       {/* <div className="bg-bgBoard  rounded-[16px] border p-5 w-full max-w-4xl"> */}
       <CommonBoard>
         <h2 className="">{createOrder}</h2>
