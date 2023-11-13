@@ -19,6 +19,8 @@ export const CreateOrderForm = () => {
   const [warehouseAddress, setWarehouseAddress] = useState("");
   const [products, setProducts] = useState([]);
   const [expectedQty, setExpectedQty] = useState("");
+  const [errors, setErrors] = useState({});
+
   const [comments, setComments] = useState("");
   const [totalMasterBoxes, setTotalMasterBoxes] = useState("0");
   const [isButtonActive, setIsButtonActive] = useState(false);
@@ -43,7 +45,7 @@ export const CreateOrderForm = () => {
   useEffect(() => {
     setTotalMasterBoxes(
       products.reduce((acc, product) => {
-        const productQty = Number(product.expectedQty) || 0;
+        const productQty = Number(product.expectedQty) || 1;
         const qtyInMasterBox = Number(product.qtyInMasterBox) || 1;
         return acc + Math.ceil(productQty / qtyInMasterBox);
       }, 0)
@@ -52,15 +54,32 @@ export const CreateOrderForm = () => {
 
   const handleProductChange = (index, field, value) => {
     let newProducts = [...products];
-    let newValue =
-      field === "expectedQty" || field === "qtyInMasterBox"
-        ? Number(value)
-        : value;
+    let newValue = value;
+
+    if (field === "expectedQty" || field === "qtyInMasterBox") {
+      newValue = value === "" ? "" : Number(value);
+    }
+
     newProducts[index] = {
       ...newProducts[index],
       [field]: newValue,
     };
     setProducts(newProducts);
+  };
+
+  const handleBlur = (index, field) => {
+    let newProducts = [...products];
+    let newErrors = { ...errors };
+
+    if (newProducts[index][field] === "" || newProducts[index][field] < 1) {
+      newProducts[index][field] = 1;
+      newErrors[field] = "The value must be at least 1.";
+    } else {
+      delete newErrors[field];
+    }
+
+    setProducts(newProducts);
+    setErrors(newErrors);
   };
 
   const addProduct = () => {
@@ -116,6 +135,7 @@ export const CreateOrderForm = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
     const productData = products.map((product) => ({
       productDescription: product.productDescription,
       idAsin: product.idAsin,
@@ -365,9 +385,13 @@ export const CreateOrderForm = () => {
                   onChange={(e) =>
                     handleProductChange(index, "expectedQty", e.target.value)
                   }
+                  onBlur={() => handleBlur(index, "expectedQty")}
                   className="mt-1 block w-full border border-gray-300 px-3 py-2 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   required
                 />
+                {errors.expectedQty && (
+                  <div style={{ color: "red" }}>{errors.expectedQty}</div>
+                )}
               </div>
               {/* Quantity in Master Box */}
               <div>
@@ -393,9 +417,13 @@ export const CreateOrderForm = () => {
                   onChange={(e) =>
                     handleProductChange(index, "qtyInMasterBox", e.target.value)
                   }
+                  onBlur={() => handleBlur(index, "qtyInMasterBox")}
                   className="mt-1 block w-full border border-gray-300 px-3 py-2 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   required
                 />
+                {errors.qtyInMasterBox && (
+                  <div style={{ color: "red" }}>{errors.qtyInMasterBox}</div>
+                )}
               </div>
               {/* Total Master Box Count for each product */}
               <div>
@@ -503,7 +531,7 @@ export const CreateOrderForm = () => {
                       htmlFor={`otherDetail-${index}`}
                       className="block text-sm font-medium text-gray-700"
                     >
-                      Other Feature Details
+                      Details
                     </label>
                     <div
                       className="flex gap-[5px]
