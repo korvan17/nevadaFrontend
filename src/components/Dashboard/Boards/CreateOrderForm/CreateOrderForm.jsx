@@ -4,6 +4,7 @@ import Tooltip from "@mui/material/Tooltip";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import "tailwindcss/tailwind.css";
 import ConfirmOrder from "../ConfirmOrder/ConfirmOrder";
+import { CommonBoard } from "../CommonBoard/CommonBoard";
 
 export const CreateOrderForm = () => {
   const [orderType, setOrderType] = useState("");
@@ -20,6 +21,7 @@ export const CreateOrderForm = () => {
   const [products, setProducts] = useState([]);
   const [expectedQty, setExpectedQty] = useState("");
   const [errors, setErrors] = useState({});
+  const [productErrors, setProductErrors] = useState({});
 
   const [comments, setComments] = useState("");
   const [totalMasterBoxes, setTotalMasterBoxes] = useState("0");
@@ -37,10 +39,16 @@ export const CreateOrderForm = () => {
           product.qtyInMasterBox
       );
 
+    const hasErrors = Object.keys(errors).some((key) => errors[key]);
+
     setIsButtonActive(
-      orderType && companyName && warehouseAddress && allProductsValid
+      orderType &&
+        companyName &&
+        warehouseAddress &&
+        allProductsValid &&
+        !hasErrors
     );
-  }, [orderType, companyName, warehouseAddress, products]);
+  }, [orderType, companyName, warehouseAddress, products, errors]);
 
   useEffect(() => {
     setTotalMasterBoxes(
@@ -54,10 +62,16 @@ export const CreateOrderForm = () => {
 
   const handleProductChange = (index, field, value) => {
     let newProducts = [...products];
+    let newErrors = { ...errors };
     let newValue = value;
 
     if (field === "expectedQty" || field === "qtyInMasterBox") {
       newValue = value === "" ? "" : Number(value);
+      if (newValue < 1) {
+        newErrors[field] = "The value must be at least 1.";
+      } else {
+        delete newErrors[field];
+      }
     }
 
     newProducts[index] = {
@@ -65,21 +79,15 @@ export const CreateOrderForm = () => {
       [field]: newValue,
     };
     setProducts(newProducts);
+    setErrors(newErrors);
   };
 
   const handleBlur = (index, field) => {
     let newProducts = [...products];
-    let newErrors = { ...errors };
-
     if (newProducts[index][field] === "" || newProducts[index][field] < 1) {
       newProducts[index][field] = 1;
-      newErrors[field] = "The value must be at least 1.";
-    } else {
-      delete newErrors[field];
+      setProducts(newProducts);
     }
-
-    setProducts(newProducts);
-    setErrors(newErrors);
   };
 
   const addProduct = () => {
@@ -169,24 +177,11 @@ export const CreateOrderForm = () => {
     setConfirmOrderData(data);
     setShowConfirmOrder(true);
   };
-  // try {
-  //       const response = await fetch("/api/orders", {
-  //         method: "POST",
-  //         body: JSON.stringify(data),
-  //       });
 
-  //       if (response.ok) {
-  //       } else {
-  //         const text = await response.text();
-  //         throw new Error(`Failed to fetch: ${text}`);
-  //       }
-  //     } catch (error) {
-  //       console.error("Error submitting form:", error.message);
-  //     }
-  //   };
   return (
     <div className="flex flex-col items-center justify-center p-4">
-      <div className="bg-bgBoard  rounded-[16px] border p-5 w-full max-w-4xl">
+      {/* <div className="bg-bgBoard  rounded-[16px] border p-5 w-full max-w-4xl"> */}
+      <CommonBoard>
         <h2 className="">{createOrder}</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
@@ -624,8 +619,14 @@ export const CreateOrderForm = () => {
             </button>
           </div>
         </form>
-      </div>
-      {showConfirmOrder && <ConfirmOrder {...confirmOrderData} />}
+        {/* </div> */}
+      </CommonBoard>
+      {showConfirmOrder && (
+        <CommonBoard>
+          {" "}
+          <ConfirmOrder {...confirmOrderData} />
+        </CommonBoard>
+      )}
     </div>
   );
 };
