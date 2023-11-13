@@ -1,11 +1,16 @@
 "use client";
 import React, { useState } from "react";
-import Image from "next/image";
-import securityIcon from "../../Icons/shield-lock.png";
-import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-import { ErrorMessage, Field, Form, Formik } from "formik";
+
 import { passwordUpdateData } from "@/content";
 import { passwordChangeSchema } from "@/validationSchemas";
+
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+
+import { ErrorMessage, Field, Form, Formik } from "formik";
+
+import Image from "next/image";
+import securityIcon from "../../Icons/shield-lock.png";
 
 const initialValues = {
   current: "",
@@ -14,25 +19,21 @@ const initialValues = {
 };
 
 function PasswordSettings() {
-  const [showPassword, setShowPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState({});
   const [focusedInput, setFocusedInput] = useState(null);
+
+  const handleShowPassword = (name) => {
+    setShowPassword((prev) => ({ ...prev, [name]: !prev[name] }));
+  };
 
   const handleFormSubmit = async (values, { resetForm }) => {
     try {
       console.log("values:", values);
-      // Здесь добавьте логику отправки данных на сервер
+      // Здесь будет отправка данных
       resetForm();
     } catch (error) {
       console.error("Form submission error:", error);
     }
-  };
-
-  const handleInputFocus = (name) => {
-    setFocusedInput(name);
-  };
-
-  const handleInputBlur = () => {
-    setFocusedInput(null);
   };
 
   return (
@@ -62,26 +63,42 @@ function PasswordSettings() {
         <b className="block mb-[24px] font-bold">Change password</b>
         <ul className="mb-[48px]">
           {passwordUpdateData.map(({ label, name }) => {
-            const isFocused = focusedInput === name;
             return (
-              <li key={name} className="mb-[24px] last:mb-0">
+              <li key={name} className=" mb-[24px] last:mb-0">
                 <label htmlFor={name} className="block mb-[8px]">
                   {label}
                 </label>
                 <ErrorMessage
                   name={name}
                   render={(message) => (
-                    <p className="text-alertRed">{message}</p>
+                    <p className="text-alertRed mb-[2px] text-[12px] leading-[10px]">
+                      {message}
+                    </p>
                   )}
                 />
-                <Field
-                  className="w-[206px] py-[8px] rounded-[4px] ba-mainWhite text-mainBlack"
-                  type="password"
-                  name={name}
-                  id={name}
-                  onFocus={() => handleInputFocus(name)}
-                  onBlur={handleInputBlur}
-                />
+                <span className="relative">
+                  <Field
+                    className="w-[206px] py-[8px] rounded-[4px] ba-mainWhite text-mainBlack"
+                    type={showPassword[name] ? "text" : "password"}
+                    name={name}
+                    id={name}
+                  />
+                  {showPassword[name] ? (
+                    <VisibilityIcon
+                      onClick={() => handleShowPassword(name)}
+                      className="absolute top-[4px] right-[12px]
+                       text-captionBlueHover text-[14px]"
+                      style={{ fontSize: "14px" }}
+                    />
+                  ) : (
+                    <VisibilityOffIcon
+                      onClick={() => handleShowPassword(name)}
+                      className="absolute top-[4px] right-[12px]
+                       text-captionBlueHover text-[14px]"
+                      style={{ fontSize: "14px" }}
+                    />
+                  )}
+                </span>
               </li>
             );
           })}
@@ -93,7 +110,6 @@ function PasswordSettings() {
         >
           Done
         </button>
-        <VisibilityOffIcon color="#fff" />
       </Form>
     </Formik>
   );
