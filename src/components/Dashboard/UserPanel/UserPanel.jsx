@@ -7,6 +7,7 @@ import SideBar from "../SIdeBar/SideBar";
 import { AnimatePresence } from "framer-motion";
 import PasswordSettings from "../PasswordSettings/PasswordSettings";
 import Backdrop from "@/components/Backdrop/Backdrop";
+import Calendar from "@/components/UIElements/Datepicker/Calendar";
 
 function UserPanel() {
   const [isSideBarOpen, setIsSideBarOpen] = useState(false);
@@ -30,6 +31,7 @@ function UserPanel() {
           height={20}
           src="https://static.vecteezy.com/system/resources/previews/008/442/086/non_2x/illustration-of-human-icon-user-symbol-icon-modern-design-on-blank-background-free-vector.jpg"
         /> */}
+        <Calendar />
         <p>Personal data</p>
         <p className="text-alertRed">Discount</p>
         <button type="button">Subcrabation</button>
