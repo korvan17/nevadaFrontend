@@ -58,12 +58,14 @@ export const ConfirmOrder = ({
 
   return (
     <div>
-      <h2>{createOrder}</h2>
-      <p>Order Type: {orderType}</p>
-      <p>Order Date: {orderDate}</p>
-      <p>Company Name: {companyName}</p>
-      <p>Warehouse Address: {warehouseAddress}</p>
-
+      <h2 className="hidden">{createOrder}</h2>
+      <h2 className="">{confirmOrder}</h2>
+      <div className="mt-2">
+        <p>Order Type: {orderType}</p>
+        <p>Order Date: {orderDate}</p>
+        <p>Company Name: {companyName}</p>
+        <p>Warehouse Address: {warehouseAddress}</p>
+      </div>
       <div>
         <h3 className="mt-2 text-center">Products:</h3>
         {filteredProductData.map((product, index) => (
@@ -85,10 +87,10 @@ export const ConfirmOrder = ({
           </div>
         ))}
       </div>
-
-      {comments && <p>Comments: {comments}</p>}
-      <p>Total Master Boxes: {totalMasterBoxes}</p>
-
+      <div className="mt-2">
+        {comments && <p>Comments: {comments}</p>}
+        <p>Total Master Boxes: {totalMasterBoxes}</p>
+      </div>
       <button
         className="bg-slate-500 mt-2 ml-auto flex"
         type="submit"
