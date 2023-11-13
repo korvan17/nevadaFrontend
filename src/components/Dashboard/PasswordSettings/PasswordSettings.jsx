@@ -1,7 +1,8 @@
-import Image from "next/image";
 import React from "react";
-import securityIcon from "../../Icons/shield-lock.png";
 import { passwordUpdateData } from "@/content";
+import Image from "next/image";
+import securityIcon from "../../Icons/shield-lock.png";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 
 function PasswordSettings() {
   return (
@@ -39,6 +40,7 @@ function PasswordSettings() {
       >
         Done
       </button>
+      <VisibilityOffIcon color="#fff" />
     </form>
   );
 }
