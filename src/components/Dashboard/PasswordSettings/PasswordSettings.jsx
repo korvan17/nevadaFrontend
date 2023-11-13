@@ -83,21 +83,26 @@ function PasswordSettings() {
                     name={name}
                     id={name}
                   />
-                  {showPassword[name] ? (
-                    <VisibilityIcon
-                      onClick={() => handleShowPassword(name)}
-                      className="absolute top-[4px] right-[12px]
-                       text-captionBlueHover text-[14px]"
-                      style={{ fontSize: "14px" }}
-                    />
-                  ) : (
-                    <VisibilityOffIcon
-                      onClick={() => handleShowPassword(name)}
-                      className="absolute top-[4px] right-[12px]
-                       text-captionBlueHover text-[14px]"
-                      style={{ fontSize: "14px" }}
-                    />
-                  )}
+                  <button
+                    type="button"
+                    className="absolute top-0 right-[12px]
+                         text-captionBlueHover hover:text-captionBlue text-[14px] transition-all"
+                    title={
+                      !showPassword[name] ? "Show Password" : "Hide Password"
+                    }
+                  >
+                    {showPassword[name] ? (
+                      <VisibilityIcon
+                        onClick={() => handleShowPassword(name)}
+                        style={{ fontSize: "14px" }}
+                      />
+                    ) : (
+                      <VisibilityOffIcon
+                        onClick={() => handleShowPassword(name)}
+                        style={{ fontSize: "14px" }}
+                      />
+                    )}
+                  </button>
                 </span>
               </li>
             );
@@ -105,8 +110,9 @@ function PasswordSettings() {
         </ul>
         <button
           htmlFor="passwordSettingsForm"
-          className="bg-captionBlueHover rounded-[8px] py-[15px] px-[39px]"
+          className="button bg-captionBlueHover transition-all ease-out hover:bg-captionBlue rounded-[8px] py-[15px] px-[39px]"
           type="submit"
+          title="Click to submit"
         >
           Done
         </button>

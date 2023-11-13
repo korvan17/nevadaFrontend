@@ -23,8 +23,8 @@ function NavBar() {
                 href={href}
                 className={`${
                   isActive
-                    ? "bg-captionBlue text-captionalWhite  hover:bg-captionBlueHover"
-                    : "text-captionBlue hover:bg-captionBlueHover hover:text-captionalWhite"
+                    ? "bg-captionBlueHover text-captionalWhite  hover:bg-captionBlue"
+                    : "text-captionBlueHover hover:bg-captionBlue hover:text-captionalWhite"
                 } flex items-center justify-center
                w-[48px] h-[48px] 
                rounded-full transition-all ease-out`}
@@ -40,7 +40,7 @@ function NavBar() {
         <Link href={userPage ? "/dashboard" : "/dashboard/account"}>
           <button
             type="button"
-            className="bg-captionBlue hover:bg-captionBlueHover 
+            className="bg-captionBlueHover hover:bg-captionBlue 
             transition-all ease-out
              text-captionalWhite
              flex items-center justify-center w-[48px] h-[48px] rounded-full"
