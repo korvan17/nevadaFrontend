@@ -1,7 +1,6 @@
 "use client";
 import { CloseMenuIcon } from "@/components/Icons";
 import { userPanelItems } from "@/content";
-// import Image from "next/image";
 import React, { useState } from "react";
 import SideBar from "../SIdeBar/SideBar";
 import { AnimatePresence } from "framer-motion";
@@ -26,11 +25,6 @@ function UserPanel() {
           lg:pt-[40px] lg:pb-[42px] lg:px-[9px] lg:mt-[100px] lg:mb-[24px]
       md:bg-userPanel md:rounded-[16px] md:custom-shadow"
       >
-        {/* <Image
-          width={20}
-          height={20}
-          src="https://static.vecteezy.com/system/resources/previews/008/442/086/non_2x/illustration-of-human-icon-user-symbol-icon-modern-design-on-blank-background-free-vector.jpg"
-        /> */}
         <Calendar />
         <p>Personal data</p>
         <p className="text-alertRed">Discount</p>
@@ -38,7 +32,7 @@ function UserPanel() {
         <ul>
           {userPanelItems.map(({ title, icon, hint }) => {
             return (
-              <li>
+              <li key={title}>
                 <p>{title}</p>
                 <p>{hint}</p>
                 <button
