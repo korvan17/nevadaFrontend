@@ -7,11 +7,10 @@ import LoginModal from "@/components/Modals/LoginModal/LoginModal";
 import RegistrationModal from "@/components/Modals/RegistrationModal/RegistrationModal";
 import LanguageSwitcher from "./LanguageSwitcher";
 
-
 function UserControls() {
   const [showModalLogin, setShowModalLogin] = useState(false);
   const [showModalRegistration, setShowModalRegistration] = useState(false);
-  console.log(showModalLogin);
+
   const toggleModalLogin = () => {
     setShowModalLogin(!showModalLogin);
   };
@@ -28,7 +27,7 @@ function UserControls() {
       <div className="flex flex-wrap flex-col lg:flex-row lg:flex-nowrap lg:items-center gap-[8px] items-center md:items-start">
         <button
           onClick={toggleModalRegistration}
-          className="lg:text-captionalGrey text-[16px] text-captionalGreyLight font-semibold	 hover:text-mainWhite transition-all ease-out cursor-pointer"
+          className="lg:text-captionalGrey text-[16px] text-captionalGreyLight font-semibold   hover:text-mainWhite transition-all ease-out cursor-pointer"
         >
           Registration
         </button>
@@ -54,6 +53,7 @@ function UserControls() {
           <LoginModal
             modalIsOpen={showModalLogin}
             closeModal={toggleModalLogin}
+            toggleModalRegistration={toggleModalRegistration}
           />
         </BasicModal>
       )}
