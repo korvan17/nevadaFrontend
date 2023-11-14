@@ -17,7 +17,7 @@ export default function BasicModal({
   heightLg,
   // maxWidth,
   maxHeightSm,
-  padding,
+  padding="8px",
 }) {
   //не трогать, уб`т!
   const defaultModalStyle = {
@@ -31,7 +31,7 @@ export default function BasicModal({
     transform: "translate(-50%, -50%)",
     borderRadius: "12px",
     overflowY: "auto",
-    padding: "8px",
+    padding: padding,
   };
 
   const [modalRoot, setModalRoot] = useState(null);

@@ -127,7 +127,7 @@ export default function RegistrationModal({ closeModal }) {
 
               <select
                 id="businessDirection"
-                className="w-[342px] p-4 border rounded "
+                className="w-[327px] md:w-[342px] p-4 border rounded "
                 value={businessDirection}
                 onChange={(e) => setBusinessDirection(e.target.value)}
                 required
@@ -156,7 +156,7 @@ export default function RegistrationModal({ closeModal }) {
                 id="fullName"
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}
-                className="w-[342px] p-4 border rounded"
+                className="w-[327px] md:w-[342px] p-4 border rounded"
                 required
               />
             </div>
@@ -171,7 +171,7 @@ export default function RegistrationModal({ closeModal }) {
               <input
                 type="email"
                 id="email"
-                className="w-[342px] p-4 border rounded"
+                className="w-[327px] md:w-[342px] p-4 border rounded"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
@@ -187,7 +187,7 @@ export default function RegistrationModal({ closeModal }) {
               <input
                 type="tel"
                 id="phone"
-                className="w-[342px] p-4 border rounded"
+                className="w-[327px] md:w-[342px] p-4 border rounded"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
                 required
@@ -205,7 +205,7 @@ export default function RegistrationModal({ closeModal }) {
               <input
                 type="text"
                 id="companyName"
-                className="w-[342px] p-4 border rounded"
+                className="w-[327px] md:w-[342px] p-4 border rounded"
                 value={companyName}
                 onChange={(e) => setCompanyName(e.target.value)}
               />
@@ -221,7 +221,7 @@ export default function RegistrationModal({ closeModal }) {
               <input
                 type="text"
                 id="website"
-                className="w-[342px] p-4 border rounded"
+                className="w-[327px] md:w-[342px] p-4 border rounded"
                 value={companyWebsite}
                 onChange={(e) => setCompanyWebsite(e.target.value)}
               />
@@ -236,7 +236,7 @@ export default function RegistrationModal({ closeModal }) {
               <textarea
                 id="comments"
                 rows="5"
-                className="h-[121px] w-[342px] p-4 border rounded  
+                className="h-[121px] w-[327px] md:w-[342px] p-4 border rounded  
                 
                 resize-none"
                 value={message}

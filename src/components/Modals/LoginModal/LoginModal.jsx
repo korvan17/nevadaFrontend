@@ -4,6 +4,9 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import { loginSchema } from "@/validationSchemas";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import VisibilityIcon from "@mui/icons-material/Visibility";
+import RegistrationModal from "../RegistrationModal/RegistrationModal";
+import { BasicModal } from "@/components";
+
 
 
 const initialValues = {
@@ -11,14 +14,25 @@ const initialValues = {
   password: "",
 
 };
-
-
-export default function LoginModal() {
+export default function LoginModal({closeModal}) {
   const [showPassword, setShowPassword] = useState(false);
   const [isForgotPassword, setIsForgotPassword] = useState(false);
+  // const [showRegisterForm, setshowRegisterForm] = useState(false);
+  const [showModalRegistration, setShowModalRegistration] = useState(false);
+  const [showModalLogin, setShowModalLogin] = useState(true);
+
   
   const toggleModal = () => {
     setIsForgotPassword(!isForgotPassword);
+  };
+
+  const toggleModalRegistration = () => {
+    setShowModalRegistration(!showModalRegistration);
+    setShowModalLogin(false);
+    setTimeout(() => {
+      closeModal();
+      
+    }, 500);
   };
 
   const handleShowPassword = () => {
@@ -35,12 +49,13 @@ export default function LoginModal() {
     }
   };
   return (
+    <>
     <Formik 
     initialValues={initialValues} 
     onSubmit={handleFormSubmit}
     validationSchema={loginSchema}
     >
-      {!isForgotPassword ? <Form>
+      {(!isForgotPassword && showModalLogin) ? <Form>
         <h2 className="text-center text-[24px] font-semibold text-white mt-[67px]">
           Login
         </h2>
@@ -124,13 +139,31 @@ export default function LoginModal() {
             </button>
             <p className="text-white text-[12px] mt-[12px] mx-[auto]">
               Don’t have account?{" "}
-              <span className="text-captionBlue text-[12px]">
+              <a 
+              onClick={toggleModalRegistration}
+              className="text-captionBlue text-[12px]">
                 Create new account
-              </span>
+              </a>
             </p>
           </div>
         </div>
-      </Form>:<p>isForgotPassword</p>}
-    </Formik>    
+      </Form>:(showModalLogin && <p>isForgotPassword</p>)}
+    </Formik>
+      <BasicModal
+          modalIsOpen={showModalRegistration}
+          closeModal={toggleModalRegistration}
+          widthLg="771px"
+          heightLg="740px"
+          widthMd="723px"
+          heightMd="887px"
+          widthSm="343px"
+          heightSm="90vh"
+        >
+          <RegistrationModal
+            modalIsOpen={showModalRegistration}
+            closeModal={toggleModalRegistration}
+          />
+        </BasicModal>    
+    </>
   );
 }

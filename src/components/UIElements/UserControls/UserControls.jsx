@@ -7,14 +7,16 @@ import LoginModal from "@/components/Modals/LoginModal/LoginModal";
 import RegistrationModal from "@/components/Modals/RegistrationModal/RegistrationModal";
 import LanguageSwitcher from "./LanguageSwitcher";
 
+
 function UserControls() {
   const [showModalLogin, setShowModalLogin] = useState(false);
   const [showModalRegistration, setShowModalRegistration] = useState(false);
-
+  console.log(showModalLogin);
   const toggleModalLogin = () => {
     setShowModalLogin(!showModalLogin);
   };
   const toggleModalRegistration = () => {
+    setShowModalLogin(false);
     setShowModalRegistration(!showModalRegistration);
   };
   return (
