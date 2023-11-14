@@ -17,6 +17,7 @@ export default function BasicModal({
   heightLg,
   // maxWidth,
   maxHeightSm,
+  padding,
 }) {
   //не трогать, уб`т!
   const defaultModalStyle = {

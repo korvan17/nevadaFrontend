@@ -47,6 +47,7 @@ function UserControls() {
           backgroundColor="#021827"
           closeButtonColor="rgba(2, 24, 39, 1)"
           closeButtonBackgroundColor="rgba(250, 252, 248, 1)"
+          padding="12px"
         >
           <LoginModal
             modalIsOpen={showModalLogin}
