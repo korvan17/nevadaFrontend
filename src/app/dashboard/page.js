@@ -16,11 +16,13 @@ function Dashboard({ children }) {
       <DBHeader />
       {/* <DBContentContainer />
        */}
-      <div className="flex gap-3">
-        <CreateOrderForm />
-        <CommonBoard />
-        <UserPanel />
-      </div>
+      {/* <div className="flex gap-3 flex-col container"> */}
+        <div className="flex justify-between w-[1408px] mx-auto">
+          <CreateOrderForm />
+          {/* <CommonBoard /> */}
+          <UserPanel />
+        </div>
+      {/* </div> */}
       {/* <CreateOrderButton /> */}
       {/* <CreateOrderForm /> */}
       {/* <CommonBoard title={"Order history"} icon={<HistoryIcon />}></CommonBoard> */}

@@ -179,10 +179,9 @@ export const CreateOrderForm = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center pl-2">
+    <>
       {/* <div className="bg-bgBoard  rounded-[16px] border p-5 w-full max-w-4xl"> */}
-      <CommonBoard>
-        <h2 className="">{createOrder}</h2>
+      <CommonBoard title={createOrder} options={true}>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <div>
@@ -613,7 +612,8 @@ export const CreateOrderForm = () => {
                   ? "bg-accentYellow hover:bg-accentHoverYellow"
                   : "bg-gray-400 cursor-not-allowed"
               } text-white px-4 py-2 rounded ml-[auto] mr-[auto] font-bold text-[16px] w-[179px] h-[48px]`}
-              disabled={!isButtonActive}
+              // disabled={!isButtonActive}
+              onClick={setShowConfirmOrder}
             >
               Confirm Order
             </button>
@@ -621,12 +621,9 @@ export const CreateOrderForm = () => {
         </form>
         {/* </div> */}
       </CommonBoard>
-      {showConfirmOrder && (
-        <CommonBoard>
-          {" "}
-          <ConfirmOrder {...confirmOrderData} />
-        </CommonBoard>
-      )}
-    </div>
+      <CommonBoard>
+        {showConfirmOrder && <ConfirmOrder {...confirmOrderData} />}
+      </CommonBoard>
+    </>
   );
 };

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { motion } from "framer-motion";
 
 export const ConfirmOrder = ({
   createOrder,
@@ -57,7 +58,11 @@ export const ConfirmOrder = ({
   };
 
   return (
-    <div>
+    <motion.div
+      animate={{ y: 0 }}
+      initial={{ y: 350 }}
+      transition={{ duration: 0.3 }}
+    >
       <h2 className="hidden">{createOrder}</h2>
       <h2 className="">{confirmOrder}</h2>
       <div className="mt-2">
@@ -98,7 +103,7 @@ export const ConfirmOrder = ({
       >
         Confirm Order
       </button>
-    </div>
+    </motion.div>
   );
 };
 

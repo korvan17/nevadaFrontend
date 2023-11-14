@@ -18,7 +18,7 @@ function UserPanel() {
   };
 
   return (
-    <div className="container">
+    <div>
       <section
         className="pt-[119px] pb-[76px]
          md:mt-[156px] md:mb-[49px] md:py-[12px] md:px-[20px]
