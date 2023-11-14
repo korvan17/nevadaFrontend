@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import Tooltip from "@mui/material/Tooltip";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import "tailwindcss/tailwind.css";
+import ConfirmOrder from "../ConfirmOrder/ConfirmOrder";
+import { CommonBoard } from "../CommonBoard/CommonBoard";
 
 export const CreateOrderForm = () => {
   const [orderType, setOrderType] = useState("");
@@ -18,11 +20,15 @@ export const CreateOrderForm = () => {
   const [warehouseAddress, setWarehouseAddress] = useState("");
   const [products, setProducts] = useState([]);
   const [expectedQty, setExpectedQty] = useState("");
+  const [errors, setErrors] = useState({});
+  const [productErrors, setProductErrors] = useState({});
+
   const [comments, setComments] = useState("");
   const [totalMasterBoxes, setTotalMasterBoxes] = useState("0");
   const [isButtonActive, setIsButtonActive] = useState(false);
   const [createOrder, setCreateOrder] = useState("Create a Order Form");
-
+  const [showConfirmOrder, setShowConfirmOrder] = useState(false);
+  const [confirmOrderData, setConfirmOrderData] = useState({});
   useEffect(() => {
     const allProductsValid =
       products.length > 0 &&
@@ -33,15 +39,21 @@ export const CreateOrderForm = () => {
           product.qtyInMasterBox
       );
 
+    const hasErrors = Object.keys(errors).some((key) => errors[key]);
+
     setIsButtonActive(
-      orderType && companyName && warehouseAddress && allProductsValid
+      orderType &&
+        companyName &&
+        warehouseAddress &&
+        allProductsValid &&
+        !hasErrors
     );
-  }, [orderType, companyName, warehouseAddress, products]);
+  }, [orderType, companyName, warehouseAddress, products, errors]);
 
   useEffect(() => {
     setTotalMasterBoxes(
       products.reduce((acc, product) => {
-        const productQty = Number(product.expectedQty) || 0;
+        const productQty = Number(product.expectedQty) || 1;
         const qtyInMasterBox = Number(product.qtyInMasterBox) || 1;
         return acc + Math.ceil(productQty / qtyInMasterBox);
       }, 0)
@@ -50,15 +62,32 @@ export const CreateOrderForm = () => {
 
   const handleProductChange = (index, field, value) => {
     let newProducts = [...products];
-    let newValue =
-      field === "expectedQty" || field === "qtyInMasterBox"
-        ? Number(value)
-        : value;
+    let newErrors = { ...errors };
+    let newValue = value;
+
+    if (field === "expectedQty" || field === "qtyInMasterBox") {
+      newValue = value === "" ? "" : Number(value);
+      if (newValue < 1) {
+        newErrors[field] = "The value must be at least 1.";
+      } else {
+        delete newErrors[field];
+      }
+    }
+
     newProducts[index] = {
       ...newProducts[index],
       [field]: newValue,
     };
     setProducts(newProducts);
+    setErrors(newErrors);
+  };
+
+  const handleBlur = (index, field) => {
+    let newProducts = [...products];
+    if (newProducts[index][field] === "" || newProducts[index][field] < 1) {
+      newProducts[index][field] = 1;
+      setProducts(newProducts);
+    }
   };
 
   const addProduct = () => {
@@ -114,6 +143,7 @@ export const CreateOrderForm = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
     const productData = products.map((product) => ({
       productDescription: product.productDescription,
       idAsin: product.idAsin,
@@ -144,26 +174,14 @@ export const CreateOrderForm = () => {
       comments,
       totalMasterBoxes,
     };
-
-    try {
-      const response = await fetch("/api/orders", {
-        method: "POST",
-        body: JSON.stringify(data),
-      });
-
-      if (response.ok) {
-      } else {
-        const text = await response.text();
-        throw new Error(`Failed to fetch: ${text}`);
-      }
-    } catch (error) {
-      console.error("Error submitting form:", error.message);
-    }
+    setConfirmOrderData(data);
+    setShowConfirmOrder(true);
   };
 
   return (
-    <div className="flex flex-col items-center justify-center p-4">
-      <div className="bg-bgBoard  rounded-[16px] border p-5 w-full max-w-4xl">
+    <div className="flex flex-col items-center justify-center pl-2">
+      {/* <div className="bg-bgBoard  rounded-[16px] border p-5 w-full max-w-4xl"> */}
+      <CommonBoard>
         <h2 className="">{createOrder}</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
@@ -297,7 +315,7 @@ export const CreateOrderForm = () => {
                         e.target.value
                       )
                     }
-                    className="mt-1 block w-full border   py-2 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    className="mt-1 block w-full border border-gray-300 px-3 py-2 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     required
                   />
                 </div>
@@ -362,9 +380,13 @@ export const CreateOrderForm = () => {
                   onChange={(e) =>
                     handleProductChange(index, "expectedQty", e.target.value)
                   }
+                  onBlur={() => handleBlur(index, "expectedQty")}
                   className="mt-1 block w-full border border-gray-300 px-3 py-2 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   required
                 />
+                {errors.expectedQty && (
+                  <div style={{ color: "red" }}>{errors.expectedQty}</div>
+                )}
               </div>
               {/* Quantity in Master Box */}
               <div>
@@ -390,9 +412,13 @@ export const CreateOrderForm = () => {
                   onChange={(e) =>
                     handleProductChange(index, "qtyInMasterBox", e.target.value)
                   }
+                  onBlur={() => handleBlur(index, "qtyInMasterBox")}
                   className="mt-1 block w-full border border-gray-300 px-3 py-2 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   required
                 />
+                {errors.qtyInMasterBox && (
+                  <div style={{ color: "red" }}>{errors.qtyInMasterBox}</div>
+                )}
               </div>
               {/* Total Master Box Count for each product */}
               <div>
@@ -500,7 +526,7 @@ export const CreateOrderForm = () => {
                       htmlFor={`otherDetail-${index}`}
                       className="block text-sm font-medium text-gray-700"
                     >
-                      Other Feature Details
+                      Details
                     </label>
                     <div
                       className="flex gap-[5px]
@@ -593,7 +619,14 @@ export const CreateOrderForm = () => {
             </button>
           </div>
         </form>
-      </div>
+        {/* </div> */}
+      </CommonBoard>
+      {showConfirmOrder && (
+        <CommonBoard>
+          {" "}
+          <ConfirmOrder {...confirmOrderData} />
+        </CommonBoard>
+      )}
     </div>
   );
 };

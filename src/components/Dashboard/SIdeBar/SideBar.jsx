@@ -20,7 +20,6 @@ function SideBar({ toggleSideBar, children }) {
         stiffness: 100,
       }}
     >
-      SideBar
       <button
         className="w-[24px] h-[24px] absolute top-[24px] left-[12px] flex items-center justify-center"
         onClick={toggleSideBar}
