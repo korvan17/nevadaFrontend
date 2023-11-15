@@ -4,6 +4,7 @@ mail.setApiKey(process.env.SENDGRID_API_KEY);
 
 const createProductMessage = (product) => {
   const parts = [
+    `<div style="font-size: 14px;">Product</div>`,
     product.productDescription &&
       `<div style="font-size: 14px;">Product Description: ${product.productDescription}</div>`,
     product.idAsin &&
@@ -20,17 +21,20 @@ const createProductMessage = (product) => {
     product.features &&
       `<div style="font-size: 14px;">Checkbox: ${product.features}</div>`,
     product.otherFeatureDetails &&
-      `<div style="font-size: 14px;">Other Feature: ${product.otherFeatureDetails}</div>`,
+      `<div style="font-size: 14px;">Other Details: ${product.otherFeatureDetails}</div>`,
   ];
   return parts.filter(Boolean).join("");
 };
 
-const createEmailBody = (body) => {
-  const productMessages = body.products
+const createEmailBody = (body, numberOfProductsToShow) => {
+  const limitedProducts = body.products.slice(0, numberOfProductsToShow);
+  const productMessages = limitedProducts
     .map(createProductMessage)
-    .join(
-      "<hr style='border:none; border-top:1px solid #fff; margin: 20px 0;' />"
-    );
+    .join("<hr style='border:none; border-top:1px solid #fff; margin: 20px 0;' />");
+
+  return productMessages;
+};
+
 
   const messageParts = [
     `Type Form: ${body.createOrder}`,
@@ -39,15 +43,22 @@ const createEmailBody = (body) => {
     `Company Name or Alias for Package Identification: ${body.companyName}`,
     `Warehouse Address: ${body.warehouseAddress}<br>`,
     `<hr style="border:none; border-top:1px solid #fff;"></hr>`,
+
     productMessages,
     body.comments &&
       `<div style="color: red;" >Comments: ${body.comments}</div>`,
     `<div style="color: red;" >Order's Master Box Total: ${body.totalMasterBoxes}</div>`,
   ];
 
-  return `<div style=" text-align: center; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; max-width: 600px; margin: 20px auto; padding: 12px 12px 752px 0px; border: 1px solid #e9e9e9; border-radius: 16px; background-color: #DFE4E8; box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(0, 0, 0, 0.25); ">
+  return `<div style=" text-align: center; 
+  
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; max-width: 600px; margin: 20px auto;
+  
+  padding: 12px; border: 1px solid #e9e9e9; border-radius: 16px; background-color: #DFE4E8;
+  
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(0, 0, 0, 0.25); ">
             <h2 style="color: #333; text-align: center;">Create a Order Form</h2>
-            <div style="font-size: 16px text-align: center;">
+            <div style="font-size: 20px text-align: center;">
             ${messageParts.filter(Boolean).join("<br>")}
             </div>
             <hr style='border:none; border-top:1px solid #e9e9e9; margin: 20px 0;' />
