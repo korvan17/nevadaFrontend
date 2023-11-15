@@ -1,34 +1,74 @@
 import mail from "@sendgrid/mail";
 
+// Set SendGrid API Key
 mail.setApiKey(process.env.SENDGRID_API_KEY);
 
+// API Endpoint for handling POST requests
 export default async (req, res) => {
   try {
+    // Ensure the request is a POST
     if (req.method !== "POST") {
       throw new Error("Method not allowed");
     }
+
+    // Enable CORS
     res.setHeader("Access-Control-Allow-Origin", "*");
+
+    // Parse the request body
     const body = JSON.parse(req.body);
 
+    // Construct the HTML email message with inline styles
     const message = `
-    ${body.selectedTitle ? `Type Form(Title): ${body.selectedTitle}\r\n` : ""}
-    ${body.titleModal ? `Type Form(Title): ${body.titleModal}\r\n` : ""}
-    Business Direction: ${body.businessDirection}\r\n
-    Name: ${body.fullName}\r\n
-    Email: ${body.email}\r\n
-    Phone: ${body.phone}\r\n
-    Company Name: ${body.companyName}\r\n
-    Company Website: ${body.companyWebsite}\r\n
-    Message: ${body.message}
-`;
+      <html>
+        <body>
+          <div style="font-family: Arial, sans-serif; margin: 0 auto; max-width: 600px; border: 1px solid #ddd; padding: 20px; background-color: #fafafa;">
+           <div style=" text-align: center;">
+          ${
+            body.selectedTitle
+              ? `<h2 style="text-align: center; font-size: 20px; color: #333;"><strong>Type Form (Title):</strong> ${body.selectedTitle}</h2>`
+              : ""
+          }
+            ${
+              body.titleModal
+                ? `<p style="color: #555;"><strong>Type Form (Title):</strong> ${body.titleModal}</p>`
+                : ""
+            }
+            </div>
+            <p style="color: #555;"><strong>Business Direction:</strong> ${
+              body.businessDirection
+            }</p>
+            <p style="color: #555;"><strong>Name:</strong> ${body.fullName}</p>
+            <p style="color: #555;"><strong>Email:</strong> ${body.email}</p>
+            <p style="color: #555;"><strong>Phone:</strong> ${body.phone}</p>
+            <p style="color: #555;"><strong>Company Name:</strong> ${
+              body.companyName
+            }</p>
+            <p style="color: #555;"><strong>Company Website:</strong> ${
+              body.companyWebsite
+            }</p>
+            <p style="color: #555;"><strong>Message:</strong> ${
+              body.message
+            }</p>
+            <div style="">
+            <button style="cursor: pointer; background-color: #4CAF50; ">
+            <a href="\" style="color: white; padding: 15px 32px; text-align: center; text-decoration: none; font-size: 16px; margin: 4px 2px;">Approve</a>
+          </button>
+          </div>
+            </div>
+        </body>
+      </html>
+    `;
+
+    // Email data
     const data = {
       to: "info@ppcwarehouses.com",
       from: "info@ppcwarehouses.com",
       subject: `New message from ${body.fullName}`,
-      text: message,
-      html: message.replace(/\r\n/g, "<br />"),
+      text: message.replace(/<[^>]+>/g, ""),
+      html: message,
     };
 
+    // Send email
     await mail.send(data);
 
     res.status(200).json({ status: "OK" });
