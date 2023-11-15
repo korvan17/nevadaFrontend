@@ -26,15 +26,12 @@ const createProductMessage = (product) => {
   return parts.filter(Boolean).join("");
 };
 
-const createEmailBody = (body, numberOfProductsToShow) => {
-  const limitedProducts = body.products.slice(0, numberOfProductsToShow);
-  const productMessages = limitedProducts
+const createEmailBody = (body) => {
+  const productMessages = body.products
     .map(createProductMessage)
-    .join("<hr style='border:none; border-top:1px solid #fff; margin: 20px 0;' />");
-
-  return productMessages;
-};
-
+    .join(
+      "<hr style='border:none; border-top:1px solid #fff; margin: 20px 0;' />"
+    );
 
   const messageParts = [
     `Type Form: ${body.createOrder}`,
@@ -52,13 +49,11 @@ const createEmailBody = (body, numberOfProductsToShow) => {
 
   return `<div style=" text-align: center; 
   
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; max-width: 600px; margin: 20px auto;
-  
-  padding: 12px; border: 1px solid #e9e9e9; border-radius: 16px; background-color: #DFE4E8;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; max-width: 600px; margin: 20px auto; padding: 12px; border: 1px solid #e9e9e9; border-radius: 16px; background-color: #DFE4E8;
   
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(0, 0, 0, 0.25); ">
             <h2 style="color: #333; text-align: center;">Create a Order Form</h2>
-            <div style="font-size: 20px text-align: center;">
+            <div style="font-size: 16px text-align: center;">
             ${messageParts.filter(Boolean).join("<br>")}
             </div>
             <hr style='border:none; border-top:1px solid #e9e9e9; margin: 20px 0;' />
