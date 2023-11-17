@@ -6,6 +6,7 @@ function MobileAbout() {
     <section className="md:hidden">
       <div className="container">
         <div className="relative">
+          <div className="aosWrapper">
           <div
             data-aos="fade-down"
             data-aos-duration="1000"
@@ -18,6 +19,8 @@ function MobileAbout() {
               About our story
             </h2>
           </div>
+          </div>
+
 
           <ul className="flex gap-4 ">
             <li className="w-1/2 ">
