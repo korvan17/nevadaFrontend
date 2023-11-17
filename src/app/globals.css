@@ -56,6 +56,12 @@ body {
   background: rgb(var(--background-end-rgb)); */
 }
 
+@media screen and (max-width: 768px) {
+  .container {
+    overflow-x: hidden;
+  }
+}
+
 .custom-transition {
   transition-property: height;
   transition-duration: 4s;
