@@ -109,7 +109,7 @@ export default function LoginModal({ toggleModalRegistration }) {
                 <label
                 // for="checkbox"
                 >
-                  <span className="text-white ml-[12px]">Remember Me</span>
+                  <span className="text-red-800 ml-[12px]">Remember Me</span>
                 </label>
                 <button
                   onClick={toggleModal}
