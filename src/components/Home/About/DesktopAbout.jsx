@@ -16,7 +16,8 @@ function DesktopAbout() {
             alt="circle-element-right"
             width={175}
             height={92}
-            className="absolute top-[460px] right-[-180px] -z-10"
+            className="absolute top-[540px] right-0 -z-10"
+            // add class
           />
         </div>
         <div
