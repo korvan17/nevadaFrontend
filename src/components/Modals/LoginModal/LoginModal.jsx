@@ -141,7 +141,7 @@ export default function LoginModal({ toggleModalRegistration }) {
             </div>
           </Form>
         ) : (
-          showModalLogin && <PasswordRecoveryModal />
+          showModalLogin && <PasswordRecoveryModal toggleModalRegistration={toggleModalRegistration} />
         )}
       </Formik>    
     </>
