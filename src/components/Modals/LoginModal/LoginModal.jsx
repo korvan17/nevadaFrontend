@@ -4,6 +4,7 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import { loginSchema } from "@/validationSchemas";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import VisibilityIcon from "@mui/icons-material/Visibility";
+import PasswordRecoveryModal from "../PasswordRecoveryModal/PasswordRecoveryModal";
 
 
 const initialValues = {
@@ -42,11 +43,11 @@ export default function LoginModal({ toggleModalRegistration }) {
         validationSchema={loginSchema}
       >
         {!isForgotPassword ? (
-          <Form>
-            <h2 className="text-center text-[24px] font-semibold text-white mt-[67px]">
+          <Form className="px-[0] py-[0] md:px-[62px] md:py-[114px]">
+            <h2 className="text-center text-[24px] leading-[1] font-semibold text-white mt-[63px] md:mt-0">
               Login
             </h2>
-            <div className="mb-4">
+            <div className="">
               <label
                 htmlFor="Business direction"
                 className="block           
@@ -54,21 +55,21 @@ export default function LoginModal({ toggleModalRegistration }) {
              text-white 
              mt-[24px] 
              text-[14px] 
-             leading-[21px]
-             rounded-[8px]"
+             leading-[1.5]
+             md:text-[16px]"
               >
                 Email
               </label>
               <input
                 type="text"
                 id="fullName"
-                className="w-full p-4 border mt-[8px] rounded-[8px]"
+                className="w-full p-4 border mt-[8px] rounded-[8px] leading-[1.5]"
                 required
                 placeholder="Enter your e-mail"
               />
               <label
                 htmlFor="Business direction"
-                className="block mt-[12px] font-semibold  text-white"
+                className="block mt-[12px] font-semibold  text-white text-[14px] leading-[1.5]"
               >
                 Password
               </label>
@@ -104,16 +105,16 @@ export default function LoginModal({ toggleModalRegistration }) {
             user login were entered correctly. Please note that the password
             must consist of 8 characters
           </p> */}
-              <div className="flex mt-[12px]">
-                <input type="checkbox" name="checkbox" value="remember-me" />
+              <div className="flex mt-[12px] " >
+                <input type="checkbox" name="checkbox" value="remember-me" className="w-[16px]"/>
                 <label
                 // for="checkbox"
                 >
-                  <span className="text-red-800 ml-[12px]">Remember Me</span>
+                  <span className="text-white ml-[12px] text-[12px] leading-[1.5]">Remember Me</span>
                 </label>
                 <button
                   onClick={toggleModal}
-                  className="text-captionBlue ml-[auto]"
+                  className="text-captionBlue ml-[auto] text-[12px] leading-[1.5]"
                 >
                   Forgot password?
                 </button>
@@ -121,15 +122,17 @@ export default function LoginModal({ toggleModalRegistration }) {
               <div className="flex-col justify-center mt-[30px]  flex ">
                 <button
                   type="submit"
-                  className="bg-captionBlue text-white px-4 py-2 rounded hover:bg-captionBlueHover mx-[auto] font-bold text-[16px] w-[271px] h-[45px]"
+                  className="bg-captionBlue text-white rounded
+                   hover:bg-captionBlueHover mx-[auto] font-bold
+                    text-[16px] leading-[1] w-[271px] h-[45px] px-[40px] py-[12px]"
                 >
                   Login
                 </button>
-                <p className="text-white text-[12px] mt-[12px] mx-[auto]">
+                <p className="text-white text-[12px] leading-[1.25] mt-[12px] mx-[auto]">
                   Don’t have account?{" "}
                   <a
                     onClick={toggleModalRegistration}
-                    className="text-captionBlue text-[12px]"
+                    className="text-captionBlue text-[12px] leading-[1.25]"
                   >
                     Create new account
                   </a>
@@ -138,7 +141,7 @@ export default function LoginModal({ toggleModalRegistration }) {
             </div>
           </Form>
         ) : (
-          showModalLogin && <p>isForgotPassword</p>
+          showModalLogin && <PasswordRecoveryModal />
         )}
       </Formik>    
     </>
