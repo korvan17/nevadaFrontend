@@ -7,7 +7,7 @@ import "swiper/css";
 
 export default function Services() {
   return (
-    <section className="py-mobile md:pb-0 lg:pt-desktop" id="services">
+    <section className="pb-20 md:pb-0 lg:pt-desktop" id="services">
       <div className="container">
         <div
           data-aos="fade-down-left"
