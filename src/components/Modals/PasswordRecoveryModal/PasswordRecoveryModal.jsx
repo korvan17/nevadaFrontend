@@ -90,7 +90,7 @@ export default function PasswordRecoveryModal({ toggleModalRegistration }) {
             </div>
           </Form>
           ) : (
-            setIsForgotPassword && <LoginModal />
+            setIsForgotPassword && <LoginModal toggleModalRegistration={toggleModalRegistration} />
           )}        
       </Formik>    
     </>
