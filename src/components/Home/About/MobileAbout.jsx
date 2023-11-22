@@ -3,24 +3,23 @@ import Image from "next/image";
 
 function MobileAbout() {
   return (
-    <section className="md:hidden">
+    <section className="pb-20 md:hidden">
       <div className="container">
         <div className="relative">
           <div className="aosWrapper">
-          <div
-            data-aos="fade-down"
-            data-aos-duration="1000"
-            data-aos-once="true"
-          >
-            <h2
-              className="flex text-4xl leading-none 
-            mb-6 justify-center font-bold not-italic"
+            <div
+              data-aos="fade-down"
+              data-aos-duration="1000"
+              data-aos-once="true"
             >
-              About our story
-            </h2>
+              <h2
+                className="flex text-4xl leading-none 
+            mb-6 justify-center font-bold not-italic"
+              >
+                About our story
+              </h2>
+            </div>
           </div>
-          </div>
-
 
           <ul className="flex gap-4 ">
             <li className="w-1/2 ">
