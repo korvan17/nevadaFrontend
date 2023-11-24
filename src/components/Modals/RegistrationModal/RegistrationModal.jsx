@@ -9,9 +9,11 @@ export default function RegistrationModal({ closeModal }) {
   const [fullName, setFullName] = useState(
     sessionStorage.getItem("fullName") || ""
   );
+
   const [email, setEmail] = useState(sessionStorage.getItem("email") || "");
 
   const [phone, setPhone] = useState(sessionStorage.getItem("phone") || "");
+
   const [companyName, setCompanyName] = useState(
     sessionStorage.getItem("companyName") || ""
   );
@@ -78,18 +80,46 @@ export default function RegistrationModal({ closeModal }) {
       companyWebsite,
       message,
     };
+    const dataReg = {
+      businessDirection,
+      fullName,
+      email,
+      phone,
+      companyName,
+      companyWebsite,
+      message,
+      username: email,
+      password: "123456",
+    };
 
     try {
-      const response = await fetch("/api/contacts", {
+      const contactsResponse = await fetch("/api/contacts", {
         method: "POST",
+
         body: JSON.stringify(data),
       });
-      if (response.ok) {
-        clearFields();
-        closeModal();
+
+      if (contactsResponse.ok) {
+        const registrationResponse = await fetch(
+          "https://nevadacms.onrender.com/api/auth/local/register",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(dataReg),
+          }
+        );
+        if (registrationResponse.ok) {
+          clearFields();
+          closeModal();
+        } else {
+          const registrationText = await registrationResponse.text();
+          throw new Error(`Registration failed: ${registrationText}`);
+        }
       } else {
-        const text = await response.text();
-        throw new Error(`Failed to fetch: ${text}`);
+        const contactsText = await contactsResponse.text();
+        throw new Error(`Failed to send contact information: ${contactsText}`);
       }
     } catch (error) {
       console.error("Error submitting form:", error.message);
