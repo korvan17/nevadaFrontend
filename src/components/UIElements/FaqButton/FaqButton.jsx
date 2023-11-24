@@ -8,6 +8,7 @@ export default function Collapsible({ item, faq }) {
   const [isVisible, setVisible] = useState(false);
   const menuRef = useRef(null);
   const refButton = useRef(null);
+
   function handleVisibility() {
     setVisible(!isVisible);
   }
@@ -55,7 +56,7 @@ export default function Collapsible({ item, faq }) {
             transition={{ duration: 0.35 }}
           >
             <p className="bg-[#021827] text-white origin-top pt-4 pb-12 px-6 border-b-[12px] border-inherit">
-              {faq[item]}
+              {faq}{" "}
             </p>
           </motion.div>
         )}

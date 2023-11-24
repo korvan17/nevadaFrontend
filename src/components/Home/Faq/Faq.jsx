@@ -1,8 +1,25 @@
-import { faq } from "@/content";
-import React from "react";
+"use client";
+
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { FaqButton } from "@/components/UIElements";
+import { fetchFaq } from "../../../../services/api";
 export default function Faq() {
+  const [faqs, setFaqs] = useState([]);
+
+  useEffect(() => {
+    const loadFaq = async () => {
+      try {
+        const data = await fetchFaq();
+        setFaqs(data);
+      } catch (error) {
+        console.error("Failed to fetch FAQs:", error);
+      }
+    };
+
+    loadFaq();
+  }, []);
+
   return (
     <section className="py-mobile md:py-desktop" id="faq">
       <div className="container">
@@ -33,12 +50,18 @@ export default function Faq() {
         </div>
         <div data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
           <ul className="mt-[48px]">
-            {Object.keys(faq).map((item) => (
+            {faqs.map((faq) => (
               <li
-                key={item}
-                className="flex flex-col justify-center bg-captionalGreyLight border-inherit border-solid border transition-colors duration-500 hover:bg-[#757575] "
+                key={faq.id}
+                className="flex flex-col justify-center bg-captionalGreyLight border-inherit border-solid border transition-colors 
+                
+                duration-500 hover:bg-[#757575] "
               >
-                <FaqButton item={item} faq={faq} />
+                <FaqButton
+                  key={faq.id}
+                  item={faq.attributes.question}
+                  faq={faq.attributes.answer}
+                />
               </li>
             ))}
           </ul>
