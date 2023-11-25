@@ -1,14 +1,23 @@
-import { useState } from "react";
 import HeaderMenu from "./HeaderMenu";
 import { AnimatePresence } from "framer-motion";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Backdrop from "@/components/Backdrop/Backdrop";
 import { BurgerMenuIcon, Logo } from "@/components/Icons";
+import useSWR from "swr";
+import HeaderContacts from "./HeaderContacts";
+
 function MobileHeader() {
   const [isMenuOpen, setisMenuOpen] = useState(false);
+  const { data: registerForm } = useSWR("registerForm");
+  const { data: loginForm } = useSWR("loginForm");
+
+  useEffect(() => {
+    if (registerForm || loginForm) toggleMenu();
+  }, [registerForm, loginForm]);
 
   const toggleMenu = () => {
     setisMenuOpen(!isMenuOpen);
+    document.body.style.overflow = "auto";
   };
 
   return (
@@ -21,24 +30,7 @@ function MobileHeader() {
       fixed top-0 bg-mainBlack text-mainWhite"
     >
       <div className="container">
-        <div
-          className="
-              absolute
-              left-0 top-0 w-[100%] h-[56px]
-              flex flex-col 
-              text-[16px] font-semibold bg-captionBlue text-captionalWhite 
-              lg:hidden "
-        >
-          <a className="w-[100%] text-center py-[3px]" href="tel:+17027010078">
-            +1 (702) 701-0078
-          </a>
-          <a
-            href="mailto:info@ppcwarehouses.com"
-            className="w-[100%] text-center py-[3px]"
-          >
-            info@ppcwarehouses.com
-          </a>
-        </div>
+        <HeaderContacts />
         <div className="flex justify-space-between">
           <a
             className="cursor-pointer flex gap-[8px] items-center"
@@ -56,9 +48,12 @@ function MobileHeader() {
           </button>
         </div>
         <AnimatePresence>
-          {isMenuOpen && (
+          {isMenuOpen && !registerForm && (
             <>
-              <Backdrop toggleMenu={toggleMenu}></Backdrop>
+              <Backdrop
+                toggleMenu={toggleMenu}
+                isMenuOpen={isMenuOpen}
+              ></Backdrop>
               <HeaderMenu toggleMenu={toggleMenu} open={isMenuOpen} />
             </>
           )}

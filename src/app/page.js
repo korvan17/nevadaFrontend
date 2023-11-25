@@ -10,6 +10,7 @@ import {
   ChatWindow,
   Partners,
   Certificates,
+  ModalRender,
 } from "@/components";
 import GetQuoteButton from "@/components/UIElements/GetQueteButton/GetQuoteButton";
 import { useEffect } from "react";
@@ -35,6 +36,8 @@ export default function Home() {
       <GetQuoteButton />
       {/* <ChatWindow /> */}
       {/* <div id="myportal" /> */}
+
+      <ModalRender />
     </>
   );
 }
