@@ -10,7 +10,6 @@ function Backdrop({
   isMenuOpen,
   children,
 }) {
-  console.log("closeModal:", closeModal);
   // const { data: loginForm } = useSWR("loginForm");
   // const { data: registerForm } = useSWR("registerForm");
 
@@ -38,12 +37,7 @@ function Backdrop({
     window.addEventListener("keydown", handleKeyDown);
     return () => {
       console.log("Backdrop did unmount");
-      if (closeModal !== "undefined" || toggleMenu !== "undefined") {
-        console.log("closeModal:", closeModal);
-        document.body.style.overflow = "hidden";
-      } else {
-        document.body.style.overflow = "auto";
-      }
+      document.body.style.overflow = "auto";
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, [toggleMenu, toggleSideBar, closeModal]);
