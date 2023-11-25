@@ -2,15 +2,13 @@
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import axios from "axios";
+
 export default NextAuth({
   providers: [
     CredentialsProvider({
       name: "Credentials",
       credentials: {
-        email: {
-          label: "Email",
-          type: "text",
-        },
+        email: { label: "Email", type: "text" },
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
@@ -31,7 +29,13 @@ export default NextAuth({
             return null;
           }
         } catch (e) {
-          console.error(e);
+          if (e.response) {
+            console.error("Error during authorization:", e.response.data);
+          } else if (e.request) {
+            console.error("No response received:", e.request);
+          } else {
+            console.error("Error setting up request:", e.message);
+          }
           return null;
         }
       },
