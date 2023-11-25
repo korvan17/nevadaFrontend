@@ -23,6 +23,8 @@ export const ConfirmOrder = ({
   }
   const [confirmOrder, setConfirmOrder] = useState("Confirm Order");
 
+
+  
   const handelConfirmOrder = async (event) => {
     event.preventDefault();
     const isConfirmed = window.confirm(
@@ -39,17 +41,32 @@ export const ConfirmOrder = ({
       comments,
       totalMasterBoxes,
     };
-
+    
     try {
-      const response = await fetch("/api/orders", {
+      const orderMailResponse = await fetch("/api/orders", {
         method: "POST",
         body: JSON.stringify(data),
       });
 
-      if (response.ok) {
+      if (orderMailResponse.ok) {
+        const orderBackendResponse = await fetch(
+          "https://nevadacms.onrender.com/api/orders",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+          }
+        );
+        if (orderBackendResponse.ok) {
+        } else {
+          const orderBackendText = await orderBackendResponse.text();
+          throw new Error(`Order failed: ${orderBackendText}`);
+        }
       } else {
-        const text = await response.text();
-        throw new Error(`Failed to fetch: ${text}`);
+        const orderMailText = await contactsResponse.text();
+        throw new Error(`Failed to send order information: ${orderMailText}`);
       }
     } catch (error) {
       console.error("Error submitting form:", error.message);

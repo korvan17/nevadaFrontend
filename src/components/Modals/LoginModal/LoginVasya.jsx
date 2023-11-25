@@ -1,21 +1,22 @@
 "use client";
 import React, { useState } from "react";
-import { Form, Formik } from "formik";
-// import { loginSchema } from "@/validationSchemas";
+import { ErrorMessage, Field, Form, Formik } from "formik";
+import { loginSchema } from "@/validationSchemas";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import PasswordRecoveryModal from "../PasswordRecoveryModal/PasswordRecoveryModal";
-import { signIn, useSession } from "next-auth/react";
 
+const initialValues = {
+  email: "",
+  password: "",
+};
 export default function LoginModal({ toggleModalRegistration }) {
   const [showPassword, setShowPassword] = useState(false);
   const [isForgotPassword, setIsForgotPassword] = useState(false);
-  const { data: session } = useSession();
+
   const [showModalRegistration, setShowModalRegistration] = useState(false);
   const [showModalLogin, setShowModalLogin] = useState(true);
-  const [password, setPassword] = useState("");
-  const [identifier, setIdentifier] = useState("");
-  const [email, setEmail] = useState("");
+
   const toggleModal = () => {
     setIsForgotPassword(!isForgotPassword);
   };
@@ -24,31 +25,24 @@ export default function LoginModal({ toggleModalRegistration }) {
     setShowPassword(!showPassword);
   };
 
-  const handleFormSubmit = async (event) => {
-    event.preventDefault();
-
-    const result = await signIn("credentials", {
-      redirect: false,
-      email,
-      password,
-      callbackUrl: `${window.location.origin}/dashboard`,
-    });
-
-    if (!result.error) {
-      window.location.href = result.url;
-    } else {
-      console.error("Login failed:", result.error);
+  const handleFormSubmit = async (values, { resetForm }) => {
+    try {
+      console.log("values:", values);
+      // Здесь будет отправка данных
+      resetForm();
+    } catch (error) {
+      console.error("Form submission error:", error);
     }
   };
-
   return (
     <>
-      <Formik>
+      <Formik
+        initialValues={initialValues}
+        onSubmit={handleFormSubmit}
+        validationSchema={loginSchema}
+      >
         {!isForgotPassword ? (
-          <Form
-            className="px-[0] py-[0] md:px-[62px] md:py-[114px]"
-            onSubmit={handleFormSubmit}
-          >
+          <Form className="px-[0] py-[0] md:px-[62px] md:py-[114px]">
             <h2 className="text-center text-[24px] leading-[1] font-semibold text-white mt-[63px] md:mt-0">
               Login
             </h2>
@@ -66,10 +60,8 @@ export default function LoginModal({ toggleModalRegistration }) {
                 Email
               </label>
               <input
-                type="email"
-                id="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                type="text"
+                id="fullName"
                 className="w-full p-4 border mt-[8px] rounded-[8px] leading-[1.5]"
                 required
                 placeholder="Enter your e-mail"
@@ -83,9 +75,7 @@ export default function LoginModal({ toggleModalRegistration }) {
               <span className="relative">
                 <input
                   type={showPassword ? "text" : "password"}
-                  id="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  id="fullName"
                   className="w-full p-4 border mt-[8px] rounded-[8px]"
                   required
                   placeholder="Enter your password"
@@ -98,12 +88,12 @@ export default function LoginModal({ toggleModalRegistration }) {
                 >
                   {showPassword ? (
                     <VisibilityIcon
-                      onClick={handleShowPassword}
+                      onClick={() => handleShowPassword(name)}
                       style={{ fontSize: "14px" }}
                     />
                   ) : (
                     <VisibilityOffIcon
-                      onClick={handleShowPassword}
+                      onClick={() => handleShowPassword(name)}
                       style={{ fontSize: "14px" }}
                     />
                   )}
@@ -144,7 +134,6 @@ export default function LoginModal({ toggleModalRegistration }) {
                 >
                   Login
                 </button>
-
                 <p className="text-white text-[12px] leading-[1.25] mt-[12px] mx-[auto]">
                   Don’t have account?{" "}
                   <a
