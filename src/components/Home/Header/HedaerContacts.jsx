@@ -20,7 +20,7 @@ function HedaerContacts({ menu = false }) {
       className={`${
         menu
           ? "flex flex-col-reverse"
-          : "w-[100%] absolute top-0 h-[56px] left-0 flex items-center justify-center flex-col bg-captionBlue text-captionalWhite text-[16px] font-semibold"
+          : "px-[5px] w-[100%] absolute top-0 h-[56px] left-0 flex items-center justify-center flex-col bg-captionBlue text-captionalWhite text-[16px] font-semibold"
       }`}
     >
       {companyContacts ? (
@@ -47,7 +47,7 @@ function HedaerContacts({ menu = false }) {
           </a>
         </>
       ) : (
-        <p className={`${menu && "text-captionalGreyLigh"}`}>
+        <p className={`${menu && "text-captionalGreyLigh"} `}>
           Company inforamtion is loading, please wait...
         </p>
       )}
