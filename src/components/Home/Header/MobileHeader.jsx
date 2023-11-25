@@ -1,12 +1,19 @@
-import { useState } from "react";
 import HeaderMenu from "./HeaderMenu";
 import { AnimatePresence } from "framer-motion";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Backdrop from "@/components/Backdrop/Backdrop";
 import { BurgerMenuIcon, Logo } from "@/components/Icons";
 import HedaerContacts from "./HedaerContacts";
+import useSWR from "swr";
+
 function MobileHeader() {
   const [isMenuOpen, setisMenuOpen] = useState(false);
+  console.log("isMenuOpen:", isMenuOpen);
+  const { data: registerForm } = useSWR("registerForm");
+
+  useEffect(() => {
+    if (registerForm) toggleMenu();
+  }, [registerForm]);
 
   const toggleMenu = () => {
     setisMenuOpen(!isMenuOpen);
@@ -40,7 +47,7 @@ function MobileHeader() {
           </button>
         </div>
         <AnimatePresence>
-          {isMenuOpen && (
+          {isMenuOpen && !registerForm && (
             <>
               <Backdrop toggleMenu={toggleMenu}></Backdrop>
               <HeaderMenu toggleMenu={toggleMenu} open={isMenuOpen} />

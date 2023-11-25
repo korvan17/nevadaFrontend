@@ -1,6 +1,8 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
+// import { getModalStatus } from "../../../../services/api";
+import useSWR from "swr";
 
 export default function BasicModal({
   closeModal,
@@ -17,7 +19,7 @@ export default function BasicModal({
   heightLg,
   // maxWidth,
   maxHeightSm,
-  padding="8px",
+  padding = "8px",
 }) {
   //не трогать, уб`т!
   const defaultModalStyle = {
@@ -36,6 +38,7 @@ export default function BasicModal({
 
   const [modalRoot, setModalRoot] = useState(null);
   const [modalStyle, setModalStyle] = useState(defaultModalStyle);
+  // const { mutate } = useSWR("modal");
 
   useEffect(() => {
     const currentModalRoot = document.querySelector("#modal-root");
@@ -51,8 +54,10 @@ export default function BasicModal({
 
     if (modalIsOpen) {
       document.body.style.overflow = "hidden";
+      // mutate(true);
     } else {
       document.body.style.overflow = "unset";
+      // mutate(false);
     }
 
     return () => {

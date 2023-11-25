@@ -8,16 +8,23 @@ import RegistrationModal from "@/components/Modals/RegistrationModal/Registratio
 // import LanguageSwitcher from "./LanguageSwitcher";
 import { SessionProvider } from "next-auth/react";
 
+import useSWR from "swr";
+
 function UserControls() {
   const [showModalLogin, setShowModalLogin] = useState(false);
   const [showModalRegistration, setShowModalRegistration] = useState(false);
 
+  const { mutate } = useSWR("registerForm");
+
   const toggleModalLogin = () => {
-    setShowModalLogin(!showModalLogin);
+    // setShowModalLogin(!showModalLogin);
+    mutate(!showModalLogin);
   };
-  const toggleModalRegistration = () => {
-    setShowModalLogin(false);
-    setShowModalRegistration(!showModalRegistration);
+  const toggleModalRegistration = async () => {
+    return await mutate(!showModalRegistration);
+    // setShowModalLogin(false);
+    // setShowModalRegistration(!showModalRegistration);
+    // console.log("click reg btn");
   };
   return (
     <div
@@ -60,7 +67,7 @@ function UserControls() {
           </SessionProvider>
         </BasicModal>
       )}
-      {showModalRegistration && (
+      {/* {showModalRegistration && (
         <BasicModal
           modalIsOpen={showModalRegistration}
           closeModal={toggleModalRegistration}
@@ -76,7 +83,7 @@ function UserControls() {
             closeModal={toggleModalRegistration}
           />
         </BasicModal>
-      )}
+      )} */}
     </div>
   );
 }
