@@ -1,29 +1,57 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useEffect } from "react";
+import useSWR from "swr";
 
-function Backdrop({ toggleMenu, toggleSideBar, children }) {
+function Backdrop({
+  toggleMenu,
+  toggleSideBar,
+  closeModal,
+  isMenuOpen,
+  children,
+}) {
+  console.log("closeModal:", closeModal);
+  // const { data: loginForm } = useSWR("loginForm");
+  // const { data: registerForm } = useSWR("registerForm");
+
   const handleBackdropClose = (event) => {
     if (event.target === event.currentTarget) {
-      toggleMenu ? toggleMenu() : toggleSideBar();
+      toggleMenu
+        ? toggleMenu()
+        : toggleSideBar
+        ? toggleSideBar()
+        : closeModal();
     }
   };
+
   useEffect(() => {
+    console.log("Backdrop is mount");
     const handleKeyDown = (e) => {
-      if (e.code === "Escape") toggleMenu ? toggleMenu() : toggleSideBar();
+      if (e.code === "Escape")
+        toggleMenu
+          ? toggleMenu()
+          : toggleSideBar
+          ? toggleSideBar()
+          : closeModal();
     };
     document.body.style.overflow = "hidden";
     window.addEventListener("keydown", handleKeyDown);
     return () => {
-      document.body.style.overflow = "auto";
+      console.log("Backdrop did unmount");
+      if (closeModal !== "undefined" || toggleMenu !== "undefined") {
+        console.log("closeModal:", closeModal);
+        document.body.style.overflow = "hidden";
+      } else {
+        document.body.style.overflow = "auto";
+      }
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [toggleMenu, toggleSideBar]);
+  }, [toggleMenu, toggleSideBar, closeModal]);
 
   return (
     <motion.div
       onClick={handleBackdropClose}
-      className="fixed top-0 left-0 z-1 w-[100%] h-[100%]
+      className="fixed top-0 left-0 z-40 w-[100%] h-[100%]
     bg-background
     backdrop-brightness-50
     filter blur-sm"

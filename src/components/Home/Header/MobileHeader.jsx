@@ -17,6 +17,7 @@ function MobileHeader() {
 
   const toggleMenu = () => {
     setisMenuOpen(!isMenuOpen);
+    document.body.style.overflow = "auto";
   };
 
   return (
@@ -49,7 +50,10 @@ function MobileHeader() {
         <AnimatePresence>
           {isMenuOpen && !registerForm && (
             <>
-              <Backdrop toggleMenu={toggleMenu}></Backdrop>
+              <Backdrop
+                toggleMenu={toggleMenu}
+                isMenuOpen={isMenuOpen}
+              ></Backdrop>
               <HeaderMenu toggleMenu={toggleMenu} open={isMenuOpen} />
             </>
           )}

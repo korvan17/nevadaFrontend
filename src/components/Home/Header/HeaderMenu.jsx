@@ -15,7 +15,7 @@ function HeaderMenu({ toggleMenu }) {
         md:pt-[110px] md:px-[12px]
     
         w-[70%] sm:w-[50%] h-[100%]
-        fixed top-0 right-0 z-90 
+        fixed top-0 right-0 z-50 
         
         text-mainWhite"
         initial={{ x: 1000 }}

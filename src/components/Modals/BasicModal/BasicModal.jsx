@@ -1,8 +1,9 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
-// import { getModalStatus } from "../../../../services/api";
-import useSWR from "swr";
+
+// import { motion } from "framer-motion";
+import Backdrop from "@/components/Backdrop/Backdrop";
 
 export default function BasicModal({
   closeModal,
@@ -42,26 +43,7 @@ export default function BasicModal({
   useEffect(() => {
     const currentModalRoot = document.querySelector("#modal-root");
     setModalRoot(currentModalRoot);
-
-    const handleKeyDown = (e) => {
-      if (e.code === "Escape") {
-        closeModal();
-      }
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-
-    if (modalIsOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
-
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-      document.body.style.overflow = "unset";
-    };
-  }, [closeModal, modalIsOpen]);
+  }, []);
 
   useEffect(() => {
     const updateModalSize = () => {
@@ -89,7 +71,6 @@ export default function BasicModal({
 
     window.addEventListener("resize", updateModalSize);
     updateModalSize();
-
     return () => {
       window.removeEventListener("resize", updateModalSize);
     };
@@ -102,13 +83,14 @@ export default function BasicModal({
   };
 
   if (!modalIsOpen || !modalRoot) return null;
-
+  /**
+ *       className="fixed top-0 left-0 w-full h-full flex items-center
+      justify-center bg-black bg-opacity-75 z-40"
+ */
   return createPortal(
-    <div
-      className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-75 z-40"
-      onClick={handleBackdropClick}
-    >
-      <div className="" style={modalStyle}>
+    <>
+      <Backdrop closeModal={closeModal}></Backdrop>
+      <div className="z-50" style={modalStyle}>
         <button
           onClick={closeModal}
           className="closeButton"
@@ -143,7 +125,7 @@ export default function BasicModal({
         </button>
         {children}
       </div>
-    </div>,
+    </>,
     modalRoot
   );
 }

@@ -10,9 +10,11 @@ function ModalRender() {
 
   const toggleModalReg = () => {
     mutateRegisterForm(!registerForm);
+    document.body.style.overflow = "auto";
   };
   const toggleModalLog = () => {
     mutateLoginForm(!loginForm);
+    document.body.style.overflow = "auto";
   };
 
   return (
