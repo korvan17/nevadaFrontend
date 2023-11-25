@@ -10,7 +10,6 @@ export default NextAuth({
         email: {
           label: "Email",
           type: "text",
-          placeholder: "jsmith@example.com",
         },
         password: { label: "Password", type: "password" },
       },
