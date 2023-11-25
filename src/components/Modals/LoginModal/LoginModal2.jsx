@@ -5,12 +5,11 @@ import { Form, Formik } from "formik";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import PasswordRecoveryModal from "../PasswordRecoveryModal/PasswordRecoveryModal";
-import { signIn, useSession } from "next-auth/react";
 
 export default function LoginModal({ toggleModalRegistration }) {
   const [showPassword, setShowPassword] = useState(false);
   const [isForgotPassword, setIsForgotPassword] = useState(false);
-  const { data: session } = useSession();
+
   const [showModalRegistration, setShowModalRegistration] = useState(false);
   const [showModalLogin, setShowModalLogin] = useState(true);
   const [password, setPassword] = useState("");
@@ -24,20 +23,32 @@ export default function LoginModal({ toggleModalRegistration }) {
     setShowPassword(!showPassword);
   };
 
-  const handleFormSubmit = async (event) => {
-    event.preventDefault();
-
-    const result = await signIn("credentials", {
-      redirect: false,
-      email,
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    const dataLogin = {
+      identifier: email,
       password,
-      callbackUrl: `${window.location.origin}/dashboard`,
-    });
+    };
 
-    if (!result.error) {
-      window.location.href = result.url;
-    } else {
-      console.error("Login failed:", result.error);
+    try {
+      const response = await fetch(
+        "https://nevadacms.onrender.com/api/auth/local",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(dataLogin),
+        }
+      );
+
+      if (!response.ok) {
+      } else {
+        const registrationText = await response.text();
+        throw new Error(`Registration failed: ${registrationText}`);
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error.message);
     }
   };
 
@@ -68,10 +79,11 @@ export default function LoginModal({ toggleModalRegistration }) {
               <input
                 type="email"
                 id="email"
+                // name="identifier"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="w-full p-4 border mt-[8px] rounded-[8px] leading-[1.5]"
-                required
+                // required
                 placeholder="Enter your e-mail"
               />
               <label
@@ -83,11 +95,12 @@ export default function LoginModal({ toggleModalRegistration }) {
               <span className="relative">
                 <input
                   type={showPassword ? "text" : "password"}
+                  // name="password"
                   id="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   className="w-full p-4 border mt-[8px] rounded-[8px]"
-                  required
+                  // required
                   placeholder="Enter your password"
                 />
                 <button
