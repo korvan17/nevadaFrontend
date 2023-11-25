@@ -10,11 +10,11 @@ import { signIn, useSession } from "next-auth/react";
 export default function LoginModal({ toggleModalRegistration }) {
   const [showPassword, setShowPassword] = useState(false);
   const [isForgotPassword, setIsForgotPassword] = useState(false);
-  const { data: session } = useSession();
+  // const { data: session } = useSession();
   const [showModalRegistration, setShowModalRegistration] = useState(false);
   const [showModalLogin, setShowModalLogin] = useState(true);
   const [password, setPassword] = useState("");
-  const [identifier, setIdentifier] = useState("");
+
   const [email, setEmail] = useState("");
   const toggleModal = () => {
     setIsForgotPassword(!isForgotPassword);
