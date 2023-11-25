@@ -12,24 +12,25 @@ import {
   Certificates,
 } from "@/components";
 import GetQuoteButton from "@/components/UIElements/GetQueteButton/GetQuoteButton";
-import { BasicModal, RegistrationModal, LoginModal } from "@/components";
+import { ModalRenderer } from "@/components";
+// import { BasicModal, RegistrationModal, LoginModal } from "@/components";
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import useSWR from "swr";
-import { SessionProvider } from "next-auth/react";
+// import useSWR from "swr";
+// import { SessionProvider } from "next-auth/react";
 
 export default function Home() {
-  const { data: loginForm, mutate: mutateLoginForm } = useSWR("loginForm");
-  const { data: registerForm, mutate: mutateRegisterForm } =
-    useSWR("registerForm");
+  // const { data: loginForm, mutate: mutateLoginForm } = useSWR("loginForm");
+  // const { data: registerForm, mutate: mutateRegisterForm } =
+  //   useSWR("registerForm");
 
-  const toggleModalReg = () => {
-    mutateRegisterForm(!registerForm);
-  };
-  const toggleModalLog = () => {
-    mutateLoginForm(!loginForm);
-  };
+  // const toggleModalReg = () => {
+  //   mutateRegisterForm(!registerForm);
+  // };
+  // const toggleModalLog = () => {
+  //   mutateLoginForm(!loginForm);
+  // };
   useEffect(() => {
     if (typeof document !== "undefined") {
       AOS.init();
@@ -49,7 +50,7 @@ export default function Home() {
       {/* <ChatWindow /> */}
       {/* <div id="myportal" /> */}
 
-      {registerForm && (
+      {/* {registerForm && (
         <BasicModal
           modalIsOpen={registerForm}
           closeModal={toggleModalReg}
@@ -89,7 +90,9 @@ export default function Home() {
             />
           </SessionProvider>
         </BasicModal>
-      )}
+      )} */}
+
+      <ModalRenderer />
     </>
   );
 }

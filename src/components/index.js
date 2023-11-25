@@ -16,5 +16,6 @@ export { default as ChatWindow } from "./Home/ChatWindow/ChatWindow.jsx";
 export { default as BasicModal } from "./Modals/BasicModal/BasicModal.jsx";
 export { default as RegistrationModal } from "./Modals/RegistrationModal/RegistrationModal.jsx";
 export { default as LoginModal } from "./Modals/LoginModal/LoginModal.jsx";
+export { default as ModalRenderer } from "./Modals/ModalRenderer/ModalRenderer.jsx";
 export { default as Partners } from "./Home/Partners/Partners.jsx";
 export { default as Certificates } from "./Home/Certificates/Certificates.jsx";

@@ -8,12 +8,12 @@ import useSWR from "swr";
 
 function MobileHeader() {
   const [isMenuOpen, setisMenuOpen] = useState(false);
-  console.log("isMenuOpen:", isMenuOpen);
   const { data: registerForm } = useSWR("registerForm");
+  const { data: loginForm } = useSWR("loginForm");
 
   useEffect(() => {
-    if (registerForm) toggleMenu();
-  }, [registerForm]);
+    if (registerForm || loginForm) toggleMenu();
+  }, [registerForm, loginForm]);
 
   const toggleMenu = () => {
     setisMenuOpen(!isMenuOpen);

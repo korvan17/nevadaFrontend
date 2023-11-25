@@ -1,30 +1,28 @@
 "use client";
 import React from "react";
 import Buttons from "../Buttons/Buttons";
-import { useState } from "react";
-import { BasicModal } from "@/components";
+// import { useState } from "react";
+// import { BasicModal } from "@/components";
 // import LoginModal from "@/components/Modals/LoginModal/LoginModal";
-import RegistrationModal from "@/components/Modals/RegistrationModal/RegistrationModal";
+// import RegistrationModal from "@/components/Modals/RegistrationModal/RegistrationModal";
 // import LanguageSwitcher from "./LanguageSwitcher";
-import { SessionProvider } from "next-auth/react";
+// import { SessionProvider } from "next-auth/react";
 
 import useSWR from "swr";
 
 function UserControls() {
-  const [showModalLogin, setShowModalLogin] = useState(false);
-  const [showModalRegistration, setShowModalRegistration] = useState(false);
+  // const [showModalLogin, setShowModalLogin] = useState(false);
+  // const [showModalRegistration, setShowModalRegistration] = useState(false);
 
-  const { mutate } = useSWR("registerForm");
+  const { data: loginForm, mutate: mutateLoginForm } = useSWR("loginForm");
+  const { data: registerForm, mutate: mutateRegisterForm } =
+    useSWR("registerForm");
 
   const toggleModalLogin = () => {
-    // setShowModalLogin(!showModalLogin);
-    mutate(!showModalLogin);
+    mutateLoginForm(!loginForm);
   };
   const toggleModalRegistration = async () => {
-    return await mutate(!showModalRegistration);
-    // setShowModalLogin(false);
-    // setShowModalRegistration(!showModalRegistration);
-    // console.log("click reg btn");
+    mutateRegisterForm(!registerForm);
   };
   return (
     <div
@@ -43,8 +41,8 @@ function UserControls() {
           Login
         </Buttons>
       </div>
-      {showModalLogin && (
-        <BasicModal
+      {/* {showModalLogin && ( */}
+      {/* <BasicModal
           widthLg="497px"
           heightLg="627px"
           widthMd="497px"
@@ -57,16 +55,16 @@ function UserControls() {
           closeButtonColor="rgba(2, 24, 39, 1)"
           closeButtonBackgroundColor="rgba(250, 252, 248, 1)"
           padding="12px"
-        >
-          <SessionProvider>
-            {/* <LoginModal
+        > */}
+      {/* <SessionProvider> */}
+      {/* <LoginModal
               modalIsOpen={showModalLogin}
               closeModal={toggleModalLogin}
               toggleModalRegistration={toggleModalRegistration}
             /> */}
-          </SessionProvider>
-        </BasicModal>
-      )}
+      {/* </SessionProvider> */}
+      {/* </BasicModal> */}
+      {/* )} */}
       {/* {showModalRegistration && (
         <BasicModal
           modalIsOpen={showModalRegistration}

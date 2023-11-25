@@ -31,7 +31,7 @@ function HedaerContacts({ menu = false }) {
                 ? "block mb-[8px] text-[14px] md:text-[16px] text-captionalGreyLight  hover:text-mainWhite transition-all ease-out"
                 : "w-[100%] text-center py-[3px]"
             }`}
-            href={companyContacts.email}
+            href={`mailto:${companyContacts.email}`}
           >
             {companyContacts.email}
           </a>
@@ -41,7 +41,7 @@ function HedaerContacts({ menu = false }) {
                 ? "block mb-[8px] text-[14px] md:text-[16px] text-captionalGreyLight  hover:text-mainWhite transition-all ease-out"
                 : "w-[100%] text-center py-[3px]"
             }`}
-            href={companyContacts.email}
+            href={`tel:${companyContacts.phone}`}
           >
             {companyContacts.phone}
           </a>
