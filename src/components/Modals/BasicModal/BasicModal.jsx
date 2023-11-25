@@ -38,7 +38,6 @@ export default function BasicModal({
 
   const [modalRoot, setModalRoot] = useState(null);
   const [modalStyle, setModalStyle] = useState(defaultModalStyle);
-  // const { mutate } = useSWR("modal");
 
   useEffect(() => {
     const currentModalRoot = document.querySelector("#modal-root");
@@ -54,10 +53,8 @@ export default function BasicModal({
 
     if (modalIsOpen) {
       document.body.style.overflow = "hidden";
-      // mutate(true);
     } else {
       document.body.style.overflow = "unset";
-      // mutate(false);
     }
 
     return () => {

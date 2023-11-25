@@ -5,25 +5,6 @@ import { UserControls } from "@/components/UIElements";
 import HedaerContacts from "./HedaerContacts";
 
 function HeaderMenu({ toggleMenu }) {
-  const menuVars = {
-    initial: {
-      scaleX: 0,
-    },
-    animate: {
-      scaleX: 1,
-      transition: {
-        duration: 0.5,
-        ease: [0.12, 0, 0.39, 0],
-      },
-    },
-    exit: {
-      scaleX: 0,
-      transition: {
-        duration: 0.5,
-        ease: [0.22, 1, 0.36, 1],
-      },
-    },
-  };
   return (
     <>
       <motion.div
