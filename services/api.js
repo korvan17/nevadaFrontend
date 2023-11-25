@@ -4,7 +4,7 @@ export const fetchFaq = async () => {
   try {
     const response = await fetch(`${API_BASE_URL}/questions`);
     const result = await response.json();
-    console.log("questions:", result.data);
+    // console.log("questions:", result.data);
     return result.data;
   } catch (error) {
     console.error("Error fetching FAQ:", error.message);
@@ -16,7 +16,7 @@ export const fetchContacts = async () => {
   try {
     const response = await fetch(`${API_BASE_URL}/company-contact`);
     const result = await response.json();
-    console.log("contacts:", result.data.attributes);
+    // console.log("contacts:", result.data.attributes);
     return result.data.attributes;
   } catch (error) {
     console.error("Error fetching contacts:", error.message);
