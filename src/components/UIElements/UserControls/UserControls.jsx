@@ -5,7 +5,7 @@ import { useState } from "react";
 import { BasicModal } from "@/components";
 // import LoginModal from "@/components/Modals/LoginModal/LoginModal";
 import RegistrationModal from "@/components/Modals/RegistrationModal/RegistrationModal";
-import LanguageSwitcher from "./LanguageSwitcher";
+// import LanguageSwitcher from "./LanguageSwitcher";
 import { SessionProvider } from "next-auth/react";
 
 function UserControls() {
@@ -24,7 +24,7 @@ function UserControls() {
       className="flex flex-wrap flex-col lg:flex-row lg:flex-nowrap 
     justify-center gap-[8px] lg:gap-[18px] md:items-start lg:items-center"
     >
-      <LanguageSwitcher page="home" />
+      {/* <LanguageSwitcher page="home" /> */}
       <div className="flex flex-wrap flex-col lg:flex-row lg:flex-nowrap lg:items-center gap-[8px] items-center md:items-start">
         <button
           onClick={toggleModalRegistration}

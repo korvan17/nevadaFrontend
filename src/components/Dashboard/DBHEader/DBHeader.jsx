@@ -1,6 +1,6 @@
 import React from "react";
 import { Logo } from "@/components/Icons";
-import { LanguageSwitcher } from "@/components/UIElements";
+// import { LanguageSwitcher } from "@/components/UIElements";
 import NavBar from "./NavBar";
 
 function DBHeader() {
@@ -28,7 +28,7 @@ function DBHeader() {
             Main
           </p>
           <div className="hidden md:block md:mr-[37px]">
-            <LanguageSwitcher page="db" />
+            {/* <LanguageSwitcher page="db" /> */}
           </div>
           <button
             className="hidden lg:block transition-all ease-out
