@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { CloseMenuIcon } from "@/components/Icons";
 import { UserControls } from "@/components/UIElements";
+import HedaerContacts from "./HedaerContacts";
 
 function HeaderMenu({ toggleMenu }) {
   const menuVars = {
@@ -59,20 +60,7 @@ function HeaderMenu({ toggleMenu }) {
           <h3 className="mb-[12px] text-[16px] md:text-[24px] text-mainWhite">
             Contacts
           </h3>
-          <a
-            className="block mb-[8px] text-[14px] md:text-[16px] text-captionalGreyLight 
-              hover:text-mainWhite transition-all ease-out"
-            href="tel:+17027010078"
-          >
-            +1 (702) 701-0078
-          </a>
-          <a
-            className="text-[14px] md:text-[16px]  text-captionalGreyLight
-              hover:text-mainWhite transition-all ease-out"
-            href="mailto:info@ppcwarehouses.com"
-          >
-            info@ppcwarehouses.com
-          </a>
+          <HedaerContacts menu={true} />
         </div>
       </motion.div>
     </>
