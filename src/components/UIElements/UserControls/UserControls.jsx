@@ -6,6 +6,7 @@ import { BasicModal } from "@/components";
 import LoginModal from "@/components/Modals/LoginModal/LoginModal";
 import RegistrationModal from "@/components/Modals/RegistrationModal/RegistrationModal";
 import LanguageSwitcher from "./LanguageSwitcher";
+import { SessionProvider } from "next-auth/react";
 
 function UserControls() {
   const [showModalLogin, setShowModalLogin] = useState(false);
@@ -50,11 +51,13 @@ function UserControls() {
           closeButtonBackgroundColor="rgba(250, 252, 248, 1)"
           padding="12px"
         >
-          <LoginModal
-            modalIsOpen={showModalLogin}
-            closeModal={toggleModalLogin}
-            toggleModalRegistration={toggleModalRegistration}
-          />
+          <SessionProvider>
+            <LoginModal
+              modalIsOpen={showModalLogin}
+              closeModal={toggleModalLogin}
+              toggleModalRegistration={toggleModalRegistration}
+            />
+          </SessionProvider>
         </BasicModal>
       )}
       {showModalRegistration && (
