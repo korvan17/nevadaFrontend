@@ -3,7 +3,7 @@ import React from "react";
 import Buttons from "../Buttons/Buttons";
 import { useState } from "react";
 import { BasicModal } from "@/components";
-import LoginModal from "@/components/Modals/LoginModal/LoginModal";
+// import LoginModal from "@/components/Modals/LoginModal/LoginModal";
 import RegistrationModal from "@/components/Modals/RegistrationModal/RegistrationModal";
 import LanguageSwitcher from "./LanguageSwitcher";
 import { SessionProvider } from "next-auth/react";
@@ -52,11 +52,11 @@ function UserControls() {
           padding="12px"
         >
           <SessionProvider>
-            <LoginModal
+            {/* <LoginModal
               modalIsOpen={showModalLogin}
               closeModal={toggleModalLogin}
               toggleModalRegistration={toggleModalRegistration}
-            />
+            /> */}
           </SessionProvider>
         </BasicModal>
       )}

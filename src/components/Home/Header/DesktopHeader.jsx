@@ -1,6 +1,7 @@
 import Navigation from "./Navigation";
 import React from "react";
 import { UserControls } from "@/components/UIElements";
+import HedaerContacts from "./HedaerContacts";
 function DesktopHeader() {
   return (
     <div
@@ -10,27 +11,7 @@ function DesktopHeader() {
       lg:block lg:pb-[16px] pt-[76px] 
       mg:py-[11px]"
     >
-      <div
-        className="
-        w-[100%] absolute top-0 h-[56px] 
-        flex items-center justify-center flex-col
-         bg-captionBlue text-captionalWhite
-        text-[16px] font-semibold 
-        "
-      >
-        <a className="" href="mailto:info@ppcwarehouses.com">
-          info@ppcwarehouses.com
-        </a>
-        <a className="" href="tel:+1 (702) 701-0078">
-          +1 (702) 701-0078
-        </a>
-        {/* <Link
-          className="rounded-[8px] bg-accentYellow text-[#FAFCF8] px-1"
-          href="/dashboard"
-        >
-          Open Dash Page
-        </Link> */}
-      </div>
+      <HedaerContacts />
       <div className="container">
         <div className="flex">
           <Navigation />
