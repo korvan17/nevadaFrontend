@@ -31,11 +31,11 @@ export default function LoginModal({ toggleModalRegistration }) {
       redirect: false,
       email,
       password,
-      callbackUrl: "/dashboard",
+      callbackUrl: `${window.location.origin}/dashboard`,
     });
 
     if (!result.error) {
-      callbackUrl = result.url;
+      window.location.href = result.url;
     } else {
       console.error("Login failed:", result.error);
     }
