@@ -8,7 +8,11 @@ export default NextAuth({
     CredentialsProvider({
       name: "Credentials",
       credentials: {
-        email: { label: "Email", type: "text" },
+        email: {
+          label: "Email",
+          type: "email",
+          placeholder: "john.doe@example.com",
+        },
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
@@ -20,26 +24,22 @@ export default NextAuth({
               password: credentials.password,
             }
           );
-
-          const user = res.data;
-
-          if (user) {
-            return user;
+          // Обработка ответа от вашего API.
+          if (res.data) {
+            // Возвращаем пользовательские данные из ответа API.
+            return res.data;
           } else {
+            // Возвращаем null, если аутентификация не удалась.
             return null;
           }
         } catch (e) {
-          if (e.response) {
-            console.error("Error during authorization:", e.response.data);
-          } else if (e.request) {
-            console.error("No response received:", e.request);
-          } else {
-            console.error("Error setting up request:", e.message);
-          }
+          // Обработка ошибки и возврат null, если аутентификация не удалась.
+          console.error("Error during authorization:", e);
           return null;
         }
       },
     }),
   ],
-  // ...rest of your NextAuth config
+  secret: process.env.NEXTAUTH_SECRET,
+  // ...остальные настройки NextAuth
 });
