@@ -3,8 +3,8 @@ import { AnimatePresence } from "framer-motion";
 import React, { useEffect, useState } from "react";
 import Backdrop from "@/components/Backdrop/Backdrop";
 import { BurgerMenuIcon, Logo } from "@/components/Icons";
-import HedaerContacts from "./HedaerContacts";
 import useSWR from "swr";
+import HeaderContacts from "./HeaderContacts";
 
 function MobileHeader() {
   const [isMenuOpen, setisMenuOpen] = useState(false);
@@ -29,7 +29,7 @@ function MobileHeader() {
       fixed top-0 bg-mainBlack text-mainWhite"
     >
       <div className="container">
-        <HedaerContacts />
+        <HeaderContacts />
         <div className="flex justify-space-between">
           <a
             className="cursor-pointer flex gap-[8px] items-center"

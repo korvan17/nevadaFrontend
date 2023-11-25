@@ -10,9 +10,9 @@ import {
   ChatWindow,
   Partners,
   Certificates,
+  ModalRender,
 } from "@/components";
 import GetQuoteButton from "@/components/UIElements/GetQueteButton/GetQuoteButton";
-import { ModalRenderer } from "@/components";
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -37,7 +37,7 @@ export default function Home() {
       {/* <ChatWindow /> */}
       {/* <div id="myportal" /> */}
 
-      <ModalRenderer />
+      <ModalRender />
     </>
   );
 }

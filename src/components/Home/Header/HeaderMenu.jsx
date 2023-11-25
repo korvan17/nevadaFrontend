@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { CloseMenuIcon } from "@/components/Icons";
 import { UserControls } from "@/components/UIElements";
-import HedaerContacts from "./HedaerContacts";
+import HeaderContacts from "./HeaderContacts";
 
 function HeaderMenu({ toggleMenu }) {
   return (
@@ -41,7 +41,7 @@ function HeaderMenu({ toggleMenu }) {
           <h3 className="mb-[12px] text-[16px] md:text-[24px] text-mainWhite">
             Contacts
           </h3>
-          <HedaerContacts menu={true} />
+          <HeaderContacts menu={true} />
         </div>
       </motion.div>
     </>

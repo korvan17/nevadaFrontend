@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { fetchContacts } from "../../../../services/api";
 
-function HedaerContacts({ menu = false }) {
+function HeaderContacts({ menu = false }) {
   const [companyContacts, setCompanyContacts] = useState(null);
   useEffect(() => {
     const loadinData = async () => {
@@ -55,4 +55,4 @@ function HedaerContacts({ menu = false }) {
   );
 }
 
-export default HedaerContacts;
+export default HeaderContacts;

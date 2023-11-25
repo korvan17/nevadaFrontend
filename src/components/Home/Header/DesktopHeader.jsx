@@ -1,7 +1,7 @@
 import Navigation from "./Navigation";
 import React from "react";
 import { UserControls } from "@/components/UIElements";
-import HedaerContacts from "./HedaerContacts";
+import HeaderContacts from "./HeaderContacts";
 function DesktopHeader() {
   return (
     <div
@@ -11,7 +11,7 @@ function DesktopHeader() {
       lg:block lg:pb-[16px] pt-[76px] 
       mg:py-[11px]"
     >
-      <HedaerContacts />
+      <HeaderContacts />
       <div className="container">
         <div className="flex">
           <Navigation />

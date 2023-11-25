@@ -3,7 +3,7 @@ import { BasicModal, RegistrationModal, LoginModal } from "@/components";
 import useSWR from "swr";
 import { SessionProvider } from "next-auth/react";
 
-function ModalRenderer() {
+function ModalRender() {
   const { data: loginForm, mutate: mutateLoginForm } = useSWR("loginForm");
   const { data: registerForm, mutate: mutateRegisterForm } =
     useSWR("registerForm");
@@ -62,4 +62,4 @@ function ModalRenderer() {
   );
 }
 
-export default ModalRenderer;
+export default ModalRender;
