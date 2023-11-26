@@ -5,16 +5,22 @@ import Buttons from "../Buttons/Buttons";
 import useSWR from "swr";
 
 function UserControls() {
-  const { data: loginForm, mutate: mutateLoginForm } = useSWR("loginForm");
-  const { data: registerForm, mutate: mutateRegisterForm } =
-    useSWR("registerForm");
+  const { data: loginForm, mutate: mutateLoginForm } = useSWR("loginForm", {
+    initialData: false,
+  });
 
-  const toggleModalLogin = () => {
-    mutateLoginForm(!loginForm);
-  };
-  const toggleModalRegistration = async () => {
-    mutateRegisterForm(!registerForm);
-  };
+  const { data: registerForm, mutate: mutateRegisterForm } = useSWR(
+    "registerForm",
+    {
+      initialData: false,
+    }
+  );
+  // const toggleModalLogin = () => {
+  //   mutateLoginForm(!loginForm);
+  // };
+  // const toggleModalRegistration = async () => {
+  //   mutateRegisterForm(!registerForm);
+  // };
   return (
     <div
       className="flex flex-wrap flex-col lg:flex-row lg:flex-nowrap 
@@ -22,12 +28,12 @@ function UserControls() {
     >
       <div className="flex flex-wrap flex-col lg:flex-row lg:flex-nowrap lg:items-center gap-[8px] items-center md:items-start">
         <button
-          onClick={toggleModalRegistration}
+          onClick={mutateLoginForm}
           className="lg:text-captionalGrey text-[16px] text-captionalGreyLight font-semibold   hover:text-mainWhite transition-all ease-out cursor-pointer"
         >
           Registration
         </button>
-        <Buttons login={true} toggleModal={toggleModalLogin}>
+        <Buttons login={true} toggleModal={mutateRegisterForm}>
           Login
         </Buttons>
       </div>

@@ -10,8 +10,12 @@ function Backdrop({
   isMenuOpen,
   children,
 }) {
-  // const { data: loginForm } = useSWR("loginForm");
-  // const { data: registerForm } = useSWR("registerForm");
+  const { data: loginForm } = useSWR("loginForm", {
+    initialData: false,
+  });
+  const { data: registerForm } = useSWR("registerForm", {
+    initialData: false,
+  });
 
   const handleBackdropClose = (event) => {
     if (event.target === event.currentTarget) {
@@ -24,7 +28,6 @@ function Backdrop({
   };
 
   useEffect(() => {
-    console.log("Backdrop is mount");
     const handleKeyDown = (e) => {
       if (e.code === "Escape")
         toggleMenu
@@ -36,8 +39,14 @@ function Backdrop({
     document.body.style.overflow = "hidden";
     window.addEventListener("keydown", handleKeyDown);
     return () => {
-      console.log("Backdrop did unmount");
-      document.body.style.overflow = "auto";
+      // console.log("modal is unmount");
+      console.log("loginForm:", loginForm);
+      console.log("registerForm:", registerForm);
+
+      if (loginForm === true || registerForm === true)
+        document.body.style.overflow = "hidden";
+      else document.body.style.overflow = "unset";
+
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, [toggleMenu, toggleSideBar, closeModal]);

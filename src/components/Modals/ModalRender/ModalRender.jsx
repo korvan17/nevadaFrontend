@@ -4,17 +4,24 @@ import useSWR from "swr";
 import { SessionProvider } from "next-auth/react";
 
 function ModalRender() {
-  const { data: loginForm, mutate: mutateLoginForm } = useSWR("loginForm");
-  const { data: registerForm, mutate: mutateRegisterForm } =
-    useSWR("registerForm");
+  const { data: loginForm, mutate: mutateLoginForm } = useSWR("loginForm", {
+    initialData: false,
+  });
+
+  const { data: registerForm, mutate: mutateRegisterForm } = useSWR(
+    "registerForm",
+    {
+      initialData: false,
+    }
+  );
 
   const toggleModalReg = () => {
     mutateRegisterForm(!registerForm);
-    document.body.style.overflow = "auto";
+    // document.body.style.overflow = "auto";
   };
   const toggleModalLog = () => {
     mutateLoginForm(!loginForm);
-    document.body.style.overflow = "auto";
+    // document.body.style.overflow = "auto";
   };
 
   return (

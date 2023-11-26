@@ -17,7 +17,6 @@ function MobileHeader() {
 
   const toggleMenu = () => {
     setisMenuOpen(!isMenuOpen);
-    document.body.style.overflow = "auto";
   };
 
   return (

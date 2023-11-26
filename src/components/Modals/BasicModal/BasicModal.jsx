@@ -2,9 +2,6 @@
 import React, { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 
-// import { motion } from "framer-motion";
-import Backdrop from "@/components/Backdrop/Backdrop";
-
 export default function BasicModal({
   closeModal,
   modalIsOpen = false,
@@ -39,11 +36,36 @@ export default function BasicModal({
 
   const [modalRoot, setModalRoot] = useState(null);
   const [modalStyle, setModalStyle] = useState(defaultModalStyle);
+  // useEffect(() => {
+  //   document.body.style.overflow = "hidden";
 
+  //   return () => {
+  //     document.body.style.overflow = "auto";
+  //   };
+  // }, []);
   useEffect(() => {
     const currentModalRoot = document.querySelector("#modal-root");
     setModalRoot(currentModalRoot);
-  }, []);
+
+    const handleKeyDown = (e) => {
+      if (e.code === "Escape") {
+        closeModal();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    if (modalIsOpen) {
+      // document.body.style.overflow = "hidden";
+    } else {
+      // document.body.style.overflow = "unset";
+    }
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      // document.body.style.overflow = "auto";
+    };
+  }, [closeModal, modalIsOpen]);
 
   useEffect(() => {
     const updateModalSize = () => {
@@ -71,6 +93,7 @@ export default function BasicModal({
 
     window.addEventListener("resize", updateModalSize);
     updateModalSize();
+
     return () => {
       window.removeEventListener("resize", updateModalSize);
     };
@@ -83,13 +106,16 @@ export default function BasicModal({
   };
 
   if (!modalIsOpen || !modalRoot) return null;
-  /**
- *       className="fixed top-0 left-0 w-full h-full flex items-center
-      justify-center bg-black bg-opacity-75 z-40"
- */
+
   return createPortal(
     <>
-      <Backdrop closeModal={closeModal}></Backdrop>
+      <div
+        className="fixed top-0 left-0 z-40 w-[100%] h-[100%]
+      bg-background
+      backdrop-brightness-50
+      filter blur-sm"
+        onClick={handleBackdropClick}
+      ></div>
       <div className="z-50" style={modalStyle}>
         <button
           onClick={closeModal}
