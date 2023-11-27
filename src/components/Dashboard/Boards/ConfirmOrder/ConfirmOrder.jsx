@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+"use client";
+import { signOut, useSession } from "next-auth/react";
+import React, { useEffect, useState } from "react";
 
 export const ConfirmOrder = ({
   createOrder,
@@ -22,6 +24,19 @@ export const ConfirmOrder = ({
     return null;
   }
   const [confirmOrder, setConfirmOrder] = useState("Confirm Order");
+  // const token = getBearerToken();
+  const { data: session, status } = useSession();
+  // if (!session) {
+
+  // }
+
+  const { accessToken } = session;
+  console.log("Access Token22:", accessToken);
+  useEffect(() => {
+    if (status === "authenticated") {
+      console.log("Access Token:", session.accessToken);
+    }
+  }, [session, status]);
 
   const handelConfirmOrder = async (event) => {
     event.preventDefault();
@@ -33,7 +48,7 @@ export const ConfirmOrder = ({
       createOrder,
       orderType,
       orderDate,
-      companyName,
+      companyName: "2112",
       warehouseAddress,
       products: filteredProductData,
       comments,
@@ -54,14 +69,15 @@ export const ConfirmOrder = ({
             credentials: "include",
             headers: {
               "Content-Type": "application/json",
+              Authorization: `Bearer ${accessToken}`,
             },
-            body: JSON.stringify(data),
+            body: JSON.stringify({ data: { ...data } }),
           }
         );
-    if (!orderBackendResponse.ok) {
-      const orderBackendText = await orderBackendResponse.text();
-      throw new Error(`Order failed: ${orderBackendText}`);
-    }
+        if (!orderBackendResponse.ok) {
+          const orderBackendText = await orderBackendResponse.text();
+          throw new Error(`Order failed: ${orderBackendText}`);
+        }
       } else {
         const orderMailText = await orderMailResponse.text();
         throw new Error(`Failed to send order information: ${orderMailText}`);

@@ -8,12 +8,8 @@ import { CommonBoard } from "../CommonBoard/CommonBoard";
 
 export const CreateOrderForm = () => {
   const [orderType, setOrderType] = useState("");
-  const [orderDate, setOrderDate] = useState(() =>
-    new Date().toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "2-digit",
-      day: "2-digit",
-    })
+  const [orderDate, setOrderDate] = useState(
+    () => new Date().toISOString().split("T")[0]
   );
   const [companyName, setCompanyName] = useState("");
 
