@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Form, Formik } from "formik";
 // import { loginSchema } from "@/validationSchemas";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
@@ -15,10 +15,13 @@ export default function LoginModal({ toggleModalRegistration }) {
   const [password, setPassword] = useState("");
 
   const [email, setEmail] = useState("");
-  const { data: session } = useSession();
-  if (session) {
-    console.log("Access Token:", session);
-  }
+  const { data: session, status } = useSession();
+
+  useEffect(() => {
+    if (status === "authenticated") {
+      console.log("Access Token:", session.accessToken);
+    }
+  }, [session, status]);
   const toggleModal = () => {
     setIsForgotPassword(!isForgotPassword);
   };
@@ -34,11 +37,11 @@ export default function LoginModal({ toggleModalRegistration }) {
       redirect: false,
       email,
       password,
-      // callbackUrl: `${window.location.origin}/dashboard`,
+      callbackUrl: `${window.location.origin}/dashboard`,
     });
 
     if (!result.error) {
-      // window.location.href = result.url;
+      window.location.href = result.url;
     } else {
       console.error("Login failed:", result.error);
     }

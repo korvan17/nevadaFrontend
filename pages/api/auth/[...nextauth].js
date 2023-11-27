@@ -1,4 +1,3 @@
-// pages/api/auth/[...nextauth].js
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import axios from "axios";
@@ -26,10 +25,8 @@ export default NextAuth({
           console.log("API Response:", res.data);
           const user = res.data;
 
-          if (user) {
-            return user;
-          } else {
-            return null;
+          if (res.data) {
+            return { ...res.data.user, jwt: res.data.jwt };
           }
         } catch (e) {
           console.error(e);
@@ -39,18 +36,14 @@ export default NextAuth({
     }),
   ],
   callbacks: {
-    async jwt({ token, user, account }) {
-      if (account && user) {
-        console.log("JWT Token:", user.jwt);
-        return {
-          accessToken: user.token,
-          ...token,
-        };
+    jwt: async ({ token, user }) => {
+      if (user) {
+        token.accessToken = user.jwt;
       }
-      console.log("JWT Token:", user.token);
+
       return token;
     },
-    async session({ session, token }) {
+    session: async ({ session, token }) => {
       console.log("Session Token:", token.accessToken);
       session.accessToken = token.accessToken;
       return session;
