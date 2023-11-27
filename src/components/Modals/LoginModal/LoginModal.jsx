@@ -10,12 +10,15 @@ import { signIn, useSession } from "next-auth/react";
 export default function LoginModal({ toggleModalRegistration }) {
   const [showPassword, setShowPassword] = useState(false);
   const [isForgotPassword, setIsForgotPassword] = useState(false);
-  const { data: session } = useSession();
   const [showModalRegistration, setShowModalRegistration] = useState(false);
   const [showModalLogin, setShowModalLogin] = useState(true);
   const [password, setPassword] = useState("");
 
   const [email, setEmail] = useState("");
+  const { data: session } = useSession();
+  if (session) {
+    console.log("Access Token:", session);
+  }
   const toggleModal = () => {
     setIsForgotPassword(!isForgotPassword);
   };
@@ -31,11 +34,11 @@ export default function LoginModal({ toggleModalRegistration }) {
       redirect: false,
       email,
       password,
-      callbackUrl: `${window.location.origin}/dashboard`,
+      // callbackUrl: `${window.location.origin}/dashboard`,
     });
 
     if (!result.error) {
-      window.location.href = result.url;
+      // window.location.href = result.url;
     } else {
       console.error("Login failed:", result.error);
     }
