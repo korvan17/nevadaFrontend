@@ -4,6 +4,7 @@ import { Inter, Red_Hat_Display } from "next/font/google";
 
 import Script from "next/script";
 import { Footer } from "@/components";
+import SessionProvider from "@/components/SessionProvider/SessionProvider";
 
 const GTM_ID = "GTM-K8JG7N8N";
 const FB_PIXEL_ID = 276016891965827;
@@ -50,23 +51,25 @@ export default function RootLayout({ children }) {
       </Script>
 
       <body className={redHatDisplay.className}>
-        <div id="modal-root"></div>
-        {children}
-        <Footer />
-        <noscript
-          dangerouslySetInnerHTML={{
-            __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=${GTM_ID}" height="0" width="0" style="display: none; visibility: hidden;"></iframe>`,
-          }}
-        />
+        <SessionProvider>
+          <div id="modal-root"></div>
+          {children}
+          <Footer />
+          <noscript
+            dangerouslySetInnerHTML={{
+              __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=${GTM_ID}" height="0" width="0" style="display: none; visibility: hidden;"></iframe>`,
+            }}
+          />
 
-        <noscript
-          dangerouslySetInnerHTML={{
-            __html: `
+          <noscript
+            dangerouslySetInnerHTML={{
+              __html: `
           <img height="1" width="1" style="display:none"
           src="https://www.facebook.com/tr?id=${FB_PIXEL_ID}&ev=PageView&noscript=1"
           />`,
-          }}
-        />
+            }}
+          />
+        </SessionProvider>
       </body>
     </html>
   );

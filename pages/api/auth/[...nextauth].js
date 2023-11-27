@@ -1,4 +1,3 @@
-// pages/api/auth/[...nextauth].js
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import axios from "axios";
@@ -14,6 +13,7 @@ export default NextAuth({
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
+        console.log("Authorize function called", credentials);
         try {
           const res = await axios.post(
             "https://nevadacms.onrender.com/api/auth/local",
@@ -22,13 +22,11 @@ export default NextAuth({
               password: credentials.password,
             }
           );
-
+          console.log("API Response:", res.data);
           const user = res.data;
 
-          if (user) {
-            return user;
-          } else {
-            return null;
+          if (res.data) {
+            return { ...res.data.user, jwt: res.data.jwt };
           }
         } catch (e) {
           console.error(e);
@@ -37,5 +35,19 @@ export default NextAuth({
       },
     }),
   ],
-  // ...rest of your NextAuth config
+  callbacks: {
+    jwt: async ({ token, user }) => {
+      if (user) {
+        token.accessToken = user.jwt;
+      }
+
+      return token;
+    },
+    session: async ({ session, token }) => {
+      console.log("Session Token:", token.accessToken);
+      session.accessToken = token.accessToken;
+      return session;
+    },
+  },
+  // Другие настройки...
 });

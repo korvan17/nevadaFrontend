@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Form, Formik } from "formik";
 // import { loginSchema } from "@/validationSchemas";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
@@ -10,12 +10,18 @@ import { signIn, useSession } from "next-auth/react";
 export default function LoginModal({ toggleModalRegistration }) {
   const [showPassword, setShowPassword] = useState(false);
   const [isForgotPassword, setIsForgotPassword] = useState(false);
-  const { data: session } = useSession();
   const [showModalRegistration, setShowModalRegistration] = useState(false);
   const [showModalLogin, setShowModalLogin] = useState(true);
   const [password, setPassword] = useState("");
 
   const [email, setEmail] = useState("");
+  const { data: session, status } = useSession();
+
+  useEffect(() => {
+    if (status === "authenticated") {
+      console.log("Access Token:", session.accessToken);
+    }
+  }, [session, status]);
   const toggleModal = () => {
     setIsForgotPassword(!isForgotPassword);
   };
