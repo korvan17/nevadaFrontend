@@ -13,6 +13,11 @@ export { default as PasswordSettings } from "./Dashboard/PasswordSettings/Passwo
 export { default as Footer } from "./Footer/Footer.jsx";
 export { default as Hero } from "./Home/Hero/Hero.jsx";
 export { default as ChatWindow } from "./Home/ChatWindow/ChatWindow.jsx";
+
 export { default as BasicModal } from "./Modals/BasicModal/BasicModal.jsx";
+export { default as RegistrationModal } from "./Modals/RegistrationModal/RegistrationModal.jsx";
+export { default as LoginModal } from "./Modals/LoginModal/LoginModal.jsx";
+export { default as ModalRender } from "./Modals/ModalRender/ModalRender.jsx";
+
 export { default as Partners } from "./Home/Partners/Partners.jsx";
 export { default as Certificates } from "./Home/Certificates/Certificates.jsx";

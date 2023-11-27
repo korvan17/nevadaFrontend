@@ -2,27 +2,9 @@ import React from "react";
 import { motion } from "framer-motion";
 import { CloseMenuIcon } from "@/components/Icons";
 import { UserControls } from "@/components/UIElements";
+import HeaderContacts from "./HeaderContacts";
 
 function HeaderMenu({ toggleMenu }) {
-  const menuVars = {
-    initial: {
-      scaleX: 0,
-    },
-    animate: {
-      scaleX: 1,
-      transition: {
-        duration: 0.5,
-        ease: [0.12, 0, 0.39, 0],
-      },
-    },
-    exit: {
-      scaleX: 0,
-      transition: {
-        duration: 0.5,
-        ease: [0.22, 1, 0.36, 1],
-      },
-    },
-  };
   return (
     <>
       <motion.div
@@ -33,7 +15,7 @@ function HeaderMenu({ toggleMenu }) {
         md:pt-[110px] md:px-[12px]
     
         w-[70%] sm:w-[50%] h-[100%]
-        fixed top-0 right-0 z-90 
+        fixed top-0 right-0 z-50 
         
         text-mainWhite"
         initial={{ x: 1000 }}
@@ -59,20 +41,7 @@ function HeaderMenu({ toggleMenu }) {
           <h3 className="mb-[12px] text-[16px] md:text-[24px] text-mainWhite">
             Contacts
           </h3>
-          <a
-            className="block mb-[8px] text-[14px] md:text-[16px] text-captionalGreyLight 
-              hover:text-mainWhite transition-all ease-out"
-            href="tel:+17027010078"
-          >
-            +1 (702) 701-0078
-          </a>
-          <a
-            className="text-[14px] md:text-[16px]  text-captionalGreyLight
-              hover:text-mainWhite transition-all ease-out"
-            href="mailto:info@ppcwarehouses.com"
-          >
-            info@ppcwarehouses.com
-          </a>
+          <HeaderContacts menu={true} />
         </div>
       </motion.div>
     </>
