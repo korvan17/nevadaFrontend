@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 
 import "swiper/css";
@@ -8,10 +8,30 @@ import SwiperPrice from "./SwiperPrice";
 import { Buttons } from "@/components/UIElements";
 import { BasicModal } from "@/components";
 import PricingGetQuoteModal from "@/components/Modals/PricingGetQuoteModal/PricingGetQuoteModal";
+import { fetchPriceProducts } from "../../../../services/api";
 
 export default function Pricing() {
   const [showModalPricing, setShowModalPricing] = useState(false);
   const [selectedTitle, setSelectedTitle] = useState(null);
+  const [productPricing, setProductPricing] = useState(null);
+
+  useEffect(() => {
+    const loadinData = async () => {
+      try {
+        const prodPricingData = await fetchPriceProducts();
+        setProductPricing(prodPricingData);
+      } catch (error) {
+        console.log("productPricing error", error);
+      }
+    };
+    loadinData();
+  }, []);
+
+  console.log("productPricing", productPricing);
+
+  const formatNumber = (num) => {
+    return parseFloat(num).toFixed(2).replace(".", ",");
+  };
 
   const toggleModalPricing = () => {
     setShowModalPricing(!showModalPricing);
@@ -76,37 +96,47 @@ export default function Pricing() {
           data-aos-duration="1000"
           data-aos-once="true"
         >
-          <ul className="flex-wrap gap-[20px] md:mb-[12px] lg:gap-[24px] lg:mb-[12px] hidden md:flex">
-            <li className="md:basis-[calc((100%-20px)/2)] lg:basis-[calc((100%-72px)/4)] mb-4 sm:mb-4 md:mb-0 py-4 pl-4 pr-9 rounded-lg bg-darkBlue text-captionalWhite overflow-x-auto">
-              <h3 className="mt-[8px] mb-[12px] text-lg font-bold">
-                FBA, FBW, Private Label
-              </h3>
-              <p className="text-base font-bold">Deposit $69</p>
-              <p className="text-base font-bold mb-[16px]">
-                From 250 units/month
-              </p>
-              <p className="text-base mb-[16px]">*Base price in USD</p>
-              <ul className="mb-[16px] flex justify-between">
-                <li>
-                  <p className="text-base font-bold">Single:</p>
-                  <p>$0,75</p>
-                </li>
-                <li className="">
-                  <p className="text-base font-bold">Set/Bundle:</p>
-                  <p>$0,90</p>
-                </li>
-              </ul>
+          {productPricing && (
+            <ul className="flex-wrap gap-[20px] md:mb-[12px] lg:gap-[24px] lg:mb-[12px] hidden md:flex">
+              {productPricing.map(
+                ({ attributes: { deposit, minUnits, set, single, title } }) => {
+                  const formatSet = formatNumber(set);
+                  const formatSingle = formatNumber(single);
+                  return (
+                    <li className="md:basis-[calc((100%-20px)/2)] lg:basis-[calc((100%-72px)/4)] mb-4 sm:mb-4 md:mb-0 py-4 pl-4 pr-9 rounded-lg bg-darkBlue text-captionalWhite overflow-x-auto">
+                      <h3 className="mt-[8px] mb-[12px] text-lg font-bold">
+                        {title}
+                      </h3>
+                      <p className="text-base font-bold">Deposit ${deposit}</p>
+                      <p className="text-base font-bold mb-[16px]">
+                        From {minUnits} units/month
+                      </p>
+                      <p className="text-base mb-[16px]">*Base price in USD</p>
+                      <ul className="mb-[16px] flex justify-between">
+                        <li>
+                          <p className="text-base font-bold">Single:</p>
+                          <p>${formatSingle}</p>
+                        </li>
+                        <li className="">
+                          <p className="text-base font-bold">Set/Bundle:</p>
+                          <p>${formatSet}</p>
+                        </li>
+                      </ul>
 
-              <Buttons
-                toggleModal={() => {
-                  setSelectedTitle("FBA, FBW, Private Label");
-                  toggleModalPricing();
-                }}
-              >
-                Get a Quote
-              </Buttons>
-            </li>
-            <li className="md:basis-[calc((100%-20px)/2)] lg:basis-[calc((100%-72px)/4)] mb-4 sm:mb-4 md:mb-0 py-4 pl-4 pr-9 rounded-lg bg-captionalWhite text-captionalWhite overflow-x-auto">
+                      <Buttons
+                        toggleModal={() => {
+                          setSelectedTitle("FBA, FBW, Private Label");
+                          toggleModalPricing();
+                        }}
+                      >
+                        Get a Quote
+                      </Buttons>
+                    </li>
+                  );
+                }
+              )}
+
+              {/* <li className="md:basis-[calc((100%-20px)/2)] lg:basis-[calc((100%-72px)/4)] mb-4 sm:mb-4 md:mb-0 py-4 pl-4 pr-9 rounded-lg bg-captionalWhite text-captionalWhite overflow-x-auto">
               <h3 className="mt-[8px] mb-[12px] text-lg font-bold text-mainBlack">
                 Online arbitration
               </h3>
@@ -136,8 +166,8 @@ export default function Pricing() {
               >
                 Get a Quote
               </Buttons>
-            </li>
-            <li className="md:basis-[calc((100%-20px)/2)] lg:basis-[calc((100%-72px)/4)] mb-4 sm:mb-4 md:mb-0 py-4 pl-4 pr-9 rounded-lg bg-darkBlue text-captionalWhite overflow-x-auto">
+            </li> */}
+              {/* <li className="md:basis-[calc((100%-20px)/2)] lg:basis-[calc((100%-72px)/4)] mb-4 sm:mb-4 md:mb-0 py-4 pl-4 pr-9 rounded-lg bg-darkBlue text-captionalWhite overflow-x-auto">
               <h3 className="mt-[8px] mb-[12px] text-lg font-bold">
                 Wholesale
               </h3>
@@ -165,8 +195,8 @@ export default function Pricing() {
               >
                 Get a Quote
               </Buttons>
-            </li>
-            <li className="md:basis-[calc((100%-20px)/2)] lg:basis-[calc((100%-72px)/4)] mb-4 sm:mb-4 md:mb-0 py-4 pl-4 pr-9 rounded-lg bg-captionalWhite text-captionalWhite overflow-x-auto">
+            </li> */}
+              {/* <li className="md:basis-[calc((100%-20px)/2)] lg:basis-[calc((100%-72px)/4)] mb-4 sm:mb-4 md:mb-0 py-4 pl-4 pr-9 rounded-lg bg-captionalWhite text-captionalWhite overflow-x-auto">
               <h3 className="mt-[8px] mb-[12px] text-lg font-bold text-mainBlack">
                 FBM
               </h3>
@@ -196,8 +226,9 @@ export default function Pricing() {
               >
                 Get a Quote
               </Buttons>
-            </li>
-          </ul>
+              </li>*/}
+            </ul>
+          )}
           <p className="mb-[12px] text-xs text-captionalGreyLight md:w-[664px] md:mb-[25px] md:text-base lg:w-[741px] lg:text-base ">
             Base price* - Explanation: &ldquo;At Prime Preparation Center, we
             offer volume-based pricing, which means that the more you purchase
