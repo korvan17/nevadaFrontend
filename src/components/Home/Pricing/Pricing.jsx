@@ -8,18 +8,24 @@ import SwiperPrice from "./SwiperPrice";
 import { Buttons } from "@/components/UIElements";
 import { BasicModal } from "@/components";
 import PricingGetQuoteModal from "@/components/Modals/PricingGetQuoteModal/PricingGetQuoteModal";
-import { fetchPriceProducts } from "../../../../services/api";
+import {
+  fetchPriceContainers,
+  fetchPriceProducts,
+} from "../../../../services/api";
 
 export default function Pricing() {
   const [showModalPricing, setShowModalPricing] = useState(false);
   const [selectedTitle, setSelectedTitle] = useState(null);
   const [productPricing, setProductPricing] = useState(null);
+  const [pricingContainers, setPricingContainers] = useState(null);
 
   useEffect(() => {
     const loadinData = async () => {
       try {
         const prodPricingData = await fetchPriceProducts();
+        const pricingContainersData = await fetchPriceContainers();
         setProductPricing(prodPricingData);
+        setPricingContainers(pricingContainersData);
       } catch (error) {
         console.log("productPricing error", error);
       }
@@ -27,7 +33,8 @@ export default function Pricing() {
     loadinData();
   }, []);
 
-  console.log("productPricing", productPricing);
+  // console.log("productPricing", productPricing);
+  console.log("pricingContainers", pricingContainers);
 
   const formatNumber = (num) => {
     return parseFloat(num).toFixed(2).replace(".", ",");
@@ -135,98 +142,6 @@ export default function Pricing() {
                   );
                 }
               )}
-
-              {/* <li className="md:basis-[calc((100%-20px)/2)] lg:basis-[calc((100%-72px)/4)] mb-4 sm:mb-4 md:mb-0 py-4 pl-4 pr-9 rounded-lg bg-captionalWhite text-captionalWhite overflow-x-auto">
-              <h3 className="mt-[8px] mb-[12px] text-lg font-bold text-mainBlack">
-                Online arbitration
-              </h3>
-              <p className="text-base font-bold text-mainBlack">Deposit $69</p>
-              <p className="text-base font-bold text-mainBlack mb-[16px]">
-                From 300 units/month
-              </p>
-              <p className="text-base text-mainBlack mb-[16px]">
-                *Base price in USD
-              </p>
-              <ul className="mb-[16px] flex justify-between text-mainBlack">
-                <li>
-                  <p className="text-base font-bold">Single:</p>
-                  <p>$0,85</p>
-                </li>
-                <li className="">
-                  <p className="text-base font-bold">Set/Bundle:</p>
-                  <p>$1,00</p>
-                </li>
-              </ul>
-
-              <Buttons
-                toggleModal={() => {
-                  setSelectedTitle("Online arbitration");
-                  toggleModalPricing();
-                }}
-              >
-                Get a Quote
-              </Buttons>
-            </li> */}
-              {/* <li className="md:basis-[calc((100%-20px)/2)] lg:basis-[calc((100%-72px)/4)] mb-4 sm:mb-4 md:mb-0 py-4 pl-4 pr-9 rounded-lg bg-darkBlue text-captionalWhite overflow-x-auto">
-              <h3 className="mt-[8px] mb-[12px] text-lg font-bold">
-                Wholesale
-              </h3>
-              <p className="text-base font-bold">Deposit $69</p>
-              <p className="text-base font-bold mb-[16px]">
-                From 1000 units/month
-              </p>
-              <p className="text-base mb-[16px]">*Base price in USD</p>
-              <ul className="mb-[16px] flex justify-between">
-                <li>
-                  <p className="text-base font-bold">Single:</p>
-                  <p>$0,60</p>
-                </li>
-                <li className="">
-                  <p className="text-base font-bold">Set/Bundle:</p>
-                  <p>$0,75</p>
-                </li>
-              </ul>
-
-              <Buttons
-                toggleModal={() => {
-                  setSelectedTitle("Wholesale");
-                  toggleModalPricing();
-                }}
-              >
-                Get a Quote
-              </Buttons>
-            </li> */}
-              {/* <li className="md:basis-[calc((100%-20px)/2)] lg:basis-[calc((100%-72px)/4)] mb-4 sm:mb-4 md:mb-0 py-4 pl-4 pr-9 rounded-lg bg-captionalWhite text-captionalWhite overflow-x-auto">
-              <h3 className="mt-[8px] mb-[12px] text-lg font-bold text-mainBlack">
-                FBM
-              </h3>
-              <p className="text-base font-bold text-mainBlack">Deposit $69</p>
-              <p className="text-base font-bold text-mainBlack mb-[16px]">
-                From 20 units/month
-              </p>
-              <p className="text-base text-mainBlack mb-[16px]">
-                *Base price in USD
-              </p>
-              <ul className="mb-[16px] flex justify-between text-mainBlack">
-                <li>
-                  <p className="text-base font-bold">Single:</p>
-                  <p>$2,00</p>
-                </li>
-                <li className="">
-                  <p className="text-base font-bold">Set/Bundle:</p>
-                  <p>$3,00</p>
-                </li>
-              </ul>
-
-              <Buttons
-                toggleModal={() => {
-                  setSelectedTitle("FBM");
-                  toggleModalPricing();
-                }}
-              >
-                Get a Quote
-              </Buttons>
-              </li>*/}
             </ul>
           )}
           <p className="mb-[12px] text-xs text-captionalGreyLight md:w-[664px] md:mb-[25px] md:text-base lg:w-[741px] lg:text-base ">
@@ -261,50 +176,49 @@ export default function Pricing() {
                     <td className="font-bold">Pictures 3pcs</td>
                   </tr>
                 </thead>
-                <tbody className="text-right leading-[200%]">
-                  <tr>
-                    <td className="w-[190px] text-left">
-                      Box (24x18x12) 49 lbs max
-                    </td>
-                    <td>$1</td>
-                    <td className="">$1</td>
-                    <td className="">$5</td>
-                    <td className="">$5</td>
-                    <td className="">$2</td>
-                    <td className="">$2</td>
-                    <td className="">$1</td>
-                  </tr>
-                  <tr>
-                    <td className="text-left">Pallet (48x40x72)</td>
-                    <td>$25</td>
-                    <td className="">$1</td>
-                    <td className="">$25</td>
-                    <td className="">$35</td>
-                    <td className="">$20</td>
-                    <td className="">$20</td>
-                    <td className="">$1</td>
-                  </tr>
-                  <tr>
-                    <td className="text-left">PL Container (20ft)</td>
-                    <td>$300</td>
-                    <td className="">$100</td>
-                    <td className="">-</td>
-                    <td className="">-</td>
-                    <td className="">-</td>
-                    <td className="">-</td>
-                    <td className="">-</td>
-                  </tr>
-                  <tr>
-                    <td className="text-left">FL Container (40ft)</td>
-                    <td>$600</td>
-                    <td className="">$150</td>
-                    <td className="">-</td>
-                    <td className="">-</td>
-                    <td className="">-</td>
-                    <td className="">-</td>
-                    <td className="">-</td>
-                  </tr>
-                </tbody>
+                {pricingContainers && (
+                  <tbody className="text-right leading-[200%]">
+                    {pricingContainers.map(
+                      ({
+                        attributes: {
+                          title,
+                          utilization,
+                          storage,
+                          removals,
+                          receiving,
+                          pictures,
+                          inspection,
+                          forwarding,
+                        },
+                      }) => {
+                        return (
+                          <tr>
+                            <td className="w-[190px] text-left">{title}</td>
+                            <td>{`${receiving ? "$" + receiving : "-"}`}</td>
+                            <td className="">
+                              {`${inspection ? "$" + inspection : "-"}`}
+                            </td>
+                            <td className="">
+                              {`${forwarding ? "$" + forwarding : "-"}`}
+                            </td>
+                            <td className="">{`${
+                              storage ? "$" + storage : "-"
+                            }`}</td>
+                            <td className="">
+                              {`${utilization ? "$" + utilization : "-"}`}
+                            </td>
+                            <td className="">{`${
+                              removals ? "$" + removals : "-"
+                            }`}</td>
+                            <td className="">{`${
+                              pictures ? "$" + pictures : "-"
+                            }`}</td>
+                          </tr>
+                        );
+                      }
+                    )}
+                  </tbody>
+                )}
               </table>
             </div>
 
