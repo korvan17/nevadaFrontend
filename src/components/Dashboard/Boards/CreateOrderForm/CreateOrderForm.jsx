@@ -25,6 +25,14 @@ export const CreateOrderForm = () => {
   const [createOrder, setCreateOrder] = useState("Create a Order Form");
   const [showConfirmOrder, setShowConfirmOrder] = useState(false);
   const [confirmOrderData, setConfirmOrderData] = useState({});
+  const formatDisplayDate = (isoDate) => {
+    const date = new Date(isoDate);
+    const day = date.getDate().toString().padStart(2, "0");
+    const month = (date.getMonth() + 1).toString().padStart(2, "0"); // Месяцы начинаются с 0
+    const year = date.getFullYear();
+    return `${month}/${day}/${year}`;
+  };
+
   useEffect(() => {
     const allProductsValid =
       products.length > 0 &&
@@ -141,11 +149,17 @@ export const CreateOrderForm = () => {
     event.preventDefault();
 
     const productData = products.map((product) => ({
+      ...product,
       productDescription: product.productDescription,
       idAsin: product.idAsin,
       expectedQty: product.expectedQty,
       qtyInMasterBox: product.qtyInMasterBox,
-      features: product.features.join(", "),
+      features: {
+        HazMat: product.features.includes("HazMat"),
+        Fragile: product.features.includes("Fragile"),
+        Oversize: product.features.includes("Oversize"),
+        Other: product.features.includes("Other"),
+      },
       otherFeatureDetails: product.otherFeatureDetails,
       renderedOtherDetails: product.renderedOtherDetails,
     }));
@@ -166,9 +180,10 @@ export const CreateOrderForm = () => {
       orderDate,
       companyName,
       warehouseAddress,
-      products: filteredProductData,
+      products: productData,
       comments,
       totalMasterBoxes,
+      formatDisplayDate,
     };
     setConfirmOrderData(data);
     setShowConfirmOrder(true);
@@ -213,7 +228,7 @@ export const CreateOrderForm = () => {
             <input
               type="text"
               id="orderDate"
-              value={orderDate}
+              value={formatDisplayDate(orderDate)}
               readOnly
               className="mt-1 block w-full border border-gray-300 px-3 py-2 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             />

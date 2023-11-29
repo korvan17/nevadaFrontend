@@ -1,8 +1,5 @@
-import { DBContentContainer, DBHeader, UserPanel } from "@/components";
-import { CommonBoard } from "@/components/Dashboard/Boards/CommonBoard/CommonBoard";
-import { CreateOrderForm } from "@/components/Dashboard/Boards/CreateOrderForm/CreateOrderForm";
-// import { CreateOrderForm } from "@/components/Dashboard/Boards/CreateOrderForm/CreateOrderForm";
-import CreateOrderButton from "@/components/UIElements/Buttons/CreateOrderButton/CreateOrderButton";
+import Dashboard from "@/components/Dashboard/Dashboard";
+
 import React from "react";
 
 export const metadata = {
@@ -10,24 +7,13 @@ export const metadata = {
   description: "Dashboard client page",
 };
 
-function Dashboard({ children }) {
+function DashboardPage({ children }) {
   return (
     <>
-      <DBHeader />
-      {/* <DBContentContainer />
-       */}
-      <div className="flex gap-3">
-        <CreateOrderForm />
-        <CommonBoard />
-        <UserPanel />
-      </div>
-      {/* <CreateOrderButton /> */}
-      {/* <CreateOrderForm /> */}
-      {/* <CommonBoard title={"Order history"} icon={<HistoryIcon />}></CommonBoard> */}
-      {/* <CommonBoard title={"Tracker"} icon={<TrackerIcon />}></CommonBoard> */}
+      <Dashboard />
       {children}
     </>
   );
 }
 
-export default Dashboard;
+export default DashboardPage;
