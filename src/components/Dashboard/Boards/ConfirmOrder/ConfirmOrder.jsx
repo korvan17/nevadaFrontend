@@ -3,6 +3,7 @@ import { signOut, useSession } from "next-auth/react";
 import React, { useEffect, useState } from "react";
 
 export const ConfirmOrder = ({
+  formatDisplayDate,
   createOrder,
   orderType,
   orderDate,
@@ -48,7 +49,7 @@ export const ConfirmOrder = ({
       createOrder,
       orderType,
       orderDate,
-      companyName: "2112",
+      companyName,
       warehouseAddress,
       products: filteredProductData,
       comments,
@@ -93,7 +94,7 @@ export const ConfirmOrder = ({
       <h2 className="">{confirmOrder}</h2>
       <div className="mt-2">
         <p>Order Type: {orderType}</p>
-        <p>Order Date: {orderDate}</p>
+        <p>Order Date: {formatDisplayDate(orderDate)}</p>
         <p>Company Name: {companyName}</p>
         <p>Warehouse Address: {warehouseAddress}</p>
       </div>
@@ -111,7 +112,17 @@ export const ConfirmOrder = ({
             {product.qtyInMasterBox && (
               <p>Qty in Master Box: {product.qtyInMasterBox}</p>
             )}
-            {product.features && <p>Checkbox: {product.features}</p>}
+            {product.features && (
+              <div>
+                {Object.entries(product.features).map(
+                  ([featureKey, featureValue]) => (
+                    <p key={featureKey}>
+                      {featureKey}: {featureValue ? "Yes" : "No"}
+                    </p>
+                  )
+                )}
+              </div>
+            )}
             {product.otherFeatureDetails && (
               <p>Other Feature: {product.otherFeatureDetails}</p>
             )}
