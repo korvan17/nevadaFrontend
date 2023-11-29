@@ -24,7 +24,7 @@ function Backdrop({
   };
 
   useEffect(() => {
-    console.log("Backdrop is mount");
+    // console.log("Backdrop is mount");
     const handleKeyDown = (e) => {
       if (e.code === "Escape")
         toggleMenu
@@ -36,7 +36,7 @@ function Backdrop({
     document.body.style.overflow = "hidden";
     window.addEventListener("keydown", handleKeyDown);
     return () => {
-      console.log("Backdrop did unmount");
+      // console.log("Backdrop did unmount");
       document.body.style.overflow = "auto";
       window.removeEventListener("keydown", handleKeyDown);
     };
