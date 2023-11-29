@@ -135,6 +135,7 @@ export default function LoginModal({ toggleModalRegistration }) {
                   </span>
                 </label>
                 <button
+                  type="button"
                   onClick={toggleModal}
                   className="text-captionBlue ml-[auto] text-[12px] leading-[1.5]"
                 >

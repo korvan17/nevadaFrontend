@@ -19,7 +19,11 @@ const createProductMessage = (product) => {
         product.expectedQty / product.qtyInMasterBox
       )}</div>`,
     product.features &&
-      `<div style="font-size: 14px;">Checkbox: ${product.features}</div>`,
+      `<div style="font-size: 14px;">Features: ${Object.entries(
+        product.features
+      )
+        .map(([key, value]) => `${key}: ${value}`)
+        .join(", ")}</div>`, // Correctly format the features object
     product.otherFeatureDetails &&
       `<div style="font-size: 14px;">Other Details: ${product.otherFeatureDetails}</div>`,
   ];
