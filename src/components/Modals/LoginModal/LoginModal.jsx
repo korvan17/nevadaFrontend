@@ -13,6 +13,7 @@ export default function LoginModal({ toggleModalRegistration }) {
   const [showModalRegistration, setShowModalRegistration] = useState(false);
   const [showModalLogin, setShowModalLogin] = useState(true);
   const [password, setPassword] = useState("");
+  const [loginError, setLoginError] = useState(null);
 
   const [email, setEmail] = useState("");
   const { data: session, status } = useSession();
@@ -20,7 +21,7 @@ export default function LoginModal({ toggleModalRegistration }) {
   useEffect(() => {
     if (status === "authenticated") {
       console.log("Access Token:", session.accessToken);
-    }
+    } 
   }, [session, status]);
   const toggleModal = () => {
     setIsForgotPassword(!isForgotPassword);
@@ -43,6 +44,7 @@ export default function LoginModal({ toggleModalRegistration }) {
     if (!result.error) {
       window.location.href = result.url;
     } else {
+      setLoginError(result.error);
       console.error("Login failed:", result.error);
     }
   };
@@ -52,7 +54,7 @@ export default function LoginModal({ toggleModalRegistration }) {
       <Formik>
         {!isForgotPassword ? (
           <Form
-            className="px-[0] py-[0] md:px-[62px] md:py-[114px]"
+            className="px-[0] py-[0] md:px-[62px] md:py-[80px]"
             onSubmit={handleFormSubmit}
           >
             <h2 className="text-center text-[24px] leading-[1] font-semibold text-white mt-[63px] md:mt-0">
@@ -76,7 +78,7 @@ export default function LoginModal({ toggleModalRegistration }) {
                 id="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full p-4 border mt-[8px] rounded-[8px] leading-[1.5]"
+                className={`w-full p-4 border mt-[8px] rounded-[8px] leading-[1.5] ${loginError && email ? " border-red-600" : ""}`}
                 required
                 placeholder="Enter your e-mail"
               />
@@ -92,7 +94,7 @@ export default function LoginModal({ toggleModalRegistration }) {
                   id="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full p-4 border mt-[8px] rounded-[8px]"
+                  className={`w-full p-4 border mt-[8px] rounded-[8px] ${loginError && password ? "border-red-600" : ""}`}
                   required
                   placeholder="Enter your password"
                 />
@@ -115,11 +117,14 @@ export default function LoginModal({ toggleModalRegistration }) {
                   )}
                 </button>
               </span>
-              {/* <p>
+              <div className={loginError ? "mt-4" : "hidden"}>
+              <p className="text-red-600 text-xs mt-[12px]">
             *Something seems to have gone wrong. Check whether the password and
             user login were entered correctly. Please note that the password
             must consist of 8 characters
-          </p> */}
+          </p>
+              </div>
+              {/*  */}
               <div className="flex mt-[12px] ">
                 <input
                   type="checkbox"
