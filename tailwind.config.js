@@ -14,6 +14,9 @@ module.exports = {
     },
     extend: {
       colors: {
+        "gradient-start": "#4042E2",
+        "gradient-end": "#C0C0C0",
+
         mainBlack: "#000A11",
         bgBoard: "#DFE4E8",
         captionalWhite: "#ECECEC",
@@ -37,7 +40,9 @@ module.exports = {
         mobile: "80px",
         desktop: "120px",
       },
-
+      boxShadow: {
+        custom: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+      },
       container: {
         center: true,
         padding: {

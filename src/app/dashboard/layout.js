@@ -7,7 +7,7 @@ const Layout = ({ children }) => {
   return (
     <>
       <DBHeader />
-      <div className="flex gap-6 pt-20">
+      <div className="flex gap-6 pt-[76px]">
         <ShipmentSidebarDashboard />
         {children}
 

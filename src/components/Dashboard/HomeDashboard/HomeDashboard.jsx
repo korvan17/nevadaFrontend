@@ -9,20 +9,15 @@ export default function HomeDashboard() {
     <div className="w-[920px] h-[611px] flex-shrink-0 rounded-lg bg-[#FAFCF8] shadow-xl p-3 m-9">
       <h2 className="text-2xl font-bold mb-6">Outbound shipments</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        
         <ShipmentCard title="Freight">
           <p>No freight shipments due yet</p>
         </ShipmentCard>
 
-       
         <ShipmentCard title="Awaiting Carrier">
           <p>No shipments awaiting carrier</p>
         </ShipmentCard>
 
-       
-        <ShipmentCard title="Shipped this month">
-         
-        </ShipmentCard>
+        <ShipmentCard title="Shipped this month"></ShipmentCard>
         <ShipmentStatusCard
           title="Shipped this month"
           icon={
@@ -79,8 +74,8 @@ export default function HomeDashboard() {
                 d="M4 22H12"
                 stroke="#62686F"
                 strokeWidth="3"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
               <path
                 d="M4 28H8"

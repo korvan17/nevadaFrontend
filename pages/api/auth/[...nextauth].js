@@ -38,14 +38,18 @@ export default NextAuth({
   callbacks: {
     jwt: async ({ token, user }) => {
       if (user) {
-        token.accessToken = user.jwt;
+        token.user = {
+          ...user,
+        };
       }
-
       return token;
     },
+
     session: async ({ session, token }) => {
-      console.log("Session Token:", token.accessToken);
-      session.accessToken = token.accessToken;
+      // Присваиваем данные пользователя сессии
+      if (token.user) {
+        session.user = token.user;
+      }
       return session;
     },
   },
