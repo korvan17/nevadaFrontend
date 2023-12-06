@@ -5,8 +5,10 @@ import { CreateOrderForm } from "@/components/Dashboard/Boards/CreateOrderForm/C
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import React, { useEffect } from "react";
+import ShipmentSidebarDashboard from "./ShipmentSidebarDashboard/ShipmentSidebarDashboard";
+import HomeDashboard from "./HomeDashboard/HomeDashboard";
 
-function Dashboard() {
+function Dashboard({ children }) {
   const router = useRouter();
   const { status } = useSession();
 
@@ -23,12 +25,21 @@ function Dashboard() {
   if (status === "authenticated") {
     return (
       <>
-        <DBHeader />
-        <div className="flex gap-3">
-          <CreateOrderForm />
-          <CommonBoard />
+        <HomeDashboard />
+        {/* <div className="flex gap-3"> */}
+        {/* <CreateOrderForm />
+          <CommonBoard />  */}
+        {/* <div className="flex pt-20">
+          <div className="flex-none">
+            <ShipmentSidebarDashboard />
+          </div>
+          <div className="flex-grow">
+            <HomeDashboard />
+          </div>
           <UserPanel />
-        </div>
+        </div> */}
+        {/* {children} */}
+        {/* </div> */}
       </>
     );
   }
