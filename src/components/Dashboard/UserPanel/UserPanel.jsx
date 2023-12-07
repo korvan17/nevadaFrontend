@@ -43,7 +43,7 @@ function UserPanel({ user }) {
     return () => clearInterval(messageListener);
   }, [notifications]);
   return (
-    <div className="h-[867px] w-[330px] p-3 mt-[76px] rounded-[12px] shadow-xl">
+    <div className="bg-mainWhite h-[867px] w-[330px] p-3  rounded-[12px] shadow-custom-deep">
       <div className="flex mb-3">
         <CalendarMonthOutlined />
 
@@ -78,23 +78,21 @@ function UserPanel({ user }) {
         </div>
       )}
       <ul>
-        {userPanelItems.map(({ title, icon, hint }) => {
+        {userPanelItems.map(({ title, icon, hint }, index) => {
           return (
-            <div className="">
-              <li key={title}>
-                <button onClick={() => toggleSideBar(title)} type="button">
-                  <PrivacyTipOutlined />
-                  <p>{title}</p>
-                  <p>{hint}</p>
+            <li key={`${title}-${index}`}>
+              <button onClick={() => toggleSideBar(title)} type="button">
+                <PrivacyTipOutlined />
+                <p>{title}</p>
+                <p>{hint}</p>
 
-                  <ArrowForwardIosOutlinedIcon
-                    fontSize="small"
-                    stroke="#62686F"
-                    style={{ height: "24px", width: "24px" }}
-                  />
-                </button>
-              </li>
-            </div>
+                <ArrowForwardIosOutlinedIcon
+                  fontSize="small"
+                  stroke="#62686F"
+                  style={{ height: "24px", width: "24px" }}
+                />
+              </button>
+            </li>
           );
         })}
       </ul>

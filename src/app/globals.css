@@ -57,7 +57,7 @@ body {
 }
 
 @media screen and (max-width: 768px) {
-body > * {
+  body > * {
     overflow: hidden;
   }
 }
@@ -120,4 +120,11 @@ body > * {
 
 .button:active {
   animation: buttonPress 0.2s;
+}
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
 }
