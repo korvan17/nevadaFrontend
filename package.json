@@ -44,6 +44,5 @@
     "eslint": "^8.52.0",
     "eslint-plugin-next": "^0.0.0",
     "eslint-plugin-react": "^7.33.2"
-
   }
 }
