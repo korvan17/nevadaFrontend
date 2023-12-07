@@ -454,6 +454,15 @@ export default function Shipments() {
             breakClassName={""}
             breakLinkClassName={""}
           />
+          <ReactPaginate
+            breakLabel="..."
+            nextLabel="next >"
+            onPageChange={handlePageClick}
+            pageRangeDisplayed={3}
+            pageCount={pageCount}
+            previousLabel="< previous"
+            renderOnZeroPageCount={null}
+          />
 
           <CreateOrderButton />
         </div>
