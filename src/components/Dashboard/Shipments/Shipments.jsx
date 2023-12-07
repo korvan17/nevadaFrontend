@@ -367,9 +367,9 @@ const shipments = [
 ];
 const PER_PAGE = 8;
 export default function Shipments() {
-  const [currentPage, setCurrentPage] = useState(1);
-  const handlePageClick = (event) => {
-    setCurrentPage(event.selected);
+  const [currentPage, setCurrentPage] = useState(0);
+  const handlePageClick = ({ selected }) => {
+    setCurrentPage(selected);
   };
 
   const offset = currentPage * PER_PAGE;
@@ -384,7 +384,7 @@ export default function Shipments() {
           placeholder="Search for order..."
         />
         <div
-          className=" rounded-lg bg-[#FAFCF8] shadow-xl"
+          className=" rounded-lg bg-[#FAFCF8] shadow-custom-deep"
           style={{
             paddingTop: "12px",
             paddingRight: "12px",
@@ -437,21 +437,22 @@ export default function Shipments() {
           </table>
 
           <ReactPaginate
-            className="flex gap-10 justify-center text-blue-700"
             previousLabel={"← Previous"}
             nextLabel={"Next →"}
             pageCount={pageCount}
             onPageChange={handlePageClick}
-            containerClassName={"pagination"}
-            previousLinkClassName={"pagination__link"}
-            nextLinkClassName={"pagination__link"}
-            disabledClassName={"pagination__link--disabled"}
-            activeClassName={"pagination__link--active"}
+            containerClassName={"flex list-none justify-center gap-[30px]"}
+            previousLinkClassName={""}
+            nextLinkClassName={""}
+            disabledClassName={""}
+            activeClassName={""}
+            pageLinkClassName={""}
             forcePage={currentPage}
-            pageRangeDisplayed={2} // Number of pages to display before/after the current page
-            marginPagesDisplayed={1} // Number of pages to display at the start/end
-            breakLabel={"..."} // Ellipsis label
-            breakClassName={"pagination__ellipsis"} // Class for the ellipsis item
+            pageRangeDisplayed={2}
+            marginPagesDisplayed={1}
+            breakLabel={"..."}
+            breakClassName={""}
+            breakLinkClassName={""}
           />
 
           <CreateOrderButton />

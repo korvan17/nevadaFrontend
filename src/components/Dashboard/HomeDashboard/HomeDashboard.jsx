@@ -6,7 +6,7 @@ import CreateOrderButton from "@/components/UIElements/Buttons/CreateOrderButton
 
 export default function HomeDashboard() {
   return (
-    <div className="w-[920px] h-[611px] flex-shrink-0 rounded-lg bg-[#FAFCF8] shadow-xl p-3 m-9">
+    <div className="mt-[36px] w-[920px] h-[611px] flex-shrink-0 rounded-lg bg-[#FAFCF8] shadow-custom-deep p-3">
       <h2 className="text-2xl font-bold mb-6">Outbound shipments</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         <ShipmentCard title="Freight">

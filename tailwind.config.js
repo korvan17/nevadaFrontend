@@ -42,6 +42,10 @@ module.exports = {
       },
       boxShadow: {
         custom: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+        "top-shadow":
+          "0px -4px 4px 0px rgba(0, 0, 0, 0.25), 0px -4px 10px 0px rgba(0, 0, 0, 0.25), 0px -4px 10px 0px rgba(0, 0, 0, 0.25)",
+        "custom-deep":
+          "0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 10px 0px rgba(0, 0, 0, 0.25), 0px 4px 10px 0px rgba(0, 0, 0, 0.25)",
       },
       container: {
         center: true,
@@ -62,5 +66,5 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/forms")],
 };
