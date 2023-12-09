@@ -97,7 +97,7 @@ export const ConfirmOrder = ({
   console.log(session);
   return (
     <div>
-      <h2 className="hidden">{createOrder}</h2>
+      <h2 className="hidden text-[20px]">{createOrder}</h2>
       <h2 className="">{confirmOrder}</h2>
       <div className="mt-2">
         <p>Order Type: {orderType}</p>

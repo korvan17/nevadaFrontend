@@ -334,16 +334,7 @@ const shipments = [
     received: "13.01.2022",
     boxes: "51",
   },
-  {
-    arrival: "13.01.2022",
-    order: "O-3200547340",
-    tracker: "1223344545",
-    status: "Completed",
-    from: "werehous1",
-    to: "Nevada",
-    received: "13.01.2022",
-    boxes: "51",
-  },
+
   {
     arrival: "13.01.2022",
     order: "O-3200547340",
@@ -454,7 +445,7 @@ export default function Shipments() {
             breakClassName={""}
             breakLinkClassName={""}
           />
-          <ReactPaginate
+          {/* <ReactPaginate
             breakLabel="..."
             nextLabel="next >"
             onPageChange={handlePageClick}
@@ -462,7 +453,7 @@ export default function Shipments() {
             pageCount={pageCount}
             previousLabel="< previous"
             renderOnZeroPageCount={null}
-          />
+          /> */}
 
           <CreateOrderButton />
         </div>
