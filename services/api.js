@@ -61,3 +61,21 @@ export const fetchPricePackings = async () => {
     throw error;
   }
 };
+
+// Получение ордеров:
+export const fetchOrders = async () => {
+  try {
+    const response = await fetch(
+      // `${API_BASE_URL}/orders?populate=products.feature`
+      "https://nevadacms.onrender.com/api/orders?populate=products.feature"
+      
+
+    );
+    const result = await response.json();
+
+    return result.data;
+  } catch (error) {
+    console.error("Error fetching orders:", error.message);
+    throw error;
+  }
+};
