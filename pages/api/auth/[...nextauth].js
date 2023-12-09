@@ -46,7 +46,6 @@ export default NextAuth({
     },
 
     session: async ({ session, token }) => {
-      // Присваиваем данные пользователя сессии
       if (token.user) {
         session.user = token.user;
       }
