@@ -31,14 +31,14 @@ export const ConfirmOrder = ({
 
   // }
 
-  const { accessToken } = session;
+  const accessToken = session.user.jwt;
   console.log("Access Token22:", accessToken);
   useEffect(() => {
     if (status === "authenticated") {
       console.log("Access Token:", session.accessToken);
     }
   }, [session, status]);
-
+  const mailFor = session.user.username;
   const handelConfirmOrder = async (event) => {
     event.preventDefault();
     const isConfirmed = window.confirm(
@@ -55,7 +55,7 @@ export const ConfirmOrder = ({
       comments,
       totalMasterBoxes,
     };
-
+    console.log(session.user.username);
     try {
       const orderMailResponse = await fetch("/api/orders", {
         method: "POST",
@@ -72,7 +72,13 @@ export const ConfirmOrder = ({
               "Content-Type": "application/json",
               Authorization: `Bearer ${accessToken}`,
             },
-            body: JSON.stringify({ data: { ...data } }),
+            body: JSON.stringify({
+              data: {
+                mailFor,
+                // users_permissions_user: session.user.username,
+                ...data,
+              },
+            }),
           }
         );
         if (!orderBackendResponse.ok) {
@@ -87,7 +93,8 @@ export const ConfirmOrder = ({
       console.error("Error submitting form:", error.message);
     }
   };
-
+  console.log(session.user.username);
+  console.log(session);
   return (
     <div>
       <h2 className="hidden">{createOrder}</h2>
