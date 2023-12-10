@@ -63,17 +63,25 @@ export const fetchPricePackings = async () => {
 };
 
 // Получение ордеров:
-export const fetchOrders = async () => {
+export const fetchOrders = async (accessToken) => {
   try {
     const response = await fetch(
-      // `${API_BASE_URL}/orders?populate=products.feature`
-      "https://nevadacms.onrender.com/api/orders?populate=products.feature"
-      
-
+      "https://nevadacms.onrender.com/api/orders?populate=products.feature",
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      }
     );
-    const result = await response.json();
 
-    return result.data;
+    if (!response.ok) {
+      throw new Error(
+        `HTTP error ${response.status}: ${await response.text()}`
+      );
+    }
+
+    const data = await response.json();
+    return data.resData;
   } catch (error) {
     console.error("Error fetching orders:", error.message);
     throw error;
