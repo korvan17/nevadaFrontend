@@ -34,10 +34,12 @@ export default function Calendar() {
         {/* <DatePicker value={date} onChange={(newDate) => setDate(newDate)} /> */}
 
         <DateCalendar
+          // showDaysOutsideCurrentMonth
+          // fixedWeekNumber={6}
           value={date}
           onChange={(newDate) => setDate(newDate)}
           style={{
-            width: "300px",
+            width: "306px",
             height: "auto",
             // background: "#b7c6d2",
             borderRadius: "8px",
