@@ -1,17 +1,26 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import io from "socket.io-client";
 import { fetchOrders } from "../../../../services/api";
 import { useSession } from "next-auth/react";
 import ReactPaginate from "react-paginate";
+import FullPrice from "../FullPrice/FullPrice";
 const PER_PAGE = 1;
 export default function Messages() {
   const [orders, setOrders] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
   const [isTrackerUpdated, setIsTrackerUpdated] = useState(false);
+  const [isFullPriceVisible, setIsFullPriceVisible] = useState(false);
+  const overlayRef = useRef(null);
   const { data: session, status } = useSession();
   const SERVER_URL = "html://nevadacms.onrender.com";
-
+  const formatDisplayDate = (isoDate) => {
+    const date = new Date(isoDate);
+    const day = date.getDate().toString().padStart(2, "0");
+    const month = (date.getMonth() + 1).toString().padStart(2, "0"); // Месяцы начинаются с 0
+    const year = date.getFullYear();
+    return `${month}/${day}/${year}`;
+  };
   useEffect(() => {
     if (status === "authenticated" && session.user.jwt) {
       fetchOrders(session.user.jwt).then(setOrders).catch(console.error);
@@ -157,24 +166,69 @@ export default function Messages() {
     ).length / PER_PAGE
   );
 
-  if (orders.length === 0) {
-    return <div>No messages to display.</div>;
-  }
+  // if (orders.length === 0) {
+  //   return <div>No messages to display.</div>;
+  // }
+
+  const toggleFullPriceVisibility = () => {
+    setIsFullPriceVisible((prev) => !prev);
+  };
+  const handleClickOutside = (event) => {
+    if (overlayRef.current && !overlayRef.current.contains(event.target)) {
+      setIsFullPriceVisible(false);
+    }
+  };
+
+  useEffect(() => {
+    // Attach the listener to the document
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      // Remove the listener when the component unmounts
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
-    <div>
+    <div className="">
       <h2 className="text-2xl font-bold mb-6">Messages</h2>
       <div className="w-[920px] h-[611px] rounded-lg bg-[#FAFCF8] shadow-custom-deep p-3">
         <ul>
           {currentPageData.map((order) => (
             <li key={order.id}>
-              <div className="flex gap-11 font-extrabold">
-                <h3>Full price for your parcel</h3>
-                <p>{order.attributes.totalPrice}$</p>
+              <div ref={overlayRef} className="relative">
+                {isFullPriceVisible ? (
+                  <div className="absolute z-10">
+                    <FullPrice
+                      currentPageData={currentPageData}
+                      order={order}
+                      formatDisplayDate={formatDisplayDate}
+                    />
+                  </div>
+                ) : (
+                  <div
+                    onClick={toggleFullPriceVisibility}
+                    className="flex gap-11 font-extrabold cursor-pointer"
+                  >
+                    <h3>Full price for your parcel</h3>
+                    <p>{order.attributes.totalPrice}$</p>
+                  </div>
+                )}
               </div>
               <p>Order Type: {order.attributes.orderType}</p>
-              <p>Order Date: {order.attributes.orderDate}</p>
+              <p>Order Date:{formatDisplayDate(order.attributes.orderDate)}</p>
               <p>Company Name: {order.attributes.companyName}</p>
-
+              <div>
+                Products:
+                <ul>
+                  {order.attributes.products.map((product) => (
+                    <li key={product.id}>
+                      <p>Product Description: {product.productDescription}</p>
+                    </li>
+                  ))}
+                  <p>totalMasterBoxes: {order.attributes.totalMasterBoxes}</p>
+                </ul>
+              </div>
               <div>
                 <form
                   onSubmit={(event) => {
@@ -233,7 +287,9 @@ export default function Messages() {
             activeClassName={"active"}
           />
         )}
-        {currentPageData.length === 0 && <p>You have no messages.</p>}
+        {currentPageData.length === 0 && (
+          <p className="text-center">You have no messages.</p>
+        )}
       </div>
     </div>
   );
