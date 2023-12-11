@@ -7,7 +7,7 @@ function DBHeader() {
   return (
     <header
       className="
-    fixed top-0 left-0
+    fixed top-0 left-0 z-20
     bg-mainWhite w-full 
     pt-[16px] pb-[12px] 
      text-mainBlack
