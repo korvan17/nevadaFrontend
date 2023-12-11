@@ -24,11 +24,41 @@ export default function Messages() {
     const year = date.getFullYear();
     return `${month}/${day}/${year}`;
   };
-
   useEffect(() => {
     if (status === "authenticated" && session.user.jwt) {
+      setIsLoading(true);
       fetchOrders(session.user.jwt).then(setOrders).catch(console.error);
     }
+
+    const socket = io(SERVER_URL, {
+      transports: ["websocket"],
+    });
+
+    socket.on("connect_error", (error) => {
+      console.log(`Connected to Strapi WebSocket at ${SERVER_URL}`);
+      console.error("Connection Error:", error);
+      socket.on("api::order.order.create", (newOrder) => {
+        setOrders((prevOrders) => [...prevOrders, newOrder]);
+      });
+
+      socket.on("api::order.order.update", (updatedOrder) => {
+        setOrders((prevOrders) =>
+          prevOrders.map((order) =>
+            order.id === updatedOrder.id ? updatedOrder : order
+          )
+        );
+      });
+
+      socket.on("api::order.order.delete", (deletedOrderId) => {
+        setOrders((prevOrders) =>
+          prevOrders.filter((order) => order.id !== deletedOrderId)
+        );
+      });
+    });
+
+    return () => {
+      socket.disconnect();
+    };
   }, [status, session]);
 
   const handleTrackerChange = (orderId, trackerValue) => {
