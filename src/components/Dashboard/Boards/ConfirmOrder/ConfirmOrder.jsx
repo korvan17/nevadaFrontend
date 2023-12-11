@@ -93,12 +93,11 @@ export const ConfirmOrder = ({
       console.error("Error submitting form:", error.message);
     }
   };
-  console.log(session.user.username);
-  console.log(session);
+
   return (
     <div>
       <h2 className="hidden text-[20px]">{createOrder}</h2>
-      <h2 className="">{confirmOrder}</h2>
+      <h3 className="">{confirmOrder}</h3>
       <div className="mt-2">
         <p>Order Type: {orderType}</p>
         <p>Order Date: {formatDisplayDate(orderDate)}</p>
