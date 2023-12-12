@@ -365,8 +365,7 @@ export default function Shipments() {
 
   const offset = currentPage * PER_PAGE;
   const currentPageData = shipments.slice(offset, offset + PER_PAGE);
-  const pageCount = Math.ceil((shipments.length || 1) / PER_PAGE);
-  console.log('Page Count:', pageCount);
+  const pageCount = Math.ceil(shipments.length / PER_PAGE);
   return (
     <>
       <div className="">
