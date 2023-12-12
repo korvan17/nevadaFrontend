@@ -1,7 +1,7 @@
 "use client";
 import { signOut, useSession } from "next-auth/react";
 import React, { useEffect, useState } from "react";
-
+import { customAlphabet, nanoid } from "nanoid";
 export const ConfirmOrder = ({
   formatDisplayDate,
   createOrder,
@@ -39,13 +39,24 @@ export const ConfirmOrder = ({
     }
   }, [session, status]);
   const mailFor = session.user.username;
+
+  const generateCustomId = () => {
+    const numbersAlphabet = "0123456789";
+    const nanoid = customAlphabet(numbersAlphabet, 9);
+    const prefix = orderType.charAt(0).toUpperCase();
+    return `${prefix}-${nanoid()}`;
+  };
+
   const handelConfirmOrder = async (event) => {
     event.preventDefault();
+
+    const customId = generateCustomId();
     const isConfirmed = window.confirm(
       "Are you sure you want to confirm the order?"
     );
     if (!isConfirmed) return;
     const data = {
+      customId,
       createOrder,
       orderType,
       orderDate,
