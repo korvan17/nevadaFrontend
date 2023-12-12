@@ -24,6 +24,7 @@
     "formik": "^2.4.5",
     "framer-motion": "^10.16.4",
     "i": "^0.3.7",
+    "nanoid": "^5.0.4",
     "next": "^13.5.2",
     "next-auth": "^4.24.5",
     "next-images": "^1.8.5",

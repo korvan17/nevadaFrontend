@@ -5,6 +5,7 @@ import { fetchOrders } from "../../../../services/api";
 import { useSession } from "next-auth/react";
 import ReactPaginate from "react-paginate";
 import FullPrice from "../FullPrice/FullPrice";
+import { ExpandLessOutlined } from "@mui/icons-material";
 const PER_PAGE = 1;
 export default function Messages() {
   const [orders, setOrders] = useState([]);
@@ -16,7 +17,7 @@ export default function Messages() {
 
   const overlayRef = useRef(null);
   const { data: session, status } = useSession();
-  const SERVER_URL = "https://nevadacms.onrender.com";
+
   const formatDisplayDate = (isoDate) => {
     const date = new Date(isoDate);
     const day = date.getDate().toString().padStart(2, "0");
@@ -177,6 +178,7 @@ export default function Messages() {
                   {isFullPriceVisible ? (
                     <div className="absolute z-10">
                       <FullPrice
+                        onClose={toggleFullPriceVisibility}
                         currentPageData={currentPageData}
                         order={order}
                         formatDisplayDate={formatDisplayDate}
@@ -185,13 +187,16 @@ export default function Messages() {
                   ) : (
                     <div
                       onClick={toggleFullPriceVisibility}
-                      className="flex gap-11 font-extrabold cursor-pointer"
+                      className="flex gap-[150px] font-extrabold cursor-pointer"
                     >
-                      <h3>Full price for your parcel</h3>
+                      <h3>
+                        Full price for your parcel <ExpandLessOutlined />
+                      </h3>
                       <p>{order.attributes.totalPrice}$</p>
                     </div>
                   )}
                 </div>
+                <p>Order №: {order.attributes.customId}</p>
                 <p>Order Type: {order.attributes.orderType}</p>
                 <p>
                   Order Date: {formatDisplayDate(order.attributes.orderDate)}
@@ -266,6 +271,7 @@ export default function Messages() {
               onPageChange={handlePageClick}
               containerClassName={"pagination"}
               activeClassName={"active"}
+              className="flex justify-center gap-5"
             />
           )}
           {currentPageData.length === 0 && (
