@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { BasicModal, RegistrationModal, LoginModal } from "@/components";
 import useSWR from "swr";

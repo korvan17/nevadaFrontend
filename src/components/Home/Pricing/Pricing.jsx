@@ -106,11 +106,17 @@ export default function Pricing() {
           {productPricing && (
             <ul className="flex-wrap gap-[20px] md:mb-[12px] lg:gap-[24px] lg:mb-[12px] hidden md:flex">
               {productPricing.map(
-                ({ attributes: { deposit, minUnits, set, single, title } }) => {
+                ({
+                  id,
+                  attributes: { deposit, minUnits, set, single, title },
+                }) => {
                   const formatSet = formatNumber(set);
                   const formatSingle = formatNumber(single);
                   return (
-                    <li className="md:basis-[calc((100%-20px)/2)] lg:basis-[calc((100%-72px)/4)] mb-4 sm:mb-4 md:mb-0 py-4 pl-4 pr-9 rounded-lg bg-darkBlue text-captionalWhite overflow-x-auto">
+                    <li
+                      key={id}
+                      className="md:basis-[calc((100%-20px)/2)] lg:basis-[calc((100%-72px)/4)] mb-4 sm:mb-4 md:mb-0 py-4 pl-4 pr-9 rounded-lg bg-darkBlue text-captionalWhite overflow-x-auto"
+                    >
                       <h3 className="mt-[8px] mb-[12px] text-lg font-bold">
                         {title}
                       </h3>
@@ -180,6 +186,7 @@ export default function Pricing() {
                   <tbody className="text-right leading-[200%]">
                     {pricingContainers.map(
                       ({
+                        id,
                         attributes: {
                           title,
                           utilization,
@@ -192,7 +199,7 @@ export default function Pricing() {
                         },
                       }) => {
                         return (
-                          <tr>
+                          <tr key={id}>
                             <td className="w-[190px] text-left">{title}</td>
                             <td>{`${receiving ? "$" + receiving : "-"}`}</td>
                             <td className="">
