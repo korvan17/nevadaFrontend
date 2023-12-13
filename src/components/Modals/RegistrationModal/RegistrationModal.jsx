@@ -1,5 +1,8 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 export default function RegistrationModal({ closeModal }) {
   const [titleModal, setTitleModal] = useState("Registration Form");
 
@@ -112,22 +115,28 @@ export default function RegistrationModal({ closeModal }) {
         );
         if (registrationResponse.ok) {
           clearFields();
-          closeModal();
+          toast.success("Registration successful!");
+          setTimeout(() => {
+            closeModal();
+          }, 3000);
         } else {
           const registrationText = await registrationResponse.text();
-          throw new Error(`Registration failed: ${registrationText}`);
+          toast.error(`Registration failed: ${registrationText}`);
         }
       } else {
         const contactsText = await contactsResponse.text();
-        throw new Error(`Failed to send contact information: ${contactsText}`);
+        toast.error(`Failed to send contact information: ${contactsText}`);
       }
     } catch (error) {
       console.error("Error submitting form:", error.message);
+      toast.error(`Error submitting form: ${error.message}`);
     }
   };
 
   return (
     <div>
+      <ToastContainer position="top-center z-30" autoClose={5000} />
+
       <h2 className="text-center text-[24px] font-semibold mt-6 text-[#000A11] mb-[12px] rounded-[8px]">
         {titleModal}
       </h2>
