@@ -7,7 +7,7 @@ export default function RegistrationModal({ closeModal }) {
   const [titleModal, setTitleModal] = useState("Registration Form");
 
   const [businessDirection, setBusinessDirection] = useState(
-    sessionStorage.getItem("businessDirection") || ""
+    sessionStorage.getItem("businessDirection") || "Select Your Business"
   );
   const [fullName, setFullName] = useState(
     sessionStorage.getItem("fullName") || ""
