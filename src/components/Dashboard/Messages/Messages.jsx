@@ -1,11 +1,11 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
-import io from "socket.io-client";
+
 import { fetchOrders } from "../../../../services/api";
 import { useSession } from "next-auth/react";
 import ReactPaginate from "react-paginate";
 import FullPrice from "../FullPrice/FullPrice";
-import { ExpandLessOutlined } from "@mui/icons-material";
+import { Add, ExpandLessOutlined } from "@mui/icons-material";
 const PER_PAGE = 1;
 export default function Messages() {
   const [orders, setOrders] = useState([]);
@@ -165,12 +165,16 @@ export default function Messages() {
   }, []);
 
   return (
-    <div className="">
-      <h2 className="text-2xl font-bold mb-6">Messages</h2>
+    <div className="mb-11">
+      <h2 className="text-[24px] leading-6 font-bold mb-6">Messages</h2>
       {isLoading ? (
         <div className="loader">Loading...</div>
       ) : (
-        <div className="w-[920px] h-[611px] rounded-lg bg-[#FAFCF8] shadow-custom-deep p-3">
+        <div
+          className="lg:w-[920px] lg:h-[611px] rounded-[4px] bg-[#FAFCF8] shadow-custom-deep pl-2 pr-2 pt-3 
+        
+        md:w-[578px] md:h-[484px]"
+        >
           <ul>
             {currentPageData.map((order) => (
               <li key={order.id}>
@@ -187,7 +191,9 @@ export default function Messages() {
                   ) : (
                     <div
                       onClick={toggleFullPriceVisibility}
-                      className="flex gap-[150px] font-extrabold cursor-pointer"
+                      className="flex justify-between  font-bold cursor-pointer text-[14px] md:text-[16px] first-letter:
+                      
+                       leading-[21px] md:leading-[24px]"
                     >
                       <h3>
                         Full price for your parcel <ExpandLessOutlined />
@@ -196,22 +202,26 @@ export default function Messages() {
                     </div>
                   )}
                 </div>
-                <p>Order №: {order.attributes.customId}</p>
-                <p>Order Type: {order.attributes.orderType}</p>
-                <p>
-                  Order Date: {formatDisplayDate(order.attributes.orderDate)}
-                </p>
-                <p>Company Name: {order.attributes.companyName}</p>
-                <div>
-                  Products:
-                  <ul>
-                    {order.attributes.products.map((product) => (
-                      <li key={product.id}>
-                        <p>Product Description: {product.productDescription}</p>
-                      </li>
-                    ))}
-                    <p>Total Boxes: {order.attributes.totalMasterBoxes}</p>
-                  </ul>
+                <div className="text-[16px] leading-6 text-[#62686F]">
+                  <p>Order №: {order.attributes.customId}</p>
+                  <p>Order Type: {order.attributes.orderType}</p>
+                  <p>
+                    Order Date: {formatDisplayDate(order.attributes.orderDate)}
+                  </p>
+                  <p>Company Name: {order.attributes.companyName}</p>
+                  <div>
+                    Products:
+                    <ul>
+                      {order.attributes.products.map((product) => (
+                        <li key={product.id}>
+                          <p>
+                            Product Description: {product.productDescription}
+                          </p>
+                        </li>
+                      ))}
+                      <p>Total Boxes: {order.attributes.totalMasterBoxes}</p>
+                    </ul>
+                  </div>
                 </div>
                 <div>
                   <form
@@ -221,44 +231,59 @@ export default function Messages() {
                       submitTrackerNumber(order.id, trackerNumber);
                     }}
                   >
-                    <label htmlFor={`tracker-${order.id}`}>
-                      Enter Tracker Number:
-                    </label>
-                    <input
-                      id={`tracker-${order.id}`}
-                      name="tracker"
-                      defaultValue={order.attributes.tracker || ""}
-                      onChange={(e) =>
-                        handleTrackerChange(order.id, e.target.value)
-                      }
-                    />
-                    <button type="submit">Update Tracker</button>
+                    <div className="flex  items-center border-[]">
+                      <label
+                        className="text-[12px] font-bold leading-4 mr-3"
+                        htmlFor={`tracker-${order.id}`}
+                      >
+                        Enter Tracker Number:
+                      </label>
+                      <input
+                        className="w-[100px] h-[32px] rounded-[4px] md:w-[202px]"
+                        id={`tracker-${order.id}`}
+                        name="tracker"
+                        defaultValue={order.attributes.tracker || ""}
+                        onChange={(e) =>
+                          handleTrackerChange(order.id, e.target.value)
+                        }
+                      />
+                      <button className="" type="submit">
+                        <Add fontSize="large" />
+                      </button>
+                    </div>
                   </form>
 
                   <p>Tracker Number: {order.attributes.tracker}</p>
-                  {!order.attributes.accept && isTrackerUpdated ? (
-                    <button
-                      className="flex w-32 px-4 py-2 justify-center items-center gap-2 rounded-md bg-blue-600 shadow-md 
+                  <div className="flex gap-3 justify-end mt-11 mb-10">
+                    {!order.attributes.accept && isTrackerUpdated ? (
+                      <button
+                        className="flex w-32 h-8 px-4 py-2 justify-center items-center gap-2 rounded-md bg-blue-600 shadow-md 
                 
-  text-white font-semibold text-sm leading-4 hover:shadow-lg hover:bg-blue-700 focus:outline-none 
+  text-white font-semibold text-[12px] leading-4 hover:shadow-lg hover:bg-blue-700 focus:outline-none 
                 
   focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
-                      onClick={() => handleAccept(order.id)}
-                    >
-                      Accept
-                    </button>
-                  ) : (
+                        onClick={() => handleAccept(order.id)}
+                      >
+                        Accept
+                      </button>
+                    ) : (
+                      <button
+                        className="flex h-8 w-32 px-4 py-4 justify-center items-center  rounded-md bg-blue-600 
+  text-white font-semibold text-[12px] leading-4 opacity-50 cursor-not-allowed"
+                        disabled
+                      >
+                        Accept
+                      </button>
+                    )}
                     <button
-                      className="flex w-32 px-4 py-2 justify-center items-center gap-2 rounded-md bg-blue-600 
-  text-white font-semibold text-sm leading-4 opacity-50 cursor-not-allowed"
-                      disabled
+                      className="w-[62px] h-8 flex justify-center items-center py-2 px-6 text-[#3C6ED0] font-semibold 
+                      
+                      text-[12px] leading-4  "
+                      onClick={() => handleDecline(order.id)}
                     >
-                      Accept
+                      Decline
                     </button>
-                  )}
-                  <button onClick={() => handleDecline(order.id)}>
-                    Decline
-                  </button>
+                  </div>
                 </div>
               </li>
             ))}
@@ -271,7 +296,7 @@ export default function Messages() {
               onPageChange={handlePageClick}
               containerClassName={"pagination"}
               activeClassName={"active"}
-              className="flex justify-center gap-5"
+              className="flex justify-center gap-5 pb-8"
             />
           )}
           {currentPageData.length === 0 && (

@@ -6,11 +6,11 @@ export default function FullPrice({
   formatDisplayDate,
 }) {
   return (
-    <div className="relative w-[920px] h-[611px] rounded-lg bg-[#FAFCF8] shadow-custom-deep p-3">
+    <div className="relative lg:w-[920px] lg:h-[611px]  rounded-lg bg-[#FAFCF8] shadow-custom-deep p-3 md:w-[578px] md:h-[484px]">
       <NavigateBeforeIcon onClick={onClose} style={{ cursor: "pointer" }} />
-      <ul>
+      <ul className="">
         {currentPageData.map((orderItem) => (
-          <li key={orderItem.id}>
+          <li className="text-center" key={orderItem.id}>
             <p>Order №: {orderItem.attributes.customId}</p>
             <p>Order Type: {orderItem.attributes.orderType}</p>
             <p>
@@ -19,8 +19,10 @@ export default function FullPrice({
             <p>Company Name: {orderItem.attributes.companyName}</p>
             <p>Warehouse Address: {orderItem.attributes.warehouseAddress}</p>
             <div>
-              <h3>Products:</h3>
-              <ul>
+              <h3 className="font-extrabold mb-2 mt-2 text-center">
+                Products:
+              </h3>
+              <ul className="text-center">
                 {orderItem.attributes.products.map((product) => (
                   <li key={product.id}>
                     <p>Product Description: {product.productDescription}</p>
@@ -35,11 +37,19 @@ export default function FullPrice({
                 ))}
               </ul>
             </div>
-            {orderItem.attributes.comments && (
-              <p>Comments: {orderItem.attributes.comments}</p>
-            )}{" "}
-            <p>Total Master Boxes: {orderItem.attributes.totalMasterBoxes}</p>
-            <p>Total Price: {orderItem.attributes.totalPrice}$</p>
+            <div className="">
+              {orderItem.attributes.comments && (
+                <p className="mt-4 text-center">
+                  Comments: {orderItem.attributes.comments}
+                </p>
+              )}{" "}
+              <p className="text-center">
+                Total Master Boxes: {orderItem.attributes.totalMasterBoxes}
+              </p>
+              <p className="font-extrabold mb-2 mt-2 text-center">
+                Total Price: {orderItem.attributes.totalPrice}$
+              </p>
+            </div>
           </li>
         ))}
       </ul>
