@@ -2,7 +2,12 @@ import Navigation from "./Navigation";
 import React from "react";
 import { UserControls } from "@/components/UIElements";
 import HeaderContacts from "./HeaderContacts";
-function DesktopHeader() {
+import Avatar from "@mui/material/Avatar";
+import { deepOrange } from "@mui/material/colors";
+import Link from "next/link";
+
+function DesktopHeader({ user }) {
+  const isNotLoggedIn = !user;
   return (
     <div
       className="hidden 
@@ -15,7 +20,14 @@ function DesktopHeader() {
       <div className="container">
         <div className="flex">
           <Navigation />
-          <UserControls />
+          {isNotLoggedIn && <UserControls />}
+          {user && (
+            <Link href="/dashboard">
+              <Avatar sx={{ bgcolor: deepOrange[500] }}>
+                {user.username.charAt(0).toUpperCase()}
+              </Avatar>
+            </Link>
+          )}
         </div>
       </div>
     </div>

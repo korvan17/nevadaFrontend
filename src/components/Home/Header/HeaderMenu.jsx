@@ -3,8 +3,12 @@ import { motion } from "framer-motion";
 import { CloseMenuIcon } from "@/components/Icons";
 import { UserControls } from "@/components/UIElements";
 import HeaderContacts from "./HeaderContacts";
+import Avatar from "@mui/material/Avatar";
+import { deepOrange } from "@mui/material/colors";
+import Link from "next/link";
 
-function HeaderMenu({ toggleMenu }) {
+function HeaderMenu({ toggleMenu, user }) {
+  const isNotLoggedIn = !user;
   return (
     <>
       <motion.div
@@ -36,7 +40,14 @@ function HeaderMenu({ toggleMenu }) {
         >
           <CloseMenuIcon />
         </button>
-        <UserControls />
+        {isNotLoggedIn && <UserControls />}
+        {user && (
+          <Link href="/dashboard">
+            <Avatar sx={{ bgcolor: deepOrange[500] }}>
+              {user.username.charAt(0).toUpperCase()}
+            </Avatar>
+          </Link>
+        )}
         <div className=" text-left ">
           <h3 className="mb-[12px] text-[16px] md:text-[24px] text-mainWhite">
             Contacts
