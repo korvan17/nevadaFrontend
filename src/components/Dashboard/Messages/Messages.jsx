@@ -143,9 +143,7 @@ export default function Messages() {
     ).length / PER_PAGE
   );
 
-  // if (orders.length === 0) {
-  //   return <div>No messages to display.</div>;
-  // }
+
 
   const toggleFullPriceVisibility = () => {
     setIsFullPriceVisible((prev) => !prev);
