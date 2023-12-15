@@ -5,8 +5,9 @@ import Backdrop from "@/components/Backdrop/Backdrop";
 import { BurgerMenuIcon, Logo } from "@/components/Icons";
 import useSWR from "swr";
 import HeaderContacts from "./HeaderContacts";
-
-function MobileHeader() {
+import Avatar from "@mui/material/Avatar";
+import { deepOrange } from "@mui/material/colors";
+function MobileHeader({ user }) {
   const [isMenuOpen, setisMenuOpen] = useState(false);
   const { data: registerForm } = useSWR("registerForm");
   const { data: loginForm } = useSWR("loginForm");
@@ -43,6 +44,7 @@ function MobileHeader() {
               </p>
             </div>
           </a>
+
           <button className="ml-auto" onClick={toggleMenu} type="button">
             <BurgerMenuIcon />
           </button>
@@ -54,7 +56,11 @@ function MobileHeader() {
                 toggleMenu={toggleMenu}
                 isMenuOpen={isMenuOpen}
               ></Backdrop>
-              <HeaderMenu toggleMenu={toggleMenu} open={isMenuOpen} />
+              <HeaderMenu
+                toggleMenu={toggleMenu}
+                open={isMenuOpen}
+                user={user}
+              />
             </>
           )}
         </AnimatePresence>

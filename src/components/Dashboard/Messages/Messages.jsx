@@ -143,8 +143,6 @@ export default function Messages() {
     ).length / PER_PAGE
   );
 
-
-
   const toggleFullPriceVisibility = () => {
     setIsFullPriceVisible((prev) => !prev);
   };
@@ -208,7 +206,7 @@ export default function Messages() {
                   </p>
                   <p>Company Name: {order.attributes.companyName}</p>
                   <div>
-                    Products:
+                    <p className="font-extrabold">Products:</p>
                     <ul>
                       {order.attributes.products.map((product) => (
                         <li key={product.id}>
@@ -218,6 +216,9 @@ export default function Messages() {
                         </li>
                       ))}
                       <p>Total Boxes: {order.attributes.totalMasterBoxes}</p>
+                      <p className="mb-2">
+                        Tracker Number: {order.attributes.tracker}
+                      </p>
                     </ul>
                   </div>
                 </div>
@@ -234,11 +235,12 @@ export default function Messages() {
                         className="text-[12px] font-bold leading-4 mr-3"
                         htmlFor={`tracker-${order.id}`}
                       >
-                        Enter Tracker Number:
+                        Tracker Number:
                       </label>
                       <input
                         className="w-[100px] h-[32px] rounded-[4px] md:w-[202px]"
                         id={`tracker-${order.id}`}
+                        placeholder="Enter Tracker Number"
                         name="tracker"
                         defaultValue={order.attributes.tracker || ""}
                         onChange={(e) =>
@@ -251,7 +253,6 @@ export default function Messages() {
                     </div>
                   </form>
 
-                  <p>Tracker Number: {order.attributes.tracker}</p>
                   <div className="flex gap-3 justify-end mt-11 mb-10">
                     {!order.attributes.accept && isTrackerUpdated ? (
                       <button
