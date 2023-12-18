@@ -1,14 +1,20 @@
 "use client";
 import { motion } from "framer-motion";
 
-import {
-  ForumOutlined,
-  HomeOutlined,
-  LocalShippingOutlined,
-  LogoutOutlined,
-} from "@mui/icons-material";
+// import {
+//   ForumOutlined,
+//   HomeOutlined,
+//   LocalShippingOutlined,
+//   LogoutOutlined,
+// } from "@mui/icons-material";
 import Link from "next/link";
 import Backdrop from "@/components/Backdrop/Backdrop";
+import {
+  InboundShipmentsIcon,
+  LogoutIcon,
+  MessagesIcon,
+  ShipmentsIcon,
+} from "@/components/Icons";
 
 const ShipmentSidebarDashboard = ({ toggleSideBar }) => {
   return (
@@ -27,18 +33,18 @@ const ShipmentSidebarDashboard = ({ toggleSideBar }) => {
         }}
       >
         <Link href="/dashboard" passHref>
-          <HomeOutlined />
+          <ShipmentsIcon />
         </Link>
 
         <Link href="/dashboard/messages" passHref>
-          <ForumOutlined />
+          <MessagesIcon />
         </Link>
         <Link href="/dashboard/shipments" passHref>
-          <LocalShippingOutlined />
+          <InboundShipmentsIcon />
         </Link>
         <div className="absolute bottom-[32px]">
           <Link href="/" passHref>
-            <LogoutOutlined />
+            <LogoutIcon />
           </Link>
         </div>
       </motion.div>
