@@ -14,6 +14,7 @@ import {
   LogoutIcon,
   MessagesIcon,
   ShipmentsIcon,
+  UserIcon,
 } from "@/components/Icons";
 
 const ShipmentSidebarDashboard = ({ toggleSideBar }) => {
@@ -32,6 +33,9 @@ const ShipmentSidebarDashboard = ({ toggleSideBar }) => {
           stiffness: 100,
         }}
       >
+        <Link href="/dashboard/account" passHref>
+          <UserIcon />
+        </Link>
         <Link href="/dashboard" passHref>
           <ShipmentsIcon />
         </Link>

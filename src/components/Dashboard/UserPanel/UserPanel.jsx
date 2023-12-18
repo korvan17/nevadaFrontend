@@ -2,10 +2,10 @@
 
 import { userPanelItems } from "@/content";
 import React, { useEffect, useState } from "react";
-import SideBar from "../SIdeBar/SideBar";
+// import SideBar from "../SIdeBar/SideBar";
 import { AnimatePresence } from "framer-motion";
 import PasswordSettings from "../PasswordSettings/PasswordSettings";
-import Backdrop from "@/components/Backdrop/Backdrop";
+// import Backdrop from "@/components/Backdrop/Backdrop";
 import Calendar from "@/components/UIElements/Datepicker/Calendar";
 import {
   CalendarMonthOutlined,
@@ -162,10 +162,10 @@ function UserPanel({ user }) {
       <AnimatePresence>
         {isSideBarOpen && (
           <>
-            <Backdrop toggleSideBar={toggleSideBar} />
-            <SideBar toggleSideBar={toggleSideBar}>
+            {/* <Backdrop toggleSideBar={toggleSideBar} /> */}
+            {/* <SideBar toggleSideBar={toggleSideBar}>
               <PasswordSettings className="text-mainBlack font-semibold leading-6" />
-            </SideBar>
+            </SideBar> */}
           </>
         )}
       </AnimatePresence>
