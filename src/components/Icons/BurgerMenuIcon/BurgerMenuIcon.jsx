@@ -1,7 +1,6 @@
 import React from "react";
 
 function BurgerMenuIcon({ stroke = "#FAFCF8" }) {
-  console.log("stroke:", stroke);
   return (
     <>
       <svg

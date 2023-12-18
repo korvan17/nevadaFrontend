@@ -1,23 +1,31 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { navLinks } from "@/content";
 import { HomeIcon, UserIcon } from "@/components/Icons";
 import { BurgerMenuIcon } from "@/components/Icons";
+import ShipmentSidebarDashboard from "../ShipmentSidebarDashboard/ShipmentSidebarDashboard";
 
 function NavBar() {
   const pathName = usePathname();
 
+  const [isSideBarOpen, setIsSideBarOpen] = useState(false);
+  console.log("isSideBarOpen:", isSideBarOpen);
+
   const homePage = pathName === "/dashboard";
   const userPage = pathName === "/dashboard/account";
+
+  const toggleSideBar = () => {
+    setIsSideBarOpen(!isSideBarOpen);
+  };
 
   return (
     <nav className="">
       <ul className="flex gap-[16px] justify-center items-baseline md:hidden">
         <li key={"burgerIcon"}>
-          <button className="ml-auto" type="button">
+          <button className="ml-auto" type="button" onClick={toggleSideBar}>
             <BurgerMenuIcon stroke="#1477CE" />
           </button>
         </li>
@@ -55,6 +63,9 @@ function NavBar() {
           </button>
         </Link>
       </div>
+      {isSideBarOpen && (
+        <ShipmentSidebarDashboard toggleSideBar={toggleSideBar} />
+      )}
     </nav>
   );
 }

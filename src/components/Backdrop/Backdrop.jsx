@@ -1,8 +1,9 @@
+"use client";
+
 import React from "react";
 import { motion } from "framer-motion";
 import { useEffect } from "react";
 import useSWR from "swr";
-
 function Backdrop({
   toggleMenu,
   toggleSideBar,

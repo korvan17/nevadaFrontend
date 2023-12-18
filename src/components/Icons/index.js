@@ -7,4 +7,10 @@ export { default as UserIcon } from "./DBNavBarIcons/UserIcon.jsx";
 export { default as DotsMoreIcon } from "./DotsMoreIcon/DotsMoreIcon.jsx";
 export { default as TrackerIcon } from "./TrackerIcon/TrackerIcon.jsx";
 export { default as HistoryIcon } from "./HistoryIcon/HistoryIcon.jsx";
+
+export { default as MessagesIcon } from "./MessagesIcon/MessagesIcon.jsx";
+export { default as InboundShipmentsIcon } from "./InboundShipmentsIcon/InboundShipmentsIcon.jsx";
+export { default as ShipmentsIcon } from "./ShipmentsIcon/ShipmentsIcon.jsx";
+export { default as NotificationsIcon } from "./NotificationsIcon/NotificationsIcon.jsx";
+export { default as LogoutIcon } from "./LogoutIcon/LogoutIcon.jsx";
 export * from "./SocialsLinksIcons";
