@@ -1,6 +1,7 @@
 import React from "react";
 
-function BurgerMenuIcon() {
+function BurgerMenuIcon({ stroke = "#FAFCF8" }) {
+  console.log("stroke:", stroke);
   return (
     <>
       <svg
@@ -11,7 +12,7 @@ function BurgerMenuIcon() {
       >
         <path
           d="M3 12.5h18M3 6.5h18M3 18.5h18"
-          stroke="#FAFCF8"
+          stroke={stroke}
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"

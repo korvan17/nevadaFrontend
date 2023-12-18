@@ -29,6 +29,7 @@ module.exports = {
 
         darkBlue: "#021827",
         captionBlue: "#1478CE",
+        captionBlueDB: "#1477CE",
         captionBlueHover: "#0D4475",
 
         accentHoverYellow: "#C37E19",
