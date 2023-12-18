@@ -9,7 +9,7 @@ const Layout = ({ children }) => {
       <DBHeader />
       <div className="flex gap-6 pt-[76px] justify-center">
         {/* <ShipmentSidebarDashboard /> */}
-        {children}
+        {/* {children} */}
         <div className="pt-[36px]">{/* <UserPanel /> */}</div>
       </div>
     </>
