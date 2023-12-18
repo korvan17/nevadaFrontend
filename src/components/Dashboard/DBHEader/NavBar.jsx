@@ -12,7 +12,7 @@ import {
   UserIcon,
 } from "@/components/Icons";
 import { BurgerMenuIcon } from "@/components/Icons";
-import ShipmentSidebarDashboard from "../ShipmentSidebarDashboard/ShipmentSidebarDashboard";
+import { Sidebar } from "@/components";
 
 function NavBar() {
   const pathName = usePathname();
@@ -30,7 +30,11 @@ function NavBar() {
   return (
     <nav>
       <div className="flex gap-[16px] justify-center items-baseline md:hidden">
-        <button className="ml-auto" type="button" onClick={toggleSideBar}>
+        <button
+          className="ml-auto w-[48px] h-[48px] flex justify-center"
+          type="button"
+          onClick={toggleSideBar}
+        >
           <BurgerMenuIcon stroke="#1477CE" />
         </button>
 
@@ -61,9 +65,7 @@ function NavBar() {
         </Link>
       </div>
 
-      {isSideBarOpen && (
-        <ShipmentSidebarDashboard toggleSideBar={toggleSideBar} />
-      )}
+      {isSideBarOpen && <Sidebar toggleSideBar={toggleSideBar} />}
     </nav>
   );
 }

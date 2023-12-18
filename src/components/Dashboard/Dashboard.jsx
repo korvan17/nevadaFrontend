@@ -5,7 +5,7 @@ import { CreateOrderForm } from "@/components/Dashboard/Boards/CreateOrderForm/C
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import React, { useEffect } from "react";
-import ShipmentSidebarDashboard from "./ShipmentSidebarDashboard/ShipmentSidebarDashboard";
+// import ShipmentSidebarDashboard from "./ShipmentSidebarDashboard/ShipmentSidebarDashboard";
 import HomeDashboard from "./HomeDashboard/HomeDashboard";
 
 function Dashboard({ children }) {
