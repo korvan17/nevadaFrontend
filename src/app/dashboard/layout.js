@@ -8,7 +8,7 @@ const Layout = ({ children }) => {
       <DBHeader />
       <div className="flex gap-6 pt-[76px] justify-center">
         {children}
-        <div className="pt-[36px]">{/* <UserPanel /> */}</div>
+        {/* <div className="pt-[36px]"></div> */}
       </div>
     </>
   );
