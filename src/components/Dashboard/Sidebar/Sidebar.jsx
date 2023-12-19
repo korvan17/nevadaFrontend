@@ -13,7 +13,7 @@ const Sidebar = ({ toggleSideBar }) => {
     <>
       <Backdrop toggleSideBar={toggleSideBar} />
       <motion.ul
-        className="fixed z-50 top-[40px] bottom-[40px] left-0 shadow-custom-deep   flex-shrink-0 bg-mainWhite flex flex-col items-center  "
+        className="fixed z-50 top-[40px] bottom-[40px] md:top-[84px] md:bottom-0 left-0 shadow-custom-deep   flex-shrink-0 bg-mainWhite flex flex-col items-center  "
         initial={{ x: -100 }}
         animate={{ x: 0 }}
         exit={{ x: -100 }}
@@ -32,7 +32,7 @@ const Sidebar = ({ toggleSideBar }) => {
               key={href}
               className={`${
                 isActive ? "bg-dbActiveLink" : "bg-mainWhite"
-              } py-[16px] px-[32px]`}
+              } py-[16px] px-[32px] md:px-[41px] md:py-[12px]`}
             >
               <Link
                 className="block w-full h-full"

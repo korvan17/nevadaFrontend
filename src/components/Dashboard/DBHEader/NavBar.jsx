@@ -1,9 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { navLinks } from "@/content";
 import {
   HomeIcon,
   InboundShipmentsIcon,
@@ -14,18 +13,12 @@ import {
 import { BurgerMenuIcon } from "@/components/Icons";
 import { Sidebar } from "@/components";
 
-function NavBar() {
+function NavBar({ isSideBarOpen, toggleSideBar }) {
   const pathName = usePathname();
-
-  const [isSideBarOpen, setIsSideBarOpen] = useState(false);
 
   const userPage = pathName === "/dashboard/account";
   const messagesPage = pathName === "/dashboard/messages";
   const inboundShipmentsPage = pathName === "/dashboard/shipments";
-
-  const toggleSideBar = () => {
-    setIsSideBarOpen(!isSideBarOpen);
-  };
 
   return (
     <nav>
