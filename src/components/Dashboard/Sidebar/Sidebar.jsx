@@ -11,9 +11,13 @@ const Sidebar = ({ toggleSideBar }) => {
 
   return (
     <>
-      <Backdrop toggleSideBar={toggleSideBar} />
+      <div className="md:hidden">
+        <Backdrop toggleSideBar={toggleSideBar} />
+      </div>
       <motion.ul
-        className="fixed z-50 top-[40px] bottom-[40px] md:top-[84px] md:bottom-0 left-0 shadow-custom-deep   flex-shrink-0 bg-mainWhite flex flex-col items-center  "
+        className="fixed z-50 top-[40px] bottom-[40px] left-0
+          shadow-custom-deep flex-shrink-0 bg-mainWhite flex flex-col items-center
+          md:top-[123px] md:bottom-[0] md:z-0"
         initial={{ x: -100 }}
         animate={{ x: 0 }}
         exit={{ x: -100 }}
@@ -46,7 +50,7 @@ const Sidebar = ({ toggleSideBar }) => {
           );
         })}
 
-        <li className="absolute bottom-[32px]">
+        <li className="absolute bottom-[32px] md:top-[210px]">
           <Link href="/" onClick={toggleSideBar} passHref>
             <LogoutIcon />
           </Link>

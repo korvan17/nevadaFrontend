@@ -1,17 +1,16 @@
 import React from "react";
 import { HomeIcon, Logo } from "@/components/Icons";
-// import { LanguageSwitcher } from "@/components/UIElements";
 import NavBar from "./NavBar";
+import HeaderContacts from "@/components/Home/Header/HeaderContacts";
+import Link from "next/link";
 
 function DBHeader({ toggleSideBar, isSideBarOpen }) {
   return (
     <header className="bg-mainWhite fixed top-0 left-0 z-20 w-full text-mainBlack md:bg-mainBlack md:text-mainWhite">
-      <div
-        className="
-     w-full 
-    pt-[16px] pb-[12px] 
-    "
-      >
+      <div className="hidden md:block w-full">
+        <HeaderContacts />
+      </div>
+      <div className="w-full pt-[16px] pb-[12px] md:pt-[68px]  md:pb-[12px] md:items-end">
         <div className="container md:flex justify-between">
           <a
             href="#"
@@ -19,20 +18,26 @@ function DBHeader({ toggleSideBar, isSideBarOpen }) {
             leading-[19px] text-[18px]  font-bold
           mb-[12px] "
           >
-            <Logo fill={"#000"} />
+            <span className="md:hidden">
+              <Logo fill={"#000"} />
+            </span>
+            <span className="hidden md:inline">
+              <Logo />
+            </span>
             Prime Preparation Center
           </a>
           <div className="flex items-center justify-center lg:gap-[24px]">
-            <div
-              className="hidden md:flex bg-captionBlueDB hover:bg-captionBlue transition-all ease-out
-             items-center justify-center w-[48px] h-[48px] rounded-full
+            <Link
+              href="/"
+              className=" bg-captionBlueDB hover:bg-captionBlue 
+            transition-all ease-out
+             text-captionalWhite
+             flex items-center justify-center w-[48px] h-[48px] rounded-full
             "
             >
-              <HomeIcon />
-            </div>
-            <div className="hidden md:block md:mr-[37px]">
-              {/* <LanguageSwitcher page="db" /> */}
-            </div>
+              <HomeIcon fill="#fff" />
+            </Link>
+            <div className="hidden md:block md:mr-[37px]"></div>
             <button
               className="hidden lg:block transition-all ease-out
            bg-captionBlue hover:bg-captionBlueHover
