@@ -17,7 +17,8 @@ const Sidebar = ({ toggleSideBar }) => {
       <motion.ul
         className="fixed z-50 top-[40px] bottom-[40px] left-0
           shadow-custom-deep flex-shrink-0 bg-mainWhite flex flex-col items-center
-          md:top-[123px] md:bottom-[0] md:z-0"
+      
+          md:top-[123px] md:bottom-[0] md:z-0 md:transform-none md:transition-none"
         initial={{ x: -100 }}
         animate={{ x: 0 }}
         exit={{ x: -100 }}

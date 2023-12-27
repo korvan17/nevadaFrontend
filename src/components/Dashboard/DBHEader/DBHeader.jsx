@@ -38,7 +38,7 @@ function DBHeader({ toggleSideBar, isSideBarOpen }) {
               <HomeIcon fill="#fff" />
             </Link>
             <div className="hidden md:block md:mr-[37px]"></div>
-            <button
+            {/* <button
               className="hidden lg:block transition-all ease-out
            bg-captionBlue hover:bg-captionBlueHover
             text-mainWhite text-[16px] font-bold  leading-[16px]
@@ -46,7 +46,7 @@ function DBHeader({ toggleSideBar, isSideBarOpen }) {
               type="button"
             >
               Logout
-            </button>
+            </button> */}
             <div className="lg:hidden">
               <NavBar
                 toggleSideBar={toggleSideBar}
