@@ -31,6 +31,7 @@ module.exports = {
         captionBlue: "#1478CE",
         captionBlueDB: "#1477CE",
         captionBlueHover: "#0D4475",
+        dbActiveLink: "#CFDDE7",
 
         accentHoverYellow: "#C37E19",
         accentYellow: "#F8C951",

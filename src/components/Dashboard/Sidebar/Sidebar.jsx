@@ -2,20 +2,23 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Backdrop from "@/components/Backdrop/Backdrop";
-import {
-  InboundShipmentsIcon,
-  LogoutIcon,
-  MessagesIcon,
-  ShipmentsIcon,
-  UserIcon,
-} from "@/components/Icons";
+import { LogoutIcon } from "@/components/Icons";
+import { usePathname } from "next/navigation";
+import { DBSideBarLinks } from "@/content";
 
 const Sidebar = ({ toggleSideBar }) => {
+  const pathName = usePathname();
+
   return (
     <>
-      <Backdrop toggleSideBar={toggleSideBar} />
-      <motion.div
-        className="fixed z-50 top-[40px] bottom-[150px] left-0 shadow-custom-deep  py-[24px] px-[32px] gap-[32px]  flex-shrink-0 bg-[#FAFCF8] flex flex-col items-center  "
+      <div className="md:hidden">
+        <Backdrop toggleSideBar={toggleSideBar} />
+      </div>
+      <motion.ul
+        className="fixed z-50 top-[40px] bottom-[40px] left-0
+          shadow-custom-deep flex-shrink-0 bg-mainWhite flex flex-col items-center
+      
+          md:top-[123px] md:bottom-[0] md:z-0 md:transform-none md:transition-none"
         initial={{ x: -100 }}
         animate={{ x: 0 }}
         exit={{ x: -100 }}
@@ -26,25 +29,34 @@ const Sidebar = ({ toggleSideBar }) => {
           stiffness: 100,
         }}
       >
-        <Link href="/dashboard/account" onClick={toggleSideBar} passHref>
-          <UserIcon />
-        </Link>
-        <Link href="/dashboard" onClick={toggleSideBar} passHref>
-          <ShipmentsIcon />
-        </Link>
+        {DBSideBarLinks.map(({ href, icon }) => {
+          const isActive = pathName === href;
 
-        <Link href="/dashboard/messages" onClick={toggleSideBar} passHref>
-          <MessagesIcon />
-        </Link>
-        <Link href="/dashboard/shipments" onClick={toggleSideBar} passHref>
-          <InboundShipmentsIcon />
-        </Link>
-        <div className="absolute bottom-[32px]">
+          return (
+            <li
+              key={href}
+              className={`${
+                isActive ? "bg-dbActiveLink" : "bg-mainWhite"
+              } py-[16px] px-[32px] md:px-[41px] md:py-[12px]`}
+            >
+              <Link
+                className="block w-full h-full"
+                href={href}
+                onClick={toggleSideBar}
+                passHref
+              >
+                {icon}
+              </Link>
+            </li>
+          );
+        })}
+
+        <li className="absolute bottom-[32px] md:top-[210px]">
           <Link href="/" onClick={toggleSideBar} passHref>
             <LogoutIcon />
           </Link>
-        </div>
-      </motion.div>
+        </li>
+      </motion.ul>
     </>
   );
 };

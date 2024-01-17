@@ -57,9 +57,9 @@ body {
 }
 
 @media screen and (max-width: 768px) {
-  body > * {
+  /* body > * {
     overflow: hidden;
-  }
+  } */
 }
 
 .custom-transition {
