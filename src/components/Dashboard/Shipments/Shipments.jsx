@@ -1,361 +1,10 @@
 "use client";
 import CreateOrderButton from "@/components/UIElements/Buttons/CreateOrderButton/CreateOrderButton";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
-const shipments = [
-  {
-    arrival: "13.01.2022",
-    order: "O-32005473",
-    tracker: "1223344545",
-    status: "Completed",
-    from: "werehous1",
-    to: "Nevada",
-    received: "13.01.2022",
-    boxes: "12",
-  },
-  {
-    arrival: "13.01.2022",
-    order: "O-3200547340",
-    tracker: "1223344545",
-    status: "Completed",
-    from: "werehous1",
-    to: "Nevada",
-    received: "13.01.2022",
-    boxes: "52",
-  },
-  {
-    arrival: "13.01.2022",
-    order: "O-3200547340",
-    tracker: "1223344545",
-    status: "Com3pleted",
-    from: "werehous1",
-    to: "Nevada",
-    received: "13.01.2022",
-    boxes: "51",
-  },
-  {
-    arrival: "13.01.2022",
-    order: "O-3200547340",
-    tracker: "1223344545",
-    status: "not",
-    from: "werehous1",
-    to: "Nevada",
-    received: "13.01.2022",
-    boxes: "52",
-  },
-  {
-    arrival: "13.01.2022",
-    order: "O-3200547340",
-    tracker: "1223344545",
-    status: "Compl5eted",
-    from: "werehous1",
-    to: "Nevada",
-    received: "13.01.2022",
-    boxes: "53",
-  },
-  {
-    arrival: "13.01.2022",
-    order: "O-3200547340",
-    tracker: "1223344545",
-    status: "Comp4leted",
-    from: "werehous1",
-    to: "Nevada",
-    received: "13.01.2022",
-    boxes: "51",
-  },
-  {
-    arrival: "13.01.2022",
-    order: "O-3200547340",
-    tracker: "1223344545",
-    status: "Completed",
-    from: "werehous1",
-    to: "Nevada",
-    received: "13.01.2022",
-    boxes: "51",
-  },
-  {
-    arrival: "13.01.2022",
-    order: "O-3200547340",
-    tracker: "1223344545",
-    status: "Comp4leted",
-    from: "werehous1",
-    to: "Nevada",
-    received: "13.01.2022",
-    boxes: "51",
-  },
-  {
-    arrival: "13.01.2022",
-    order: "O-3200547340",
-    tracker: "1223344545",
-    status: "Compl2eted",
-    from: "werehous1",
-    to: "Nevada",
-    received: "13.01.2022",
-    boxes: "51",
-  },
-  {
-    arrival: "13.01.2022",
-    order: "O-3200547340",
-    tracker: "1223344545",
-    status: "Completed",
-    from: "werehous1",
-    to: "Nevada",
-    received: "13.01.2022",
-    boxes: "51",
-  },
-  {
-    arrival: "13.01.2022",
-    order: "O-3200547340",
-    tracker: "1223344545",
-    status: "Completed",
-    from: "werehous1",
-    to: "Nevada",
-    received: "13.01.2022",
-    boxes: "51",
-  },
-  {
-    arrival: "13.01.2022",
-    order: "O-3200547340",
-    tracker: "1223344545",
-    status: "Compl2eted",
-    from: "werehous1",
-    to: "Nevada",
-    received: "13.01.2022",
-    boxes: "51",
-  },
-  {
-    arrival: "13.01.2022",
-    order: "O-3200547340",
-    tracker: "1223344545",
-    status: "Completed",
-    from: "werehous1",
-    to: "Nevada",
-    received: "13.01.2022",
-    boxes: "51",
-  },
-  {
-    arrival: "13.01.2022",
-    order: "O-3200547340",
-    tracker: "1223344545",
-    status: "Complet3ed",
-    from: "werehous1",
-    to: "Nevada",
-    received: "13.01.2022",
-    boxes: "51",
-  },
-  {
-    arrival: "13.01.2022",
-    order: "O-3200547340",
-    tracker: "1223344545",
-    status: "Completed",
-    from: "werehous1",
-    to: "Nevada",
-    received: "13.01.2022",
-    boxes: "51",
-  },
-  {
-    arrival: "13.01.2022",
-    order: "O-3200547340",
-    tracker: "1223344545",
-    status: "Compl5eted",
-    from: "werehous1",
-    to: "Nevada",
-    received: "13.01.2022",
-    boxes: "51",
-  },
-  {
-    arrival: "13.01.2022",
-    order: "O-3200547340",
-    tracker: "1223344545",
-    status: "Completed",
-    from: "werehous1",
-    to: "Nevada",
-    received: "13.01.2022",
-    boxes: "51",
-  },
-  {
-    arrival: "13.01.2022",
-    order: "O-3200547340",
-    tracker: "1223344545",
-    status: "Completed",
-    from: "werehous1",
-    to: "Nevada",
-    received: "13.01.2022",
-    boxes: "51",
-  },
+import { fetchOrders } from "../../../../services/api";
+import { useSession } from "next-auth/react";
 
-  {
-    arrival: "13.01.2022",
-    order: "O-3200547340",
-    tracker: "1223344545",
-    status: "Completed",
-    from: "werehous1",
-    to: "Nevada",
-    received: "13.01.2022",
-    boxes: "51",
-  },
-  {
-    arrival: "13.01.2022",
-    order: "O-3200547340",
-    tracker: "1223344545",
-    status: "Completed",
-    from: "werehous1",
-    to: "Nevada",
-    received: "13.01.2022",
-    boxes: "51",
-  },
-  {
-    arrival: "13.01.2022",
-    order: "O-3200547340",
-    tracker: "1223344545",
-    status: "Compl213eted",
-    from: "werehous1",
-    to: "Nevada",
-    received: "13.01.2022",
-    boxes: "51",
-  },
-  {
-    arrival: "13.01.2022",
-    order: "O-3200547340",
-    tracker: "1223344545",
-    status: "Completed",
-    from: "werehous1",
-    to: "Nevada",
-    received: "13.01.2022",
-    boxes: "51",
-  },
-  {
-    arrival: "13.01.2022",
-    order: "O-3200547340",
-    tracker: "1223344545",
-    status: "Comple123ted",
-    from: "werehous1",
-    to: "Nevada",
-    received: "13.01.2022",
-    boxes: "51",
-  },
-  {
-    arrival: "13.01.2022",
-    order: "O-3200547340",
-    tracker: "1223344545",
-    status: "Complet132ed",
-    from: "werehous1",
-    to: "Nevada",
-    received: "13.01.2022",
-    boxes: "51",
-  },
-  {
-    arrival: "13.01.2022",
-    order: "O-3200547340",
-    tracker: "1223344545",
-    status: "Completed",
-    from: "werehous1",
-    to: "Nevada",
-    received: "13.01.2022",
-    boxes: "51",
-  },
-  {
-    arrival: "13.01.2022",
-    order: "O-3200547340",
-    tracker: "1223344545",
-    status: "Completed",
-    from: "werehous1",
-    to: "Nevada",
-    received: "13.01.2022",
-    boxes: "51",
-  },
-  {
-    arrival: "13.01.2022",
-    order: "O-3200547340",
-    tracker: "1223344545",
-    status: "Completed",
-    from: "werehous1",
-    to: "Nevada",
-    received: "13.01.2022",
-    boxes: "51",
-  },
-  {
-    arrival: "13.01.2022",
-    order: "O-3200547340",
-    tracker: "1223344545",
-    status: "Completed",
-    from: "werehous1",
-    to: "Nevada",
-    received: "13.01.2022",
-    boxes: "51",
-  },
-  {
-    arrival: "13.01.2022",
-    order: "O-3200547340",
-    tracker: "1223344545",
-    status: "Completed",
-    from: "werehous1",
-    to: "Nevada",
-    received: "13.01.2022",
-    boxes: "51",
-  },
-  {
-    arrival: "13.01.2022",
-    order: "O-3200547340",
-    tracker: "1223344545",
-    status: "Completed",
-    from: "werehous1",
-    to: "Nevada",
-    received: "13.01.2022",
-    boxes: "51",
-  },
-  {
-    arrival: "13.01.2022",
-    order: "O-3200547340",
-    tracker: "1223344545",
-    status: "Completed",
-    from: "werehous1",
-    to: "Nevada",
-    received: "13.01.2022",
-    boxes: "51",
-  },
-  {
-    arrival: "13.01.2022",
-    order: "O-3200547340",
-    tracker: "1223344545",
-    status: "Completed",
-    from: "werehous1",
-    to: "Nevada",
-    received: "13.01.2022",
-    boxes: "51",
-  },
-  {
-    arrival: "13.01.2022",
-    order: "O-3200547340",
-    tracker: "1223344545",
-    status: "Completed",
-    from: "werehous1",
-    to: "Nevada",
-    received: "13.01.2022",
-    boxes: "51",
-  },
-
-  {
-    arrival: "13.01.2022",
-    order: "O-3200547340",
-    tracker: "1223344545",
-    status: "Completed",
-    from: "werehous1",
-    to: "Nevada",
-    received: "13.01.2022",
-    boxes: "51",
-  },
-  {
-    arrival: "13.01.2022",
-    order: "O-3200547340",
-    tracker: "1223344545",
-    status: "Completed",
-    from: "werehous1",
-    to: "Nevada",
-    received: "13.01.2022",
-    boxes: "51",
-  },
-];
 const PER_PAGE = 8;
 export default function Shipments() {
   const [currentPage, setCurrentPage] = useState(0);
@@ -363,9 +12,18 @@ export default function Shipments() {
     setCurrentPage(selected);
   };
 
+  const [orders, setOrders] = useState([]);
+  const { data: session, status } = useSession();
+  useEffect(() => {
+    if (status === "authenticated" && session.user.jwt) {
+      fetchOrders(session.user.jwt).then(setOrders).catch(console.error);
+    }
+  }, [status, session]);
+
   const offset = currentPage * PER_PAGE;
-  const currentPageData = shipments.slice(offset, offset + PER_PAGE);
-  const pageCount = Math.ceil(shipments.length / PER_PAGE);
+  const currentPageData = orders.slice(offset, offset + PER_PAGE);
+  const pageCount = Math.ceil(orders.length / PER_PAGE);
+
   return (
     <>
       <div className="">
@@ -388,63 +46,85 @@ export default function Shipments() {
               <tr className="border-b">
                 <th className="py-3 px-6 text-left">Arrival</th>
                 <th className="py-3 px-6 text-left">Order</th>
-                <th className="py-3 px-6 text-center">Tracker (API)</th>
+                <th className="py-3 px-6 text-center">Tracker</th>
                 <th className="py-3 px-6 text-center">Status</th>
                 <th className="py-3 px-6 text-center">From</th>
                 <th className="py-3 px-6 text-center">To</th>
-                <th className="py-3 px-6 text-center">Received</th>
+
                 <th className="py-3 px-6 text-center">Boxes</th>
               </tr>
             </thead>
             <tbody className="font-normal text-[11px] leading-[16px]">
-              {currentPageData.map((shipment, index) => (
-                <tr
-                  key={index}
-                  className="border-b border-gray-200 hover:bg-gray-100"
-                >
-                  <td className="py-3 px-6 text-left">{shipment.arrival}</td>
-                  <td className=" px-6 text-left font-semibold text-#000A11 ">
-                    {shipment.order}
-                  </td>
-                  <td className="py-3 px-6 text-center">{shipment.tracker}</td>
-                  <td className="py-3 px-6 text-center">
-                    <span
-                      className={`py-1 px-3 rounded-full text-white ${
-                        shipment.status === "Completed"
-                          ? "bg-green-500"
-                          : "bg-red-500"
-                      }`}
-                    >
-                      {shipment.status}
-                    </span>
-                  </td>
-                  <td className="py-3 px-6 text-center">{shipment.from}</td>
-                  <td className="py-3 px-6 text-center">{shipment.to}</td>
-                  <td className="py-3 px-6 text-center">{shipment.received}</td>
-                  <td className="py-3 px-6 text-center">{shipment.boxes}</td>
-                </tr>
-              ))}
+              {currentPageData.map((order, index) => {
+                // Only render the row if there's a tracker
+                if (!order.attributes.tracker) return null;
+
+                return (
+                  <tr
+                    key={index}
+                    className="border-b border-gray-200 hover:bg-gray-100"
+                  >
+                    <td className="py-3 px-6 text-left">
+                      {order.attributes.orderDate}
+                    </td>
+                    <td className="px-6 text-left font-semibold text-#000A11">
+                      {order.attributes.customId}
+                    </td>
+                    <td className="py-3 px-6 text-center">
+                      {order.attributes.tracker}
+                    </td>
+                    <td className="py-3 px-6 text-center">
+                      <span
+                        className={`py-1 px-3 rounded-full text-white ${
+                          order.attributes.orderStatus === "Delivered"
+                            ? "bg-green-500"
+                            : order.attributes.orderStatus === "Label created"
+                            ? "bg-yellow-500"
+                            : order.attributes.orderStatus ===
+                              "Out for Delivery"
+                            ? "bg-blue-500"
+                            : order.attributes.orderStatus
+                            ? "bg-red-500"
+                            : "bg-gray-500"
+                        }`}
+                      >
+                        {order.attributes.orderStatus || "Order created"}
+                      </span>
+                    </td>
+                    <td className="py-3 px-6 text-center">
+                      {order.attributes.companyName}
+                    </td>
+                    <td className="py-3 px-6 text-center">
+                      {order.attributes.warehouseAddress}
+                    </td>
+                    <td className="py-3 px-6 text-center">
+                      {order.attributes.totalMasterBoxes}
+                    </td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
-
-          <ReactPaginate
-            previousLabel={"← Previous"}
-            nextLabel={"Next →"}
-            pageCount={pageCount}
-            onPageChange={handlePageClick}
-            containerClassName={"flex list-none justify-center gap-[30px]"}
-            previousLinkClassName={""}
-            nextLinkClassName={""}
-            disabledClassName={""}
-            activeClassName={""}
-            pageLinkClassName={""}
-            forcePage={currentPage}
-            pageRangeDisplayed={2}
-            marginPagesDisplayed={1}
-            breakLabel={"..."}
-            breakClassName={""}
-            breakLinkClassName={""}
-          />
+          {orders.length > PER_PAGE && (
+            <ReactPaginate
+              previousLabel={"← Previous"}
+              nextLabel={"Next →"}
+              pageCount={pageCount}
+              onPageChange={handlePageClick}
+              containerClassName={"flex list-none justify-center gap-[30px]"}
+              previousLinkClassName={""}
+              nextLinkClassName={""}
+              disabledClassName={""}
+              activeClassName={""}
+              pageLinkClassName={""}
+              forcePage={currentPage}
+              pageRangeDisplayed={2}
+              marginPagesDisplayed={1}
+              breakLabel={"..."}
+              breakClassName={""}
+              breakLinkClassName={""}
+            />
+          )}
           {/* <ReactPaginate
             breakLabel="..."
             nextLabel="next >"
