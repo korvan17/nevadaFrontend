@@ -65,13 +65,13 @@ export default function Messages() {
       );
       if (!response.ok) throw new Error("Failed to update the tracker number.");
 
-      const updatedOrder = await response.json();
       setOrders(
         orders.map((order) =>
           order.id === orderId
             ? {
                 ...order,
                 attributes: { ...order.attributes, tracker: trackerNumber },
+                isTrackerUpdated: true,
               }
             : order
         )
@@ -254,7 +254,7 @@ export default function Messages() {
                   </form>
 
                   <div className="flex gap-3 justify-end mt-11 mb-10">
-                    {!order.attributes.accept && isTrackerUpdated ? (
+                    {!order.attributes.accept && order.isTrackerUpdated ? (
                       <button
                         className="flex w-32 h-8 px-4 py-2 justify-center items-center gap-2 rounded-md bg-blue-600 shadow-md 
                 
