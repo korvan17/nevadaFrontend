@@ -8,13 +8,10 @@ import { CommonBoard } from "../CommonBoard/CommonBoard";
 
 export const CreateOrderForm = () => {
   const [orderType, setOrderType] = useState("");
-  // const [orderDate, setOrderDate] = useState(
-  //   () => new Date().toISOString().split("T")[0]
-  // );
-
   const [orderDate, setOrderDate] = useState(
-    new Date().toLocaleDateString("en-CA") // 'en-CA' - формат YYYY-MM-DD
+    () => new Date().toISOString().split("T")[0]
   );
+
   const [companyName, setCompanyName] = useState("");
 
   const [warehouseAddress, setWarehouseAddress] = useState("");
@@ -29,6 +26,7 @@ export const CreateOrderForm = () => {
   const [createOrder, setCreateOrder] = useState("Create a Order Form");
   const [showConfirmOrder, setShowConfirmOrder] = useState(false);
   const [confirmOrderData, setConfirmOrderData] = useState({});
+
   // const formatDisplayDate = (isoDate) => {
   //   const date = new Date(isoDate);
   //   const day = date.getDate().toString().padStart(2, "0");
@@ -36,14 +34,16 @@ export const CreateOrderForm = () => {
   //   const year = date.getFullYear();
   //   return `${month}/${day}/${year}`;
   // };
+
   const formatDisplayDate = (isoDate) => {
     const date = new Date(isoDate);
-    return date.toLocaleDateString(undefined, {
-      day: "2-digit",
-      month: "2-digit",
-      year: "numeric",
-    });
+    const year = date.getFullYear();
+    const month = (date.getMonth() + 1).toString().padStart(2, "0");
+    const day = date.getDate().toString().padStart(2, "0");
+
+    return `${year}-${month}-${day}`;
   };
+
   useEffect(() => {
     const allProductsValid =
       products.length > 0 &&
@@ -237,7 +237,7 @@ export const CreateOrderForm = () => {
               Order placed{" "}
             </label>
             <input
-              type="text"
+              type="date"
               id="orderDate"
               value={formatDisplayDate(orderDate)}
               readOnly
