@@ -11,7 +11,8 @@ export default function Shipments() {
   const handlePageClick = ({ selected }) => {
     setCurrentPage(selected);
   };
-
+  const [filteredOrders, setFilteredOrders] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
   const [orders, setOrders] = useState([]);
   const { data: session, status } = useSession();
   useEffect(() => {
@@ -20,9 +21,22 @@ export default function Shipments() {
     }
   }, [status, session]);
 
+  useEffect(() => {
+    const filtered = orders.filter((order) =>
+      order.attributes.customId
+        .toLowerCase()
+        .includes(searchQuery.toLowerCase())
+    );
+    setFilteredOrders(filtered);
+    setCurrentPage(0);
+  }, [searchQuery, orders]);
+
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
   const offset = currentPage * PER_PAGE;
-  const currentPageData = orders.slice(offset, offset + PER_PAGE);
-  const pageCount = Math.ceil(orders.length / PER_PAGE);
+  const currentPageData = filteredOrders.slice(offset, offset + PER_PAGE);
+  const pageCount = Math.ceil(filteredOrders.length / PER_PAGE);
 
   return (
     <>
@@ -31,6 +45,8 @@ export default function Shipments() {
         <input
           className="border-[1px] mb-6 p-2 w-full rounded-[8px]"
           placeholder="Search for order..."
+          value={searchQuery}
+          onChange={handleSearchChange}
         />
         <div
           className=" rounded-lg bg-[#FAFCF8] shadow-custom-deep"

@@ -1,93 +1,94 @@
-// pages/index.js or a specific component file
-import React from "react";
-import ShipmentCard from "../ShipmentCard/ShipmentCard";
+"use client";
+
+import React, { useEffect, useState } from "react";
 import ShipmentStatusCard from "../ShipmentStatusCard/ShipmentStatusCard";
 import CreateOrderButton from "@/components/UIElements/Buttons/CreateOrderButton/CreateOrderButton";
+import BorderColorIcon from "@mui/icons-material/BorderColor";
+import LocalShippingIcon from "@mui/icons-material/LocalShipping";
+import WarehouseIcon from "@mui/icons-material/Warehouse";
+import BookIcon from "@mui/icons-material/Book";
+import { fetchOrders } from "../../../../services/api";
+import { useSession } from "next-auth/react";
 
 export default function HomeDashboard() {
+  const [orders, setOrders] = useState([]);
+  const { data: session, status } = useSession();
+  const [orderCounts, setOrderCounts] = useState({
+    orderCreated: 0,
+    labelCreated: 0,
+    outForDelivery: 0,
+    delivered: 0,
+  });
+
+  useEffect(() => {
+    if (status === "authenticated" && session.user.jwt) {
+      fetchOrders(session.user.jwt)
+        .then((fetchedOrders) => {
+          setOrders(fetchedOrders);
+          countOrderStatuses(fetchedOrders);
+        })
+        .catch(console.error);
+    }
+  }, [status, session]);
+
+  const countOrderStatuses = (orders) => {
+    const counts = {
+      orderCreated: 0,
+      labelCreated: 0,
+      outForDelivery: 0,
+      delivered: 0,
+    };
+
+    orders.forEach((order) => {
+      const status = order.attributes.orderStatus;
+
+      if (
+        status === "Order created" ||
+        status === null ||
+        status === undefined
+      ) {
+        counts.orderCreated += 1;
+      } else if (status === "Label created") {
+        counts.labelCreated += 1;
+      } else if (status === "Out for Delivery") {
+        counts.outForDelivery += 1;
+      } else if (status === "Delivered") {
+        counts.delivered += 1;
+      } else {
+        console.log("Unrecognized status:", status);
+      }
+    });
+
+    setOrderCounts(counts);
+  };
+
   return (
     <div className="mt-[36px] w-[920px] h-[611px] flex-shrink-0 rounded-lg bg-[#FAFCF8] shadow-custom-deep p-3">
       <h2 className="text-2xl font-bold mb-6">Outbound shipments</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        <ShipmentCard title="Freight">
-          <p>No freight shipments due yet</p>
-        </ShipmentCard>
-
-        <ShipmentCard title="Awaiting Carrier">
-          <p>No shipments awaiting carrier</p>
-        </ShipmentCard>
-
-        <ShipmentCard title="Shipped this month"></ShipmentCard>
         <ShipmentStatusCard
-          title="Shipped this month"
-          icon={
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="48"
-              height="48"
-              viewBox="0 0 48 48"
-              fill="none"
-            >
-              <path
-                d="M23.9995 28H25.9995C28.1995 28 29.9995 26.2 29.9995 24V4H11.9995C8.99951 4 6.37953 5.65998 5.01953 8.09998"
-                stroke="#62686F"
-                strokeWidth="3"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <path
-                d="M4 34C4 37.32 6.68 40 10 40H12C12 37.8 13.8 36 16 36C18.2 36 20 37.8 20 40H28C28 37.8 29.8 36 32 36C34.2 36 36 37.8 36 40H38C41.32 40 44 37.32 44 34V28H38C36.9 28 36 27.1 36 26V20C36 18.9 36.9 18 38 18H40.58L37.16 12.02C36.44 10.78 35.1201 10 33.6801 10H30V24C30 26.2 28.2 28 26 28H24"
-                stroke="#62686F"
-                strokeWidth="3"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <path
-                d="M16 44C18.2091 44 20 42.2091 20 40C20 37.7909 18.2091 36 16 36C13.7909 36 12 37.7909 12 40C12 42.2091 13.7909 44 16 44Z"
-                stroke="#62686F"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <path
-                d="M32 44C34.2091 44 36 42.2091 36 40C36 37.7909 34.2091 36 32 36C29.7909 36 28 37.7909 28 40C28 42.2091 29.7909 44 32 44Z"
-                stroke="#62686F"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <path
-                d="M44 24V28H38C36.9 28 36 27.1 36 26V20C36 18.9 36.9 18 38 18H40.58L44 24Z"
-                stroke="#62686F"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <path
-                d="M4 16H16"
-                stroke="#62686F"
-                strokeWidth="3"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <path
-                d="M4 22H12"
-                stroke="#62686F"
-                strokeWidth="3"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <path
-                d="M4 28H8"
-                stroke="#62686F"
-                strokeWidth="3"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          }
-          count="0"
-        ></ShipmentStatusCard>
+          title="Order created"
+          icon={<BorderColorIcon fontSize="large" />}
+          count={orderCounts.orderCreated}
+        />
+
+        <ShipmentStatusCard
+          title="Label created"
+          icon={<BookIcon fontSize="large" />}
+          count={orderCounts.labelCreated}
+        />
+
+        <ShipmentStatusCard
+          title="Out for Delivery"
+          icon={<LocalShippingIcon fontSize="large" />}
+          count={orderCounts.outForDelivery}
+        />
+
+        <ShipmentStatusCard
+          title="Delivered"
+          icon={<WarehouseIcon fontSize="large" />}
+          count={orderCounts.delivered}
+        />
       </div>
       <CreateOrderButton />
     </div>
