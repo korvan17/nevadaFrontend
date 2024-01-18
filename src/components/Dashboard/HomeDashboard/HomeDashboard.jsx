@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useEffect, useState } from "react";
 import ShipmentStatusCard from "../ShipmentStatusCard/ShipmentStatusCard";
 import CreateOrderButton from "@/components/UIElements/Buttons/CreateOrderButton/CreateOrderButton";
@@ -29,7 +31,6 @@ export default function HomeDashboard() {
     }
   }, [status, session]);
 
-  
   const countOrderStatuses = (orders) => {
     const counts = {
       orderCreated: 0,
@@ -39,7 +40,7 @@ export default function HomeDashboard() {
     };
 
     orders.forEach((order) => {
-      const status = order.attributes.orderStatus; 
+      const status = order.attributes.orderStatus;
 
       if (
         status === "Order created" ||
@@ -54,7 +55,6 @@ export default function HomeDashboard() {
       } else if (status === "Delivered") {
         counts.delivered += 1;
       } else {
-       
         console.log("Unrecognized status:", status);
       }
     });
