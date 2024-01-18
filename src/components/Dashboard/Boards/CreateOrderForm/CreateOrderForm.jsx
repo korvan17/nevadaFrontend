@@ -8,8 +8,12 @@ import { CommonBoard } from "../CommonBoard/CommonBoard";
 
 export const CreateOrderForm = () => {
   const [orderType, setOrderType] = useState("");
+  // const [orderDate, setOrderDate] = useState(
+  //   () => new Date().toISOString().split("T")[0]
+  // );
+
   const [orderDate, setOrderDate] = useState(
-    () => new Date().toISOString().split("T")[0]
+    new Date().toLocaleDateString("en-CA") // 'en-CA' - формат YYYY-MM-DD
   );
   const [companyName, setCompanyName] = useState("");
 
@@ -25,14 +29,21 @@ export const CreateOrderForm = () => {
   const [createOrder, setCreateOrder] = useState("Create a Order Form");
   const [showConfirmOrder, setShowConfirmOrder] = useState(false);
   const [confirmOrderData, setConfirmOrderData] = useState({});
+  // const formatDisplayDate = (isoDate) => {
+  //   const date = new Date(isoDate);
+  //   const day = date.getDate().toString().padStart(2, "0");
+  //   const month = (date.getMonth() + 1).toString().padStart(2, "0"); // Месяцы начинаются с 0
+  //   const year = date.getFullYear();
+  //   return `${month}/${day}/${year}`;
+  // };
   const formatDisplayDate = (isoDate) => {
     const date = new Date(isoDate);
-    const day = date.getDate().toString().padStart(2, "0");
-    const month = (date.getMonth() + 1).toString().padStart(2, "0"); // Месяцы начинаются с 0
-    const year = date.getFullYear();
-    return `${month}/${day}/${year}`;
+    return date.toLocaleDateString(undefined, {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+    });
   };
-
   useEffect(() => {
     const allProductsValid =
       products.length > 0 &&
