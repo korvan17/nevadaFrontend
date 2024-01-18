@@ -3,7 +3,6 @@ import { signOut, useSession } from "next-auth/react";
 import React, { useEffect, useState } from "react";
 import { customAlphabet, nanoid } from "nanoid";
 export const ConfirmOrder = ({
-  formatDisplayDate,
   createOrder,
   orderType,
   orderDate,
@@ -111,7 +110,7 @@ export const ConfirmOrder = ({
       <h3 className="">{confirmOrder}</h3>
       <div className="mt-2">
         <p>Order Type: {orderType}</p>
-        <p>Order Date: {formatDisplayDate(orderDate)}</p>
+        <p>Order Date: {orderDate}</p>
         <p>Company Name: {companyName}</p>
         <p>Warehouse Address: {warehouseAddress}</p>
       </div>

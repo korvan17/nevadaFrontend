@@ -8,10 +8,21 @@ import { CommonBoard } from "../CommonBoard/CommonBoard";
 
 export const CreateOrderForm = () => {
   const [orderType, setOrderType] = useState("");
-  const [orderDate, setOrderDate] = useState(
-    () => new Date().toISOString().split("T")[0]
-  );
+  // const [orderDate, setOrderDate] = useState(
+  //   () => new Date().toISOString().split("T")[0]
+  // );
+  // const [orderDate, setOrderDate] = useState(() =>
+  //   getLocalDateISOString(new Date())
+  // );
+  function toLocalISODateString(date) {
+    const off = date.getTimezoneOffset();
+    const offsetDate = new Date(date.getTime() - off * 60 * 1000);
+    return offsetDate.toISOString().split("T")[0];
+  }
 
+  const [orderDate, setOrderDate] = useState(() =>
+    toLocalISODateString(new Date())
+  );
   const [companyName, setCompanyName] = useState("");
 
   const [warehouseAddress, setWarehouseAddress] = useState("");
@@ -35,14 +46,14 @@ export const CreateOrderForm = () => {
   //   return `${month}/${day}/${year}`;
   // };
 
-  const formatDisplayDate = (isoDate) => {
-    const date = new Date(isoDate);
-    const year = date.getFullYear();
-    const month = (date.getMonth() + 1).toString().padStart(2, "0");
-    const day = date.getDate().toString().padStart(2, "0");
+  // const formatDisplayDate = (isoDate) => {
+  //   const date = new Date(isoDate);
+  //   const year = date.getFullYear();
+  //   const month = (date.getMonth() + 1).toString().padStart(2, "0");
+  //   const day = date.getDate().toString().padStart(2, "0");
 
-    return `${year}-${month}-${day}`;
-  };
+  //   return `${year}-${month}-${day}`;
+  // };
 
   useEffect(() => {
     const allProductsValid =
@@ -194,7 +205,6 @@ export const CreateOrderForm = () => {
       products: productData,
       comments,
       totalMasterBoxes,
-      formatDisplayDate,
     };
     setConfirmOrderData(data);
     setShowConfirmOrder(true);
@@ -239,7 +249,7 @@ export const CreateOrderForm = () => {
             <input
               type="date"
               id="orderDate"
-              value={formatDisplayDate(orderDate)}
+              value={orderDate}
               readOnly
               className="mt-1 block w-full border border-gray-300 px-3 py-2 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             />
