@@ -5,7 +5,7 @@ import { FooterBottom } from "./FooterBottom";
 
 export default function Footer() {
   return (
-    <footer className="bg-mainBlack text-mainWhite" id="contacts">
+    <footer className="bg-mainBlack text-mainWhite relative" id="contacts">
       <FooterHeader />
       <FooterLinks />
       <FooterBottom />

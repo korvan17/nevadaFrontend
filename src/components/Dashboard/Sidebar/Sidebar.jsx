@@ -17,8 +17,7 @@ const Sidebar = ({ toggleSideBar }) => {
       <motion.ul
         className="fixed z-50 top-[40px] bottom-[40px] left-0
           shadow-custom-deep flex-shrink-0 bg-mainWhite flex flex-col items-center
-      
-          md:top-[123px] md:bottom-[0] md:z-0 md:transform-none md:transition-none"
+     md:hidden"
         initial={{ x: -100 }}
         animate={{ x: 0 }}
         exit={{ x: -100 }}
@@ -31,7 +30,6 @@ const Sidebar = ({ toggleSideBar }) => {
       >
         {DBSideBarLinks.map(({ href, icon }) => {
           const isActive = pathName === href;
-
           return (
             <li
               key={href}
@@ -57,6 +55,32 @@ const Sidebar = ({ toggleSideBar }) => {
           </Link>
         </li>
       </motion.ul>
+
+      <ul className="hidden md:flex h-full w-[106px] shadow-custom-deep flex-shrink-0 bg-mainWhite  flex-col items-center">
+        {DBSideBarLinks.map((link, index) => {
+          const { href, icon } = link;
+          const isActive = pathName === href;
+          if (index > 0) {
+            return (
+              <li
+                key={href}
+                className={`${
+                  isActive ? "bg-dbActiveLink" : "bg-mainWhite"
+                } py-[16px] px-[32px] md:px-[41px] md:py-[12px]`}
+              >
+                <Link className="block w-full h-full" href={href} passHref>
+                  {icon}
+                </Link>
+              </li>
+            );
+          }
+        })}
+        <li className="py-[16px] px-[32px] md:px-[41px] md:py-[12px]">
+          <Link href="/" onClick={toggleSideBar} passHref>
+            <LogoutIcon />
+          </Link>
+        </li>
+      </ul>
     </>
   );
 };

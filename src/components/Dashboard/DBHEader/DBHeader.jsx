@@ -29,10 +29,10 @@ function DBHeader({ toggleSideBar, isSideBarOpen }) {
           <div className="flex items-center justify-center lg:gap-[24px]">
             <Link
               href="/"
-              className=" bg-captionBlueDB hover:bg-captionBlue 
+              className="hidden md:flex bg-captionBlueDB hover:bg-captionBlue 
             transition-all ease-out
              text-captionalWhite
-             flex items-center justify-center w-[48px] h-[48px] rounded-full
+              items-center justify-center w-[48px] h-[48px] rounded-full
             "
             >
               <HomeIcon fill="#fff" />
