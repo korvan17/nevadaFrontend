@@ -12,24 +12,24 @@ function Dashboard({ children }) {
   const router = useRouter();
   const { status } = useSession();
 
-  useEffect(() => {
-    if (status === "unauthenticated") {
-      router.push("/");
-    }
-  }, [status, router]);
+  // useEffect(() => {
+  //   if (status === "unauthenticated") {
+  //     router.push("/");
+  //   }
+  // }, [status, router]);
 
-  if (status === "loading") {
-    return <div>Loading...</div>;
-  }
+  // if (status === "loading") {
+  //   return <div>Loading...</div>;
+  // }
 
-  if (status === "authenticated") {
-    return (
-      <>
-        <HomeDashboard />
-        {/* <div className="flex gap-3"> */}
-        {/* <CreateOrderForm />
+  // if (status === "authenticated") {
+  return (
+    <>
+      <HomeDashboard />
+      {/* <div className="flex gap-3"> */}
+      {/* <CreateOrderForm />
           <CommonBoard />  */}
-        {/* <div className="flex pt-20">
+      {/* <div className="flex pt-20">
           <div className="flex-none">
             <ShipmentSidebarDashboard />
           </div>
@@ -38,13 +38,13 @@ function Dashboard({ children }) {
           </div>
           <UserPanel />
         </div> */}
-        {/* {children} */}
-        {/* </div> */}
-      </>
-    );
-  }
+      {/* {children} */}
+      {/* </div> */}
+    </>
+  );
+  // }
 
-  return null;
+  // return null;
 }
 
 export default Dashboard;
