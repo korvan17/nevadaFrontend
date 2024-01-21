@@ -49,7 +49,7 @@ export default function Shipments() {
           onChange={handleSearchChange}
         />
         <div
-          className=" rounded-lg bg-[#FAFCF8] shadow-custom-deep"
+          className=" rounded-lg bg-[#FAFCF8] shadow-custom-deep mb-4"
           style={{
             paddingTop: "12px",
             paddingRight: "12px",

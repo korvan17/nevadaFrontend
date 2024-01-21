@@ -654,10 +654,16 @@ export const CreateOrderForm = () => {
         {/* </div> */}
       </CommonBoard>
       {showConfirmOrder && (
-        <CommonBoard>
-          {" "}
-          <ConfirmOrder {...confirmOrderData} />
-        </CommonBoard>
+        <div
+          className="absolute top-[130px]  bg-white bg-opacity-50 
+        backdrop-blur-sm
+        z-10"
+        >
+          <CommonBoard>
+            {" "}
+            <ConfirmOrder {...confirmOrderData} />
+          </CommonBoard>
+        </div>
       )}
     </div>
   );

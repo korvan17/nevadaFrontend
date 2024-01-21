@@ -167,9 +167,9 @@ export default function Messages() {
         <div className="loader">Loading...</div>
       ) : (
         <div
-          className="lg:w-[920px] lg:h-[611px] rounded-[4px] bg-[#FAFCF8] shadow-custom-deep pl-2 pr-2 pt-3 
+          className="lg:w-[920px] lg:h-[611px] rounded-[4px] bg-[#FAFCF8] shadow-custom-deep pl-3 pr-2 pt-3 
         
-        md:w-[578px] md:h-[484px]"
+        md:w-[578px] md:h-[484px] w-[320px] h-[355px] items-center"
         >
           <ul>
             {currentPageData.map((order) => (
