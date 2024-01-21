@@ -6,7 +6,9 @@ export default function FullPrice({
   formatDisplayDate,
 }) {
   return (
-    <div className="relative lg:w-[920px] lg:h-[611px]  rounded-lg bg-[#FAFCF8] shadow-custom-deep p-3 md:w-[578px] md:h-[484px]">
+    <div className="relative lg:w-[920px] lg:h-[611px]  rounded-lg bg-[#FAFCF8] 
+    
+    shadow-custom-deep p-3 md:w-[578px] md:h-[484px]">
       <NavigateBeforeIcon onClick={onClose} style={{ cursor: "pointer" }} />
       <ul className="">
         {currentPageData.map((orderItem) => (

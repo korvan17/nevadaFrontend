@@ -63,34 +63,43 @@ export default function HomeDashboard() {
   };
 
   return (
-    <div className="mt-[36px] w-[920px] h-[611px] flex-shrink-0 rounded-lg bg-[#FAFCF8] shadow-custom-deep p-3">
-      <h2 className="text-2xl font-bold mb-6">Outbound shipments</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        <ShipmentStatusCard
-          title="Order created"
-          icon={<BorderColorIcon fontSize="large" />}
-          count={orderCounts.orderCreated}
-        />
-
-        <ShipmentStatusCard
-          title="Label created"
-          icon={<BookIcon fontSize="large" />}
-          count={orderCounts.labelCreated}
-        />
-
-        <ShipmentStatusCard
-          title="Out for Delivery"
-          icon={<LocalShippingIcon fontSize="large" />}
-          count={orderCounts.outForDelivery}
-        />
-
-        <ShipmentStatusCard
-          title="Delivered"
-          icon={<WarehouseIcon fontSize="large" />}
-          count={orderCounts.delivered}
-        />
+    <>
+      <div className="mt-[36px] w-[343px] h-[650px] md:w-[612px] md:h-[402px] lg:h-[611px] lg:w-[920px] mb-4 flex-shrink-0 rounded-lg bg-[#FAFCF8] shadow-custom-deep p-3">
+        <h3 className="text-2xl font-bold mb-6">Outbound shipments</h3>
+        <div className="">
+          <ul className="flex flex-wrap gap-3">
+            <li>
+              <ShipmentStatusCard
+                title="Order created"
+                icon={<BorderColorIcon fontSize="large" />}
+                count={orderCounts.orderCreated}
+              />
+            </li>
+            <li>
+              <ShipmentStatusCard
+                title="Label created"
+                icon={<BookIcon fontSize="large" />}
+                count={orderCounts.labelCreated}
+              />
+            </li>
+            <li>
+              <ShipmentStatusCard
+                title="Out for Delivery"
+                icon={<LocalShippingIcon fontSize="large" />}
+                count={orderCounts.outForDelivery}
+              />
+            </li>
+            <li>
+              <ShipmentStatusCard
+                title="Delivered"
+                icon={<WarehouseIcon fontSize="large" />}
+                count={orderCounts.delivered}
+              />
+            </li>
+          </ul>
+        </div>
+        <CreateOrderButton />
       </div>
-      <CreateOrderButton />
-    </div>
+    </>
   );
 }

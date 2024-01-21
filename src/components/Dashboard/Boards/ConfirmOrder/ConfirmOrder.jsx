@@ -105,7 +105,7 @@ export const ConfirmOrder = ({
   };
 
   return (
-    <div>
+    <div className="">
       <h2 className="hidden text-[20px]">{createOrder}</h2>
       <h3 className="">{confirmOrder}</h3>
       <div className="mt-2">
