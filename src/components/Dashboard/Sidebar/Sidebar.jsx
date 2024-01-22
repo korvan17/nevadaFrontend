@@ -6,14 +6,13 @@ import { LogoutIcon } from "@/components/Icons";
 import { usePathname } from "next/navigation";
 import { DBSideBarLinks } from "@/content";
 
-const Sidebar = ({ toggleSideBar }) => {
+const Sidebar = ({ isSideBarOpen, toggleSideBar }) => {
   const pathName = usePathname();
 
   return (
     <>
-      <div className="md:hidden">
-        <Backdrop toggleSideBar={toggleSideBar} />
-      </div>
+      {isSideBarOpen && <Backdrop toggleSideBar={toggleSideBar} />}
+
       <motion.ul
         className="fixed z-50 top-[40px] bottom-[40px] left-0
           shadow-custom-deep flex-shrink-0 bg-mainWhite flex flex-col items-center

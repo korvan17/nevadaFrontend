@@ -106,14 +106,14 @@ export const ConfirmOrder = ({
   };
 
   return (
-    <div className="relative ml-auto mr-auto">
+    <div className="relative ml-auto mr-auto max-h-[700px] overflow-y-auto pt-[10px]">
       <IconButton
         onClick={onClose}
-        style={{ position: "absolute", top: -24, left: -10 }}
+        style={{ position: "absolute", top: 0, left: 0 }}
       >
         <ArrowBackIcon />
       </IconButton>
-      <h2 className="hidden text-[20px]">{createOrder}</h2>
+      <h2 className="hidden text-[20px] ">{createOrder}</h2>
       <h3 className="font-extrabold text-center">{confirmOrder}</h3>
       <div className="mt-2">
         <p>Order Type: {orderType}</p>
@@ -138,11 +138,8 @@ export const ConfirmOrder = ({
             {product.features && (
               <div>
                 {Object.entries(product.features).map(
-                  ([featureKey, featureValue]) => (
-                    <p key={featureKey}>
-                      {featureKey}: {featureValue ? "Yes" : "No"}
-                    </p>
-                  )
+                  ([featureKey, featureValue]) =>
+                    featureValue && <p key={featureKey}>{featureKey}: Yes</p>
                 )}
               </div>
             )}

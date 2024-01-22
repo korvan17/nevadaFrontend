@@ -58,7 +58,9 @@ function NavBar({ isSideBarOpen, toggleSideBar }) {
         </Link>
       </div>
 
-      {isSideBarOpen && <Sidebar toggleSideBar={toggleSideBar} />}
+      {isSideBarOpen && (
+        <Sidebar isSideBarOpen={isSideBarOpen} toggleSideBar={toggleSideBar} />
+      )}
     </nav>
   );
 }
