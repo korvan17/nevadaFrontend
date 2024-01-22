@@ -28,7 +28,7 @@ const Sidebar = ({ toggleSideBar }) => {
           stiffness: 100,
         }}
       >
-        {DBSideBarLinks.map(({ href, icon }) => {
+        {DBSideBarLinks.map(({ href, icon, title }) => {
           const isActive = pathName === href;
           return (
             <li
@@ -42,6 +42,7 @@ const Sidebar = ({ toggleSideBar }) => {
                 href={href}
                 onClick={toggleSideBar}
                 passHref
+                title={title}
               >
                 {icon}
               </Link>
@@ -58,7 +59,7 @@ const Sidebar = ({ toggleSideBar }) => {
 
       <ul className="hidden md:flex h-full w-[106px] shadow-custom-deep flex-shrink-0 bg-mainWhite  flex-col items-center">
         {DBSideBarLinks.map((link, index) => {
-          const { href, icon } = link;
+          const { href, icon, title } = link;
           const isActive = pathName === href;
           if (index > 0) {
             return (
@@ -68,7 +69,12 @@ const Sidebar = ({ toggleSideBar }) => {
                   isActive ? "bg-dbActiveLink" : "bg-mainWhite"
                 } py-[16px] px-[32px] md:px-[41px] md:py-[12px]`}
               >
-                <Link className="block w-full h-full" href={href} passHref>
+                <Link
+                  className="block w-full h-full"
+                  href={href}
+                  title={title}
+                  passHref
+                >
                   {icon}
                 </Link>
               </li>

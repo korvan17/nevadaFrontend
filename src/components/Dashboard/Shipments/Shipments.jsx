@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import { fetchOrders } from "../../../../services/api";
 import { useSession } from "next-auth/react";
+import { SearchIcon } from "@/components/Icons";
 
 const PER_PAGE = 8;
 export default function Shipments() {
@@ -40,34 +41,47 @@ export default function Shipments() {
 
   return (
     <>
-      <div className="">
-        <h2 className="text-[24px] font-bold mb-6">Inbound Shipments</h2>
-        <input
-          className="border-[1px] mb-6 p-2 w-full rounded-[8px]"
-          placeholder="Search for order..."
-          value={searchQuery}
-          onChange={handleSearchChange}
-        />
-        <div
-          className=" rounded-lg bg-[#FAFCF8] shadow-custom-deep mb-4"
-          style={{
-            paddingTop: "12px",
-            paddingRight: "12px",
-            paddingBottom: "37px",
-            paddingLeft: "12px",
-          }}
-        >
-          <table className="min-w-full">
-            <thead>
-              <tr className="border-b">
-                <th className="py-3 px-6 text-left">Arrival</th>
-                <th className="py-3 px-6 text-left">Order</th>
-                <th className="py-3 px-6 text-center">Tracker</th>
-                <th className="py-3 px-6 text-center">Status</th>
-                <th className="py-3 px-6 text-center">From</th>
-                <th className="py-3 px-6 text-center">To</th>
+      <div className="m-[0 auto] px-[16px] w-[288px] sm:w-[343px] mb-[203px] mx-auto">
+        <span className="relative">
+          <span className="absolute top-[-2px] left-[16px]">
+            <SearchIcon />
+          </span>
+          <input
+            className="w-full mb-[12px] pl-[48px] pr-[16px] py-[18px]
+               bg-[#F2F4F8] border-none border-b-[#C1C7CD] text-[#697077]
+                shadow-custom-deep"
+            placeholder="Search for..."
+            value={searchQuery}
+            onChange={handleSearchChange}
+          />
+        </span>
+        <h2 className="text-[24px] font-bold mb-[20px]">Inbound Shipments</h2>
+        <div className="overflow-scroll shadow-custom-deep mb-[48px]">
+          <table className="border-separate border-spacing-x-[24px] ">
+            <thead className="">
+              <tr className="border-b  pt-[16px] pb-[8px] ">
+                <th className="text-left text-[12px] leading-[16px] font-normal">
+                  Arrival
+                </th>
+                <th className="text-left text-[12px] leading-[16px] font-normal">
+                  Order
+                </th>
+                <th className="text-left text-[12px] leading-[16px] font-normal">
+                  Tracker (API)
+                </th>
+                <th className="text-left text-[12px] leading-[16px] font-normal">
+                  Status
+                </th>
+                <th className="text-left text-[12px] leading-[16px] font-normal">
+                  From
+                </th>
+                <th className="text-left text-[12px] leading-[16px] font-normal">
+                  To
+                </th>
 
-                <th className="py-3 px-6 text-center">Boxes</th>
+                <th className="text-left text-[12px] leading-[16px] font-normal">
+                  Boxes
+                </th>
               </tr>
             </thead>
             <tbody className="font-normal text-[11px] leading-[16px]">
@@ -150,9 +164,8 @@ export default function Shipments() {
             previousLabel="< previous"
             renderOnZeroPageCount={null}
           /> */}
-
-          <CreateOrderButton />
         </div>
+        <CreateOrderButton />
       </div>
     </>
   );
