@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import { fetchOrders } from "../../../../services/api";
 import { useSession } from "next-auth/react";
+import { SearchIcon } from "@/components/Icons";
 
 const PER_PAGE = 8;
 export default function Shipments() {
@@ -41,12 +42,17 @@ export default function Shipments() {
   return (
     <>
       <div className="m-[0 auto] px-[16px] w-[320px] ">
-        <input
-          className="bg-['#F2F4F8'] w-full py-[18px] border-b-['#C1C7CD'] shadow-custom-deep mb-[12px] text-['#697077']"
-          placeholder="Search for..."
-          value={searchQuery}
-          onChange={handleSearchChange}
-        />
+        <span className="relative">
+          <span className="absolute top-[-2px] left-[16px]">
+            <SearchIcon />
+          </span>
+          <input
+            className="pl-[40px] pr-[16px] py-[18px] bg-['#F2F4F8'] w-full  border-b-['#C1C7CD'] shadow-custom-deep mb-[12px] text-['#697077']"
+            placeholder="Search for..."
+            value={searchQuery}
+            onChange={handleSearchChange}
+          />
+        </span>
         <h2 className="text-[24px] font-bold mb-[20px]">Inbound Shipments</h2>
         <div
           className="overflow-scroll shadow-custom-deep mb-[48px]"
@@ -69,7 +75,7 @@ export default function Shipments() {
                   Order
                 </th>
                 <th className="text-left text-[12px] leading-[16px] font-normal">
-                  Tracker
+                  Tracker (API)
                 </th>
                 <th className="text-left text-[12px] leading-[16px] font-normal">
                   Status
