@@ -12,7 +12,7 @@ const Layout = ({ children }) => {
   return (
     <>
       <DBHeader toggleSideBar={toggleSideBar} isSideBarOpen={isSideBarOpen} />
-      <div className="pt-[131px] md:pt-[129px] flex gap-[20px]">
+      <div className="pt-[131px] md:pt-[129px] md:flex md:gap-[20px]">
         <div className="hidden md:block">
           <Sidebar />
         </div>

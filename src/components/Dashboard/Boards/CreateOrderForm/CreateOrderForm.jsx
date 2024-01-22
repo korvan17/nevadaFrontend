@@ -5,15 +5,11 @@ import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import "tailwindcss/tailwind.css";
 import ConfirmOrder from "../ConfirmOrder/ConfirmOrder";
 import { CommonBoard } from "../CommonBoard/CommonBoard";
+import { useLockBodyScroll } from "../../../../../hooks/useLayoutEffect";
 
 export const CreateOrderForm = () => {
   const [orderType, setOrderType] = useState("");
-  // const [orderDate, setOrderDate] = useState(
-  //   () => new Date().toISOString().split("T")[0]
-  // );
-  // const [orderDate, setOrderDate] = useState(() =>
-  //   getLocalDateISOString(new Date())
-  // );
+
   function toLocalISODateString(date) {
     const off = date.getTimezoneOffset();
     const offsetDate = new Date(date.getTime() - off * 60 * 1000);
@@ -37,23 +33,6 @@ export const CreateOrderForm = () => {
   const [createOrder, setCreateOrder] = useState("Create a Order Form");
   const [showConfirmOrder, setShowConfirmOrder] = useState(false);
   const [confirmOrderData, setConfirmOrderData] = useState({});
-
-  // const formatDisplayDate = (isoDate) => {
-  //   const date = new Date(isoDate);
-  //   const day = date.getDate().toString().padStart(2, "0");
-  //   const month = (date.getMonth() + 1).toString().padStart(2, "0"); // Месяцы начинаются с 0
-  //   const year = date.getFullYear();
-  //   return `${month}/${day}/${year}`;
-  // };
-
-  // const formatDisplayDate = (isoDate) => {
-  //   const date = new Date(isoDate);
-  //   const year = date.getFullYear();
-  //   const month = (date.getMonth() + 1).toString().padStart(2, "0");
-  //   const day = date.getDate().toString().padStart(2, "0");
-
-  //   return `${year}-${month}-${day}`;
-  // };
 
   useEffect(() => {
     const allProductsValid =
@@ -210,11 +189,15 @@ export const CreateOrderForm = () => {
     setShowConfirmOrder(true);
   };
 
+  useLockBodyScroll(showConfirmOrder);
+  const handleClose = () => {
+    setShowConfirmOrder(false);
+  };
   return (
-    <div className="flex flex-col items-center justify-center pl-2 ">
+    <div className="ml-auto mr-auto">
       {/* <div className="bg-bgBoard  rounded-[16px] border p-5 w-full max-w-4xl"> */}
       <CommonBoard>
-        <h2 className="">{createOrder}</h2>
+        <h2 className="text-center font-extrabold">{createOrder}</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <div>
@@ -654,15 +637,13 @@ export const CreateOrderForm = () => {
         {/* </div> */}
       </CommonBoard>
       {showConfirmOrder && (
-        <div
-          className="absolute top-[130px]  bg-white bg-opacity-50 
-        backdrop-blur-sm
-        z-10"
-        >
-          <CommonBoard>
-            {" "}
-            <ConfirmOrder {...confirmOrderData} />
-          </CommonBoard>
+        <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center z-50">
+          <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50 backdrop-blur-sm"></div>
+          <div className="z-50">
+            <CommonBoard>
+              <ConfirmOrder onClose={handleClose} {...confirmOrderData} />
+            </CommonBoard>
+          </div>
         </div>
       )}
     </div>

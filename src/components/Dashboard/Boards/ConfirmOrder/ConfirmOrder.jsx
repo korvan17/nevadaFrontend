@@ -2,6 +2,8 @@
 import { signOut, useSession } from "next-auth/react";
 import React, { useEffect, useState } from "react";
 import { customAlphabet, nanoid } from "nanoid";
+import IconButton from "@mui/material/IconButton";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 export const ConfirmOrder = ({
   createOrder,
   orderType,
@@ -11,6 +13,7 @@ export const ConfirmOrder = ({
   products: filteredProductData,
   comments,
   totalMasterBoxes,
+  onClose,
 }) => {
   if (
     !createOrder ||
@@ -24,14 +27,11 @@ export const ConfirmOrder = ({
     return null;
   }
   const [confirmOrder, setConfirmOrder] = useState("Confirm Order");
-  // const token = getBearerToken();
-  const { data: session, status } = useSession();
-  // if (!session) {
 
-  // }
+  const { data: session, status } = useSession();
 
   const accessToken = session.user.jwt;
-  console.log("Access Token22:", accessToken);
+
   useEffect(() => {
     if (status === "authenticated") {
       console.log("Access Token:", session.accessToken);
@@ -85,13 +85,14 @@ export const ConfirmOrder = ({
             body: JSON.stringify({
               data: {
                 mailFor,
-                // users_permissions_user: session.user.username,
                 ...data,
               },
             }),
           }
         );
-        if (!orderBackendResponse.ok) {
+        if (orderBackendResponse.ok) {
+          onClose();
+        } else {
           const orderBackendText = await orderBackendResponse.text();
           throw new Error(`Order failed: ${orderBackendText}`);
         }
@@ -105,9 +106,15 @@ export const ConfirmOrder = ({
   };
 
   return (
-    <div className="">
+    <div className="relative ml-auto mr-auto">
+      <IconButton
+        onClick={onClose}
+        style={{ position: "absolute", top: -24, left: -10 }}
+      >
+        <ArrowBackIcon />
+      </IconButton>
       <h2 className="hidden text-[20px]">{createOrder}</h2>
-      <h3 className="">{confirmOrder}</h3>
+      <h3 className="font-extrabold text-center">{confirmOrder}</h3>
       <div className="mt-2">
         <p>Order Type: {orderType}</p>
         <p>Order Date: {orderDate}</p>
@@ -115,7 +122,7 @@ export const ConfirmOrder = ({
         <p>Warehouse Address: {warehouseAddress}</p>
       </div>
       <div>
-        <h3 className="mt-2 text-center">Products:</h3>
+        <h3 className="mt-2 font-extrabold text-center">Products</h3>
         {filteredProductData.map((product, index) => (
           <div className="mt-2" key={index}>
             {product.productDescription && (
@@ -149,13 +156,15 @@ export const ConfirmOrder = ({
         {comments && <p>Comments: {comments}</p>}
         <p>Total Master Boxes: {totalMasterBoxes}</p>
       </div>
-      <button
-        className="bg-slate-500 mt-2 ml-auto flex"
-        type="submit"
-        onClick={handelConfirmOrder}
-      >
-        Confirm Order
-      </button>
+      <div className="flex justify-center">
+        <button
+          className="bg-accentYellow hover:bg-accentHoverYellow mt-2 px-2 py-1 rounded  font-bold text-[16px] w-[129px] h-[40px] items-center"
+          type="submit"
+          onClick={handelConfirmOrder}
+        >
+          Confirm Order
+        </button>
+      </div>
     </div>
   );
 };

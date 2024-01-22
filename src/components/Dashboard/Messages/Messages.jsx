@@ -161,13 +161,16 @@ export default function Messages() {
   }, []);
 
   return (
-    <div className="mb-11">
+    <div className=" mb-11">
       <h2 className="text-[24px] leading-6 font-bold mb-6">Messages</h2>
       {isLoading ? (
         <div className="loader">Loading...</div>
       ) : (
         <div
-          className="lg:w-[920px] lg:h-[611px] rounded-[4px] bg-[#FAFCF8] shadow-custom-deep pl-3 pr-2 pt-3 
+            className="ml-auto mr-auto lg:w-[920px] lg:h-[611px] 
+          
+          
+          rounded-[4px] bg-[#FAFCF8] shadow-custom-deep pl-3 pr-2 pt-3 
         
         md:w-[578px] md:h-[484px] w-[320px] h-[355px] items-center"
         >
