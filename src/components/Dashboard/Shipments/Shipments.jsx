@@ -5,6 +5,7 @@ import ReactPaginate from "react-paginate";
 import { fetchOrders } from "../../../../services/api";
 import { useSession } from "next-auth/react";
 import { SearchIcon } from "@/components/Icons";
+import { shipmentFilters } from "@/content";
 
 const PER_PAGE = 8;
 export default function Shipments() {
@@ -41,7 +42,10 @@ export default function Shipments() {
 
   return (
     <>
-      <div className="m-[0 auto] px-[16px] w-[288px] sm:w-[343px] mb-[203px] mx-auto">
+      <div
+        className="m-[0 auto] px-[16px] w-[288px] mb-[203px] mx-auto
+       sm:w-[343px]  md:mt-[12px] md:ml-0 md:w-[578px] md:pl-[20px] md:pr-[40px]"
+      >
         <span className="relative md:hidden">
           <span className="absolute top-[-2px] left-[16px]">
             <SearchIcon />
@@ -55,6 +59,15 @@ export default function Shipments() {
             onChange={handleSearchChange}
           />
         </span>
+        <ul className="hidden md:flex gap-[16px] mb-[24px]">
+          {shipmentFilters.map((b) => {
+            return (
+              <li>
+                <button className="p-[8px] ">{b}</button>
+              </li>
+            );
+          })}
+        </ul>
         <h2 className="text-[24px] font-bold mb-[20px]">Inbound Shipments</h2>
         <div className="overflow-scroll shadow-custom-deep mb-[48px]">
           <table className="border-separate border-spacing-x-[24px] ">
