@@ -67,6 +67,9 @@ body {
   transition-property: height;
   transition-duration: 4s;
 }
+.no-scroll {
+  overflow: hidden;
+}
 
 .sample-slider .swiper-wrapper {
   transition-timing-function: linear;
