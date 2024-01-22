@@ -42,7 +42,7 @@ export default function Shipments() {
   return (
     <>
       <div className="m-[0 auto] px-[16px] w-[288px] sm:w-[343px] mb-[203px] mx-auto">
-        <span className="relative">
+        <span className="relative md:hidden">
           <span className="absolute top-[-2px] left-[16px]">
             <SearchIcon />
           </span>
