@@ -41,30 +41,22 @@ export default function Shipments() {
 
   return (
     <>
-      <div className="m-[0 auto] px-[16px] w-[320px] ">
+      <div className="m-[0 auto] px-[16px] w-[288px] sm:w-[343px] mb-[203px] mx-auto">
         <span className="relative">
           <span className="absolute top-[-2px] left-[16px]">
             <SearchIcon />
           </span>
           <input
-            className="pl-[40px] pr-[16px] py-[18px] bg-['#F2F4F8'] w-full  border-b-['#C1C7CD'] shadow-custom-deep mb-[12px] text-['#697077']"
+            className="w-full mb-[12px] pl-[48px] pr-[16px] py-[18px]
+               bg-[#F2F4F8] border-none border-b-[#C1C7CD] text-[#697077]
+                shadow-custom-deep"
             placeholder="Search for..."
             value={searchQuery}
             onChange={handleSearchChange}
           />
         </span>
         <h2 className="text-[24px] font-bold mb-[20px]">Inbound Shipments</h2>
-        <div
-          className="overflow-scroll shadow-custom-deep mb-[48px]"
-          style={
-            {
-              // paddingTop: "12px",
-              // paddingRight: "12px",
-              // paddingBottom: "37px",
-              // paddingLeft: "12px",
-            }
-          }
-        >
+        <div className="overflow-scroll shadow-custom-deep mb-[48px]">
           <table className="border-separate border-spacing-x-[24px] ">
             <thead className="">
               <tr className="border-b  pt-[16px] pb-[8px] ">
