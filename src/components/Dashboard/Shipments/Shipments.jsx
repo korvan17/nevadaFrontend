@@ -6,6 +6,7 @@ import { fetchOrders } from "../../../../services/api";
 import { useSession } from "next-auth/react";
 import { SearchIcon } from "@/components/Icons";
 import { shipmentFilters } from "@/content";
+import { CalendarIcon } from "@mui/x-date-pickers";
 
 const PER_PAGE = 8;
 export default function Shipments() {
@@ -62,7 +63,7 @@ export default function Shipments() {
         <ul className="hidden md:flex gap-[16px] mb-[24px]">
           {shipmentFilters.map((b) => {
             return (
-              <li>
+              <li key={b}>
                 <button className="p-[8px] ">{b}</button>
               </li>
             );
@@ -73,26 +74,26 @@ export default function Shipments() {
           <table className="border-separate border-spacing-x-[24px] ">
             <thead className="">
               <tr className="border-b  pt-[16px] pb-[8px] ">
-                <th className="text-left text-[12px] leading-[16px] font-normal">
+                <th className="pt-[16px] pb-[8px] capitalize text-left text-[12px] leading-[16px] font-normal">
                   Arrival
                 </th>
-                <th className="text-left text-[12px] leading-[16px] font-normal">
+                <th className="pt-[16px] pb-[8px] capitalize text-left text-[12px] leading-[16px] font-normal">
                   Order
                 </th>
-                <th className="text-left text-[12px] leading-[16px] font-normal">
+                <th className="pt-[16px] pb-[8px] capitalize text-left text-[12px] leading-[16px] font-normal">
                   Tracker (API)
                 </th>
-                <th className="text-left text-[12px] leading-[16px] font-normal">
+                <th className="pt-[16px] pb-[8px] capitalize text-left text-[12px] leading-[16px] font-normal">
                   Status
                 </th>
-                <th className="text-left text-[12px] leading-[16px] font-normal">
+                <th className="pt-[16px] pb-[8px] capitalize text-left text-[12px] leading-[16px] font-normal">
                   From
                 </th>
-                <th className="text-left text-[12px] leading-[16px] font-normal">
+                <th className="pt-[16px] pb-[8px] capitalize text-left text-[12px] leading-[16px] font-normal">
                   To
                 </th>
 
-                <th className="text-left text-[12px] leading-[16px] font-normal">
+                <th className="pt-[16px] pb-[8px] capitalize text-left text-[12px] leading-[16px] font-normal">
                   Boxes
                 </th>
               </tr>
@@ -107,8 +108,11 @@ export default function Shipments() {
                     key={index}
                     className="border-b border-gray-200 hover:bg-gray-100"
                   >
-                    <td className="py-3 px-6 text-left">
-                      {order.attributes.orderDate}
+                    <td className="text-left flex gap-[4px]">
+                      <span>
+                        <CalendarIcon />
+                      </span>
+                      <span>{order.attributes.orderDate}</span>
                     </td>
                     <td className="px-6 text-left font-semibold text-#000A11">
                       {order.attributes.customId}
