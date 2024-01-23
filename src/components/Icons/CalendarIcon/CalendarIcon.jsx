@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 function CalendarIcon() {
   return (
@@ -161,4 +161,4 @@ function CalendarIcon() {
   );
 }
 
-export default CalendarIcon
+export default CalendarIcon;

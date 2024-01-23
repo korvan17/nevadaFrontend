@@ -6,7 +6,7 @@ import { fetchOrders } from "../../../../services/api";
 import { useSession } from "next-auth/react";
 import { SearchIcon } from "@/components/Icons";
 import { shipmentFilters } from "@/content";
-import { CalendarIcon } from "@mui/x-date-pickers";
+import { CalendarIcon } from "@/components/Icons";
 
 const PER_PAGE = 8;
 export default function Shipments() {
@@ -74,26 +74,26 @@ export default function Shipments() {
           <table className="border-separate border-spacing-x-[24px] ">
             <thead className="">
               <tr className="border-b  pt-[16px] pb-[8px] ">
-                <th className="pt-[16px] pb-[8px] capitalize text-left text-[12px] leading-[16px] font-normal">
+                <th className="w-[74px] pt-[16px] pb-[8px] text-[11px] leading-[16px] uppercase text-left font-normal">
                   Arrival
                 </th>
-                <th className="pt-[16px] pb-[8px] capitalize text-left text-[12px] leading-[16px] font-normal">
+                <th className="w-[84px] pt-[16px] pb-[8px] text-[11px] leading-[16px] uppercase text-left font-normal">
                   Order
                 </th>
-                <th className="pt-[16px] pb-[8px] capitalize text-left text-[12px] leading-[16px] font-normal">
+                <th className="w-[74px] pt-[16px] pb-[8px] text-[11px] leading-[16px] uppercase text-left font-normal">
                   Tracker (API)
                 </th>
-                <th className="pt-[16px] pb-[8px] capitalize text-left text-[12px] leading-[16px] font-normal">
+                <th className="w-[74px] pt-[16px] pb-[8px] text-[11px] leading-[16px] uppercase text-left font-normal">
                   Status
                 </th>
-                <th className="pt-[16px] pb-[8px] capitalize text-left text-[12px] leading-[16px] font-normal">
+                <th className="w-[74px] pt-[16px] pb-[8px] text-[11px] leading-[16px] uppercase text-left font-normal">
                   From
                 </th>
-                <th className="pt-[16px] pb-[8px] capitalize text-left text-[12px] leading-[16px] font-normal">
+                <th className="w-[74px] pt-[16px] pb-[8px] text-[11px] leading-[16px] uppercase text-left font-normal">
                   To
                 </th>
 
-                <th className="pt-[16px] pb-[8px] capitalize text-left text-[12px] leading-[16px] font-normal">
+                <th className="w-[74px] pt-[16px] pb-[8px] text-[11px] leading-[16px] uppercase text-left font-normal">
                   Boxes
                 </th>
               </tr>
@@ -114,15 +114,15 @@ export default function Shipments() {
                       </span>
                       <span>{order.attributes.orderDate}</span>
                     </td>
-                    <td className="px-6 text-left font-semibold text-#000A11">
+                    <td className="w-[84px] text-left font-semibold text-#000A11">
                       {order.attributes.customId}
                     </td>
-                    <td className="py-3 px-6 text-center">
+                    <td className="  text-center">
                       {order.attributes.tracker}
                     </td>
-                    <td className="py-3 px-6 text-center">
+                    <td className="  text-center">
                       <span
-                        className={`py-1 px-3 rounded-full text-white ${
+                        className={` rounded-full text-white ${
                           order.attributes.orderStatus === "Delivered"
                             ? "bg-green-500"
                             : order.attributes.orderStatus === "Label created"
@@ -138,13 +138,13 @@ export default function Shipments() {
                         {order.attributes.orderStatus || "Order created"}
                       </span>
                     </td>
-                    <td className="py-3 px-6 text-center">
+                    <td className=" text-center">
                       {order.attributes.companyName}
                     </td>
-                    <td className="py-3 px-6 text-center">
+                    <td className=" text-center">
                       {order.attributes.warehouseAddress}
                     </td>
-                    <td className="py-3 px-6 text-center">
+                    <td className=" text-center">
                       {order.attributes.totalMasterBoxes}
                     </td>
                   </tr>
