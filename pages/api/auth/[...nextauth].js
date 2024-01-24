@@ -53,4 +53,5 @@ export default NextAuth({
     },
   },
   // Другие настройки...
+  secret: process.env.NEXTAUTH_SECRET,
 });

@@ -17,7 +17,7 @@ function Backdrop({
   const handleBackdropClose = (event) => {
     if (event.target === event.currentTarget) {
       if (toggleMenu) toggleMenu();
-      else if (!toggleMenu) toggleSideBar();
+      else if (!toggleMenu && toggleSideBar) toggleSideBar();
       else closeModal();
     }
   };
@@ -25,10 +25,11 @@ function Backdrop({
   useEffect(() => {
     // console.log("Backdrop is mount");
     const handleKeyDown = (e) => {
-      if (e.code === "Escape")
+      if (e.code === "Escape") {
         if (toggleMenu) toggleMenu();
-        else if (!toggleMenu) toggleSideBar();
+        else if (!toggleMenu && toggleSideBar) toggleSideBar();
         else closeModal();
+      }
     };
     document.body.style.overflow = "hidden";
     window.addEventListener("keydown", handleKeyDown);
