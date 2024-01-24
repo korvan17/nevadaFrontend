@@ -17,6 +17,9 @@ const Layout = ({ children }) => {
           <Sidebar />
         </div>
         {children}
+        <div className="hidden lg:block">
+        <UserPanel />
+        </div>
       </div>
     </>
   );
