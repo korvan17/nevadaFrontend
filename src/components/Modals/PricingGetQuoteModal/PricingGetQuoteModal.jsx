@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 export default function PricingGetQuoteModal({ selectedTitle, closeModal }) {
   const [businessDirection, setBusinessDirection] = useState("");
   const [fullName, setFullName] = useState(
@@ -63,8 +64,8 @@ export default function PricingGetQuoteModal({ selectedTitle, closeModal }) {
     e.preventDefault();
 
     const data = {
-      selectedTitle,
-      businessDirection: businessDirection || selectedTitle,
+      titleModal: selectedTitle,
+      businessDirection,
       fullName,
       email,
       phone,
@@ -72,21 +73,53 @@ export default function PricingGetQuoteModal({ selectedTitle, closeModal }) {
       companyWebsite,
       message,
     };
+    const dataReg = {
+      businessDirection: selectedTitle,
+      fullName,
+      email,
+      phone,
+      companyName,
+      companyWebsite,
+      message,
+      username: email,
+      password: "123456",
+    };
 
     try {
-      const response = await fetch("/api/contacts", {
+      const contactsResponse = await fetch("/api/contacts", {
         method: "POST",
+
         body: JSON.stringify(data),
       });
-      if (response.ok) {
-        clearFields();
-        closeModal();
+
+      if (contactsResponse.ok) {
+        const registrationResponse = await fetch(
+          "https://nevadacms.onrender.com/api/auth/local/register",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(dataReg),
+          }
+        );
+        if (registrationResponse.ok) {
+          clearFields();
+          toast.success("Registration successful!");
+          setTimeout(() => {
+            closeModal();
+          }, 3000);
+        } else {
+          const registrationText = await registrationResponse.text();
+          toast.error(`Registration failed: ${registrationText}`);
+        }
       } else {
-        const text = await response.text();
-        throw new Error(`Failed to fetch: ${text}`);
+        const contactsText = await contactsResponse.text();
+        toast.error(`Failed to send contact information: ${contactsText}`);
       }
     } catch (error) {
       console.error("Error submitting form:", error.message);
+      toast.error(`Error submitting form: ${error.message}`);
     }
   };
 
