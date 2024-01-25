@@ -16,9 +16,9 @@ const Layout = ({ children }) => {
         <div className="hidden md:block">
           <Sidebar />
         </div>
-        {children}
+        <div className="m-auto">{children}</div>
         <div className="hidden lg:block">
-        <UserPanel />
+          <UserPanel />
         </div>
       </div>
     </>

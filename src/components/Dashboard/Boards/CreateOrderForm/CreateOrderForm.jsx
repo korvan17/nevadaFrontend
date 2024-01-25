@@ -185,7 +185,6 @@ export const CreateOrderForm = () => {
       totalMasterBoxes,
     };
 
-    
     setConfirmOrderData(data);
     setShowConfirmOrder(true);
   };
@@ -382,6 +381,7 @@ export const CreateOrderForm = () => {
                       handleProductChange(index, "idAsin", e.target.value)
                     }
                     className="mt-1 block w-full border border-gray-300 px-3 py-2 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    required
                   />
                 </div>
                 {/* Expected Quantity Input */}
@@ -661,6 +661,7 @@ export const CreateOrderForm = () => {
                     ? "bg-accentYellow hover:bg-accentHoverYellow"
                     : "bg-gray-400 cursor-not-allowed"
                 } text-white px-4 py-2 rounded ml-[auto] mr-[auto] font-bold text-[16px] w-[179px] h-[48px]`}
+                // className="text-white px-4 py-2 rounded ml-[auto] mr-[auto] font-bold text-[16px] w-[179px] bg-accentYellow hover:bg-accentHoverYellow h-[48px]"
                 disabled={!isButtonActive}
               >
                 Confirm Order
