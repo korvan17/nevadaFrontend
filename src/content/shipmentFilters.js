@@ -2,8 +2,7 @@ const shipmentFilters = [
   "All",
   "Order created",
   "Label created",
-  "Out for",
-  "Delivery",
+  "Out for Delivery",
   "Delivered",
 ];
 

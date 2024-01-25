@@ -7,6 +7,7 @@ import { useSession } from "next-auth/react";
 import { SearchIcon } from "@/components/Icons";
 import { shipmentFilters } from "@/content";
 import { CalendarIcon } from "@/components/Icons";
+import FilterAltOutlinedIcon from "@mui/icons-material/FilterAltOutlined";
 
 const PER_PAGE = 8;
 export default function Shipments() {
@@ -61,23 +62,28 @@ export default function Shipments() {
             onChange={handleSearchChange}
           />
         </span>
-        <ul
-          className="flex gap-[6px] flex-wrap text-[11px] 
-         md:gap-[16px] mb-[24px] md:text-[13px]"
-        >
-          {shipmentFilters.map((b) => {
-            return (
-              <li key={b} className="">
-                <button className="p-[1px] md:p-[5px] border-b-[2px]">
-                  {b}
-                </button>
-              </li>
-            );
-          })}
-        </ul>
+        <div className="flex gap-2 items-baseline">
+          <span>
+            <FilterAltOutlinedIcon className="text-[12px] text-[#697077]" />
+          </span>
+          <ul
+            className="flex gap-[6px] flex-wrap text-[11px] 
+           md:gap-[16px] mb-[24px] md:text-[13px]"
+          >
+            {shipmentFilters.map((b) => {
+              return (
+                <li key={b} className="">
+                  <button className="p-[1px] md:p-[5px] border-b-[2px]">
+                    {b}
+                  </button>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
         <h2 className="text-[24px] font-bold mb-[20px]">Inbound Shipments</h2>
         <div className="overflow-scroll shadow-custom-deep mb-[48px]">
-          <table className="border-separate border-spacing-x-[24px] ">
+          <table className="border-separate border-spacing-x-[10px] border-spacing-y-[15px] text-left">
             <thead className="">
               <tr className="border-b  pt-[16px] pb-[8px] ">
                 <th className="w-[74px] pt-[16px] pb-[8px] text-[11px] leading-[16px] uppercase text-left font-normal">
@@ -114,21 +120,19 @@ export default function Shipments() {
                     key={index}
                     className="border-b border-gray-200 hover:bg-gray-100"
                   >
-                    <td className="text-left flex gap-[4px]">
+                    <td className="text-left flex gap-[4px] w-[75px]">
                       <span>
                         <CalendarIcon />
                       </span>
                       <span>{order.attributes.orderDate}</span>
                     </td>
-                    <td className="w-[84px] text-left font-semibold text-#000A11">
+                    <td className="table w-[84px] text-[11px] leading-[16px] text-left font-semibold text-#000A11">
                       {order.attributes.customId}
                     </td>
-                    <td className="  text-center">
-                      {order.attributes.tracker}
-                    </td>
-                    <td className="  text-center">
-                      <span
-                        className={` rounded-full text-white ${
+                    <td className="">{order.attributes.tracker}</td>
+                    <td className="flex gap-[5px] w-[95px] items-center">
+                      <div
+                        className={` rounded-full w-[10px] h-[10px] ${
                           order.attributes.orderStatus === "Delivered"
                             ? "bg-green-500"
                             : order.attributes.orderStatus === "Label created"
@@ -140,19 +144,15 @@ export default function Shipments() {
                             ? "bg-red-500"
                             : "bg-gray-500"
                         }`}
-                      >
+                      ></div>
+                      <span>
+                        {" "}
                         {order.attributes.orderStatus || "Order created"}
                       </span>
                     </td>
-                    <td className=" text-center">
-                      {order.attributes.companyName}
-                    </td>
-                    <td className=" text-center">
-                      {order.attributes.warehouseAddress}
-                    </td>
-                    <td className=" text-center">
-                      {order.attributes.totalMasterBoxes}
-                    </td>
+                    <td className="">{order.attributes.companyName}</td>
+                    <td className="">{order.attributes.warehouseAddress}</td>
+                    <td className="">{order.attributes.totalMasterBoxes}</td>
                   </tr>
                 );
               })}
@@ -164,7 +164,9 @@ export default function Shipments() {
               nextLabel={"Next →"}
               pageCount={pageCount}
               onPageChange={handlePageClick}
-              containerClassName={"flex list-none justify-center gap-[30px]"}
+              containerClassName={
+                "flex list-none justify-center gap-[30px] mt-[25px]"
+              }
               previousLinkClassName={""}
               nextLinkClassName={""}
               disabledClassName={""}
