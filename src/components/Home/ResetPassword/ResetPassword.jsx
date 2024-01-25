@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -36,7 +36,7 @@ export default function ResetPassword() {
           toast.success("Password reset successfully. Please log in.");
           setTimeout(() => {
             router.push("/");
-          }, 5000);
+          }, 4000);
         } else {
           toast.error("An error occurred. Please try again.");
         }
