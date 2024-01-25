@@ -1,9 +1,10 @@
 const shipmentFilters = [
   "All",
-  "To Receive",
-  "Received",
-  "Completed",
-  "Canceled",
+  "Order created",
+  "Label created",
+  "Out for",
+  "Delivery",
+  "Delivered",
 ];
 
 export default shipmentFilters;

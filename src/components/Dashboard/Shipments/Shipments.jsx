@@ -17,6 +17,7 @@ export default function Shipments() {
   const [filteredOrders, setFilteredOrders] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [orders, setOrders] = useState([]);
+  console.log("orders:", orders);
   const { data: session, status } = useSession();
   useEffect(() => {
     if (status === "authenticated" && session.user.jwt) {
@@ -47,7 +48,7 @@ export default function Shipments() {
         className="m-[0 auto] px-[16px] w-[288px] mb-[203px] mx-auto
        sm:w-[343px]  md:mt-[12px] md:ml-0 md:w-[578px] md:pl-[20px] md:pr-[40px]"
       >
-        <span className="relative md:hidden">
+        <span className="relative ">
           <span className="absolute top-[-2px] left-[16px]">
             <SearchIcon />
           </span>
@@ -60,11 +61,16 @@ export default function Shipments() {
             onChange={handleSearchChange}
           />
         </span>
-        <ul className="hidden md:flex gap-[16px] mb-[24px]">
+        <ul
+          className="flex gap-[6px] flex-wrap text-[11px] 
+         md:gap-[16px] mb-[24px] md:text-[13px]"
+        >
           {shipmentFilters.map((b) => {
             return (
-              <li key={b}>
-                <button className="p-[8px] ">{b}</button>
+              <li key={b} className="">
+                <button className="p-[1px] md:p-[5px] border-b-[2px]">
+                  {b}
+                </button>
               </li>
             );
           })}
