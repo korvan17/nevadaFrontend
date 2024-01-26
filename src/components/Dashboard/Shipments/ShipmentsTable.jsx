@@ -3,10 +3,13 @@ import React from "react";
 
 function ShipmentsTable({ currentPageData }) {
   const tableCellHeaderClass =
-    "min-w-[91px] pt-[16px] pb-[8px] text-[11px] leading-[16px] uppercase text-left font-normal";
+    "min-w-[91px] pt-[16px] pb-[8px] text-[11px] leading-[16px] uppercase text-left font-normal md:text-[12px] lg:text-[16px]";
   return (
-    <table className="border-separate border-spacing-x-[10px] border-spacing-y-[15px] text-left ">
-      <thead className="">
+    <table
+      className="border-separate border-spacing-x-[24px] border-spacing-y-[8px] text-left
+    md:border-spacing-x-[34px] lg:border-spacing-x-[48px] lg:border-spacing-y-[28px]"
+    >
+      <thead>
         <tr className="border-b  pt-[16px] pb-[8px] ">
           <th className={tableCellHeaderClass}>Arrival</th>
           <th className={tableCellHeaderClass}>Order</th>
@@ -18,7 +21,7 @@ function ShipmentsTable({ currentPageData }) {
           <th className={tableCellHeaderClass}>Boxes</th>
         </tr>
       </thead>
-      <tbody className="font-normal text-[11px] leading-[16px]">
+      <tbody className="font-normal text-[11px] leading-[16px]  border-t border-t-captionalGrey">
         {currentPageData.map((order, index) => {
           const {
             orderDate,

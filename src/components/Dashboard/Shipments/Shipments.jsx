@@ -65,14 +65,15 @@ export default function Shipments() {
     <>
       <div
         className="m-[0 auto] px-[16px] w-[288px] mb-[203px] mx-auto
-       sm:w-[343px]  md:mt-[12px] md:ml-0 md:w-[578px] md:pl-[20px] md:pr-[40px]"
+       sm:w-[343px]  md:mt-[12px] md:ml-0 md:w-[578px] md:pl-[20px] md:pr-[40px]
+       lg:w-[920px] lg:px-[24px]"
       >
         <span className="relative ">
           <span className="absolute top-[-2px] left-[16px]">
             <SearchIcon />
           </span>
           <input
-            className="w-full mb-[12px] pl-[48px] pr-[16px] py-[18px]
+            className="w-full mb-[12px] pl-[48px] pr-[16px] py-[18px] rounded-[8px]
                bg-[#F2F4F8] border-none border-b-[#C1C7CD] text-[#697077]
                 shadow-custom-deep"
             placeholder="Search for..."
@@ -82,7 +83,7 @@ export default function Shipments() {
         </span>
         <div className="flex gap-2 items-baseline">
           <span>
-            <FilterAltOutlinedIcon className="text-[17px] text-[#697077]" />
+            <FilterAltOutlinedIcon className="text-[17px] text-[#697077] md:text-[26px] lg:text-[34px]" />
           </span>
           <ul
             className="flex gap-[6px] flex-wrap text-[11px] 
@@ -96,7 +97,7 @@ export default function Shipments() {
                     onClick={() => handleFilterClick(filter)}
                     className={`${commonButtonStyles} ${
                       activeFilter === filter &&
-                      "border-b-[2px] border-b-captionBlue"
+                      "border-b-[2px] border-b-captionBlue text-captionBlue font-bold md:text-[15px] lg:text-[20px]"
                     } `}
                   >
                     {filter}
@@ -106,8 +107,21 @@ export default function Shipments() {
             })}
           </ul>
         </div>
-        <h2 className="text-[24px] font-bold mb-[20px]">Inbound Shipments</h2>
-        <div className="overflow-scroll shadow-custom-deep mb-[48px]">
+        <h2
+          className="text-[24px] font-bold mb-[20px] 
+        md:mb-[24px]"
+        >
+          Inbound Shipments
+        </h2>
+        <div
+          className="overflow-scroll shadow-custom-deep mb-[48px]
+         relative md:pb-[110px]"
+        >
+          <div
+            className="absolute top-[52px] left-[8px] w-[696px] h-[1px] bg-gradient-end
+          md:top-[47px] md:w-[880px]
+          lg:top-[89px] lg:w-[990px] lg:pb-[159px]"
+          ></div>
           <ShipmentsTable currentPageData={currentPageData} />
           {orders.length > PER_PAGE && (
             <ReactPaginate
@@ -140,8 +154,13 @@ export default function Shipments() {
             previousLabel="< previous"
             renderOnZeroPageCount={null}
           /> */}
+          <div className="hidden md:block absolute bottom-[30px] left-[12px] lg:bottom-[37px]">
+            <CreateOrderButton />
+          </div>
         </div>
-        <CreateOrderButton />
+        <div className="md:hidden">
+          <CreateOrderButton />
+        </div>
       </div>
     </>
   );
