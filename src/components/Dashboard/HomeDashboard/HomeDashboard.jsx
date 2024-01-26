@@ -65,15 +65,10 @@ export default function HomeDashboard() {
   return (
     <>
       <div
-        className="ml-auto mr-auto mt-[36px] w-[312px] h-[650px] md:w-[612px] md:h-[402px] lg:h-[611px] 
-      
-      md:ml-0 md:mr-0
-      lg:w-[920px] mb-4 flex-shrink-0
-      
-      rounded-lg bg-[#FAFCF8]
-      
-      
-      shadow-custom-deep p-3"
+        className="ml-auto mr-auto mt-8 w-[312px] h-[650px] mb-4 
+        flex-shrink-0 rounded-lg bg-[#FAFCF8] shadow-custom-deep p-3
+        md:w-[612px] md:h-[402px] md:ml-0 md:mr-0
+        lg:h-[611px] lg:w-[920px]"
       >
         <h3 className="text-2xl font-bold mb-6">Outbound shipments</h3>
         <div className="">

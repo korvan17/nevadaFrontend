@@ -67,6 +67,7 @@ body {
   transition-property: height;
   transition-duration: 4s;
 }
+
 .no-scroll {
   overflow: hidden;
 }
@@ -75,6 +76,7 @@ body {
   transition-timing-function: linear;
   align-items: center;
 }
+
 /* .swiper-wrapper .swiper-slide {
   display: flex;
   height: 91px;
@@ -85,6 +87,7 @@ body {
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
     1px 4px 6px rgba(0, 0, 0, 0.16);
 }
+
 /* .examples-item:hover {
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
     1px 4px 6px rgba(0, 0, 0, 0.16);
@@ -98,6 +101,7 @@ body {
 .swiper-slide .swiper-slide-active {
   z-index: -20;
 }
+
 .closeButton {
   transition: transform 0.2s, opacity 0.2s;
 }
@@ -120,9 +124,11 @@ body {
   0% {
     transform: scale(1);
   }
+
   50% {
     transform: scale(0.9);
   }
+
   100% {
     transform: scale(1);
   }
@@ -131,6 +137,7 @@ body {
 .button:active {
   animation: buttonPress 0.2s;
 }
+
 .icon {
   display: flex;
   justify-content: center;
@@ -147,8 +154,7 @@ body {
 }
 
 .react-datepicker__month-container {
-  width: 297px;
-  height: 297px;
-
+  width: 298px;
+  height: 298px;
   border-radius: 8px;
 }

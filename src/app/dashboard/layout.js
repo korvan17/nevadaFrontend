@@ -17,8 +17,8 @@ const Layout = ({ children }) => {
           <Sidebar />
         </div>
         {children}
-        <div className="hidden lg:block">
-        <UserPanel />
+        <div className="hidden lg:flex">
+          <UserPanel />
         </div>
       </div>
     </>

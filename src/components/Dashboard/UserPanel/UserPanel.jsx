@@ -45,13 +45,13 @@ function UserPanel({ user }) {
     return () => clearInterval(messageListener);
   }, [notifications]);
   return (
-    <div className="bg-mainWhite h-[867px] w-[330px] p-3  rounded-[12px] shadow-custom-deep">
+    <div className="bg-mainWhite h-[867px] w-[330px] p-3 mt-8 mb-[73px] rounded-xl shadow-custom-deep">
       <div className="flex mb-3">
-        <CalendarMonthOutlined
+        {/* <CalendarMonthOutlined
           fontSize="small"
           stroke="#62686F"
           style={{ height: "24px", width: "24px" }}
-        />
+        /> */}
 
         <h2 className="ml-2 font-bold leading-6">Calendar</h2>
       </div>
@@ -116,7 +116,7 @@ function UserPanel({ user }) {
         </div>
       )}
 
-      <ul className="mt-5 mb-7 ">
+      <ul className="mt-5 mb-7">
         {userPanelItems.map(({ title, icon, hint }, index) => {
           return (
             <li key={`${title}-${index}`}>
