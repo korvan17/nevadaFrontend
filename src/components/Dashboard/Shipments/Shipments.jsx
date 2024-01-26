@@ -20,6 +20,8 @@ export default function Shipments() {
   const [orders, setOrders] = useState([]);
   console.log("orders:", orders);
 
+  const [activeFilter, setActiveFilter] = useState("");
+
   const { data: session, status } = useSession();
 
   useEffect(() => {
@@ -43,6 +45,7 @@ export default function Shipments() {
   };
 
   const handleFilterClick = (filter) => {
+    setActiveFilter(filter);
     const filteredOrders = orders.filter(({ attributes: { orderStatus } }) => {
       return orderStatus ? orderStatus === filter : filter === "Order created";
     });
@@ -83,44 +86,18 @@ export default function Shipments() {
             className="flex gap-[6px] flex-wrap text-[11px] 
            md:gap-[16px] mb-[24px] md:text-[13px]"
           >
-            {shipmentFilters.map((b) => {
+            {shipmentFilters.map((filter) => {
+              const commonButtonStyles = "p-[1px] md:p-[5px] border-b-[2px]";
               return (
-                <li key={b} className="">
+                <li key={filter} className="">
                   <button
-                    onClick={
-                      () => handleFilterClick(b)
-                      // () => {
-                      // if (b === "All") {
-                      //   setFilteredOrders(orders);
-                      // } else if (b === "Label created") {
-                      //   const filtered = orders.filter(
-                      //     (order) =>
-                      //       order.attributes.orderStatus === "Label created"
-                      //   );
-                      //   setFilteredOrders(filtered);
-                      // } else if (b === "Out for Delivery") {
-                      //   const filtered = orders.filter(
-                      //     (order) =>
-                      //       order.attributes.orderStatus === "Out for Delivery"
-                      //   );
-                      //   setFilteredOrders(filtered);
-                      // } else if (b === "Delivered") {
-                      //   const filtered = orders.filter(
-                      //     (order) =>
-                      //       order.attributes.orderStatus === "Delivered"
-                      //   );
-                      //   setFilteredOrders(filtered);
-                      // } else {
-                      //   const filtered = orders.filter(
-                      //     (order) => order.attributes.orderStatus === null
-                      //   );
-                      //   setFilteredOrders(filtered);
-                      // }
-                      // }
-                    }
-                    className="p-[1px] md:p-[5px] border-b-[2px]"
+                    onClick={() => handleFilterClick(filter)}
+                    className={`${commonButtonStyles} ${
+                      activeFilter === filter &&
+                      "border-b-[2px] border-b-captionBlue"
+                    } `}
                   >
-                    {b}
+                    {filter}
                   </button>
                 </li>
               );
