@@ -201,7 +201,7 @@ export const CreateOrderForm = () => {
     );
   } else {
     return (
-      <div className="ml-auto mr-auto max-h-[700px] overflow-y-auto">
+      <div className="shadow-custom-deep  m-auto md:mb-[20px] md:mt-[20px] max-h-[700px]   overflow-y-auto">
         {/* <div className="bg-bgBoard  rounded-[16px] border p-5 w-full max-w-4xl"> */}
         <CommonBoard>
           <h2 className="text-center font-extrabold">{createOrder}</h2>
@@ -215,7 +215,7 @@ export const CreateOrderForm = () => {
               <div>
                 <label
                   htmlFor="orderType"
-                  className=" block text-sm font-medium text-gray-700"
+                  className=" block md:text-sm text-[12px] font-medium text-gray-700"
                 >
                   Order Type <span className="text-red-500">*</span>
                 </label>
@@ -237,7 +237,7 @@ export const CreateOrderForm = () => {
             <div>
               <label
                 htmlFor="orderDate"
-                className="block text-sm font-medium text-gray-700"
+                className="block md:text-sm text-[12px] font-medium text-gray-700"
               >
                 Order placed{" "}
               </label>
@@ -253,7 +253,7 @@ export const CreateOrderForm = () => {
             <div>
               <label
                 htmlFor="companyName"
-                className="block text-sm font-medium text-gray-700"
+                className="block md:text-sm text-[12px] font-medium text-gray-700"
               >
                 Company Name or Alias for Package Identification{" "}
                 <span className="text-red-500">*</span>{" "}
@@ -281,7 +281,7 @@ export const CreateOrderForm = () => {
             <div>
               <label
                 htmlFor="warehouseAddress"
-                className="block text-sm font-medium text-gray-700"
+                className="block md:text-sm text-[12px] font-medium text-gray-700"
               >
                 Warehouse Address Selection{" "}
                 <span className="text-red-500">*</span>{" "}
@@ -318,7 +318,7 @@ export const CreateOrderForm = () => {
                   <div>
                     <label
                       htmlFor={`productDescription-${index}`}
-                      className="block text-sm font-medium text-gray-700"
+                      className="block md:text-sm text-[12px] font-medium text-gray-700"
                     >
                       Product Description{" "}
                       <span className="text-red-500">*</span>{" "}
@@ -350,7 +350,7 @@ export const CreateOrderForm = () => {
                   <button
                     type="button"
                     onClick={() => removeProduct(index)}
-                    className=" text-red-800 font-bold bg-transparent"
+                    className=" text-red-800 md:text-sm text-[12px] font-bold bg-transparent"
                   >
                     - Remove Product
                   </button>
@@ -359,7 +359,7 @@ export const CreateOrderForm = () => {
                 <div>
                   <label
                     htmlFor={`idAsin-${index}`}
-                    className="block text-sm font-medium text-gray-700"
+                    className="block md:text-sm text-[12px] font-medium text-gray-700"
                   >
                     ASIN/UPC/ID{" "}
                     <Tooltip
@@ -388,7 +388,7 @@ export const CreateOrderForm = () => {
                 <div>
                   <label
                     htmlFor={`expectedQty-${index}`}
-                    className="block text-sm font-medium text-gray-700"
+                    className="block md:text-sm text-[12px] font-medium text-gray-700"
                   >
                     Expected Quantity of Units{" "}
                     <span className="text-red-500">*</span>{" "}
@@ -421,7 +421,7 @@ export const CreateOrderForm = () => {
                 <div>
                   <label
                     htmlFor={`qtyInMasterBox-${index}`}
-                    className="block text-sm font-medium text-gray-700"
+                    className="block md:text-sm text-[12px] font-medium text-gray-700"
                   >
                     Units per Master Box <span className="text-red-500">*</span>{" "}
                     <Tooltip
@@ -455,7 +455,7 @@ export const CreateOrderForm = () => {
                 </div>
                 {/* Total Master Box Count for each product */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700">
+                  <label className="block md:text-sm text-[12px] font-medium text-gray-700">
                     Total Master Box Count{" "}
                     <Tooltip
                       title="Based on the quantity of units and the units per master box, this is the calculated total number of master boxes for this product."
@@ -608,7 +608,7 @@ export const CreateOrderForm = () => {
             <button
               type="button"
               onClick={addProduct}
-              className=" text-red-800 font-bold bg-transparent"
+              className=" text-red-800  text-[14px] font-bold bg-transparent"
             >
               + Add Product
             </button>
@@ -617,7 +617,7 @@ export const CreateOrderForm = () => {
             <div>
               <label
                 htmlFor="comments"
-                className="block text-sm font-medium text-gray-700"
+                className="block md:text-sm text-[12px] font-medium text-gray-700"
               >
                 Comments
               </label>
@@ -632,7 +632,7 @@ export const CreateOrderForm = () => {
 
             {/* Result - Calculated field */}
             <div>
-              <label className="block text-sm font-medium text-gray-700">
+              <label className="block md:text-sm text-[12px] font-medium text-gray-700">
                 Order's Master Box Total{" "}
                 <Tooltip
                   title="Total count of master boxes included in the entire order."
