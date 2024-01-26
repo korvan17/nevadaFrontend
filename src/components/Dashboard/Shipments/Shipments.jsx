@@ -64,7 +64,7 @@ export default function Shipments() {
   return (
     <>
       <div
-        className="m-[0 auto] px-[16px] w-[288px] mb-[203px] mx-auto
+        className="m-[0 auto] px-[16px] w-[288px] mb-[203px] mx-auto pt-[10px]
        sm:w-[343px]  md:mt-[12px] md:ml-0 md:w-[578px] md:pl-[20px] md:pr-[40px]
        lg:w-[920px] lg:px-[24px]"
       >
@@ -90,14 +90,15 @@ export default function Shipments() {
            md:gap-[16px] mb-[24px] md:text-[13px]"
           >
             {shipmentFilters.map((filter) => {
-              const commonButtonStyles = "p-[1px] md:p-[5px] border-b-[2px]";
+              const commonButtonStyles =
+                "p-[1px] md:p-[5px] border-b-[2px] md:text-[15px] lg:text-[20px] md:border-b-[3px] rounded-sm";
               return (
                 <li key={filter} className="">
                   <button
                     onClick={() => handleFilterClick(filter)}
                     className={`${commonButtonStyles} ${
                       activeFilter === filter &&
-                      "border-b-[2px] border-b-captionBlue text-captionBlue font-bold md:text-[15px] lg:text-[20px]"
+                      "border-b-[2px] md:border-b-[3px] rounded-sm border-b-captionBlue text-captionBlue font-bold md:text-[15px] lg:text-[20px]"
                     } `}
                   >
                     {filter}
@@ -115,12 +116,12 @@ export default function Shipments() {
         </h2>
         <div
           className="overflow-scroll shadow-custom-deep mb-[48px]
-         relative md:pb-[110px]"
+         relative md:pb-[110px] lg:pb-[159px]"
         >
           <div
-            className="absolute top-[52px] left-[8px] w-[696px] h-[1px] bg-gradient-end
-          md:top-[47px] md:w-[880px]
-          lg:top-[89px] lg:w-[990px] lg:pb-[159px]"
+            className="absolute top-[45px] left-[24px] w-[732px] h-[1px] bg-gradient-end
+          md:top-[47px] md:left-[34px] md:w-[805px]
+          lg:top-[85px] lg:w-[894px] lg:left-[49px]"
           ></div>
           <ShipmentsTable currentPageData={currentPageData} />
           {orders.length > PER_PAGE && (
