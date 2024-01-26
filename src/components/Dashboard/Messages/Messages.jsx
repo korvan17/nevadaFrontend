@@ -161,8 +161,8 @@ export default function Messages() {
   }, []);
 
   return (
-    <div className=" mb-11">
-      <h2 className="text-[24px] leading-6 font-bold mb-6">Messages</h2>
+    <div className=" ">
+      <h2 className="ml-[10px] md:ml-0 text-[16px] md:text-[24px]  leading-6 font-bold mb-3  mt-2 lg:mt-0">Messages</h2>
       {isLoading ? (
         <div className="loader">Loading...</div>
       ) : (
@@ -172,7 +172,7 @@ export default function Messages() {
           
           rounded-[4px] bg-[#FAFCF8] shadow-custom-deep pl-3 pr-2 pt-3 
         
-        md:w-[578px] md:h-[484px] w-[320px] h-[355px] items-center"
+        md:w-[578px] md:h-[484px] w-[320px] h-[355px] items-center mb-6 lg:mb-0"
         >
           <ul>
             {currentPageData.map((order) => (
