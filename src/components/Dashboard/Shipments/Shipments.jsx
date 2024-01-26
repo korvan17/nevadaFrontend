@@ -10,7 +10,7 @@ export default function Shipments() {
   const [filteredOrders, setFilteredOrders] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [orders, setOrders] = useState([]);
-  const [activeFilter, setActiveFilter] = useState(""); // Для стилизации активной фильтр кнопки
+  const [activeFilter, setActiveFilter] = useState("");
 
   const handlePageClick = ({ selected }) => {
     setCurrentPage(selected);
@@ -37,7 +37,6 @@ export default function Shipments() {
     setSearchQuery(e.target.value);
   };
 
-  // Фильтр кнопки
   const handleFilterClick = (filter) => {
     setActiveFilter(filter);
     const filteredOrders = orders.filter(({ attributes: { orderStatus } }) => {
