@@ -10,13 +10,7 @@ const Calendar = () => {
     <DatePicker
       selected={startDate}
       onChange={(date) => setStartDate(date)}
-      style={{
-        width: "306px",
-        height: "auto",
 
-        borderRadius: "8px",
-        border: "1px solid #C0C0C0",
-      }}
       inline
     />
   );

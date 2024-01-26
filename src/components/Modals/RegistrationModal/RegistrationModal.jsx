@@ -2,6 +2,8 @@
 import React, { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import "react-phone-number-input/style.css";
+import PhoneInput from "react-phone-number-input";
 
 export default function RegistrationModal({ closeModal }) {
   const [titleModal, setTitleModal] = useState("Registration Form");
@@ -223,13 +225,12 @@ export default function RegistrationModal({ closeModal }) {
               >
                 Phone Number <span className="text-red-500">*</span>
               </label>
-              <input
-                type="tel"
-                id="phone"
-                className="w-[327px] md:w-[342px] p-4 border rounded"
+              <PhoneInput
+                international
+                defaultCountry="US"
                 value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-                required
+                onChange={setPhone}
+                className="w-[327px] md:w-[342px] p-4 border rounded"
               />
             </div>
           </div>
