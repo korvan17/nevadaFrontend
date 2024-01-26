@@ -19,7 +19,9 @@ export default function Shipments() {
   const [searchQuery, setSearchQuery] = useState("");
   const [orders, setOrders] = useState([]);
   console.log("orders:", orders);
+
   const { data: session, status } = useSession();
+
   useEffect(() => {
     if (status === "authenticated" && session.user.jwt) {
       fetchOrders(session.user.jwt).then(setOrders).catch(console.error);
@@ -39,6 +41,17 @@ export default function Shipments() {
   const handleSearchChange = (e) => {
     setSearchQuery(e.target.value);
   };
+
+  const handleFilterClick = (filter) => {
+    const filteredOrders = orders.filter(({ attributes: { orderStatus } }) => {
+      return orderStatus ? orderStatus === filter : filter === "Order created";
+    });
+
+    return filter !== "All"
+      ? setFilteredOrders(filteredOrders)
+      : setFilteredOrders([...orders]);
+  };
+
   const offset = currentPage * PER_PAGE;
   const currentPageData = filteredOrders.slice(offset, offset + PER_PAGE);
   const pageCount = Math.ceil(filteredOrders.length / PER_PAGE);
@@ -73,7 +86,40 @@ export default function Shipments() {
             {shipmentFilters.map((b) => {
               return (
                 <li key={b} className="">
-                  <button className="p-[1px] md:p-[5px] border-b-[2px]">
+                  <button
+                    onClick={
+                      () => handleFilterClick(b)
+                      // () => {
+                      // if (b === "All") {
+                      //   setFilteredOrders(orders);
+                      // } else if (b === "Label created") {
+                      //   const filtered = orders.filter(
+                      //     (order) =>
+                      //       order.attributes.orderStatus === "Label created"
+                      //   );
+                      //   setFilteredOrders(filtered);
+                      // } else if (b === "Out for Delivery") {
+                      //   const filtered = orders.filter(
+                      //     (order) =>
+                      //       order.attributes.orderStatus === "Out for Delivery"
+                      //   );
+                      //   setFilteredOrders(filtered);
+                      // } else if (b === "Delivered") {
+                      //   const filtered = orders.filter(
+                      //     (order) =>
+                      //       order.attributes.orderStatus === "Delivered"
+                      //   );
+                      //   setFilteredOrders(filtered);
+                      // } else {
+                      //   const filtered = orders.filter(
+                      //     (order) => order.attributes.orderStatus === null
+                      //   );
+                      //   setFilteredOrders(filtered);
+                      // }
+                      // }
+                    }
+                    className="p-[1px] md:p-[5px] border-b-[2px]"
+                  >
                     {b}
                   </button>
                 </li>
@@ -86,26 +132,26 @@ export default function Shipments() {
           <table className="border-separate border-spacing-x-[10px] border-spacing-y-[15px] text-left">
             <thead className="">
               <tr className="border-b  pt-[16px] pb-[8px] ">
-                <th className="w-[74px] pt-[16px] pb-[8px] text-[11px] leading-[16px] uppercase text-left font-normal">
+                <th className="w-[74px] pt-[16px] pb-[8px] text-[11px] leading-[16px] uppercase text-center font-normal">
                   Arrival
                 </th>
-                <th className="w-[84px] pt-[16px] pb-[8px] text-[11px] leading-[16px] uppercase text-left font-normal">
+                <th className="w-[84px] pt-[16px] pb-[8px] text-[11px] leading-[16px] uppercase text-center font-normal">
                   Order
                 </th>
-                <th className="w-[74px] pt-[16px] pb-[8px] text-[11px] leading-[16px] uppercase text-left font-normal">
+                <th className="w-[74px] pt-[16px] pb-[8px] text-[11px] leading-[16px] uppercase text-center font-normal">
                   Tracker (API)
                 </th>
-                <th className="w-[74px] pt-[16px] pb-[8px] text-[11px] leading-[16px] uppercase text-left font-normal">
+                <th className="w-[74px] pt-[16px] pb-[8px] text-[11px] leading-[16px] uppercase text-center font-normal">
                   Status
                 </th>
-                <th className="w-[74px] pt-[16px] pb-[8px] text-[11px] leading-[16px] uppercase text-left font-normal">
+                <th className="w-[74px] pt-[16px] pb-[8px] text-[11px] leading-[16px] uppercase text-center font-normal">
                   From
                 </th>
-                <th className="w-[74px] pt-[16px] pb-[8px] text-[11px] leading-[16px] uppercase text-left font-normal">
+                <th className="w-[74px] pt-[16px] pb-[8px] text-[11px] leading-[16px] uppercase text-center font-normal">
                   To
                 </th>
 
-                <th className="w-[74px] pt-[16px] pb-[8px] text-[11px] leading-[16px] uppercase text-left font-normal">
+                <th className="w-[74px] pt-[16px] pb-[8px] text-[11px] leading-[16px] uppercase text-center font-normal">
                   Boxes
                 </th>
               </tr>
@@ -126,7 +172,7 @@ export default function Shipments() {
                       </span>
                       <span>{order.attributes.orderDate}</span>
                     </td>
-                    <td className="table w-[84px] text-[11px] leading-[16px] text-left font-semibold text-#000A11">
+                    <td className=" w-[84px] text-[11px] leading-[16px] text-left font-semibold text-#000A11">
                       {order.attributes.customId}
                     </td>
                     <td className="">{order.attributes.tracker}</td>
@@ -146,13 +192,14 @@ export default function Shipments() {
                         }`}
                       ></div>
                       <span>
-                        {" "}
                         {order.attributes.orderStatus || "Order created"}
                       </span>
                     </td>
                     <td className="">{order.attributes.companyName}</td>
                     <td className="">{order.attributes.warehouseAddress}</td>
-                    <td className="">{order.attributes.totalMasterBoxes}</td>
+                    <td className="text-right">
+                      {order.attributes.totalMasterBoxes}
+                    </td>
                   </tr>
                 );
               })}
