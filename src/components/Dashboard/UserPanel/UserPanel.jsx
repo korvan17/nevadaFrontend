@@ -165,7 +165,7 @@ function UserPanel({ user }) {
         {isSideBarOpen && (
           <>
             <Backdrop toggleSideBar={toggleSideBar} />
-            <PasswordSettings className="text-mainBlack font-semibold leading-6" />
+            <PasswordSettings />
           </>
         )}
       </AnimatePresence>
