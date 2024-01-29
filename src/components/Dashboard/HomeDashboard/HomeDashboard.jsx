@@ -9,6 +9,7 @@ import WarehouseIcon from "@mui/icons-material/Warehouse";
 import BookIcon from "@mui/icons-material/Book";
 import { fetchOrders } from "../../../../services/api";
 import { useSession } from "next-auth/react";
+import UserPanel from "../UserPanel/UserPanel";
 
 export default function HomeDashboard() {
   const [orders, setOrders] = useState([]);
@@ -77,7 +78,9 @@ export default function HomeDashboard() {
       
       shadow-custom-deep p-3"
       >
-        <h3 className="text-[18px] md:text-2xl font-bold mb-6">Outbound shipments</h3>
+        <h3 className="text-[18px] md:text-2xl font-bold mb-6">
+          Outbound shipments
+        </h3>
         <div className="">
           <ul className="flex flex-wrap gap-3">
             <li>
@@ -85,10 +88,9 @@ export default function HomeDashboard() {
                 title="Order created"
                 icon={<BorderColorIcon fontSize="large" />}
                 count={orderCounts.orderCreated}
-                
               />
             </li>
-            <li className=""> 
+            <li className="">
               <ShipmentStatusCard
                 title="Label created"
                 icon={<BookIcon fontSize="large" style={{ color: "orange" }} />}
@@ -99,7 +101,12 @@ export default function HomeDashboard() {
             <li>
               <ShipmentStatusCard
                 title="Out for Delivery"
-                icon={<LocalShippingIcon fontSize="large" style={{ color: "blue" }} />}
+                icon={
+                  <LocalShippingIcon
+                    fontSize="large"
+                    style={{ color: "blue" }}
+                  />
+                }
                 count={orderCounts.outForDelivery}
                 countStyle={{ color: "blue" }}
               />
@@ -107,7 +114,9 @@ export default function HomeDashboard() {
             <li>
               <ShipmentStatusCard
                 title="Delivered"
-                icon={<WarehouseIcon fontSize="large" style={{ color: "green" }}/>}
+                icon={
+                  <WarehouseIcon fontSize="large" style={{ color: "green" }} />
+                }
                 count={orderCounts.delivered}
                 countStyle={{ color: "green" }}
               />
