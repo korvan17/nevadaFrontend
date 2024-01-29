@@ -1,6 +1,7 @@
 "use client";
 import { DBHeader, Sidebar, UserPanel } from "@/components";
 import HomeDashboard from "@/components/Dashboard/HomeDashboard/HomeDashboard";
+import ArrowLeftTabletBtn from "@/components/UIElements/Buttons/ArrowLeftTabletBtn/ArrowLeftTabletBtn";
 import React, { useState } from "react";
 
 const Layout = ({ children }) => {
@@ -21,6 +22,7 @@ const Layout = ({ children }) => {
           <UserPanel />
         </div>
       </div>
+      <ArrowLeftTabletBtn />
     </>
   );
 };

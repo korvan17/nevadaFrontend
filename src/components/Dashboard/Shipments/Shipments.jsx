@@ -43,8 +43,11 @@ export default function Shipments() {
   return (
     <>
       <div
-        className="m-[0 auto] px-[16px] w-[288px] mb-[203px] mx-auto
-       sm:w-[343px]  md:mt-[12px] md:ml-0 md:w-[578px] md:pl-[20px] md:pr-[40px]"
+        className="m-x-0 px-4 w-[288px] mb-[203px] lg:w-[920px] 
+         sm:w-[343px]  md:mt-8 md:ml-0 md:w-[578px] md:pl-5 md:pr-10"
+        // className="ml-0 mt-8 mr-0 lg:w-[920px] lg:h-[611px]
+        // rounded-[4px] bg-[#FAFCF8] shadow-custom-deep pl-3 pr-2 pt-3
+        // md:w-[578px] md:h-[484px] w-[320px] h-[355px] items-center"
       >
         <span className="relative md:hidden">
           <span className="absolute top-[-2px] left-[16px]">
