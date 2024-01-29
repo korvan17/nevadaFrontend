@@ -7,6 +7,7 @@ import { AnimatePresence } from "framer-motion";
 import PasswordSettings from "../PasswordSettings/PasswordSettings";
 // import Backdrop from "@/components/Backdrop/Backdrop";
 import Calendar from "@/components/UIElements/Datepicker/Calendar";
+import { motion } from "framer-motion";
 import {
   CalendarMonthOutlined,
   NotificationsActiveOutlined,
@@ -21,15 +22,12 @@ import Backdrop from "@/components/Backdrop/Backdrop";
 
 function UserPanel({ user }) {
   const [isSideBarOpen, setIsSideBarOpen] = useState(false);
-  const [selectedItem, setSelectedItem] = useState(null);
   const { data: session } = useSession();
   if (session && session.user) {
   }
   const [notifications, setNotifications] = useState([]);
-  const toggleSideBar = (title) => {
-    setSelectedItem(userPanelItems.find((e) => e.title === title));
+  const toggleSideBar = () => {
     setIsSideBarOpen(!isSideBarOpen);
-    console.log("isSideBarOpen:", isSideBarOpen);
   };
 
   const receiveNotification = (message) => {
@@ -123,7 +121,7 @@ function UserPanel({ user }) {
           return (
             <li key={`${title}-${index}`}>
               <button
-                onClick={() => toggleSideBar(title)}
+                onClick={() => toggleSideBar()}
                 type="button"
                 className="flex w-[306px] columns-3 items-center"
               >
@@ -165,7 +163,7 @@ function UserPanel({ user }) {
         {isSideBarOpen && (
           <>
             <Backdrop toggleSideBar={toggleSideBar} />
-            <PasswordSettings />
+            <PasswordSettings toggleSideBar={toggleSideBar} />
           </>
         )}
       </AnimatePresence>

@@ -11,7 +11,8 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 
 import Image from "next/image";
-import securityIcon from "../../Icons/shield-lock.png";
+import FormContent from "./FormContent";
+import CloseBtn from "./CloseBtn";
 
 const initialValues = {
   current: "",
@@ -19,7 +20,7 @@ const initialValues = {
   repeat: "",
 };
 
-function PasswordSettings() {
+function PasswordSettings({ toggleSideBar }) {
   const [showPassword, setShowPassword] = useState({});
   const [focusedInput, setFocusedInput] = useState(null);
 
@@ -46,36 +47,15 @@ function PasswordSettings() {
         w-[320px]  sm:w-[343px] 
 
         text-mainBlack text-[16px] leading-[24px] font-semibold"
-      // initial={{ x: 1000 }}
-      // animate={{ x: 0 }}
-      // exit={{ x: 1000 }}
-      // transition={{
-      //   ease: "easeInOut",
-      //   duration: 0.5,
-      //   type: "tween",
-      //   stiffness: 100,
-      // }}
     >
+      <CloseBtn toggleSideBar={toggleSideBar} />
       <Formik
         initialValues={initialValues}
         onSubmit={handleFormSubmit}
         validationSchema={passwordChangeSchema}
       >
         <Form id="passwordSettingsForm" className="">
-          <div className="flex items-center justify-left gap-[8px] mb-[44px] bg-captionBlueDB p-[12px]">
-            <Image
-              width={24}
-              height={24}
-              src={securityIcon}
-              alt="security icon"
-            />
-            <div className="text-mainWhite text-left">
-              <h2 className="">Password settings</h2>
-              <p className=" text-[12px] leading-[16px] font-normal	">
-                Change password
-              </p>
-            </div>
-          </div>
+          <FormContent />
           <div className="px-[16px]">
             <b className="block mb-[24px] font-bold text-captionBlueDB">
               Change password
