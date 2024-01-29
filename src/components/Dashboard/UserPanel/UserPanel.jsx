@@ -17,6 +17,7 @@ import ArrowForwardIosOutlinedIcon from "@mui/icons-material/ArrowForwardIosOutl
 import { useSession } from "next-auth/react";
 import EditNoteIcon from "@mui/icons-material/EditNote";
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
+import Backdrop from "@/components/Backdrop/Backdrop";
 
 function UserPanel({ user }) {
   const [isSideBarOpen, setIsSideBarOpen] = useState(false);
@@ -28,6 +29,7 @@ function UserPanel({ user }) {
   const toggleSideBar = (title) => {
     setSelectedItem(userPanelItems.find((e) => e.title === title));
     setIsSideBarOpen(!isSideBarOpen);
+    console.log("isSideBarOpen:", isSideBarOpen);
   };
 
   const receiveNotification = (message) => {
@@ -162,10 +164,8 @@ function UserPanel({ user }) {
       <AnimatePresence>
         {isSideBarOpen && (
           <>
-            {/* <Backdrop toggleSideBar={toggleSideBar} /> */}
-            {/* <SideBar toggleSideBar={toggleSideBar}>
-              <PasswordSettings className="text-mainBlack font-semibold leading-6" />
-            </SideBar> */}
+            <Backdrop toggleSideBar={toggleSideBar} />
+            <PasswordSettings className="text-mainBlack font-semibold leading-6" />
           </>
         )}
       </AnimatePresence>
