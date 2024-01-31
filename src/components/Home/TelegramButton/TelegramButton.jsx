@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function TelegramButton() {
   return (
     <>
-      <Link href="https://t.me/ppcwarehouses">
+      <Link href="https://t.me/ppcwarehouses" target="_blank">
         <button
           className="shadow-color fixed z-10  rounded-[50px] 
         

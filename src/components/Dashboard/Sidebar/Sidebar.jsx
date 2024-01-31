@@ -53,9 +53,16 @@ const Sidebar = ({ isSideBarOpen, toggleSideBar }) => {
         })}
 
         <li className="absolute bottom-[32px] md:top-[210px]">
-          <button onClick={handleLogout}>
+          <Link
+            href="/"
+            onClick={() => {
+              toggleSideBar();
+              handleLogout();
+            }}
+            passHref
+          >
             <LogoutIcon />
-          </button>
+          </Link>
         </li>
       </motion.ul>
 
@@ -84,9 +91,11 @@ const Sidebar = ({ isSideBarOpen, toggleSideBar }) => {
           }
         })}
         <li className="py-[16px] px-[32px] md:px-[41px] md:py-[12px]">
-          <button onClick={handleLogout}>
-            <LogoutIcon />
-          </button>
+          <Link href="/" passHref>
+            <button onClick={handleLogout}>
+              <LogoutIcon />
+            </button>
+          </Link>
         </li>
       </ul>
     </>

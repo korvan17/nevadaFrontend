@@ -15,9 +15,11 @@ import { useSession } from "next-auth/react";
 
 function PasswordSettings({ toggleSideBar }) {
   const [showPassword, setShowPassword] = useState({});
-  // const [focusedInput, setFocusedInput] = useState(null);
+  const [focusedInput, setFocusedInput] = useState(null);
   const { data: session, status } = useSession();
-
+  const handleShowPassword = (name) => {
+    setShowPassword((prev) => ({ ...prev, [name]: !prev[name] }));
+  };
   useEffect(() => {
     if (status === "authenticated") {
       console.log("User is authenticated, session:", session);
@@ -46,7 +48,6 @@ function PasswordSettings({ toggleSideBar }) {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${session.user.jwt}`,
-            // 'Authorization': `Bearer ${session.accessToken}`
           },
           credentials: "include",
           body: JSON.stringify({

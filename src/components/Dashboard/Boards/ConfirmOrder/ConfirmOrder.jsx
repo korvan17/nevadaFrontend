@@ -106,7 +106,7 @@ export const ConfirmOrder = ({
   };
 
   return (
-    <div className="shadow-custom-deep relative ml-auto mr-auto max-h-[700px] overflow-y-auto pt-[10px] pl-[10px]">
+    <div className="shadow-custom-deep p-[20px] md:p-[40px] relative ml-auto mr-auto max-h-[700px] overflow-y-auto  ">
       <IconButton
         onClick={onClose}
         style={{ position: "absolute", top: 0, left: 0 }}
