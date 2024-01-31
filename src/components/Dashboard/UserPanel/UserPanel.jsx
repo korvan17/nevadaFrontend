@@ -91,9 +91,7 @@ function UserPanel({ user }) {
           <p className="text-xs not-italic font-normal leading-4 mb-1">
             Account Number: {session.user.id}
           </p>
-          <p className="text-alertRed text-xs not-italic font-normal leading-4 mb-4">
-            Discount -20%???
-          </p>
+
           <div className="relative">
             <button
               className="w-[306px] h-[68px] rounded-md
