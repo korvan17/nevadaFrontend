@@ -53,6 +53,8 @@ export default function Shipments() {
   const pageCount = Math.ceil(filteredOrders.length / PER_PAGE);
 
   return (
+
+
     <ShipmentsContainer
       searchQuery={searchQuery}
       handleSearchChange={handleSearchChange}
@@ -65,5 +67,6 @@ export default function Shipments() {
       currentPage={currentPage}
       PER_PAGE={PER_PAGE}
     />
+
   );
 }

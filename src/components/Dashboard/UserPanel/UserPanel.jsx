@@ -45,14 +45,12 @@ function UserPanel({ user }) {
     return () => clearInterval(messageListener);
   }, [notifications]);
   return (
-    <div className="bg-mainWhite h-[867px] w-[330px] p-3 mt-8 mb-[73px] rounded-xl shadow-custom-deep">
+    <div
+      className="bg-mainWhite h-[867px] w-[330px] p-3 mt-8 
+    mb-[73px] rounded-xl shadow-custom-deep md:absolute md:top-24
+    md:right-0 md:z-10 lg:static "
+    >
       <div className="flex mb-3">
-        {/* <CalendarMonthOutlined
-          fontSize="small"
-          stroke="#62686F"
-          style={{ height: "24px", width: "24px" }}
-        /> */}
-
         <h2 className="ml-2 font-bold leading-6">Calendar</h2>
       </div>
       <div className="mb-6">
