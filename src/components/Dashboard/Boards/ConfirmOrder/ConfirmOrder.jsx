@@ -106,7 +106,7 @@ export const ConfirmOrder = ({
   };
 
   return (
-    <div className="relative ml-auto mr-auto max-h-[700px] overflow-y-auto pt-[10px]">
+    <div className="shadow-custom-deep relative ml-auto mr-auto max-h-[700px] overflow-y-auto pt-[10px] pl-[10px]">
       <IconButton
         onClick={onClose}
         style={{ position: "absolute", top: 0, left: 0 }}
@@ -115,7 +115,7 @@ export const ConfirmOrder = ({
       </IconButton>
       <h2 className="hidden text-[20px] ">{createOrder}</h2>
       <h3 className="font-extrabold text-center">{confirmOrder}</h3>
-      <div className="mt-2">
+      <div className="mt-2 ">
         <p>Order Type: {orderType}</p>
         <p>Order Date: {orderDate}</p>
         <p>Company Name: {companyName}</p>

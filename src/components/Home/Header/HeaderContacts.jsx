@@ -50,7 +50,7 @@ function HeaderContacts({ menu = false }) {
         </>
       ) : (
         <p className={`${menu && "text-captionalGreyLigh"} `}>
-          Company inforamtion is loading, please wait...
+          Company information is loading, please wait...
         </p>
       )}
     </div>

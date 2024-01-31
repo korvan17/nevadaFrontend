@@ -5,10 +5,13 @@ import Backdrop from "@/components/Backdrop/Backdrop";
 import { LogoutIcon } from "@/components/Icons";
 import { usePathname } from "next/navigation";
 import { DBSideBarLinks } from "@/content";
+import { signOut } from "next-auth/react";
 
 const Sidebar = ({ isSideBarOpen, toggleSideBar }) => {
   const pathName = usePathname();
-
+  const handleLogout = async () => {
+    await signOut({ redirect: false });
+  };
   return (
     <>
       {isSideBarOpen && <Backdrop toggleSideBar={toggleSideBar} />}
@@ -50,9 +53,9 @@ const Sidebar = ({ isSideBarOpen, toggleSideBar }) => {
         })}
 
         <li className="absolute bottom-[32px] md:top-[210px]">
-          <Link href="/" onClick={toggleSideBar} passHref>
+          <button onClick={handleLogout}>
             <LogoutIcon />
-          </Link>
+          </button>
         </li>
       </motion.ul>
 
@@ -81,9 +84,9 @@ const Sidebar = ({ isSideBarOpen, toggleSideBar }) => {
           }
         })}
         <li className="py-[16px] px-[32px] md:px-[41px] md:py-[12px]">
-          <Link href="/" onClick={toggleSideBar} passHref>
+          <button onClick={handleLogout}>
             <LogoutIcon />
-          </Link>
+          </button>
         </li>
       </ul>
     </>

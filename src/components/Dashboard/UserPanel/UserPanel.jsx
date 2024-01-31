@@ -7,6 +7,7 @@ import { AnimatePresence } from "framer-motion";
 import PasswordSettings from "../PasswordSettings/PasswordSettings";
 // import Backdrop from "@/components/Backdrop/Backdrop";
 import Calendar from "@/components/UIElements/Datepicker/Calendar";
+import { motion } from "framer-motion";
 import {
   CalendarMonthOutlined,
   NotificationsActiveOutlined,
@@ -17,16 +18,15 @@ import ArrowForwardIosOutlinedIcon from "@mui/icons-material/ArrowForwardIosOutl
 import { useSession } from "next-auth/react";
 import EditNoteIcon from "@mui/icons-material/EditNote";
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
+import Backdrop from "@/components/Backdrop/Backdrop";
 
 function UserPanel({ user }) {
   const [isSideBarOpen, setIsSideBarOpen] = useState(false);
-  const [selectedItem, setSelectedItem] = useState(null);
   const { data: session } = useSession();
   if (session && session.user) {
   }
   const [notifications, setNotifications] = useState([]);
-  const toggleSideBar = (title) => {
-    setSelectedItem(userPanelItems.find((e) => e.title === title));
+  const toggleSideBar = () => {
     setIsSideBarOpen(!isSideBarOpen);
   };
 
@@ -119,7 +119,7 @@ function UserPanel({ user }) {
           return (
             <li key={`${title}-${index}`}>
               <button
-                onClick={() => toggleSideBar(title)}
+                onClick={() => toggleSideBar()}
                 type="button"
                 className="flex w-[306px] columns-3 items-center"
               >
@@ -160,10 +160,8 @@ function UserPanel({ user }) {
       <AnimatePresence>
         {isSideBarOpen && (
           <>
-            {/* <Backdrop toggleSideBar={toggleSideBar} /> */}
-            {/* <SideBar toggleSideBar={toggleSideBar}>
-              <PasswordSettings className="text-mainBlack font-semibold leading-6" />
-            </SideBar> */}
+            <Backdrop toggleSideBar={toggleSideBar} />
+            <PasswordSettings toggleSideBar={toggleSideBar} />
           </>
         )}
       </AnimatePresence>
