@@ -1,8 +1,8 @@
-'use client'
+"use client";
 
 import React, { useEffect } from "react";
-import { useRouter } from "next/navigation"; 
-import { DBHeader, UserPanel } from "@/components";
+import { useRouter } from "next/navigation";
+import { UserPanel } from "@/components";
 
 function Account() {
   const router = useRouter();
@@ -13,17 +13,16 @@ function Account() {
         router.push("/dashboard");
       }
     };
-    
-    handleResize();
-    
-    window.addEventListener('resize', handleResize);
 
-    return () => window.removeEventListener('resize', handleResize);
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
   }, [router]);
 
   return (
     <div className="block lg:hidden">
-      <DBHeader />
       <UserPanel />
     </div>
   );

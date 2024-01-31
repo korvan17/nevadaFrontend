@@ -4,9 +4,9 @@ import { Buttons } from "@/components/UIElements";
 export const CommonBoard = ({ title, icon, children }) => {
   return (
     <div
-      className="bg-mainWhite ml-auto mr-auto  w-[320px] mt-[20px] 
+      className=" ml-auto mr-auto p-5 w-[320px]  
     md:w-[458px]  lg:w-[458px] 
-    relative p-[12px]  pt-[26px]
+    relative 
     
     
     mb-[20px]"
