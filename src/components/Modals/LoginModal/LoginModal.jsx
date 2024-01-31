@@ -21,7 +21,7 @@ export default function LoginModal({ toggleModalRegistration }) {
   useEffect(() => {
     if (status === "authenticated") {
       console.log("Access Token:", session.accessToken);
-    } 
+    }
   }, [session, status]);
   const toggleModal = () => {
     setIsForgotPassword(!isForgotPassword);
@@ -78,7 +78,9 @@ export default function LoginModal({ toggleModalRegistration }) {
                 id="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className={`w-full p-4 border mt-[8px] rounded-[8px] leading-[1.5] ${loginError && email ? " border-red-600" : ""}`}
+                className={`w-full p-4 border mt-[8px] rounded-[8px] leading-[1.5] ${
+                  loginError && email ? " border-red-600" : ""
+                }`}
                 required
                 placeholder="Enter your e-mail"
               />
@@ -94,7 +96,9 @@ export default function LoginModal({ toggleModalRegistration }) {
                   id="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className={`w-full p-4 border mt-[8px] rounded-[8px] ${loginError && password ? "border-red-600" : ""}`}
+                  className={`w-full p-4 border mt-[8px] rounded-[8px] ${
+                    loginError && password ? "border-red-600" : ""
+                  }`}
                   required
                   placeholder="Enter your password"
                 />
@@ -118,11 +122,11 @@ export default function LoginModal({ toggleModalRegistration }) {
                 </button>
               </span>
               <div className={loginError ? "mt-4" : "hidden"}>
-              <p className="text-red-600 text-xs mt-[12px]">
-            *Something seems to have gone wrong. Check whether the password and
-            user login were entered correctly. Please note that the password
-            must consist of 8 characters
-          </p>
+                <p className="text-red-600 text-xs mt-[12px]">
+                  *Something seems to have gone wrong. Check whether the
+                  password and user login were entered correctly. Please note
+                  that the password must consist of 8 characters
+                </p>
               </div>
               {/*  */}
               <div className="flex mt-[12px] ">
