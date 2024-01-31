@@ -36,9 +36,6 @@ export default function Home() {
       <Faq />
       <GetQuoteButton />
       <TelegramButton />
-      {/* <ChatWindow /> */}
-      {/* <div id="myportal" /> */}
-
       <ModalRender />
     </>
   );
