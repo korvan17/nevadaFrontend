@@ -16,8 +16,10 @@ const Layout = ({ children }) => {
         <div className="hidden md:block">
           <Sidebar />
         </div>
+
         <div className="m-auto">{children}</div>
         <div className="hidden lg:block">
+
           <UserPanel />
         </div>
       </div>

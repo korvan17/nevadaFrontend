@@ -66,6 +66,7 @@ export default function HomeDashboard() {
   return (
     <>
       <div
+
         className="ml-auto mr-auto mt-[36px] w-[312px] 
         
         h-[650px] md:w-[612px] md:h-[402px] lg:h-[611px] 
@@ -77,6 +78,7 @@ export default function HomeDashboard() {
       
       
       shadow-custom-deep p-3"
+
       >
         <h3 className="text-[18px] md:text-2xl font-bold mb-6">
           Outbound shipments
