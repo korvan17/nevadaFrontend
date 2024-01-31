@@ -3,21 +3,19 @@ import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 import { passwordUpdateData } from "@/content";
-import { passwordChangeSchema } from "@/validationSchemas";
+// import { passwordChangeSchema } from "@/validationSchemas";
 
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import VisibilityIcon from "@mui/icons-material/Visibility";
-
 import { ErrorMessage, Field, Form, Formik } from "formik";
 
-import Image from "next/image";
 import FormContent from "./FormContent";
 import CloseBtn from "./CloseBtn";
 import { useSession } from "next-auth/react";
 
 function PasswordSettings({ toggleSideBar }) {
   const [showPassword, setShowPassword] = useState({});
-  const [focusedInput, setFocusedInput] = useState(null);
+  // const [focusedInput, setFocusedInput] = useState(null);
   const { data: session, status } = useSession();
 
   useEffect(() => {
@@ -38,8 +36,7 @@ function PasswordSettings({ toggleSideBar }) {
       });
       return;
     }
-    console.log(session);
-    console.log(session.user.jwt);
+
     setSubmitting(true);
     try {
       const response = await fetch(
@@ -86,9 +83,9 @@ function PasswordSettings({ toggleSideBar }) {
       <CloseBtn toggleSideBar={toggleSideBar} />
       <Formik
         initialValues={{
-          currentPassword: "", // Измените `current` на `currentPassword`
-          password: "", // Измените `new` на `password`
-          passwordConfirmation: "", // Это соответствует `repeat`
+          currentPassword: "",
+          password: "",
+          passwordConfirmation: "",
         }}
         onSubmit={handleFormSubmit}
       >
@@ -154,7 +151,7 @@ function PasswordSettings({ toggleSideBar }) {
               className="ml-[16px] text-captionalWhite button bg-captionBlueHover transition-all ease-out hover:bg-captionBlue rounded-[8px] py-[8px] px-[24px]"
               type="submit"
               title="Click to submit"
-              disabled={isSubmitting}
+              // disabled={isSubmitting}
             >
               Done
             </button>

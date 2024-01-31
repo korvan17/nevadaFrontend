@@ -134,12 +134,12 @@ export default function LoginModal({ toggleModalRegistration }) {
                   type="checkbox"
                   name="checkbox"
                   value="remember-me"
-                  className="w-[16px] hidden"
+                  className="w-[16px]"
                 />
                 <label
                 // for="checkbox"
                 >
-                  <span className="text-white ml-[12px] text-[12px] hidden leading-[1.5]">
+                  <span className="text-white ml-[12px] text-[12px] leading-[1.5]">
                     Remember Me
                   </span>
                 </label>
@@ -161,15 +161,15 @@ export default function LoginModal({ toggleModalRegistration }) {
                   Login
                 </button>
 
-                {/* <p className="text-white text-[12px] leading-[1.25] mt-[12px] mx-[auto]">
+                <p className="text-white text-[12px] leading-[1.25] mt-[12px] mx-[auto]">
                   Don’t have account?{" "}
                   <a
                     onClick={toggleModalRegistration}
                     className="text-captionBlue text-[12px] leading-[1.25]"
                   >
-                    Get A Quote
+                    Create new account
                   </a>
-                </p> */}
+                </p>
               </div>
             </div>
           </Form>
