@@ -22,7 +22,7 @@ export default function GetQuoteButton() {
         
          hover:bg-accentHoverYellow right-[12px] lg:right-[48px] 
          
-        top-[490px] lg:top-[702px]"
+        top-[360px] lg:top-[702px]"
       >
         GET A QUOTE
       </button>
