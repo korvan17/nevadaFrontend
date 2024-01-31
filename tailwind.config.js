@@ -64,7 +64,7 @@ module.exports = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       transitionDuration: {
-        150: "150ms", // Додаємо новий параметр transitionDuration
+        150: "150ms",
       },
     },
   },

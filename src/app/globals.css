@@ -133,7 +133,13 @@ body {
     transform: scale(1);
   }
 }
-
+@media (max-width: 768px) {
+  [data-aos] {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
 .button:active {
   animation: buttonPress 0.2s;
 }
