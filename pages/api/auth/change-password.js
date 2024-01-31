@@ -1,5 +1,6 @@
 import { getSession } from "next-auth/react";
-import axios from "axios";
+
+import bcrypt from "bcryptjs";
 import bcrypt from "bcryptjs";
 
 export default async function changePassword(req, res) {
@@ -13,7 +14,6 @@ export default async function changePassword(req, res) {
   }
 
   const { currentPassword, newPassword, passwordConfirmation } = req.body;
-
 
   if (
     !currentPassword ||
@@ -33,9 +33,7 @@ export default async function changePassword(req, res) {
       return res.status(403).json({ message: "Current password is incorrect" });
     }
 
-   
     const newHashedPassword = await bcrypt.hash(newPassword, 12);
-
 
     res.status(200).json({ message: "Password updated successfully" });
   } catch (error) {
