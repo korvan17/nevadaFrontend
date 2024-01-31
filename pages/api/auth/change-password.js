@@ -1,7 +1,6 @@
 import { getSession } from "next-auth/react";
 
 import bcrypt from "bcryptjs";
-import bcrypt from "bcryptjs";
 
 export default async function changePassword(req, res) {
   if (req.method !== "POST") {
