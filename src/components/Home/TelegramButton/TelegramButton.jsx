@@ -1,15 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
-
 import TelegramIcon from "@mui/icons-material/Telegram";
 import Link from "next/link";
 export default function TelegramButton() {
-  const [showGetQuoteModal, setShowGetQuoteModal] = useState(false);
-
-  const toggleGetQuoteModal = () => {
-    setShowGetQuoteModal(!showGetQuoteModal);
-  };
   return (
     <>
       <Link
@@ -18,7 +11,6 @@ export default function TelegramButton() {
         rel="noopener noreferrer"
       >
         <button
-          onClick={toggleGetQuoteModal}
           className="shadow-color fixed z-10  rounded-[50px] 
         
         w-[72px] h-[72px] leading-[16px] font-bold text-[16px] 
