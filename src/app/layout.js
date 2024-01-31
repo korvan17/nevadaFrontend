@@ -35,7 +35,11 @@ export default function RootLayout({ children }) {
         })(window,document,'script','dataLayer','${GTM_ID}');
         `}
       </Script>
-
+      <Script
+        src="https://www.google.com/recaptcha/api.js"
+        async
+        defer
+      ></Script>
       <Script id="fb-pixel" strategy="afterInteractive">
         {`           
          !function(f,b,e,v,n,t,s)

@@ -13,7 +13,7 @@ function ShipmentsTable({ currentPageData }) {
         <tr className="border-b  pt-[16px] pb-[8px] ">
           <th className={tableCellHeaderClass}>Arrival</th>
           <th className={tableCellHeaderClass}>Order</th>
-          <th className={tableCellHeaderClass}>Tracker (API)</th>
+          <th className={tableCellHeaderClass}>Tracker </th>
           <th className={tableCellHeaderClass}>Status</th>
           <th className={tableCellHeaderClass}>From</th>
           <th className={tableCellHeaderClass}>To</th>

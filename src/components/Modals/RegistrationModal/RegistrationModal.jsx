@@ -1,10 +1,11 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
-import CustomCaptcha from "@/components/Home/CustomCaptcha/CustomCaptcha";
+
+import ReCAPTCHA from "react-google-recaptcha";
 
 export default function RegistrationModal({ closeModal }) {
   const [titleModal, setTitleModal] = useState("Registration Form");
@@ -139,28 +140,37 @@ export default function RegistrationModal({ closeModal }) {
       toast.error(`Error submitting form: ${error.message}`);
     }
   };
+  const recaptchaRef = useRef(null);
+  const [isVerified, setIsVerified] = useState(false);
+
+  async function handleCaptchaSubmission(token) {
+    await verifyCaptcha(token)
+      .then(() => setIsVerified(true))
+      .catch(() => setIsVerified(false));
+  }
+  const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
 
   return (
     <div>
       <ToastContainer position="top-center z-30" autoClose={5000} />
 
-      <h2 className="text-center text-[24px] font-semibold mt-6 text-[#000A11] mb-[12px] rounded-[8px]">
+      <h2 className="text-center text-[24px] font-semibold  text-[#000A11] mb-[12px] rounded-[8px]">
         {titleModal}
       </h2>
       <p
         className="text-[14px] text-captionalGrey  text-center
-      w-[319px] md:-[523px] lg:w-[542px]  mb-[32px] mx-auto"
+      w-[319px] md:-[523px] lg:w-[542px]   mx-auto"
       >
         Registering on our website is easy and quick. To get started, obtain
         your personal "Account Number" - a unique identifier that will grant you
         access to our services and benefits. To do this, please fill out the
         "Get a Quote" form.
       </p>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} action="?" method="POST">
         <div
           className="flex flex-col  lg:flex-row   justify-center items-center 
         
-        lg:gap-[50px] px-[19px] mb-[48px]"
+        lg:gap-[50px] px-[19px] mb-[15px]"
         >
           <div>
             <div className="mb-4">
@@ -287,23 +297,31 @@ export default function RegistrationModal({ closeModal }) {
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
               ></textarea>
-              <CustomCaptcha setCaptchaValid={setIsCaptchaValid} />
             </div>
           </div>
         </div>
+        <div className="flex justify-center gap-3 flex-wrap flex-col items-center">
+          <div className="">
+            <ReCAPTCHA
+              sitekey={RECAPTCHA_SITE_KEY}
+              size="normal"
+              onChange={handleCaptchaSubmission}
+            />
+          </div>
 
-        <div className="flex justify-center">
-          <button
-            type="submit"
-            className={`${
-              isButtonActive
-                ? "bg-accentYellow hover:bg-accentHoverYellow"
-                : "bg-gray-400 cursor-not-allowed"
-            } text-white px-4 py-2 rounded ml-[auto] mr-[auto] font-bold text-[16px] w-[179px] h-[48px]`}
-            disabled={!isButtonActive || !isCaptchaValid}
-          >
-            Submit
-          </button>
+          <div className="">
+            <button
+              type="submit"
+              className={`${
+                isButtonActive
+                  ? "bg-accentYellow hover:bg-accentHoverYellow"
+                  : "bg-gray-400 cursor-not-allowed"
+              } text-white px-4 py-2 rounded ml-[auto] mr-[auto] font-bold text-[16px] w-[179px] h-[48px]`}
+              disabled={!isButtonActive || !isCaptchaValid}
+            >
+              Submit
+            </button>
+          </div>
         </div>
       </form>
     </div>
