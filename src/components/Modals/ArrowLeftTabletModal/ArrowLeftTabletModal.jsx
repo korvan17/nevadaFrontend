@@ -6,7 +6,9 @@ import React, { useState } from "react";
 export default function ArrowLeftTabletModal({ closeModal }) {
   return (
     <>
-      <UserPanel />
+      <div className="hidden md:block lg:hidden">
+        <UserPanel />
+      </div>
     </>
   );
 }
