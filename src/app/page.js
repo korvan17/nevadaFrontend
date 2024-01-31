@@ -16,6 +16,7 @@ import GetQuoteButton from "@/components/UIElements/GetQueteButton/GetQuoteButto
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import TelegramButton from "@/components/Home/TelegramButton/TelegramButton";
 
 export default function Home() {
   useEffect(() => {
@@ -34,6 +35,7 @@ export default function Home() {
       {/* <Certificates /> */}
       <Faq />
       <GetQuoteButton />
+      <TelegramButton />
       {/* <ChatWindow /> */}
       {/* <div id="myportal" /> */}
 
