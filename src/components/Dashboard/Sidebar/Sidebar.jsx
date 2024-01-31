@@ -11,7 +11,6 @@ const Sidebar = ({ isSideBarOpen, toggleSideBar }) => {
   const pathName = usePathname();
   const handleLogout = async () => {
     await signOut({ redirect: false });
-    window.location.href = "/";
   };
   return (
     <>
