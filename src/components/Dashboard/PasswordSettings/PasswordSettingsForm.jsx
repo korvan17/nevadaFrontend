@@ -24,7 +24,7 @@ function PasswordSettingsForm({
       <Form id="passwordSettingsForm">
         <FormContent />
         <div className="px-[16px]">
-          <b className="block mb-[24px] font-bold text-captionBlueDB">
+          <b className="block mb-[24px] font-bold text-captionBlueDB ">
             Change password
           </b>
           <ul className="mb-[32px] ">

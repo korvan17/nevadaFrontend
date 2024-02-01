@@ -69,7 +69,7 @@ function PasswordSettings({ toggleSideBar }) {
         bg-mainWhite pb-[48px]
         fixed top-[50%] left-[50%] z-50 origin-center translate-x-[-50%]  translate-y-[-50%] 
 
-        w-[320px]  sm:w-[343px] 
+        w-[320px]  sm:w-[343px] lg:w-[640px]
 
         text-mainBlack text-[16px] leading-[24px] font-semibold"
     >
