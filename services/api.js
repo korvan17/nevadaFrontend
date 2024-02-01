@@ -65,8 +65,11 @@ export const fetchPricePackings = async () => {
 // Получение ордеров:
 export const fetchOrders = async (accessToken) => {
   try {
+    // Setting a high pageSize value, assuming your API supports this.
+    // Be cautious with setting very high limits as this can impact performance.
+    const pageSize = 10000; // This should be set to a value that you expect will be larger than the total number of orders
     const response = await fetch(
-      "https://nevadacms.onrender.com/api/orders?populate=products.feature",
+      `https://nevadacms.onrender.com/api/orders?populate=products.feature&pagination[pageSize]=${pageSize}`,
       {
         headers: {
           Authorization: `Bearer ${accessToken}`,
@@ -81,7 +84,7 @@ export const fetchOrders = async (accessToken) => {
     }
 
     const data = await response.json();
-    return data.resData;
+    return data.resData; // Ensure this matches the actual key in the JSON response
   } catch (error) {
     console.error("Error fetching orders:", error.message);
     throw error;
