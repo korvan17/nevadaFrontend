@@ -52,6 +52,7 @@ export const fetchPriceContainers = async () => {
 // Получение цен на упаковку:
 export const fetchPricePackings = async () => {
   try {
+    const pageSize = 100;
     const response = await fetch(`${API_BASE_URL}/price-packings`);
     const result = await response.json();
     // console.log("price-packings:", result.data);
@@ -63,11 +64,9 @@ export const fetchPricePackings = async () => {
 };
 
 // Получение ордеров:
+
 export const fetchOrders = async (accessToken) => {
   try {
-    // Setting a high pageSize value, assuming your API supports this.
-    // Be cautious with setting very high limits as this can impact performance.
-    const pageSize = 10000; // This should be set to a value that you expect will be larger than the total number of orders
     const response = await fetch(
       `https://nevadacms.onrender.com/api/orders?populate=products.feature&pagination[pageSize]=${pageSize}`,
       {
@@ -90,3 +89,45 @@ export const fetchOrders = async (accessToken) => {
     throw error;
   }
 };
+
+// Получение получение много ордеров:
+// export const fetchAllOrders = async (accessToken) => {
+//   try {
+//     const pageSize = 100; // Размер страницы
+//     let allOrders = [];
+//     let page = 1;
+
+//     while (true) {
+//       const response = await fetch(
+//         `https://nevadacms.onrender.com/api/orders?populate=products.feature&pagination[pageSize]=${pageSize}&pagination[page]=${page}`,
+//         {
+//           headers: {
+//             Authorization: `Bearer ${accessToken}`,
+//           },
+//         }
+//       );
+
+//       if (!response.ok) {
+//         throw new Error(
+//           `HTTP error ${response.status}: ${await response.text()}`
+//         );
+//       }
+
+//       const data = await response.json();
+//       const ordersOnPage = data.resData;
+
+//       if (ordersOnPage.length === 0) {
+//         // Если на странице нет заказов, то завершаем цикл
+//         break;
+//       }
+
+//       allOrders = allOrders.concat(ordersOnPage); // Объединяем текущие заказы с предыдущими
+//       page++; // Увеличиваем номер страницы для следующего запроса
+//     }
+
+//     return allOrders;
+//   } catch (error) {
+//     console.error("Error fetching orders:", error.message);
+//     throw error;
+//   }
+// };
