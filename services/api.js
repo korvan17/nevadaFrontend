@@ -52,6 +52,7 @@ export const fetchPriceContainers = async () => {
 // Получение цен на упаковку:
 export const fetchPricePackings = async () => {
   try {
+    const pageSize = 100;
     const response = await fetch(`${API_BASE_URL}/price-packings`);
     const result = await response.json();
     // console.log("price-packings:", result.data);
@@ -63,6 +64,7 @@ export const fetchPricePackings = async () => {
 };
 
 // Получение ордеров:
+
 export const fetchOrders = async (accessToken) => {
   try {
     const response = await fetch(

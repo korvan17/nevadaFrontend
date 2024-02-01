@@ -10,8 +10,15 @@ import { signOut } from "next-auth/react";
 const Sidebar = ({ isSideBarOpen, toggleSideBar }) => {
   const pathName = usePathname();
   const handleLogout = async () => {
-    await signOut({ redirect: false });
+    const isConfirmedLogout = window.confirm(
+      "Are you sure you want to log out?"
+    );
+
+    if (isConfirmedLogout) {
+      await signOut({ redirect: false });
+    }
   };
+
   return (
     <>
       {isSideBarOpen && <Backdrop toggleSideBar={toggleSideBar} />}
