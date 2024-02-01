@@ -50,11 +50,9 @@ export default function Shipments() {
 
   const offset = currentPage * PER_PAGE;
   const currentPageData = filteredOrders.slice(offset, offset + PER_PAGE);
-  const pageCount = Math.ceil(filteredOrders.length / PER_PAGE);
+  const pageCount = Math.max(1, Math.ceil(filteredOrders.length / PER_PAGE));
 
   return (
-
-
     <ShipmentsContainer
       searchQuery={searchQuery}
       handleSearchChange={handleSearchChange}
@@ -67,6 +65,5 @@ export default function Shipments() {
       currentPage={currentPage}
       PER_PAGE={PER_PAGE}
     />
-
   );
 }
