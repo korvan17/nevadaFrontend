@@ -43,6 +43,9 @@ export default function Shipments() {
       return orderStatus ? orderStatus === filter : filter === "Order created";
     });
 
+    setCurrentPage(0);
+    setFilteredOrders(filteredOrders);
+
     return filter !== "All"
       ? setFilteredOrders(filteredOrders)
       : setFilteredOrders([...orders]);
