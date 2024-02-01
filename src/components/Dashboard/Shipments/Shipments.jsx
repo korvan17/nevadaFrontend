@@ -4,8 +4,8 @@ import { fetchOrders } from "../../../../services/api";
 import { useSession } from "next-auth/react";
 import ShipmentsContainer from "./ShipmentsContainer";
 
-const PER_PAGE = 8;
 export default function Shipments() {
+  const PER_PAGE = 8;
   const [currentPage, setCurrentPage] = useState(0);
   const [filteredOrders, setFilteredOrders] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
@@ -49,8 +49,11 @@ export default function Shipments() {
   };
 
   const offset = currentPage * PER_PAGE;
-  const currentPageData = filteredOrders.slice(offset, offset + PER_PAGE);
-  const pageCount = Math.max(1, Math.ceil(filteredOrders.length / PER_PAGE));
+  const filteredByTracker = filteredOrders.filter(
+    ({ attributes: { tracker } }) => tracker
+  );
+  const currentPageData = filteredByTracker.slice(offset, offset + PER_PAGE);
+  const pageCount = Math.max(1, Math.ceil(filteredByTracker.length / PER_PAGE));
 
   return (
     <ShipmentsContainer
