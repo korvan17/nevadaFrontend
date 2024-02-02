@@ -13,14 +13,13 @@ const Layout = ({ children }) => {
   return (
     <>
       <DBHeader toggleSideBar={toggleSideBar} isSideBarOpen={isSideBarOpen} />
-      <div className="pt-[131px] md:pt-[129px] md:flex md:gap-[20px]">
+      <div className="pt-[138px] md:pt-[129px] md:flex md:gap-[20px] bg-mainWhite">
         <div className="hidden md:block">
           <Sidebar />
         </div>
 
-        <div className="m-auto">{children}</div>
+        <div className="pt-[12px] lg:pt-[32px] mx-auto">{children}</div>
         <div className="hidden lg:block">
-
           <UserPanel />
         </div>
       </div>
