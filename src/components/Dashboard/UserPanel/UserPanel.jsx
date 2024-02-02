@@ -46,7 +46,7 @@ function UserPanel({ user }) {
   }, [notifications]);
   return (
     <div
-      className="bg-mainWhite h-[867px] w-[330px] p-3 mt-8 
+      className="bg-mainWhite h-[867px] w-[330px] p-3  
     mb-[73px] rounded-xl shadow-custom-deep md:absolute md:top-24
     md:right-0 md:z-10 lg:static "
     >

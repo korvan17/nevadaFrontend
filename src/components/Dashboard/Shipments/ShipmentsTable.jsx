@@ -21,7 +21,7 @@ function ShipmentsTable({ currentPageData }) {
           <th className={tableCellHeaderClass}>Boxes</th>
         </tr>
       </thead>
-      <tbody className="font-normal text-[11px] leading-[16px]  border-t border-t-captionalGrey">
+      <tbody className="max-h-[785px] md:max-h-[845px] lg:max-h-[929px] font-normal text-[11px] leading-[16px]  border-t border-t-captionalGrey">
         {currentPageData.map((order, index) => {
           const {
             orderDate,
@@ -34,7 +34,7 @@ function ShipmentsTable({ currentPageData }) {
           } = order.attributes;
           // Only render the row if there's a tracker
 
-          if (!tracker) return null;
+          // if (!tracker) return null;
 
           return (
             <tr

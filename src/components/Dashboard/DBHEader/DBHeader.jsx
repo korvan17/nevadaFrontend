@@ -6,7 +6,7 @@ import Link from "next/link";
 
 function DBHeader({ toggleSideBar, isSideBarOpen }) {
   return (
-    <header className="bg-mainWhite fixed top-0 left-0 z-20 w-full text-mainBlack md:bg-mainBlack md:text-mainWhite">
+    <header className="bg-mainWhite fixed top-0 left-0 z-10 w-full text-mainBlack md:bg-mainBlack md:text-mainWhite">
       <div className="hidden md:block w-full">
         <HeaderContacts />
       </div>

@@ -68,7 +68,7 @@ export const fetchPricePackings = async () => {
 export const fetchOrders = async (accessToken) => {
   try {
     const response = await fetch(
-      `https://nevadacms.onrender.com/api/orders?populate=products.feature&pagination[pageSize]=${pageSize}`,
+      `https://nevadacms.onrender.com/api/orders?populate=products.feature&pagination[pageSize]=${100}`,
       {
         headers: {
           Authorization: `Bearer ${accessToken}`,

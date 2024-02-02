@@ -1,10 +1,10 @@
 import { SearchIcon } from "@/components/Icons";
 import CreateOrderButton from "@/components/UIElements/Buttons/CreateOrderButton/CreateOrderButton";
 import React from "react";
-import ReactPaginate from "react-paginate";
 import ShipmentsTable from "./ShipmentsTable";
 import ShipmentsFilters from "./ShipmentsFilters";
 import FilterAltOutlinedIcon from "@mui/icons-material/FilterAltOutlined";
+import ShipmentsPagination from "./ShipmentsPagination";
 
 function ShipmentsContainer({
   searchQuery,
@@ -63,36 +63,13 @@ function ShipmentsContainer({
         ></div>
         <ShipmentsTable currentPageData={currentPageData} />
         {orders.length > PER_PAGE && (
-          <ReactPaginate
-            previousLabel={"← Previous"}
-            nextLabel={"Next →"}
+          <ShipmentsPagination
             pageCount={pageCount}
-            onPageChange={handlePageClick}
-            containerClassName={
-              "flex list-none justify-center gap-[30px] mt-[25px]"
-            }
-            previousLinkClassName={""}
-            nextLinkClassName={""}
-            disabledClassName={""}
-            activeClassName={""}
-            pageLinkClassName={""}
-            forcePage={currentPage}
-            pageRangeDisplayed={2}
-            marginPagesDisplayed={1}
-            breakLabel={"..."}
-            breakClassName={""}
-            breakLinkClassName={""}
+            handlePageClick={handlePageClick}
+            currentPage={currentPage}
           />
         )}
-        {/* <ReactPaginate
-            breakLabel="..."
-            nextLabel="next >"
-            onPageChange={handlePageClick}
-            pageRangeDisplayed={3}
-            pageCount={pageCount}
-            previousLabel="< previous"
-            renderOnZeroPageCount={null}
-          /> */}
+
         <div className="hidden md:block absolute bottom-[30px] left-[12px] lg:bottom-[37px]">
           <CreateOrderButton />
         </div>
