@@ -78,6 +78,13 @@ export default function RegistrationModal({ closeModal }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (
+      businessDirection === "Select Your Business" ||
+      businessDirection === ""
+    ) {
+      toast.error("Please select your business direction.");
+      return;
+    }
 
     if (!isCaptchaValid) {
       toast.error("Please complete the reCAPTCHA.");
@@ -92,6 +99,7 @@ export default function RegistrationModal({ closeModal }) {
       toast.error("Full Name must be at least 3 characters.");
       return;
     }
+
     const data = {
       titleModal,
       businessDirection,
