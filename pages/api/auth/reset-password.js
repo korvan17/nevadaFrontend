@@ -14,7 +14,7 @@ export default async function resetPassword(req, res) {
     }
 
     const response = await axios.post(
-      "https://nevadacms.onrender.com/api/auth/reset-password",
+      `${process.env.NEXT_PUBLIC_API_URL}api/auth/reset-password`,
       {
         code,
         password,

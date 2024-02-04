@@ -56,7 +56,7 @@ export default function HomeDashboard() {
       } else if (status === "Delivered") {
         counts.delivered += 1;
       } else {
-        console.log("Unrecognized status:", status);
+        
       }
     });
 

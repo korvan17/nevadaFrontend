@@ -1,11 +1,13 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
 
-import { fetchOrders } from "../../../../services/api";
+import { fetchAllOrders, fetchOrders } from "../../../../services/api";
 import { useSession } from "next-auth/react";
-import ReactPaginate from "react-paginate";
+
 import FullPrice from "../FullPrice/FullPrice";
 import { Add, ExpandLessOutlined } from "@mui/icons-material";
+
+import ShipmentsPagination from "../Shipments/ShipmentsPagination";
 const PER_PAGE = 1;
 export default function Messages() {
   const [orders, setOrders] = useState([]);
@@ -28,7 +30,7 @@ export default function Messages() {
 
   useEffect(() => {
     if (status === "authenticated" && session.user.jwt) {
-      fetchOrders(session.user.jwt).then(setOrders).catch(console.error);
+      fetchAllOrders(session.user.jwt).then(setOrders).catch(console.error);
     }
   }, [status, session]);
 
@@ -49,7 +51,7 @@ export default function Messages() {
   const submitTrackerNumber = async (orderId, trackerNumber) => {
     try {
       const response = await fetch(
-        `https://nevadacms.onrender.com/api/orders/${orderId}`,
+        `${process.env.NEXT_PUBLIC_API_URL}api/orders/${orderId}`,
         {
           method: "PUT",
           headers: {
@@ -85,7 +87,7 @@ export default function Messages() {
   const handleAccept = async (orderId) => {
     try {
       const response = await fetch(
-        `https://nevadacms.onrender.com/api/orders/${orderId}`,
+        `${process.env.NEXT_PUBLIC_API_URL}api/orders/${orderId}`,
         {
           method: "PUT",
           headers: {
@@ -120,7 +122,6 @@ export default function Messages() {
 
   const handleDecline = (orderId) => {
     console.log("Declined order with ID:", orderId);
-    //
   };
   const handlePageClick = ({ selected }) => {
     setCurrentPage(selected);
@@ -161,9 +162,10 @@ export default function Messages() {
   }, []);
 
   return (
-
     <div className=" ">
-      <h2 className="ml-[10px] md:ml-0 text-[16px] md:text-[24px]  leading-6 font-bold mb-3  mt-2 lg:mt-0">Messages</h2>
+      <h2 className="ml-[10px] md:ml-0 text-[16px] md:text-[24px]  leading-6 font-bold mb-3  mt-2 lg:mt-0">
+        Messages
+      </h2>
 
       {isLoading ? (
         <div className="loader">Loading...</div>
@@ -293,14 +295,10 @@ export default function Messages() {
             ))}
           </ul>
           {pageCount > 1 && (
-            <ReactPaginate
-              previousLabel={"← Previous"}
-              nextLabel={"Next →"}
+            <ShipmentsPagination
               pageCount={pageCount}
-              onPageChange={handlePageClick}
-              containerClassName={"pagination"}
-              activeClassName={"active"}
-              className="flex justify-center gap-5 pb-8"
+              handlePageClick={handlePageClick}
+              currentPage={currentPage}
             />
           )}
           {currentPageData.length === 0 && (

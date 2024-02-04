@@ -33,9 +33,6 @@ export default function Pricing() {
     loadinData();
   }, []);
 
-  // console.log("productPricing", productPricing);
-  console.log("pricingContainers", pricingContainers);
-
   const formatNumber = (num) => {
     return parseFloat(num).toFixed(2).replace(".", ",");
   };

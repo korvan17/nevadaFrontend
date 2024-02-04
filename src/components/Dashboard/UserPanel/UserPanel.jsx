@@ -73,11 +73,11 @@ function UserPanel({ user }) {
             <p className="font-semibold leading-6 mb-2">
               Username: {session.user.fullName}
             </p>
-            <EditNoteIcon
+            {/* <EditNoteIcon
               fontSize="small"
               stroke="#62686F"
               style={{ height: "24px", width: "24px" }}
-            />
+            /> */}
           </div>
           <p className="text-xs not-italic font-normal leading-4 mb-1">
             Phone: {session.user.phone}

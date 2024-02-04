@@ -20,7 +20,7 @@ export default function LoginModal({ toggleModalRegistration }) {
 
   useEffect(() => {
     if (status === "authenticated") {
-      console.log("Access Token:", session.accessToken);
+     
     }
   }, [session, status]);
   const toggleModal = () => {

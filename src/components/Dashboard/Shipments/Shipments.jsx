@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { fetchOrders } from "../../../../services/api";
+import { fetchAllOrders} from "../../../../services/api";
 import { useSession } from "next-auth/react";
 import ShipmentsContainer from "./ShipmentsContainer";
 
@@ -19,16 +19,32 @@ export default function Shipments() {
 
   useEffect(() => {
     if (status === "authenticated" && session.user.jwt) {
-      fetchOrders(session.user.jwt).then(setOrders).catch(console.error);
+      fetchAllOrders(session.user.jwt)
+        .then((fetchedOrders) => {
+          const sortedOrders = fetchedOrders.sort((a, b) => {
+            return (
+              new Date(b.attributes.createdAt) -
+              new Date(a.attributes.createdAt)
+            );
+          });
+          setOrders(sortedOrders);
+        })
+        .catch(console.error);
     }
   }, [status, session]);
 
   useEffect(() => {
-    const filtered = orders.filter((order) =>
-      order.attributes.customId
-        .toLowerCase()
-        .includes(searchQuery.toLowerCase())
-    );
+    const filtered = orders
+      .filter((order) =>
+        order.attributes.customId
+          .toLowerCase()
+          .includes(searchQuery.toLowerCase())
+      )
+      .sort(
+        (a, b) =>
+          new Date(b.attributes.createdAt) - new Date(a.attributes.createdAt)
+      );
+
     setFilteredOrders(filtered);
     setCurrentPage(0);
   }, [searchQuery, orders]);

@@ -16,7 +16,7 @@ export default NextAuth({
         console.log("Authorize function called", credentials);
         try {
           const res = await axios.post(
-            "https://nevadacms.onrender.com/api/auth/local",
+            `${process.env.NEXT_PUBLIC_API_URL}api/auth/local`,
             {
               identifier: credentials.email,
               password: credentials.password,
@@ -52,6 +52,6 @@ export default NextAuth({
       return session;
     },
   },
-  // Другие настройки...
+ 
   secret: process.env.NEXTAUTH_SECRET,
 });

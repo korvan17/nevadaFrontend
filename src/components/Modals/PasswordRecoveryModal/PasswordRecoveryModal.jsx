@@ -17,7 +17,7 @@ export default function PasswordRecoveryModal({ toggleModalRegistration }) {
     setSubmitting(true);
     try {
       const response = await axios.post(
-        "https://nevadacms.onrender.com/api/auth/forgot-password",
+        `${process.env.NEXT_PUBLIC_API_URL}api/auth/forgot-password`,
         {
           email: values.email,
         }

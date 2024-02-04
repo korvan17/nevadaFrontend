@@ -34,7 +34,6 @@ export const ConfirmOrder = ({
 
   useEffect(() => {
     if (status === "authenticated") {
-      console.log("Access Token:", session.accessToken);
     }
   }, [session, status]);
   const mailFor = session.user.username;
@@ -65,7 +64,7 @@ export const ConfirmOrder = ({
       comments,
       totalMasterBoxes,
     };
-    console.log(session.user.username);
+
     try {
       const orderMailResponse = await fetch("/api/orders", {
         method: "POST",
@@ -74,7 +73,7 @@ export const ConfirmOrder = ({
 
       if (orderMailResponse.ok) {
         const orderBackendResponse = await fetch(
-          "https://nevadacms.onrender.com/api/orders",
+          `${process.env.NEXT_PUBLIC_API_URL}api/orders`,
           {
             method: "POST",
             credentials: "include",

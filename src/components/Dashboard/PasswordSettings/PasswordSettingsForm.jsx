@@ -80,7 +80,7 @@ function PasswordSettingsForm({
           className="ml-[16px] text-captionalWhite button bg-captionBlueHover transition-all ease-out hover:bg-captionBlue rounded-[8px] py-[8px] px-[24px]"
           type="submit"
           title="Click to submit"
-          // disabled={isSubmitting}
+
         >
           Done
         </button>

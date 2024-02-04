@@ -102,7 +102,7 @@ export default function GetQuoteWidgetModal({ closeModal }) {
 
       if (contactsResponse.ok) {
         const registrationResponse = await fetch(
-          "https://nevadacms.onrender.com/api/auth/local/register",
+          `${process.env.NEXT_PUBLIC_API_URL}api/auth/local/register`,
           {
             method: "POST",
             headers: {

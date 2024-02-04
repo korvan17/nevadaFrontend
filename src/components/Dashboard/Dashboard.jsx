@@ -5,24 +5,14 @@ import { CreateOrderForm } from "@/components/Dashboard/Boards/CreateOrderForm/C
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import React, { useEffect } from "react";
-// import ShipmentSidebarDashboard from "./ShipmentSidebarDashboard/ShipmentSidebarDashboard";
+
 import HomeDashboard from "./HomeDashboard/HomeDashboard";
 
 function Dashboard({ children }) {
   const router = useRouter();
   const { status } = useSession();
 
-  // useEffect(() => {
-  //   if (status === "unauthenticated") {
-  //     router.push("/");
-  //   }
-  // }, [status, router]);
 
-  // if (status === "loading") {
-  //   return <div>Loading...</div>;
-  // }
-
-  // if (status === "authenticated") {
   return (
     <>
       <HomeDashboard />

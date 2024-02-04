@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 
-// import { motion } from "framer-motion";
+
 import Backdrop from "@/components/Backdrop/Backdrop";
 
 export default function BasicModal({
@@ -18,11 +18,11 @@ export default function BasicModal({
   widthLg,
   heightMd,
   heightLg,
-  // maxWidth,
+
   maxHeightSm,
   padding = "8px",
 }) {
-  //не трогать, уб`т!
+
   const defaultModalStyle = {
     width: widthSm,
     height: heightSm,
@@ -83,10 +83,7 @@ export default function BasicModal({
   };
 
   if (!modalIsOpen || !modalRoot) return null;
-  /**
- *       className="fixed top-0 left-0 w-full h-full flex items-center
-      justify-center bg-black bg-opacity-75 z-40"
- */
+
   return createPortal(
     <>
       <Backdrop closeModal={closeModal}></Backdrop>

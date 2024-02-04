@@ -23,7 +23,7 @@ const createProductMessage = (product) => {
         product.features
       )
         .map(([key, value]) => `${key}: ${value}`)
-        .join(", ")}</div>`, // Correctly format the features object
+        .join(", ")}</div>`,  
     product.otherFeatureDetails &&
       `<div style="font-size: 14px;">Other Details: ${product.otherFeatureDetails}</div>`,
   ];
