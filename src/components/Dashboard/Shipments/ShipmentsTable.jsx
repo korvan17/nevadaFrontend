@@ -32,16 +32,13 @@ function ShipmentsTable({ currentPageData }) {
             warehouseAddress,
             totalMasterBoxes,
           } = order.attributes;
-          // Only render the row if there's a tracker
-
-          // if (!tracker) return null;
 
           return (
             <tr
               key={index}
               className="border-b border-gray-200 hover:bg-gray-100 text-left"
             >
-              <td className="text-left flex gap-[4px] w-[75px]">
+              <td className="text-left flex gap-[4px] w-[88px]">
                 <span>
                   <CalendarIcon />
                 </span>

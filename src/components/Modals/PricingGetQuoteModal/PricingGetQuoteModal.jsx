@@ -94,7 +94,7 @@ export default function PricingGetQuoteModal({ selectedTitle, closeModal }) {
 
       if (contactsResponse.ok) {
         const registrationResponse = await fetch(
-          "https://nevadacms.onrender.com/api/auth/local/register",
+          `${process.env.NEXT_PUBLIC_API_URL}auth/local/register`,
           {
             method: "POST",
             headers: {

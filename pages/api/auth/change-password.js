@@ -23,7 +23,7 @@ export default async function changePassword(req, res) {
   }
 
   try {
-    // Verify the current password
+    
     const isMatch = await bcrypt.compare(
       currentPassword,
       session.user.passwordHash

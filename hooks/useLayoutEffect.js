@@ -1,18 +1,18 @@
-import { useLayoutEffect } from "react";
+// import { useLayoutEffect } from "react";
 
-export const useLockBodyScroll = (lock) => {
-  useLayoutEffect(() => {
-    // Запомнить первоначальный стиль overflow
-    const originalStyle = window.getComputedStyle(document.body).overflow;
+// export const useLockBodyScroll = (lock) => {
+//   useLayoutEffect(() => {
 
-    if (lock) {
-      // Предотвращение прокрутки
-      document.body.style.overflow = "hidden";
-    }
+//     const originalStyle = window.getComputedStyle(document.body).overflow;
 
-    return () => {
-      // Возврат к первоначальному стилю overflow
-      document.body.style.overflow = originalStyle;
-    };
-  }, [lock]); // Перезапускать эффект только если значение lock изменилось
-};
+//     if (lock) {
+
+//       document.body.style.overflow = "hidden";
+//     }
+
+//     return () => {
+
+//       document.body.style.overflow = originalStyle;
+//     };
+//   }, [lock]);
+// };

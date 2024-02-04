@@ -34,12 +34,12 @@ export default function RegistrationModal({ closeModal }) {
   const [isButtonActive, setIsButtonActive] = useState(false);
   const [isCaptchaValid, setIsCaptchaValid] = useState(false);
   useEffect(() => {
-    if (businessDirection && fullName && email && phone) {
+    if (businessDirection && fullName && email && phone && isCaptchaValid) {
       setIsButtonActive(true);
     } else {
       setIsButtonActive(false);
     }
-  }, [businessDirection, fullName, email, phone]);
+  }, [businessDirection, fullName, email, phone, isCaptchaValid]);
 
   useEffect(() => {
     sessionStorage.setItem("businessDirection", businessDirection);
@@ -74,11 +74,22 @@ export default function RegistrationModal({ closeModal }) {
     sessionStorage.removeItem("companyWebsite");
     sessionStorage.removeItem("message");
   };
+  const passwordStart = process.env.NEXT_PUBLIC_PASSWORD_START;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (!isCaptchaValid) {
-      toast.error("Captcha validation failed.");
+      toast.error("Please complete the reCAPTCHA.");
+      return;
+    }
+    const emailRegex = /\S+@\S+\.\S+/;
+    if (!emailRegex.test(email)) {
+      toast.error("Please enter a valid email address.");
+      return;
+    }
+    if (fullName.length < 3) {
+      toast.error("Full Name must be at least 3 characters.");
       return;
     }
     const data = {
@@ -100,9 +111,12 @@ export default function RegistrationModal({ closeModal }) {
       companyWebsite,
       message,
       username: email,
-      password: "123456",
+      password: passwordStart,
     };
-
+    if (phone.length > 15) {
+      toast.error("Phone number must be at most 15 characters.");
+      return;
+    }
     try {
       const contactsResponse = await fetch("/api/contacts", {
         method: "POST",
@@ -112,7 +126,7 @@ export default function RegistrationModal({ closeModal }) {
 
       if (contactsResponse.ok) {
         const registrationResponse = await fetch(
-          "https://nevadacms.onrender.com/api/auth/local/register",
+          `${process.env.NEXT_PUBLIC_API_URL}api/auth/local/register`,
           {
             method: "POST",
             headers: {
@@ -144,10 +158,34 @@ export default function RegistrationModal({ closeModal }) {
   const [isVerified, setIsVerified] = useState(false);
 
   async function handleCaptchaSubmission(token) {
-    await verifyCaptcha(token)
-      .then(() => setIsVerified(true))
-      .catch(() => setIsVerified(false));
+    if (!token) {
+      // Если токен не получен, значит пользователь не прошел reCAPTCHA
+      setIsCaptchaValid(false);
+      toast.error("Please verify that you are not a robot.");
+    } else {
+      try {
+        const response = await fetch("/api/verifyCaptcha", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ token }),
+        });
+        const data = await response.json();
+        if (data.success) {
+          setIsCaptchaValid(true);
+        } else {
+          setIsCaptchaValid(false);
+          toast.error("Captcha verification failed.");
+        }
+      } catch (error) {
+        console.error("Error verification reCAPTCHA:", error);
+        setIsCaptchaValid(false);
+        toast.error("Captcha verification failed.");
+      }
+    }
   }
+
   const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
 
   return (

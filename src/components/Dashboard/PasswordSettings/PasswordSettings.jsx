@@ -23,7 +23,7 @@ function PasswordSettings({ toggleSideBar }) {
     values,
     { setSubmitting, resetForm, setErrors }
   ) => {
-    console.log("values:", values);
+    
     if (status !== "authenticated") {
       setErrors({
         submit: "You must be authenticated to change your password.",
@@ -34,7 +34,7 @@ function PasswordSettings({ toggleSideBar }) {
     setSubmitting(true);
     try {
       const response = await fetch(
-        "https://nevadacms.onrender.com/api/auth/change-password",
+        `${process.env.NEXT_PUBLIC_API_URL}api/auth/change-password`,
         {
           method: "POST",
           headers: {

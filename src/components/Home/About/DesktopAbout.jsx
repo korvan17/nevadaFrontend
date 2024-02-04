@@ -17,7 +17,6 @@ function DesktopAbout() {
             width={175}
             height={92}
             className="absolute top-[540px] right-0 -z-10"
-            // add class
           />
         </div>
         <div

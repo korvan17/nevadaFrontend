@@ -1,23 +1,23 @@
 import mail from "@sendgrid/mail";
 
-// Set SendGrid API Key
+
 mail.setApiKey(process.env.SENDGRID_API_KEY);
 
-// API Endpoint for handling POST requests
+
 export default async (req, res) => {
   try {
-    // Ensure the request is a POST
+   
     if (req.method !== "POST") {
       throw new Error("Method not allowed");
     }
 
-    // Enable CORS
+   
     res.setHeader("Access-Control-Allow-Origin", "*");
 
-    // Parse the request body
+    
     const body = JSON.parse(req.body);
 
-    // Construct the HTML email message with inline styles
+   
     const message = `
       <html>
         <body>
@@ -59,7 +59,7 @@ export default async (req, res) => {
       </html>
     `;
 
-    // Email data
+  
     const data = {
       to: "info@ppcwarehouses.com",
       from: "info@ppcwarehouses.com",
@@ -68,7 +68,7 @@ export default async (req, res) => {
       html: message,
     };
 
-    // Send email
+
     await mail.send(data);
 
     res.status(200).json({ status: "OK" });
