@@ -30,6 +30,7 @@ export default function RegistrationModal({ closeModal }) {
   const [message, setMessage] = useState(
     sessionStorage.getItem("message") || ""
   );
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const [isButtonActive, setIsButtonActive] = useState(false);
   const [isCaptchaValid, setIsCaptchaValid] = useState(false);
@@ -78,38 +79,46 @@ export default function RegistrationModal({ closeModal }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (isSubmitting) {
+      toast.info("Please wait, your previous submission is still processing.");
+      return;
+    }
+    setIsSubmitting(true);
+
     if (
       businessDirection === "Select Your Business" ||
       businessDirection === ""
     ) {
       toast.error("Please select your business direction.");
+      setIsSubmitting(false); // Make sure to set this so the user can try again
       return;
     }
 
     if (!isCaptchaValid) {
       toast.error("Please complete the reCAPTCHA.");
-      return;
-    }
-    const emailRegex = /\S+@\S+\.\S+/;
-    if (!emailRegex.test(email)) {
-      toast.error("Please enter a valid email address.");
-      return;
-    }
-    if (fullName.length < 3) {
-      toast.error("Full Name must be at least 3 characters.");
+      setIsSubmitting(false); // Make sure to set this so the user can try again
       return;
     }
 
-    const data = {
-      titleModal,
-      businessDirection,
-      fullName,
-      email,
-      phone,
-      companyName,
-      companyWebsite,
-      message,
-    };
+    const emailRegex = /\S+@\S+\.\S+/;
+    if (!emailRegex.test(email)) {
+      toast.error("Please enter a valid email address.");
+      setIsSubmitting(false); // Make sure to set this so the user can try again
+      return;
+    }
+
+    if (fullName.length < 3) {
+      toast.error("Full Name must be at least 3 characters.");
+      setIsSubmitting(false); // Make sure to set this so the user can try again
+      return;
+    }
+
+    if (phone.length > 15) {
+      toast.error("Phone number must be at most 15 characters.");
+      setIsSubmitting(false); // Make sure to set this so the user can try again
+      return;
+    }
+
     const dataReg = {
       businessDirection,
       fullName,
@@ -121,53 +130,86 @@ export default function RegistrationModal({ closeModal }) {
       username: email,
       password: passwordStart,
     };
-    if (phone.length > 15) {
-      toast.error("Phone number must be at most 15 characters.");
-      return;
-    }
+
     try {
-      const contactsResponse = await fetch("/api/contacts", {
-        method: "POST",
+      const registrationResponse = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}api/auth/local/register`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(dataReg),
+        }
+      );
 
-        body: JSON.stringify(data),
-      });
+      if (registrationResponse.ok) {
+        // If registration is successful, then send the contact information
+        const data = {
+          titleModal,
+          businessDirection,
+          fullName,
+          email,
+          phone,
+          companyName,
+          companyWebsite,
+          message,
+        };
 
-      if (contactsResponse.ok) {
-        const registrationResponse = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}api/auth/local/register`,
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(dataReg),
-          }
-        );
-        if (registrationResponse.ok) {
+        const contactsResponse = await fetch("/api/contacts", {
+          method: "POST",
+          body: JSON.stringify(data),
+        });
+
+        if (contactsResponse.ok) {
           clearFields();
-          toast.success("Registration successful!");
+          toast.success(
+            "Registration and contact information submission successful!"
+          );
           setTimeout(() => {
             closeModal();
           }, 3000);
         } else {
-          const registrationText = await registrationResponse.text();
-          toast.error(`Registration failed: ${registrationText}`);
+          const contactsText = await contactsResponse.text();
+          toast.error(`Failed to send contact information: ${contactsText}`);
         }
       } else {
-        const contactsText = await contactsResponse.text();
-        toast.error(`Failed to send contact information: ${contactsText}`);
+        
+        const errorData = await registrationResponse.json();
+
+        
+        if (
+          errorData &&
+          errorData.error &&
+          errorData.error.message.includes(
+            "Email or Username are already taken"
+          )
+        ) {
+          toast.error(
+            "The email address you have entered is already registered. Please use a different email or sign in."
+          );
+        } else {
+  
+          let errorMessage = "Registration failed. Please try again.";
+          if (errorData && errorData.message) {
+            errorMessage = errorData.message;
+          }
+          toast.error(errorMessage);
+        }
       }
     } catch (error) {
       console.error("Error submitting form:", error.message);
       toast.error(`Error submitting form: ${error.message}`);
+    } finally {
+      setIsSubmitting(false);
     }
   };
+
   const recaptchaRef = useRef(null);
   const [isVerified, setIsVerified] = useState(false);
 
   async function handleCaptchaSubmission(token) {
     if (!token) {
-      // Если токен не получен, значит пользователь не прошел reCAPTCHA
       setIsCaptchaValid(false);
       toast.error("Please verify that you are not a robot.");
     } else {
