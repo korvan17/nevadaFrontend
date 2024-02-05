@@ -22,15 +22,15 @@ export const metadata = {
   },
   images: [
     {
-      url: "https://nextjs.org/og.png",
+      url: "public/favicon-32x32.png",
       width: 800,
       height: 600,
     },
     {
-      url: "https://nextjs.org/og-alt.png",
+      url: "public/favicon-32x32.png",
       width: 1800,
       height: 1600,
-      alt: "My custom alt",
+      alt: "ppcwarehouses",
     },
   ],
   locale: "en_US",
