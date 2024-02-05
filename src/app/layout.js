@@ -22,12 +22,12 @@ export const metadata = {
   },
   images: [
     {
-      url: "public/favicon-32x32.png",
+      url: "/favicon-32x32.png",
       width: 800,
       height: 600,
     },
     {
-      url: "public/favicon-32x32.png",
+      url: "/favicon-32x32.png",
       width: 1800,
       height: 1600,
       alt: "ppcwarehouses",

@@ -36,19 +36,17 @@ export const fetchPriceProducts = async () => {
   }
 };
 
-
 export const fetchPriceContainers = async () => {
   try {
     const response = await fetch(`${API_BASE_URL}/price-containers`);
     const result = await response.json();
-    console.log("price-containers:", result.data);
+
     return result.data;
   } catch (error) {
     console.error("Error fetching price containers:", error.message);
     throw error;
   }
 };
-
 
 export const fetchPricePackings = async () => {
   try {
@@ -62,8 +60,6 @@ export const fetchPricePackings = async () => {
     throw error;
   }
 };
-
-
 
 export const fetchOrders = async (accessToken) => {
   try {
@@ -89,7 +85,6 @@ export const fetchOrders = async (accessToken) => {
     throw error;
   }
 };
-
 
 export const fetchAllOrders = async (accessToken) => {
   try {
