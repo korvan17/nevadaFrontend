@@ -3,7 +3,7 @@ import Image from "next/image";
 
 function DesktopAbout() {
   return (
-    <section className="hidden pb-0  lg:block lg:pt-desktop">
+    <div className="hidden pb-0  lg:block lg:pt-desktop">
       <div className="container">
         <div
           className="relative"
@@ -96,7 +96,7 @@ function DesktopAbout() {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }
 
