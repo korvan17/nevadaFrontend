@@ -3,7 +3,7 @@ import Image from "next/image";
 
 function MobileAbout() {
   return (
-    <section id="about" className="pb-20 md:hidden">
+    <div className="pb-20 md:hidden">
       <div className="container">
         <div className="relative">
           <div className="aosWrapper">
@@ -81,7 +81,7 @@ function MobileAbout() {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }
 

@@ -1,20 +1,19 @@
+import React from "react";
+import {
+  Link as ScrollLink,
+  animateScroll as scroll,
+} from "react-scroll/modules";
 import { Logo } from "@/components/Icons";
 import { links } from "@/content";
-import { animateScroll as scroll } from "react-scroll";
-import React from "react";
 
 function Navigation() {
-  const scrollToTop = () => {
-    scroll.scrollToTop();
+  const scrollToSection = (id) => {
+    const topPosition = document.getElementById(id).offsetTop - 120;
+    return scroll.scrollTo(topPosition);
   };
-
   return (
     <nav className="flex w-[1200px] items-center mr-[24px]">
-      <a
-        className="cursor-pointer flex gap-[8px] items-center"
-        href="#home"
-        // onClick={scrollToTop}
-      >
+      <a className="cursor-pointer flex gap-[8px] items-center" href="#home">
         <Logo />
         <div>
           <p className="text-[18px] font-bold text-mainWhite leading-[20px]">
@@ -28,12 +27,17 @@ function Navigation() {
       <ul className="flex items-center gap-[24px] mx-auto">
         {links.slice(1).map(({ label, id }) => (
           <li key={id}>
-            <a
-              href={`#${id}`}
+            <ScrollLink
               className="hover:underline transition-all ease-out cursor-pointer"
+              onClick={() => scrollToSection(id)}
+              activeClass="active"
+              spy={true}
+              smooth={true}
+              duration={100}
+              delay={0}
             >
               {label}
-            </a>
+            </ScrollLink>
           </li>
         ))}
       </ul>

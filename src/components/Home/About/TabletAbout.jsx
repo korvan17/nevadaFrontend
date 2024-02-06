@@ -3,7 +3,7 @@ import Image from "next/image";
 
 function TabletAbout() {
   return (
-    <section className="hidden md:flex md:relative md:pt-20 lg:hidden">
+    <div className="hidden md:flex md:relative md:pt-20 lg:hidden">
       <div className="container">
         <div data-aos="fade-down" data-aos-duration="1000" data-aos-once="true">
           <h2
@@ -73,7 +73,7 @@ function TabletAbout() {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }
 

@@ -23,11 +23,11 @@ function PasswordSettingsForm({
     >
       <Form id="passwordSettingsForm">
         <FormContent />
-        <div className="px-[16px]">
-          <b className="block mb-[24px] font-bold text-captionBlueDB ">
+        <div className="px-[16px] w-[250px] mx-auto">
+          <b className="w-[137px] mx-auto block mb-[24px] font-bold text-captionBlueDB ">
             Change password
           </b>
-          <ul className="mb-[32px] ">
+          <ul className="mb-[32px] mx-auto">
             {passwordUpdateData.map(({ label, name }) => {
               return (
                 <li key={name} className=" mb-[12px] last:mb-0">
@@ -77,10 +77,9 @@ function PasswordSettingsForm({
         </div>
         <button
           htmlFor="passwordSettingsForm"
-          className="ml-[16px] text-captionalWhite button bg-captionBlueHover transition-all ease-out hover:bg-captionBlue rounded-[8px] py-[8px] px-[24px]"
+          className="block w-[88px] mx-auto  text-captionalWhite button bg-captionBlueHover transition-all ease-out hover:bg-captionBlue rounded-[8px] py-[8px] px-[24px]"
           type="submit"
           title="Click to submit"
-
         >
           Done
         </button>

@@ -4,7 +4,7 @@ import SliderPartners from "./SliderPartners";
 
 export default function Partners() {
   return (
-    <section className=" hidden md:block pt-[120px] pb-[120px]" id="Partners">
+    <section className=" hidden md:block pt-[120px] pb-[120px]">
       <div className="container">
         <div
           data-aos="fade-down-right"
