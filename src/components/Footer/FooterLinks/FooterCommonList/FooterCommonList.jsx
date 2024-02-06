@@ -1,6 +1,5 @@
 "use client";
-import React, { useState } from "react";
-// import Link from "next/link";
+import React from "react";
 
 import {
   Link as ScrollLink,
@@ -8,11 +7,8 @@ import {
 } from "react-scroll/modules";
 
 export default function FooterCommonList({ data, hover = false }) {
-  const [sectionElement, setSectionElement] = useState("");
-
   const scrollToSection = (id) => {
     const topPosition = document.getElementById(id).offsetTop - 120;
-    setSectionElement(topPosition);
     return scroll.scrollTo(topPosition);
   };
 
