@@ -8,14 +8,13 @@ import FullPrice from "../FullPrice/FullPrice";
 import { Add, ExpandLessOutlined } from "@mui/icons-material";
 
 import ShipmentsPagination from "../Shipments/ShipmentsPagination";
+import Loading from "@/app/loading";
 const PER_PAGE = 1;
 export default function Messages() {
   const [orders, setOrders] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
   const [isTrackerUpdated, setIsTrackerUpdated] = useState(false);
   const [isFullPriceVisible, setIsFullPriceVisible] = useState(false);
-
-  const [isLoading, setIsLoading] = useState(false);
 
   const overlayRef = useRef(null);
   const { data: session, status } = useSession();
@@ -167,8 +166,8 @@ export default function Messages() {
         Messages
       </h2>
 
-      {isLoading ? (
-        <div className="loader">Loading...</div>
+      {!currentPageData && currentPageData.length === 0 ? (
+        <Loading />
       ) : (
         <div
           className="ml-auto mr-auto lg:w-[920px] lg:h-[611px] 

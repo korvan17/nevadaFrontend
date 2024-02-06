@@ -5,17 +5,17 @@ import { fetchContacts } from "../../../../services/api";
 
 function HeaderContacts({ menu = false }) {
   const [companyContacts, setCompanyContacts] = useState(null);
-  useEffect(() => {
-    const loadinData = async () => {
-      try {
-        const contactsData = await fetchContacts();
-        setCompanyContacts(contactsData);
-      } catch (error) {
-        console.log("contactsData header", error);
-      }
-    };
-    loadinData();
-  }, []);
+  // useEffect(() => {
+  //   const loadinData = async () => {
+  //     try {
+  //       const contactsData = await fetchContacts();
+  //       setCompanyContacts(contactsData);
+  //     } catch (error) {
+  //       console.log("contactsData header ERROR", error);
+  //     }
+  //   };
+  //   loadinData();
+  // }, []);
 
   return (
     <div
