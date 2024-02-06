@@ -20,6 +20,21 @@ export const metadata = {
     apple: ["/apple-touch-icon.png"],
     shortcut: ["/android-chrome-192x192.png"],
   },
+  images: [
+    {
+      url: "/favicon-32x32.png",
+      width: 800,
+      height: 600,
+    },
+    {
+      url: "/favicon-32x32.png",
+      width: 1800,
+      height: 1600,
+      alt: "ppcwarehouses",
+    },
+  ],
+  locale: "en_US",
+  type: "website",
   manifest: "/site.webmanifest",
 };
 

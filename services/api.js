@@ -40,7 +40,7 @@ export const fetchPriceContainers = async () => {
   try {
     const response = await fetch(`${API_BASE_URL}/price-containers`);
     const result = await response.json();
-    console.log("price-containers:", result.data);
+
     return result.data;
   } catch (error) {
     console.error("Error fetching price containers:", error.message);
