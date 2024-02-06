@@ -10,6 +10,7 @@ import { BasicModal } from "@/components";
 import PricingGetQuoteModal from "@/components/Modals/PricingGetQuoteModal/PricingGetQuoteModal";
 import {
   fetchPriceContainers,
+  fetchPricePackings,
   fetchPriceProducts,
 } from "../../../../services/api";
 import Loading from "@/app/loading";
@@ -19,12 +20,14 @@ export default function Pricing() {
   const [selectedTitle, setSelectedTitle] = useState(null);
   const [productPricing, setProductPricing] = useState(null);
   const [pricingContainers, setPricingContainers] = useState(null);
-
+  const [pricePackings, setPricePackings] = useState(null);
   useEffect(() => {
     const loadinData = async () => {
       try {
         const prodPricingData = await fetchPriceProducts();
         const pricingContainersData = await fetchPriceContainers();
+        const pricePackingsData = await fetchPricePackings();
+        setPricePackings(pricePackingsData);
         setProductPricing(prodPricingData);
         setPricingContainers(pricingContainersData);
       } catch (error) {
@@ -41,7 +44,7 @@ export default function Pricing() {
   const toggleModalPricing = () => {
     setShowModalPricing(!showModalPricing);
   };
-
+  console.log(pricePackings);
   return (
     <section id="pricing" className="py-mobile md:pb-0 lg:pt-desktop">
       <div className="container">
@@ -249,68 +252,25 @@ export default function Pricing() {
               Packing services
             </h3>
             <div className="overflow-x-auto">
-              <ul className="flex gap-[16px] w-[800px] text-base font-semibold md:w-[655px] md:justify-between md:flex-wrap md:gap-y-[24px] lg:w-[100%] lg:flex-nowrap">
-                <li className="w-[270px] md:w-[193px]">
-                  <table className="table-auto w-[100%]">
-                    <tbody>
-                      <tr className="">
-                        <td>Bubble bag/wrap</td>
-                        <td className="text-right">$0,35</td>
-                      </tr>
-                      <tr className="">
-                        <td>Polybag</td>
-                        <td className="text-right">$0,30</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </li>
-                <li className="w-[136px]">
-                  <table className="table-auto w-[100%]">
-                    <tbody>
-                      <tr>
-                        <td className="">Palletizing</td>
-                        <td className="text-right">$25</td>
-                      </tr>
-                      <tr>
-                        <td className="">Box 10x8x6</td>
-                        <td className="text-right">$1</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </li>
-                <li className="w-[136px]">
-                  <table className="table-auto w-[100%]">
-                    <tbody>
-                      <tr>
-                        <td className="">Box 10x10x10</td>
-                        <td className="text-right">$2</td>
-                      </tr>
-                      <tr>
-                        <td className="">Box 24x14x6</td>
-                        <td className="text-right">$3</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </li>
-                <li className="w-[200px] md:w-[187px]">
-                  <table className="table-auto w-[100%]">
-                    <tbody>
-                      <tr>
-                        <td className="">Box 24x18x12</td>
-                        <td className="text-right">$4</td>
-                      </tr>
-                      <tr>
-                        <td className="">
-                          Additional
-                          <span className="text-xs font-normal">
-                            /min 1 hour
-                          </span>
-                        </td>
-                        <td className="text-right">$40</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </li>
+              <ul
+                className="flex gap-[50px] w-[800px] text-base font-semibold md:w-[655px] md:gap-[70px] lg:gap-x-[101px] flex-nowrap 
+              
+            items-start 
+              
+              lg:flex-wrap lg:items-center  md:gap-y-[14px] lg:w-[100%] "
+              >
+                {pricePackings &&
+                  pricePackings.map(({ attributes: { title, price } }) => {
+                    return (
+                      <li
+                        key={title}
+                        className="flex md:gap-[40px] gap-[30px] lg:items-center w-[270px] md:w-[193px] items-start  "
+                      >
+                        <p>{title}</p>
+                        <p className="text-right">${price}</p>
+                      </li>
+                    );
+                  })}
               </ul>
             </div>
           </div>
