@@ -50,7 +50,6 @@ export const fetchPriceContainers = async () => {
 
 export const fetchPricePackings = async () => {
   try {
-    const pageSize = 100;
     const response = await fetch(`${API_BASE_URL}/price-packings`);
     const result = await response.json();
 

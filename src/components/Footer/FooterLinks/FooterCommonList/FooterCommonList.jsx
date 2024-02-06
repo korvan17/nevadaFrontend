@@ -1,4 +1,6 @@
 "use client";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import React from "react";
 
 import {
@@ -7,6 +9,9 @@ import {
 } from "react-scroll/modules";
 
 export default function FooterCommonList({ data, hover = false }) {
+  const pathName = usePathname();
+  const dashboardPage = pathName === "/dashboard";
+
   const scrollToSection = (id) => {
     const topPosition = document.getElementById(id).offsetTop - 120;
     return scroll.scrollTo(topPosition);
@@ -23,16 +28,21 @@ export default function FooterCommonList({ data, hover = false }) {
               hover ? "hover:underline" : ""
             }`}
           >
-            <ScrollLink
-              onClick={() => scrollToSection(id)}
-              activeClass="active"
-              spy={true}
-              smooth={true}
-              duration={100}
-              delay={0}
-            >
-              {label}
-            </ScrollLink>
+            {dashboardPage ? (
+              <Link href={`/#${id}`}>{label}</Link>
+            ) : (
+              <ScrollLink
+                onClick={() => scrollToSection(id)}
+                activeClass="active"
+                spy={true}
+                smooth={true}
+                duration={100}
+                delay={0}
+                to={id}
+              >
+                {label}
+              </ScrollLink>
+            )}
           </li>
         );
       })}

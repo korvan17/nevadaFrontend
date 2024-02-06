@@ -35,6 +35,7 @@ function Navigation() {
               smooth={true}
               duration={100}
               delay={0}
+              to={id}
             >
               {label}
             </ScrollLink>

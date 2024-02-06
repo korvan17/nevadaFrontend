@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
 
-import { fetchAllOrders, fetchOrders } from "../../../../services/api";
+import { fetchAllOrders } from "../../../../services/api";
 import { useSession } from "next-auth/react";
 
 import FullPrice from "../FullPrice/FullPrice";
@@ -300,9 +300,7 @@ export default function Messages() {
               currentPage={currentPage}
             />
           )}
-          {currentPageData.length === 0 && (
-            <p className="text-center">You have no messages.</p>
-          )}
+          {currentPageData.length === 0 && <Loading />}
         </div>
       )}
     </div>

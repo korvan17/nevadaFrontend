@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { FaqButton } from "@/components/UIElements";
 import { fetchFaq } from "../../../../services/api";
+import Loading from "@/app/loading";
 export default function Faq() {
   const [faqs, setFaqs] = useState([]);
 
@@ -49,22 +50,26 @@ export default function Faq() {
           </h2>
         </div>
         <div data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
-          <ul className="mt-[48px]">
-            {faqs.map((faq) => (
-              <li
-                key={faq.id}
-                className="flex flex-col justify-center bg-captionalGreyLight border-inherit border-solid border transition-colors 
+          {faqs.length !== 0 ? (
+            <ul className="mt-[48px]">
+              {faqs.map((faq) => (
+                <li
+                  key={faq.id}
+                  className="flex flex-col justify-center bg-captionalGreyLight border-inherit border-solid border transition-colors 
                 
                 duration-500 hover:bg-[#757575] "
-              >
-                <FaqButton
-                  key={faq.id}
-                  item={faq.attributes.question}
-                  faq={faq.attributes.answer}
-                />
-              </li>
-            ))}
-          </ul>
+                >
+                  <FaqButton
+                    key={faq.id}
+                    item={faq.attributes.question}
+                    faq={faq.attributes.answer}
+                  />
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <Loading />
+          )}
         </div>
       </div>
     </section>

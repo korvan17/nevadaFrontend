@@ -12,6 +12,7 @@ import {
   fetchPriceContainers,
   fetchPriceProducts,
 } from "../../../../services/api";
+import Loading from "@/app/loading";
 
 export default function Pricing() {
   const [showModalPricing, setShowModalPricing] = useState(false);
@@ -100,7 +101,7 @@ export default function Pricing() {
           data-aos-duration="1000"
           data-aos-once="true"
         >
-          {productPricing && (
+          {productPricing ? (
             <ul className="flex-wrap gap-[20px] md:mb-[12px] lg:gap-[24px] lg:mb-[12px] hidden md:flex">
               {productPricing.map(
                 ({
@@ -146,6 +147,8 @@ export default function Pricing() {
                 }
               )}
             </ul>
+          ) : (
+            <Loading />
           )}
           <p className="mb-[12px] text-xs text-captionalGreyLight md:w-[664px] md:mb-[25px] md:text-base lg:w-[741px] lg:text-base ">
             Base price* - Explanation: &ldquo;At Prime Preparation Center, we
@@ -179,7 +182,7 @@ export default function Pricing() {
                     <td className="font-bold">Pictures 3pcs</td>
                   </tr>
                 </thead>
-                {pricingContainers && (
+                {pricingContainers ? (
                   <tbody className="text-right leading-[200%]">
                     {pricingContainers.map(
                       ({
@@ -222,6 +225,8 @@ export default function Pricing() {
                       }
                     )}
                   </tbody>
+                ) : (
+                  <Loading />
                 )}
               </table>
             </div>
