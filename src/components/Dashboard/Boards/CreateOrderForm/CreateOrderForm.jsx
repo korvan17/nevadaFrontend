@@ -203,7 +203,7 @@ export const CreateOrderForm = () => {
     return (
       <div
         className="shadow-custom-deep w-[320px]  
-    md:w-[458px]  lg:w-[458px]  m-auto md:mb-[20px] md:mt-[20px] max-h-[700px] p-3  overflow-y-auto"
+    md:w-[458px]  lg:w-[458px]  m-auto md:mb-[20px] md:mt-[20px] mb-[20px] max-h-[700px] p-3  overflow-y-auto"
       >
         {/* <div className="bg-bgBoard  rounded-[16px] border p-5 w-full max-w-4xl"> */}
 
@@ -643,7 +643,6 @@ export const CreateOrderForm = () => {
                   ? "bg-accentYellow hover:bg-accentHoverYellow"
                   : "bg-gray-400 cursor-not-allowed"
               } text-white px-4 py-2 rounded ml-[auto] mr-[auto] font-bold text-[16px] w-[179px] h-[48px]`}
-           
               disabled={!isButtonActive}
             >
               Confirm Order
