@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { fetchContacts } from "../../../../services/api";
+import Loading from "@/app/loading";
 
 function HeaderContacts({ menu = false }) {
   const [companyContacts, setCompanyContacts] = useState(null);
@@ -50,9 +51,12 @@ function HeaderContacts({ menu = false }) {
           </a>
         </>
       ) : (
-        <p className={`${menu && "text-captionalGreyLigh"} `}>
-          Company information is loading, please wait...
-        </p>
+        <>
+          <p className={`${menu && "text-captionalGreyLigh"} `}>
+            Company information is loading, please wait...
+          </p>
+          <Loading />
+        </>
       )}
     </div>
   );

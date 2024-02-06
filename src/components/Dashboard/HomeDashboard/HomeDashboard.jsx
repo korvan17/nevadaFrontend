@@ -7,9 +7,10 @@ import BorderColorIcon from "@mui/icons-material/BorderColor";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import WarehouseIcon from "@mui/icons-material/Warehouse";
 import BookIcon from "@mui/icons-material/Book";
-import { fetchOrders } from "../../../../services/api";
+import { fetchAllOrders } from "../../../../services/api";
 import { useSession } from "next-auth/react";
-import UserPanel from "../UserPanel/UserPanel";
+
+import Loading from "@/app/loading";
 
 export default function HomeDashboard() {
   const [orders, setOrders] = useState([]);
@@ -23,7 +24,7 @@ export default function HomeDashboard() {
 
   useEffect(() => {
     if (status === "authenticated" && session.user.jwt) {
-      fetchOrders(session.user.jwt)
+      fetchAllOrders(session.user.jwt)
         .then((fetchedOrders) => {
           setOrders(fetchedOrders);
           countOrderStatuses(fetchedOrders);
@@ -56,7 +57,6 @@ export default function HomeDashboard() {
       } else if (status === "Delivered") {
         counts.delivered += 1;
       } else {
-        
       }
     });
 
@@ -81,48 +81,57 @@ export default function HomeDashboard() {
         <h3 className="text-[18px] md:text-2xl font-bold mb-6">
           Outbound shipments
         </h3>
-        <div className="">
-          <ul className="flex flex-wrap gap-3">
-            <li>
-              <ShipmentStatusCard
-                title="Order created"
-                icon={<BorderColorIcon fontSize="large" />}
-                count={orderCounts.orderCreated}
-              />
-            </li>
-            <li className="">
-              <ShipmentStatusCard
-                title="Label created"
-                icon={<BookIcon fontSize="large" style={{ color: "orange" }} />}
-                count={orderCounts.labelCreated}
-                countStyle={{ color: "orange" }}
-              />
-            </li>
-            <li>
-              <ShipmentStatusCard
-                title="Out for Delivery"
-                icon={
-                  <LocalShippingIcon
-                    fontSize="large"
-                    style={{ color: "blue" }}
-                  />
-                }
-                count={orderCounts.outForDelivery}
-                countStyle={{ color: "blue" }}
-              />
-            </li>
-            <li>
-              <ShipmentStatusCard
-                title="Delivered"
-                icon={
-                  <WarehouseIcon fontSize="large" style={{ color: "green" }} />
-                }
-                count={orderCounts.delivered}
-                countStyle={{ color: "green" }}
-              />
-            </li>
-          </ul>
-        </div>
+        {orders.length !== 0 ? (
+          <div className="">
+            <ul className="flex flex-wrap gap-3">
+              <li>
+                <ShipmentStatusCard
+                  title="Order created"
+                  icon={<BorderColorIcon fontSize="large" />}
+                  count={orderCounts.orderCreated}
+                />
+              </li>
+              <li className="">
+                <ShipmentStatusCard
+                  title="Label created"
+                  icon={
+                    <BookIcon fontSize="large" style={{ color: "orange" }} />
+                  }
+                  count={orderCounts.labelCreated}
+                  countStyle={{ color: "orange" }}
+                />
+              </li>
+              <li>
+                <ShipmentStatusCard
+                  title="Out for Delivery"
+                  icon={
+                    <LocalShippingIcon
+                      fontSize="large"
+                      style={{ color: "blue" }}
+                    />
+                  }
+                  count={orderCounts.outForDelivery}
+                  countStyle={{ color: "blue" }}
+                />
+              </li>
+              <li>
+                <ShipmentStatusCard
+                  title="Delivered"
+                  icon={
+                    <WarehouseIcon
+                      fontSize="large"
+                      style={{ color: "green" }}
+                    />
+                  }
+                  count={orderCounts.delivered}
+                  countStyle={{ color: "green" }}
+                />
+              </li>
+            </ul>
+          </div>
+        ) : (
+          <Loading />
+        )}
         <CreateOrderButton />
       </div>
     </>
