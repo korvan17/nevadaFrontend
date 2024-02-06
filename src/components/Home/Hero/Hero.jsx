@@ -3,10 +3,7 @@ import React from "react";
 
 export default function Hero() {
   return (
-    <section
-      id="home"
-      className="pt-[78px] pb-[151px] md:pt-[47px] md:pb-[0px] lg:pt-[169px] lg:pb-[0px]"
-    >
+    <section className="pt-[78px] pb-[151px] md:pt-[47px] md:pb-[0px] lg:pt-[169px] lg:pb-[0px]">
       <div
         data-aos="fade-down-left"
         data-aos-duration="1000"

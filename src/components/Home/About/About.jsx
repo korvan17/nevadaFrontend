@@ -6,7 +6,7 @@ import DesktopAbout from "./DesktopAbout";
 
 function About() {
   return (
-    <section id="about">
+    <section>
       <MobileAbout />
       <TabletAbout />
       <DesktopAbout />

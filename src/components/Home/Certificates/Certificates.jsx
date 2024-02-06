@@ -2,7 +2,7 @@ import Image from "next/image";
 import React from "react";
 export default function Certificates() {
   return (
-    <section className="hidden md:block" id="Certificates">
+    <section className="hidden md:block">
       <div className="container">
         <h2 className="text-[36px] leading-[36px] lg:text-5xl font-bold mr-auto mb-[8px]">
           We are Amazon and Ysell Partners

@@ -42,7 +42,7 @@ export default function Pricing() {
   };
 
   return (
-    <section className="py-mobile md:pb-0 lg:pt-desktop" id="pricing">
+    <section className="py-mobile md:pb-0 lg:pt-desktop">
       <div className="container">
         <div
           data-aos="fade-down-left"
