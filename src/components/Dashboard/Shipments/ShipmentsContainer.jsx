@@ -5,6 +5,7 @@ import ShipmentsTable from "./ShipmentsTable";
 import ShipmentsFilters from "./ShipmentsFilters";
 import FilterAltOutlinedIcon from "@mui/icons-material/FilterAltOutlined";
 import ShipmentsPagination from "./ShipmentsPagination";
+import Loading from "@/app/loading";
 
 function ShipmentsContainer({
   searchQuery,
@@ -61,13 +62,19 @@ function ShipmentsContainer({
           md:top-[47px] md:left-[34px] md:w-[805px]
           lg:top-[85px] lg:w-[894px] lg:left-[49px]"
         ></div>
-        <ShipmentsTable currentPageData={currentPageData} />
-        {orders.length > PER_PAGE && (
-          <ShipmentsPagination
-            pageCount={pageCount}
-            handlePageClick={handlePageClick}
-            currentPage={currentPage}
-          />
+        {currentPageData && currentPageData.length !== 0 ? (
+          <>
+            <ShipmentsTable currentPageData={currentPageData} />
+            {orders.length > PER_PAGE && (
+              <ShipmentsPagination
+                pageCount={pageCount}
+                handlePageClick={handlePageClick}
+                currentPage={currentPage}
+              />
+            )}
+          </>
+        ) : (
+          <Loading />
         )}
 
         <div className="hidden md:block absolute bottom-[30px] left-[12px] lg:bottom-[37px]">

@@ -11,7 +11,8 @@ function HeaderContacts({ menu = false }) {
         const contactsData = await fetchContacts();
         setCompanyContacts(contactsData);
       } catch (error) {
-        console.log("contactsData header", error);
+        console.log("contactsData header ERROR", error);
+        if (error) return;
       }
     };
     loadinData();
