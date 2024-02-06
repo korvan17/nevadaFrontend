@@ -1,41 +1,63 @@
-import React from "react";
-import {
-  InstIcon,
-  FacebookIcon,
-  TelegramIcon,
-  WhatsAppIcon,
-} from "@/components/Icons";
+"use client";
+import React, { useEffect, useState } from "react";
+import { InstIcon, FacebookIcon, TelegramIcon } from "@/components/Icons";
+import { fetchContacts } from "../../../../../services/api";
+import Loading from "@/app/loading";
 
 export default function SocialLinks() {
+  const [socialLinks, setSocialLinks] = useState(null);
+
+  useEffect(() => {
+    const loadSocialLinks = async () => {
+      try {
+        const links = await fetchContacts();
+        setSocialLinks(links);
+      } catch (error) {
+        console.error("Fetching social links failed", error);
+      }
+    };
+    loadSocialLinks();
+  }, []);
+
   return (
     <ul className="flex justify-between items-center max-w-[132px]">
-      <li>
-        <a
-          href="https://www.facebook.com/profile.php?id=61551773562170"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <FacebookIcon />
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://t.me/ppcwarehouses"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <TelegramIcon />
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://www.instagram.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <InstIcon />
-        </a>
-      </li>
+      {socialLinks ? (
+        <>
+          <li>
+            <a
+              href={socialLinks.facebook}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FacebookIcon />
+            </a>
+          </li>
+
+          <li>
+            <a
+              href={socialLinks.telegram}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <TelegramIcon />
+            </a>
+          </li>
+
+          <li>
+            <a
+              href={socialLinks.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <InstIcon />
+            </a>
+          </li>
+        </>
+      ) : (
+        <>
+          <Loading />
+        </>
+      )}
     </ul>
   );
 }
