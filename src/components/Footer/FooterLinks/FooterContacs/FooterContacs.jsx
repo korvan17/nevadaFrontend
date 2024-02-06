@@ -1,21 +1,48 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
+import { fetchContacts } from "../../../../../services/api";
+import Loading from "@/app/loading";
 
-export default function FooterContacs() {
+export default function FooterContacts() {
+  const [footerContacts, setFooterContacts] = useState(null);
+
+  useEffect(() => {
+    const loadContacts = async () => {
+      try {
+        const contactsData = await fetchContacts();
+        setFooterContacts(contactsData);
+      } catch (error) {
+        console.error("Fetching footer contacts failed", error);
+      }
+    };
+    loadContacts();
+  }, []);
+
   return (
     <ul>
-      <li className="mb-[8px] max-w-[231px]">
-        <a href="mailto:info@ppcwarehouses.com" className="flex flex-wrap">
-          <b className="font-semibold	text-16px">
-            Write to us at the email address:
-          </b>
-          info@ppcwarehouses.com
-        </a>
-      </li>
-      <li>
-        <a href="tel:+17027010078">
-          <b className="font-semibold text-16px">Phone:</b> +1 (702) 701-0078
-        </a>
-      </li>
+      {footerContacts ? (
+        <>
+          <li className="mb-[8px] max-w-[231px]">
+            <a
+              href={`mailto:${footerContacts.email}`}
+              className="flex flex-wrap"
+            >
+              <strong className="font-semibold text-16px">
+                Write to us at the email address:
+              </strong>
+              {footerContacts.email}
+            </a>
+          </li>
+          <li>
+            <a href={`tel:${footerContacts.phone}`}>
+              <strong className="font-semibold text-16px">Phone:</strong>{" "}
+              {footerContacts.phone}
+            </a>
+          </li>
+        </>
+      ) : (
+        <Loading />
+      )}
     </ul>
   );
 }
