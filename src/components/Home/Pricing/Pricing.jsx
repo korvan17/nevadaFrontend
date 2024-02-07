@@ -69,7 +69,7 @@ export default function Pricing() {
               className="absolute hidden lg:block left-[481px] top-[55px] -z-20 w-auto h-auto"
             />
             <Image
-              className="absolute hidden lg:block top-[1020px] left-[254px] w-auto h-auto -z-20"
+              className="absolute hidden lg:block top-[1080px] left-[254px] w-auto h-auto -z-20"
               src="/ellips-pricing-bottom.png"
               alt="Ellipse Bottom"
               width={70}

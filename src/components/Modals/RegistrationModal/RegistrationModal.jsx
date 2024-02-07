@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "react-phone-number-input/style.css";
@@ -90,32 +90,32 @@ export default function RegistrationModal({ closeModal }) {
       businessDirection === ""
     ) {
       toast.error("Please select your business direction.");
-      setIsSubmitting(false); // Make sure to set this so the user can try again
+      setIsSubmitting(false);
       return;
     }
 
     if (!isCaptchaValid) {
       toast.error("Please complete the reCAPTCHA.");
-      setIsSubmitting(false); // Make sure to set this so the user can try again
+      setIsSubmitting(false);
       return;
     }
 
     const emailRegex = /\S+@\S+\.\S+/;
     if (!emailRegex.test(email)) {
       toast.error("Please enter a valid email address.");
-      setIsSubmitting(false); // Make sure to set this so the user can try again
+      setIsSubmitting(false);
       return;
     }
 
     if (fullName.length < 3) {
       toast.error("Full Name must be at least 3 characters.");
-      setIsSubmitting(false); // Make sure to set this so the user can try again
+      setIsSubmitting(false);
       return;
     }
 
     if (phone.length > 15) {
       toast.error("Phone number must be at most 15 characters.");
-      setIsSubmitting(false); // Make sure to set this so the user can try again
+      setIsSubmitting(false);
       return;
     }
 
@@ -144,7 +144,6 @@ export default function RegistrationModal({ closeModal }) {
       );
 
       if (registrationResponse.ok) {
-        // If registration is successful, then send the contact information
         const data = {
           titleModal,
           businessDirection,
@@ -174,10 +173,8 @@ export default function RegistrationModal({ closeModal }) {
           toast.error(`Failed to send contact information: ${contactsText}`);
         }
       } else {
-        
         const errorData = await registrationResponse.json();
 
-        
         if (
           errorData &&
           errorData.error &&
@@ -189,7 +186,6 @@ export default function RegistrationModal({ closeModal }) {
             "The email address you have entered is already registered. Please use a different email or sign in."
           );
         } else {
-  
           let errorMessage = "Registration failed. Please try again.";
           if (errorData && errorData.message) {
             errorMessage = errorData.message;
@@ -204,9 +200,6 @@ export default function RegistrationModal({ closeModal }) {
       setIsSubmitting(false);
     }
   };
-
-  const recaptchaRef = useRef(null);
-  const [isVerified, setIsVerified] = useState(false);
 
   async function handleCaptchaSubmission(token) {
     if (!token) {

@@ -1,6 +1,11 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import "react-phone-number-input/style.css";
+import PhoneInput from "react-phone-number-input";
+import ReCAPTCHA from "react-google-recaptcha";
+
 export default function PricingGetQuoteModal({ selectedTitle, closeModal }) {
   const [businessDirection, setBusinessDirection] = useState("");
   const [fullName, setFullName] = useState(
@@ -19,15 +24,17 @@ export default function PricingGetQuoteModal({ selectedTitle, closeModal }) {
     sessionStorage.getItem("message") || ""
   );
 
-  const [isButtonActive, setIsButtonActive] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
+  const [isButtonActive, setIsButtonActive] = useState(false);
+  const [isCaptchaValid, setIsCaptchaValid] = useState(false);
   useEffect(() => {
-    if (fullName && email && phone) {
+    if (fullName && email && phone && isCaptchaValid) {
       setIsButtonActive(true);
     } else {
       setIsButtonActive(false);
     }
-  }, [fullName, email, phone]);
+  }, [fullName, email, phone, isCaptchaValid]);
 
   useEffect(() => {
     sessionStorage.setItem("fullName", fullName);
@@ -60,19 +67,102 @@ export default function PricingGetQuoteModal({ selectedTitle, closeModal }) {
     sessionStorage.removeItem("companyWebsite");
     sessionStorage.removeItem("message");
   };
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+
+  //   const data = {
+  //     titleModal: selectedTitle,
+  //     businessDirection,
+  //     fullName,
+  //     email,
+  //     phone,
+  //     companyName,
+  //     companyWebsite,
+  //     message,
+  //   };
+  //   const dataReg = {
+  //     businessDirection: selectedTitle,
+  //     fullName,
+  //     email,
+  //     phone,
+  //     companyName,
+  //     companyWebsite,
+  //     message,
+  //     username: email,
+  //     password: "123456",
+  //   };
+
+  //   try {
+  //     const contactsResponse = await fetch("/api/contacts", {
+  //       method: "POST",
+
+  //       body: JSON.stringify(data),
+  //     });
+
+  //     if (contactsResponse.ok) {
+  //       const registrationResponse = await fetch(
+  //         `${process.env.NEXT_PUBLIC_API_URL}auth/local/register`,
+  //         {
+  //           method: "POST",
+  //           headers: {
+  //             "Content-Type": "application/json",
+  //           },
+  //           body: JSON.stringify(dataReg),
+  //         }
+  //       );
+  //       if (registrationResponse.ok) {
+  //         clearFields();
+  //         toast.success("Registration successful!");
+  //         setTimeout(() => {
+  //           closeModal();
+  //         }, 3000);
+  //       } else {
+  //         const registrationText = await registrationResponse.text();
+  //         toast.error(`Registration failed: ${registrationText}`);
+  //       }
+  //     } else {
+  //       const contactsText = await contactsResponse.text();
+  //       toast.error(`Failed to send contact information: ${contactsText}`);
+  //     }
+  //   } catch (error) {
+  //     console.error("Error submitting form:", error.message);
+  //     toast.error(`Error submitting form: ${error.message}`);
+  //   }
+  // };
+  const passwordStart = process.env.NEXT_PUBLIC_PASSWORD_START;
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (isSubmitting) {
+      toast.info("Please wait, your previous submission is still processing.");
+      return;
+    }
+    setIsSubmitting(true);
 
-    const data = {
-      titleModal: selectedTitle,
-      businessDirection,
-      fullName,
-      email,
-      phone,
-      companyName,
-      companyWebsite,
-      message,
-    };
+    if (!isCaptchaValid) {
+      toast.error("Please complete the reCAPTCHA.");
+      setIsSubmitting(false);
+      return;
+    }
+
+    const emailRegex = /\S+@\S+\.\S+/;
+    if (!emailRegex.test(email)) {
+      toast.error("Please enter a valid email address.");
+      setIsSubmitting(false);
+      return;
+    }
+
+    if (fullName.length < 3) {
+      toast.error("Full Name must be at least 3 characters.");
+      setIsSubmitting(false);
+      return;
+    }
+
+    if (phone.length > 15) {
+      toast.error("Phone number must be at most 15 characters.");
+      setIsSubmitting(false);
+      return;
+    }
+
     const dataReg = {
       businessDirection: selectedTitle,
       fullName,
@@ -82,49 +172,111 @@ export default function PricingGetQuoteModal({ selectedTitle, closeModal }) {
       companyWebsite,
       message,
       username: email,
-      password: "123456",
+      password: passwordStart,
     };
 
     try {
-      const contactsResponse = await fetch("/api/contacts", {
-        method: "POST",
+      const registrationResponse = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}api/auth/local/register`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(dataReg),
+        }
+      );
 
-        body: JSON.stringify(data),
-      });
+      if (registrationResponse.ok) {
+        const data = {
+          titleModal: selectedTitle,
+          businessDirection,
+          fullName,
+          email,
+          phone,
+          companyName,
+          companyWebsite,
+          message,
+        };
 
-      if (contactsResponse.ok) {
-        const registrationResponse = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}auth/local/register`,
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(dataReg),
-          }
-        );
-        if (registrationResponse.ok) {
+        const contactsResponse = await fetch("/api/contacts", {
+          method: "POST",
+          body: JSON.stringify(data),
+        });
+
+        if (contactsResponse.ok) {
           clearFields();
-          toast.success("Registration successful!");
+          toast.success(
+            "Registration and contact information submission successful!"
+          );
           setTimeout(() => {
             closeModal();
           }, 3000);
         } else {
-          const registrationText = await registrationResponse.text();
-          toast.error(`Registration failed: ${registrationText}`);
+          const contactsText = await contactsResponse.text();
+          toast.error(`Failed to send contact information: ${contactsText}`);
         }
       } else {
-        const contactsText = await contactsResponse.text();
-        toast.error(`Failed to send contact information: ${contactsText}`);
+        const errorData = await registrationResponse.json();
+
+        if (
+          errorData &&
+          errorData.error &&
+          errorData.error.message.includes(
+            "Email or Username are already taken"
+          )
+        ) {
+          toast.error(
+            "The email address you have entered is already registered. Please use a different email or sign in."
+          );
+        } else {
+          let errorMessage = "Registration failed. Please try again.";
+          if (errorData && errorData.message) {
+            errorMessage = errorData.message;
+          }
+          toast.error(errorMessage);
+        }
       }
     } catch (error) {
       console.error("Error submitting form:", error.message);
       toast.error(`Error submitting form: ${error.message}`);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
+  async function handleCaptchaSubmission(token) {
+    if (!token) {
+      setIsCaptchaValid(false);
+      toast.error("Please verify that you are not a robot.");
+    } else {
+      try {
+        const response = await fetch("/api/verifyCaptcha", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ token }),
+        });
+        const data = await response.json();
+        if (data.success) {
+          setIsCaptchaValid(true);
+        } else {
+          setIsCaptchaValid(false);
+          toast.error("Captcha verification failed.");
+        }
+      } catch (error) {
+        console.error("Error verification reCAPTCHA:", error);
+        setIsCaptchaValid(false);
+        toast.error("Captcha verification failed.");
+      }
+    }
+  }
+
+  const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
   return (
     <div>
+      <ToastContainer position="top-center z-30" autoClose={5000} />
       <h2 className="text-center text-[24px] font-semibold mt-6 text-[#000A11]">
         {selectedTitle}
       </h2>
@@ -180,13 +332,12 @@ export default function PricingGetQuoteModal({ selectedTitle, closeModal }) {
               >
                 Phone Number <span className="text-red-500">*</span>
               </label>
-              <input
-                type="tel"
-                id="phone"
-                className="w-[327px] md:w-[342px] p-4 border rounded"
+              <PhoneInput
+                international
+                defaultCountry="US"
                 value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-                required
+                onChange={setPhone}
+                className="w-[327px] md:w-[342px] p-4 border rounded"
               />
             </div>
           </div>
@@ -241,18 +392,28 @@ export default function PricingGetQuoteModal({ selectedTitle, closeModal }) {
             </div>
           </div>
         </div>
-        <div className="flex justify-center">
-          <button
-            type="submit"
-            className={`${
-              isButtonActive
-                ? "bg-accentYellow hover:bg-accentHoverYellow"
-                : "bg-gray-400 cursor-not-allowed"
-            } text-white px-4 py-2 rounded ml-[auto] mr-[auto] font-bold text-[16px] w-[179px] h-[48px]`}
-            disabled={!isButtonActive}
-          >
-            Submit
-          </button>
+        <div className="flex justify-center gap-3 flex-wrap flex-col items-center">
+          <div className="">
+            <ReCAPTCHA
+              sitekey={RECAPTCHA_SITE_KEY}
+              size="normal"
+              onChange={handleCaptchaSubmission}
+            />
+          </div>
+
+          <div className="">
+            <button
+              type="submit"
+              className={`${
+                isButtonActive
+                  ? "bg-accentYellow hover:bg-accentHoverYellow"
+                  : "bg-gray-400 cursor-not-allowed"
+              } text-white px-4 py-2 rounded ml-[auto] mr-[auto] font-bold text-[16px] w-[179px] h-[48px]`}
+              disabled={!isButtonActive || !isCaptchaValid}
+            >
+              Submit
+            </button>
+          </div>
         </div>
       </form>
     </div>
