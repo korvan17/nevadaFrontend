@@ -28,6 +28,7 @@ export default function SocialLinks() {
               href={socialLinks.facebook}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Facebook"
             >
               <FacebookIcon />
             </a>

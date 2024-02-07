@@ -83,7 +83,6 @@ export default function Hero() {
       </div>
 
       <div className="container">
-       
         <div
           className="lg:flex lg:gap-[43px] lg:basis-2/4 
         
@@ -121,7 +120,7 @@ export default function Hero() {
               data-aos-once="true"
             >
               <Image
-                className="hidden lg:block lg:absolute top-[-80px] right-[20px] -z-30  h-auto"
+                className="hidden lg:block lg:absolute top-[-80px] right-[20px] -z-30   w-auto h-auto"
                 src="/ellipse6.png"
                 alt="Ellipse6"
                 width={328}

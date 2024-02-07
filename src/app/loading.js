@@ -3,9 +3,8 @@ import React from "react";
 import { ThreeCircles, Triangle } from "react-loader-spinner";
 
 function Loading() {
-  console.log("Loading");
   return (
-    <div className="fixed top-[50%] left-[50%] z-50 origin-center translate-x-[-50%]  translate-y-[-50%] ">
+    <div className="fixed top-[50%] left-[50%] z-50 origin-center translate-x-[50%]  translate-y-[50%] ">
       {/* <Triangle
         visible={true}
         height="80"

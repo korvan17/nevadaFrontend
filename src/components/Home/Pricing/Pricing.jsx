@@ -44,7 +44,7 @@ export default function Pricing() {
   const toggleModalPricing = () => {
     setShowModalPricing(!showModalPricing);
   };
-  console.log(pricePackings);
+
   return (
     <section id="pricing" className="py-mobile md:pb-0 lg:pt-desktop">
       <div className="container">
@@ -185,9 +185,9 @@ export default function Pricing() {
                     <td className="font-bold">Pictures 3pcs</td>
                   </tr>
                 </thead>
-                {pricingContainers ? (
-                  <tbody className="text-right leading-[200%]">
-                    {pricingContainers.map(
+                <tbody className="text-right leading-[200%]">
+                  {pricingContainers ? (
+                    pricingContainers.map(
                       ({
                         id,
                         attributes: {
@@ -200,37 +200,39 @@ export default function Pricing() {
                           inspection,
                           forwarding,
                         },
-                      }) => {
-                        return (
-                          <tr key={id}>
-                            <td className="w-[190px] text-left">{title}</td>
-                            <td>{`${receiving ? "$" + receiving : "-"}`}</td>
-                            <td className="">
-                              {`${inspection ? "$" + inspection : "-"}`}
-                            </td>
-                            <td className="">
-                              {`${forwarding ? "$" + forwarding : "-"}`}
-                            </td>
-                            <td className="">{`${
-                              storage ? "$" + storage : "-"
-                            }`}</td>
-                            <td className="">
-                              {`${utilization ? "$" + utilization : "-"}`}
-                            </td>
-                            <td className="">{`${
-                              removals ? "$" + removals : "-"
-                            }`}</td>
-                            <td className="">{`${
-                              pictures ? "$" + pictures : "-"
-                            }`}</td>
-                          </tr>
-                        );
-                      }
-                    )}
-                  </tbody>
-                ) : (
-                  <Loading />
-                )}
+                      }) => (
+                        <tr key={id}>
+                          <td className="w-[190px] text-left">{title}</td>
+                          <td>{`${receiving ? "$" + receiving : "-"}`}</td>
+                          <td className="">
+                            {`${inspection ? "$" + inspection : "-"}`}
+                          </td>
+                          <td className="">
+                            {`${forwarding ? "$" + forwarding : "-"}`}
+                          </td>
+                          <td className="">{`${
+                            storage ? "$" + storage : "-"
+                          }`}</td>
+                          <td className="">
+                            {`${utilization ? "$" + utilization : "-"}`}
+                          </td>
+                          <td className="">{`${
+                            removals ? "$" + removals : "-"
+                          }`}</td>
+                          <td className="">{`${
+                            pictures ? "$" + pictures : "-"
+                          }`}</td>
+                        </tr>
+                      )
+                    )
+                  ) : (
+                    <tr>
+                      <td colSpan="8">
+                        <Loading />
+                      </td>
+                    </tr>
+                  )}
+                </tbody>
               </table>
             </div>
 
