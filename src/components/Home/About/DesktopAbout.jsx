@@ -16,7 +16,8 @@ function DesktopAbout() {
             alt="circle-element-right"
             width={175}
             height={92}
-            className="absolute top-[540px] right-0 -z-10"
+            className="absolute top-[540px] right-0 -z-10  "
+            priority
           />
         </div>
         <div
@@ -30,7 +31,7 @@ function DesktopAbout() {
             alt="circle-element-left"
             width={175}
             height={92}
-            className="absolute -z-10 top-origin-left opacity-100 top-[60px] left-[520px]"
+            className="absolute -z-10 top-origin-left opacity-100 top-[60px] left-[520px] w-auto h-auto"
           />
         </div>
         <div className="flex gap-col-6 justify-center -z-10">
@@ -55,13 +56,13 @@ function DesktopAbout() {
               data-aos-duration="1000"
               data-aos-once="true"
             >
-              <ul>
-                <h2
-                  className="leading-9 text-opacity-20 font-bold 
+              <h2
+                className="leading-9 text-opacity-20 font-bold 
                 not-italic mb-8 text-5xl justify-start pt-[136px] pl-0"
-                >
-                  About our story
-                </h2>
+              >
+                About our story
+              </h2>
+              <ul>
                 <li>
                   <p>
                     Our story is a journey fueled by a passion for e-commerce

@@ -97,7 +97,7 @@ function UserPanel({ user }) {
               className="w-[306px] h-[68px] rounded-md
               bg-gradient-to-r from-gradient-start via-[#9394CC] 
               to-gradient-end shadow-custom
-            text-[#FAFCF8] font-bold text-[18px] leading-5"
+            text-[#FAFCF8] font-bold text-[18px] leading-5 pointer-events-none"
               type="button"
             >
               {session.user.businessDirection}
@@ -144,12 +144,12 @@ function UserPanel({ user }) {
           );
         })}
       </ul>
-      <div className="flex mb-3">
+      {/* <div className="flex mb-3">
         <NotificationsActiveOutlined />
         <h2 className="text-mainBlack font-bold leading-6 ml-2">
           Notification
         </h2>
-      </div>
+      </div> */}
       <div>
         {notifications.map((notification, index) => (
           <div key={index}>{notification}</div>
