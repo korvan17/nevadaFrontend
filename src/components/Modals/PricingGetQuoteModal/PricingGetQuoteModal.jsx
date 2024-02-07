@@ -67,68 +67,7 @@ export default function PricingGetQuoteModal({ selectedTitle, closeModal }) {
     sessionStorage.removeItem("companyWebsite");
     sessionStorage.removeItem("message");
   };
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
 
-  //   const data = {
-  //     titleModal: selectedTitle,
-  //     businessDirection,
-  //     fullName,
-  //     email,
-  //     phone,
-  //     companyName,
-  //     companyWebsite,
-  //     message,
-  //   };
-  //   const dataReg = {
-  //     businessDirection: selectedTitle,
-  //     fullName,
-  //     email,
-  //     phone,
-  //     companyName,
-  //     companyWebsite,
-  //     message,
-  //     username: email,
-  //     password: "123456",
-  //   };
-
-  //   try {
-  //     const contactsResponse = await fetch("/api/contacts", {
-  //       method: "POST",
-
-  //       body: JSON.stringify(data),
-  //     });
-
-  //     if (contactsResponse.ok) {
-  //       const registrationResponse = await fetch(
-  //         `${process.env.NEXT_PUBLIC_API_URL}auth/local/register`,
-  //         {
-  //           method: "POST",
-  //           headers: {
-  //             "Content-Type": "application/json",
-  //           },
-  //           body: JSON.stringify(dataReg),
-  //         }
-  //       );
-  //       if (registrationResponse.ok) {
-  //         clearFields();
-  //         toast.success("Registration successful!");
-  //         setTimeout(() => {
-  //           closeModal();
-  //         }, 3000);
-  //       } else {
-  //         const registrationText = await registrationResponse.text();
-  //         toast.error(`Registration failed: ${registrationText}`);
-  //       }
-  //     } else {
-  //       const contactsText = await contactsResponse.text();
-  //       toast.error(`Failed to send contact information: ${contactsText}`);
-  //     }
-  //   } catch (error) {
-  //     console.error("Error submitting form:", error.message);
-  //     toast.error(`Error submitting form: ${error.message}`);
-  //   }
-  // };
   const passwordStart = process.env.NEXT_PUBLIC_PASSWORD_START;
   const handleSubmit = async (e) => {
     e.preventDefault();
