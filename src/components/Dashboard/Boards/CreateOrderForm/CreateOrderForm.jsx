@@ -549,7 +549,7 @@ export const CreateOrderForm = () => {
                   </label>
                 </div>
 
-                {/* Conditional input for 'Other' feature details */}
+                {/* Conditional input for 'Other' details */}
                 {product.features.includes("Other") && (
                   <div>
                     <label
