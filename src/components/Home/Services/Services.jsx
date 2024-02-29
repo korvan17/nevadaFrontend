@@ -6,7 +6,7 @@ import "swiper/css";
 
 export default function Services() {
   return (
-    <section id="services" className="pb-20 md:pb-0 lg:pt-desktop">
+    <section id="services" className="pb-20 md:pb-0 ">
       <div className="container">
         <div
           data-aos="fade-down-left"
