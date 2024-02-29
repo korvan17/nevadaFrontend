@@ -59,7 +59,7 @@ export const metadata = {
   title: "FBA Prep, 3PL Warehouse Solutions for Amazon Sellers",
   url: "https://ppcwarehouses.com/",
   siteName: "PPC Warehouses",
-  metadataBase: "https://nevada-frontend.vercel.app" || "http://localhost:3000",
+  metadataBase: process.env.NEXT_PUBLIC_BASE_URL,
   openGraph: {
     title: "FBA Prep, 3PL Warehouse Solutions for Amazon Sellers",
     description: `The company PPC (Prime Preparation Center) Warehouses provides 3PL (Third-Party Logistics) services, which include:
