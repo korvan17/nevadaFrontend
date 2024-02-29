@@ -74,19 +74,20 @@ We have a personalized approach to each client, and all services and prices are 
     url: "https://ppcwarehouses.com",
     siteName: "PPC Warehouses",
 
-    // icons: {
-    //   icon: ["/favicon.ico"],
-    //   apple: ["/apple-touch-icon.png"],
-    //   shortcut: ["/android-chrome-192x192.png"],
-    // },
+    icons: {
+      icon: ["/favicon.ico"],
+      apple: ["/apple-touch-icon.png"],
+      shortcut: ["/android-chrome-192x192.png"],
+    },
     images: [
       {
-        url: "/favicon-32x32.png",
+        url: "/android-chrome-512x512.png",
         width: 800,
         height: 600,
+        alt: "ppcwarehouses",
       },
       {
-        url: "/favicon-32x32.png",
+        url: "/android-chrome-512x512.png",
         width: 1800,
         height: 1600,
         alt: "ppcwarehouses",
