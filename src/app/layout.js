@@ -74,6 +74,7 @@ We have a personalized approach to each client, and all services and prices are 
     url: "https://ppcwarehouses.com",
     siteName: "PPC Warehouses",
 
+    
     icons: {
       icon: ["/favicon.ico"],
       apple: ["/apple-touch-icon.png"],
