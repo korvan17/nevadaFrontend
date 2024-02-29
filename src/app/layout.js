@@ -81,12 +81,12 @@ We have a personalized approach to each client, and all services and prices are 
     // },
     images: [
       {
-        url: "http://localhost:3000/favicon-32x32.png",
+        url: "/favicon-32x32.png",
         width: 800,
         height: 600,
       },
       {
-        url: "http://localhost:3000/favicon-32x32.png",
+        url: "/favicon-32x32.png",
         width: 1800,
         height: 1600,
         alt: "ppcwarehouses",
@@ -94,7 +94,7 @@ We have a personalized approach to each client, and all services and prices are 
     ],
     locale: "en_US",
     type: "website",
-    manifest: "//site.webmanifest",
+    manifest: "/site.webmanifest",
   },
 };
 
