@@ -28,9 +28,9 @@ export default function Home() {
     <>
       <Header />
       <Hero />
-      <About />
       <Services />
       <Pricing />
+      <About />
       <Partners />
       {/* <Certificates /> */}
       <Faq />

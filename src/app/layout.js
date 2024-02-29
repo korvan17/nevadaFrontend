@@ -12,9 +12,17 @@ const inter = Inter({ subsets: ["latin"] });
 const redHatDisplay = Red_Hat_Display({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "PPC",
-  description:
-    "Prime Preparation Center: Elevate your e-commerce with streamlined shipping and seamless marketplace integration.",
+  title: "FBA Prep, 3PL Warehouse Solutions for Amazon Sellers",
+  // title: "FBA Prep, 3PL Warehouse Solutions",
+  description: `The company PPC (Prime Preparation Center) Warehouses provides 3PL (Third-Party Logistics) services, which include:
+Warehousing (receiving and storing your products at our warehouse in Las Vegas, USA)
+Processing your products to meet the requirements of major American e-commerce platforms such as Amazon, eBay, Etsy, Lowe's, Walmart, Wayfair etc.
+Labeling each unit
+Kit assembly
+Handling returns from all e-commerce platforms
+Forwarding your products in manufacturer's packaging to FBA (Fulfillment by Amazon) and FBW (Fulfillment by Walmart)
+Inspection of products received from your supplier at our warehouse
+We have a personalized approach to each client, and all services and prices are negotiated individually according to the client's requirements. By relying on us, you will gain a reliable fulfillment partner in the United States.`,
   icons: {
     icon: ["/favicon.ico"],
     apple: ["/apple-touch-icon.png"],
@@ -33,11 +41,19 @@ export const metadata = {
       alt: "ppcwarehouses",
     },
   ],
+  name: "Vasya",
   locale: "en_US",
   type: "website",
   manifest: "/site.webmanifest",
 };
-
+const jsonLdData = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "PPC Warehouses",
+  alternateName: ["PPC", "Prime Preparation Center Warehouses"],
+  url: "https://ppcwarehouses.com/",
+};
+console.log("jsonLdData: ", jsonLdData);
 export default function RootLayout({ children }) {
   return (
     <html className="scroll-smooth" lang="en">
@@ -69,6 +85,7 @@ export default function RootLayout({ children }) {
             `}
       </Script>
 
+      <Script type="application/ld+json">{JSON.stringify(jsonLdData)}</Script>
       <body className={redHatDisplay.className}>
         <SessionProvider>
           <div id="modal-root"></div>
