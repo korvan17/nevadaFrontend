@@ -56,6 +56,10 @@ const redHatDisplay = Red_Hat_Display({ subsets: ["latin"] });
 // };
 
 export const metadata = {
+  title: "FBA Prep, 3PL Warehouse Solutions for Amazon Sellers",
+  url: "https://ppcwarehouses.com/",
+  siteName: "PPC Warehouses",
+  metadataBase: "https://nevada-frontend.vercel.app" || "http://localhost:3000",
   openGraph: {
     title: "FBA Prep, 3PL Warehouse Solutions for Amazon Sellers",
     description: `The company PPC (Prime Preparation Center) Warehouses provides 3PL (Third-Party Logistics) services, which include:
@@ -67,13 +71,14 @@ Handling returns from all e-commerce platforms
 Forwarding your products in manufacturer's packaging to FBA (Fulfillment by Amazon) and FBW (Fulfillment by Walmart)
 Inspection of products received from your supplier at our warehouse
 We have a personalized approach to each client, and all services and prices are negotiated individually according to the client's requirements. By relying on us, you will gain a reliable fulfillment partner in the United States.`,
-    url: "https://ppcwarehouses.com/",
+    url: "https://ppcwarehouses.com",
     siteName: "PPC Warehouses",
-    icons: {
-      icon: ["/favicon.ico"],
-      apple: ["/apple-touch-icon.png"],
-      shortcut: ["/android-chrome-192x192.png"],
-    },
+
+    // icons: {
+    //   icon: ["/favicon.ico"],
+    //   apple: ["/apple-touch-icon.png"],
+    //   shortcut: ["/android-chrome-192x192.png"],
+    // },
     images: [
       {
         url: "/favicon-32x32.png",
