@@ -118,6 +118,10 @@ const jsonLd = {
 export default function RootLayout({ children }) {
   return (
     <html className="scroll-smooth" lang="en">
+      <Script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Script id="google-tag-manager" strategy="afterInteractive">
         {`
         (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -132,7 +136,6 @@ export default function RootLayout({ children }) {
         async
         defer
       ></Script>
-
       <Script id="fb-pixel" strategy="afterInteractive">
         {`           
          !function(f,b,e,v,n,t,s)
@@ -146,11 +149,6 @@ export default function RootLayout({ children }) {
             fbq('track', 'PageView');
             `}
       </Script>
-
-      <Script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
       <body className={redHatDisplay.className}>
         <SessionProvider>
           <div id="modal-root"></div>
