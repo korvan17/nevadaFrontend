@@ -15,7 +15,7 @@ export const metadata = {
   url: "https://ppcwarehouses.com/",
   siteName: "PPC Warehouses",
   locale: "en_US",
-  type: "website",
+  type: "Organization",
   description: `The company PPC (Prime Preparation Center) Warehouses provides 3PL (Third-Party Logistics) services, which include:
 Warehousing (receiving and storing your products at our warehouse in Las Vegas, USA)
 Processing your products to meet the requirements of major American e-commerce platforms such as Amazon, eBay, Etsy, Lowe's, Walmart, Wayfair etc.
@@ -146,12 +146,32 @@ export default function RootLayout({ children }) {
             fbq('track', 'PageView');
             `}
       </Script>
+      {/* <Script type="application/ld+json">
+        {`
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "PPC Warehouses",
+    "url": "https://ppcwarehouses.com",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+1-702-701-0078",
+      "contactType": "customer service"
+    },
+    "logo": "https://ppcwarehouses.com/logo.png",
+    "sameAs": [
+      "Ваши_социальные_сети"
+    ]
+  }
+`}
+      </Script> */}
 
       <body className={redHatDisplay.className}>
         <SessionProvider>
           <div id="modal-root"></div>
           {children}
           <Footer />
+
           <Script
             id="schema"
             type="application/ld+json"
