@@ -5,7 +5,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="pt-[78px] pb-[151px] md:pt-[47px] md:pb-[0px] lg:pt-[169px] lg:pb-[0px]"
+      className="pt-[78px] pb-[89px] md:pt-[47px] md:pb-[0px] lg:pt-[169px] lg:pb-[0px]"
     >
       <div
         data-aos="fade-down-left"
@@ -101,7 +101,8 @@ export default function Hero() {
                 md:mt-[34px] md:mb-[178px] md:w-auto
                 "
               >
-                <h1 className="uppercase font-bold text-center
+                <h1
+                  className="uppercase font-bold text-center
                               leading-[26px] text-[20px]
                               sm:leading-[34px] sm:text-[26px]
                               md:leading-[46px] md:text-[38px]
@@ -109,9 +110,12 @@ export default function Hero() {
                               mt-[20px]               
                               sm:mt-[40px]
                               md:mt-[40px]
-                              lg:mt-[40px]">
-                  <span>Maximize Your E-Commerce Efficiency and Sales Today</span> <br />{" "}
-                  <span>with Our Optimized Warehouse Solutions!</span>
+                              lg:mt-[40px]"
+                >
+                  <span>
+                    Maximize Your E-Commerce Efficiency and Sales Today
+                  </span>{" "}
+                  <br /> <span>with Our Optimized Warehouse Solutions!</span>
                 </h1>
                 <h3
                   className="font-normal
@@ -120,7 +124,12 @@ export default function Hero() {
                             md:leading-[38px] md:text-[26px] 
                             lg:leading-[44px] lg:text-[24px]"
                 >
-                  Elevate your E-Commerce operations with our cutting-edge warehouse located in Las Vegas, Nevada, designed to streamline your logistics, minimize overhead, and boost customer satisfaction. Embrace the future of e-commerce with us and make warehouse complexities a thing<br/>  of the past. Transform your business today!
+                  Elevate your E-Commerce operations with our cutting-edge
+                  warehouse located in Las Vegas, Nevada, designed to streamline
+                  your logistics, minimize overhead, and boost customer
+                  satisfaction. Embrace the future of e-commerce with us and
+                  make warehouse complexities a thing
+                  <br /> of the past. Transform your business today!
                 </h3>
               </div>
             </div>
