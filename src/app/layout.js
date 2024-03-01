@@ -62,7 +62,7 @@ We have a personalized approach to each client, and all services and prices are 
     ],
     locale: "en_US",
     type: "website",
-    manifest: "/site.webmanifest",
+    manifest: "/manifest.json",
   },
 };
 // export const metadata = {
