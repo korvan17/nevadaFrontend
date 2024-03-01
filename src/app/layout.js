@@ -146,12 +146,12 @@ export default function RootLayout({ children }) {
             fbq('track', 'PageView');
             `}
       </Script>
-      {/* <Script type="application/ld+json">
+      <Script type="application/ld+json">
         {`
   {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "PPC Warehouses",
+    "name": "PPC Warehouses3",
     "url": "https://ppcwarehouses.com",
     "contactPoint": {
       "@type": "ContactPoint",
@@ -164,7 +164,7 @@ export default function RootLayout({ children }) {
     ]
   }
 `}
-      </Script> */}
+      </Script>
 
       <body className={redHatDisplay.className}>
         <SessionProvider>
