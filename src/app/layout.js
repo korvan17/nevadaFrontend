@@ -110,7 +110,7 @@ We have a personalized approach to each client, and all services and prices are 
 // };
 const jsonLd = {
   context: "https://schema.org",
-  "@type": "WebSite",
+  "@type": "Organization",
   name: "PPC Warehouses",
   alternateName: ["PPC", "Prime Preparation Center Warehouses"],
   url: "https://ppcwarehouses.com/",
