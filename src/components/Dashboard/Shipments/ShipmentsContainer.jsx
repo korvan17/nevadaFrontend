@@ -19,6 +19,8 @@ function ShipmentsContainer({
   currentPage,
   PER_PAGE,
 }) {
+  const hasTrackers = currentPageData.some((order) => order.attributes.tracker);
+
   return (
     <div
       className="m-[0 auto] px-[16px] w-[288px] mb-[203px] mx-auto pt-[10px]
@@ -62,7 +64,9 @@ function ShipmentsContainer({
           md:top-[47px] md:left-[34px] md:w-[805px]
           lg:top-[85px] lg:w-[894px] lg:left-[49px]"
         ></div>
-        {currentPageData && currentPageData.length !== 0 ? (
+        {hasTrackers && currentPageData.length === 0 ? (
+          <Loading />
+        ) : currentPageData.length !== 0 ? (
           <>
             <ShipmentsTable currentPageData={currentPageData} />
             {orders.length > PER_PAGE && (
@@ -74,7 +78,7 @@ function ShipmentsContainer({
             )}
           </>
         ) : (
-          <Loading />
+          <p className="ml-[10px]">No shipments found</p>
         )}
 
         <div className="hidden md:block absolute bottom-[30px] left-[12px] lg:bottom-[37px]">

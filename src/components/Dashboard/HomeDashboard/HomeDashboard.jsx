@@ -15,6 +15,8 @@ import Loading from "@/app/loading";
 export default function HomeDashboard() {
   const [orders, setOrders] = useState([]);
   const { data: session, status } = useSession();
+  const [isLoading, setIsLoading] = useState(false);
+
   const [orderCounts, setOrderCounts] = useState({
     orderCreated: 0,
     labelCreated: 0,
@@ -24,12 +26,17 @@ export default function HomeDashboard() {
 
   useEffect(() => {
     if (status === "authenticated" && session.user.jwt) {
+      setIsLoading(true);
       fetchAllOrders(session.user.jwt)
         .then((fetchedOrders) => {
           setOrders(fetchedOrders);
           countOrderStatuses(fetchedOrders);
+          setIsLoading(false);
         })
-        .catch(console.error);
+        .catch((error) => {
+          console.error(error);
+          setIsLoading(false);
+        });
     }
   }, [status, session]);
 
@@ -67,21 +74,28 @@ export default function HomeDashboard() {
     <>
       <div
         className="w-[312px] mx-auto
-        
-        h-[650px] md:w-[612px] md:h-[402px] lg:h-[611px] 
       
-      md:ml-0 md:mr-0
-      lg:w-[920px] mb-4 flex-shrink-0
-      
-      rounded-lg bg-[#FAFCF8]
-      
-      
-      shadow-custom-deep p-3"
+      h-[650px] md:w-[612px] md:h-[402px] lg:h-[611px] 
+    
+    md:ml-0 md:mr-0
+    lg:w-[920px] mb-4 flex-shrink-0
+    
+    rounded-lg bg-[#FAFCF8]
+    
+    
+    shadow-custom-deep p-3"
       >
         <h3 className="text-[18px] md:text-2xl font-bold mb-6">
           Outbound shipments
         </h3>
-        {orders.length !== 0 ? (
+        {/* {isLoading ? (
+          <Loading />
+        ) : orders.length === 0 ? ( */}
+        {/* <p>No orders found</p>
+        ) : ( */}
+        {isLoading ? (
+          <Loading />
+        ) : (
           <div className="">
             <ul className="flex flex-wrap gap-3">
               <li>
@@ -91,7 +105,7 @@ export default function HomeDashboard() {
                   count={orderCounts.orderCreated}
                 />
               </li>
-              <li className="">
+              <li>
                 <ShipmentStatusCard
                   title="Label created"
                   icon={
@@ -129,8 +143,6 @@ export default function HomeDashboard() {
               </li>
             </ul>
           </div>
-        ) : (
-          <Loading />
         )}
         <CreateOrderButton />
       </div>

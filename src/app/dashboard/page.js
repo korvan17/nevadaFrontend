@@ -7,6 +7,8 @@ export const metadata = {
   description: "Dashboard client page",
 };
 
+
+
 function DashboardPage({ children }) {
   return (
     <>

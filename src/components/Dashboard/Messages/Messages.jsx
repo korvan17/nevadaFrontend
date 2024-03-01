@@ -15,9 +15,11 @@ export default function Messages() {
   const [currentPage, setCurrentPage] = useState(0);
   const [isTrackerUpdated, setIsTrackerUpdated] = useState(false);
   const [isFullPriceVisible, setIsFullPriceVisible] = useState(false);
-
+  const [messages, setMessages] = useState([]);
+  const [isLoadingMessages, setIsLoadingMessages] = useState(false);
   const overlayRef = useRef(null);
   const { data: session, status } = useSession();
+
 
   const formatDisplayDate = (isoDate) => {
     const date = new Date(isoDate);
@@ -26,6 +28,18 @@ export default function Messages() {
     const year = date.getFullYear();
     return `${month}/${day}/${year}`;
   };
+  useEffect(() => {
+    setIsLoadingMessages(true);
+    fetchAllOrders()
+      .then((fetchAllOrders) => {
+        setMessages(fetchAllOrders);
+        setIsLoadingMessages(false);
+      })
+      .catch((error) => {
+        console.error(error);
+        setIsLoadingMessages(false);
+      });
+  }, []);
 
   useEffect(() => {
     if (status === "authenticated" && session.user.jwt) {
@@ -160,23 +174,26 @@ export default function Messages() {
     };
   }, []);
 
+  if (isLoadingMessages) {
+    return <Loading />;
+  }
+
   return (
     <div className=" ">
       <h2 className="ml-[10px] md:ml-0 text-[16px] md:text-[24px]  leading-6 font-bold mb-3  mt-2 lg:mt-0">
         Messages
       </h2>
-
-      {!currentPageData && currentPageData.length === 0 ? (
-        <Loading />
-      ) : (
-        <div
-          className="ml-auto mr-auto lg:w-[920px] lg:h-[611px] 
+      <div
+        className="ml-auto mr-auto lg:w-[920px] lg:h-[611px] 
           
           
           rounded-[4px] bg-[#FAFCF8] shadow-custom-deep pl-3 pr-2 pt-3 
         
         md:w-[578px] md:h-[484px] w-[320px] h-[355px] items-center mb-6 lg:mb-0"
-        >
+      >
+        {currentPageData.length === 0 ? (
+          <div className="text-center">No messages found</div>
+        ) : (
           <ul>
             {currentPageData.map((order) => (
               <li key={order.id}>
@@ -293,16 +310,15 @@ export default function Messages() {
               </li>
             ))}
           </ul>
-          {pageCount > 1 && (
-            <ShipmentsPagination
-              pageCount={pageCount}
-              handlePageClick={handlePageClick}
-              currentPage={currentPage}
-            />
-          )}
-          {currentPageData.length === 0 && <Loading />}
-        </div>
-      )}
+        )}
+        {pageCount > 1 && (
+          <ShipmentsPagination
+            pageCount={pageCount}
+            handlePageClick={handlePageClick}
+            currentPage={currentPage}
+          />
+        )}
+      </div>
     </div>
   );
 }
