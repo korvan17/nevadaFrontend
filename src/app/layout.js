@@ -15,7 +15,7 @@ export const metadata = {
   url: "https://ppcwarehouses.com/",
   siteName: "PPC Warehouses",
   locale: "en_US",
-  type: "Organization",
+  type: "Service",
   description: `The company PPC (Prime Preparation Center) Warehouses provides 3PL (Third-Party Logistics) services, which include:
 Warehousing (receiving and storing your products at our warehouse in Las Vegas, USA)
 Processing your products to meet the requirements of major American e-commerce platforms such as Amazon, eBay, Etsy, Lowe's, Walmart, Wayfair etc.
@@ -40,7 +40,6 @@ Inspection of products received from your supplier at our warehouse
 We have a personalized approach to each client, and all services and prices are negotiated individually according to the client's requirements. By relying on us, you will gain a reliable fulfillment partner in the United States.`,
     url: "https://ppcwarehouses.com",
     siteName: "PPC Warehouses",
-    type: "Organization",
     icons: {
       icon: ["/favicon.ico"],
       apple: ["/apple-touch-icon.png"],
@@ -61,7 +60,7 @@ We have a personalized approach to each client, and all services and prices are 
       },
     ],
     locale: "en_US",
-    type: "website",
+    type: "Service",
     manifest: "/manifest.json",
   },
 };
@@ -100,7 +99,7 @@ export default function RootLayout({ children }) {
         {`
   {
     "@context": "https://schema.org",
-    "@type": "Organization",
+    "@type": "Service",
     "name": "Prime Preparation Center",
     "alternateName": ["Prime Preparation Center Warehouses"],
     "description": "The company PPC (Prime Preparation Center) Warehouses provides 3PL (Third-Party Logistics) services, which include:
