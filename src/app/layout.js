@@ -145,12 +145,14 @@ export default function RootLayout({ children }) {
             fbq('track', 'PageView');
             `}
       </Script>
+
       <body className={redHatDisplay.className}>
         <SessionProvider>
           <div id="modal-root"></div>
           {children}
           <Footer />
-          <noscript
+          <Script
+            id="schema"
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
           />
