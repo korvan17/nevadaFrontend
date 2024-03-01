@@ -60,7 +60,7 @@ We have a personalized approach to each client, and all services and prices are 
       },
     ],
     locale: "en_US",
-    // type: "Service",
+    type: "website",
     manifest: "/manifest.json",
   },
 };
