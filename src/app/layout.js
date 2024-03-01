@@ -54,11 +54,28 @@ const redHatDisplay = Red_Hat_Display({ subsets: ["latin"] });
 //   alternateName: ["PPC", "Prime Preparation Center Warehouses"],
 //   url: "https://ppcwarehouses.com/",
 // };
-
+const jsonLd = {
+  "@type": "WebSite",
+  name: "PPC Warehouses",
+  alternateName: ["PPC", "Prime Preparation Center Warehouses"],
+  url: "https://ppcwarehouses.com/",
+};
 export const metadata = {
   title: "FBA Prep, 3PL Warehouse Solutions for Amazon Sellers",
   url: "https://ppcwarehouses.com/",
   siteName: "PPC Warehouses",
+  locale: "en_US",
+  type: "website",
+  description: `The company PPC (Prime Preparation Center) Warehouses provides 3PL (Third-Party Logistics) services, which include:
+Warehousing (receiving and storing your products at our warehouse in Las Vegas, USA)
+Processing your products to meet the requirements of major American e-commerce platforms such as Amazon, eBay, Etsy, Lowe's, Walmart, Wayfair etc.
+Labeling each unit
+Kit assembly
+Handling returns from all e-commerce platforms
+Forwarding your products in manufacturer's packaging to FBA (Fulfillment by Amazon) and FBW (Fulfillment by Walmart)
+Inspection of products received from your supplier at our warehouse
+We have a personalized approach to each client, and all services and prices are negotiated individually according to the client's requirements. By relying on us, you will gain a reliable fulfillment partner in the United States.`,
+  manifest: "/site.webmanifest",
   metadataBase: process.env.NEXT_PUBLIC_BASE_URL,
   openGraph: {
     title: "FBA Prep, 3PL Warehouse Solutions for Amazon Sellers",
@@ -74,7 +91,6 @@ We have a personalized approach to each client, and all services and prices are 
     url: "https://ppcwarehouses.com",
     siteName: "PPC Warehouses",
 
-    
     icons: {
       icon: ["/favicon.ico"],
       apple: ["/apple-touch-icon.png"],
@@ -117,6 +133,7 @@ export default function RootLayout({ children }) {
         async
         defer
       ></Script>
+
       <Script id="fb-pixel" strategy="afterInteractive">
         {`           
          !function(f,b,e,v,n,t,s)
@@ -131,7 +148,7 @@ export default function RootLayout({ children }) {
             `}
       </Script>
 
-      {/* <Script type="application/ld+json">{JSON.stringify(jsonLdData)}</Script> */}
+      <Script type="application/ld+json">{JSON.stringify(jsonLd)}</Script>
       <body className={redHatDisplay.className}>
         <SessionProvider>
           <div id="modal-root"></div>
