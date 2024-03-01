@@ -109,7 +109,7 @@ We have a personalized approach to each client, and all services and prices are 
 //   url: "https://ppcwarehouses.com/",
 // };
 const jsonLd = {
-  "@type": "WebSite",
+  // "@type": "WebSite",
   name: "PPC Warehouses2323",
   alternateName: ["PPC", "Prime Preparation Center Warehouses"],
   url: "https://ppcwarehouses.com/",
