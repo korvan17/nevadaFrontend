@@ -5,7 +5,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="pt-[78px] pb-[89px] md:pt-[47px] md:pb-[0px] lg:pt-[169px] lg:pb-[0px]"
+      className=" pt-[10px] pb-[89px] md:pt-[47px] md:pb-[0px] lg:pt-[169px] lg:pb-[0px]"
     >
       <div
         data-aos="fade-down-left"
@@ -103,14 +103,12 @@ export default function Hero() {
               >
                 <h1
                   className="uppercase font-bold text-center
-                              leading-[26px] text-[20px]
-                              sm:leading-[34px] sm:text-[26px]
+                              leading-[34px] text-[26px]
                               md:leading-[46px] md:text-[38px]
                               lg:leading-[58px] lg:text-[35px] 
                               mt-[20px]               
                               sm:mt-[40px]
-                              md:mt-[40px]
-                              lg:mt-[40px]"
+                              md:mt-[40px] lg:mt-[40px]"
                 >
                   <span>
                     Maximize Your E-Commerce Efficiency and Sales Today
@@ -119,8 +117,7 @@ export default function Hero() {
                 </h1>
                 <h3
                   className="font-normal
-                            leading-[16px] text-[16px]
-                            sm:leading-[38px] sm:text-[20px]
+                            leading-[26px] text-[22px]
                             md:leading-[38px] md:text-[26px] 
                             lg:leading-[44px] lg:text-[24px]"
                 >
